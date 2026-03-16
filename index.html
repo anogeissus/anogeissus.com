@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anogeissus — ApolloOne & Camera RawX</title>
+    <title>Anogeissus — ApolloOne, Camera RawX & KatClaw</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-            background: #000;
-            color: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            background: #fff;
+            color: #1d1d1f;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -18,7 +18,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             z-index: 100;
@@ -27,28 +27,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            color: #f5f5f7;
+            color: #1d1d1f;
             text-decoration: none;
             font-size: 14px;
             margin: 0 20px;
-            opacity: 0.8;
+            opacity: 0.7;
             transition: opacity 0.2s;
         }
 
         nav a:hover { opacity: 1; }
 
         .hero {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 120px 24px 80px;
+            background: #fff;
         }
 
         .hero h1 {
@@ -56,17 +57,14 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #f5f5f7, #a1a1a6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1d1d1f;
         }
 
         .hero p {
             font-size: clamp(18px, 3vw, 28px);
-            color: #a1a1a6;
+            color: #6e6e73;
             max-width: 600px;
             line-height: 1.4;
-            margin-bottom: 40px;
         }
 
         .section {
@@ -74,9 +72,8 @@
             text-align: center;
         }
 
-        .section-light {
+        .section-alt {
             background: #f5f5f7;
-            color: #1d1d1f;
         }
 
         .section h2 {
@@ -84,57 +81,77 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 12px;
+            color: #1d1d1f;
         }
 
         .section .tagline {
             font-size: clamp(16px, 2.5vw, 24px);
-            color: #a1a1a6;
-            margin-bottom: 32px;
+            color: #6e6e73;
+            margin-bottom: 16px;
         }
 
-        .section-light .tagline { color: #6e6e73; }
+        .section .details {
+            font-size: 17px;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.5;
+        }
 
         .cta-group {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
         }
 
         .cta {
             font-size: 18px;
-            color: #2997ff;
+            color: #0066cc;
             text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cta:hover { color: #0077ed; text-decoration: underline; }
+
+        .app-store-badge {
+            height: 40px;
             transition: opacity 0.2s;
         }
 
-        .cta:hover { text-decoration: underline; }
-
-        .cta-appstore {
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .cta-appstore img {
-            height: 44px;
-        }
+        .app-store-badge:hover { opacity: 0.8; }
 
         footer {
-            background: #000;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: #f5f5f7;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             padding: 40px 24px;
             text-align: center;
-            color: #6e6e73;
-            font-size: 13px;
+        }
+
+        footer .links {
+            margin-bottom: 16px;
         }
 
         footer a {
             color: #6e6e73;
             text-decoration: none;
+            font-size: 13px;
             margin: 0 12px;
         }
 
-        footer a:hover { color: #f5f5f7; }
+        footer a:hover { color: #1d1d1f; }
+
+        footer .copyright {
+            color: #86868b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            nav a { margin: 0 10px; font-size: 13px; }
+            .section { padding: 60px 20px; }
+            .hero { padding: 100px 20px 60px; min-height: 60vh; }
+        }
     </style>
 </head>
 <body>
@@ -142,6 +159,7 @@
 <nav>
     <a href="#apolloone">ApolloOne</a>
     <a href="#camerrawx">Camera RawX</a>
+    <a href="#katclaw">KatClaw</a>
     <a href="#contact">Contact</a>
 </nav>
 
@@ -150,23 +168,40 @@
     <p>Professional photo tools for Mac. Built for photographers who value speed and precision.</p>
 </section>
 
-<section class="section section-light" id="apolloone">
+<section class="section section-alt" id="apolloone">
     <h2>ApolloOne</h2>
-    <p class="tagline">The fastest photo &amp; video viewer for Mac.</p>
+    <p class="tagline">The fastest photo and video viewer for Mac.</p>
+    <p class="details">View photos at 48fps. Display 100MP RAW files almost instantly. Built-in EXIF editor, metadata tools, and GPS maps. Created by photographers, for photographers.</p>
     <div class="cta-group">
         <a class="cta" href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">Learn more ›</a>
+        <a href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">
+            <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-mac-app-store.svg" alt="Download on the Mac App Store">
+        </a>
     </div>
 </section>
 
 <section class="section" id="camerrawx">
     <h2>Camera RawX</h2>
-    <p class="tagline">RAW processing, redefined.</p>
+    <p class="tagline">See every RAW file in Finder.</p>
+    <p class="details">Quick Look and thumbnails for camera RAW files that macOS doesn't support natively. Renders in about 1 second on Apple Silicon. Supports Canon, Nikon, Fujifilm, Sony, and more.</p>
     <div class="cta-group">
         <a class="cta" href="https://apps.apple.com/app/camera-rawx/id6504917977?mt=12">Learn more ›</a>
+        <a href="https://apps.apple.com/app/camera-rawx/id6504917977?mt=12">
+            <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-mac-app-store.svg" alt="Download on the Mac App Store">
+        </a>
     </div>
 </section>
 
-<section class="section section-light" id="contact">
+<section class="section section-alt" id="katclaw">
+    <h2>KatClaw</h2>
+    <p class="tagline">Your AI assistant, secured.</p>
+    <p class="details">The native macOS companion for OpenClaw. Security-first design with exec approvals, allowlists, and health checks built in.</p>
+    <div class="cta-group">
+        <a class="cta" href="https://katclaw.ai">Learn more at katclaw.ai ›</a>
+    </div>
+</section>
+
+<section class="section" id="contact">
     <h2>Get in Touch</h2>
     <p class="tagline">Bug reports, feature requests, or just say hi.</p>
     <div class="cta-group">
@@ -175,11 +210,12 @@
 </section>
 
 <footer>
-    <p>
+    <div class="links">
         <a href="#contact">Contact</a>
         <a href="https://apps.apple.com/developer/anogeissus/id1044484671">App Store</a>
-    </p>
-    <p style="margin-top: 12px;">© 2026 Anogeissus. All rights reserved.</p>
+        <a href="https://katclaw.ai">KatClaw</a>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
 </footer>
 
 </body>
