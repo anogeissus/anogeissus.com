@@ -205,8 +205,18 @@
     <h2>Get in Touch</h2>
     <p class="tagline">Bug reports, feature requests, or just say hi.</p>
     <div class="cta-group">
-        <a class="cta" href="mailto:albert@anogeissus.com">albert@anogeissus.com ›</a>
+        <a class="cta" id="contact-link" href="#" onclick="return false;">Loading…</a>
     </div>
+    <script>
+    (function(){
+        var u='support',d='anogeissus',t='com';
+        var a=u+'@'+d+'.'+t;
+        var e=document.getElementById('contact-link');
+        e.href='mai'+'lto:'+a;
+        e.textContent=a+' ›';
+        e.onclick=null;
+    })();
+    </script>
 </section>
 
 <footer>
