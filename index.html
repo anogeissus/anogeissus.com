@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anogeissus — ApolloOne & Camera RawX</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 100;
+            padding: 0 24px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 20px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover { opacity: 1; }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #f5f5f7, #a1a1a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 3vw, 28px);
+            color: #a1a1a6;
+            max-width: 600px;
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .section-light {
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .section h2 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .section .tagline {
+            font-size: clamp(16px, 2.5vw, 24px);
+            color: #a1a1a6;
+            margin-bottom: 32px;
+        }
+
+        .section-light .tagline { color: #6e6e73; }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta {
+            font-size: 18px;
+            color: #2997ff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .cta:hover { text-decoration: underline; }
+
+        .cta-appstore {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-appstore img {
+            height: 44px;
+        }
+
+        footer {
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 24px;
+            text-align: center;
+            color: #6e6e73;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #6e6e73;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        footer a:hover { color: #f5f5f7; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#apolloone">ApolloOne</a>
+    <a href="#camerrawx">Camera RawX</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+    <h1>Anogeissus</h1>
+    <p>Professional photo tools for Mac. Built for photographers who value speed and precision.</p>
+</section>
+
+<section class="section section-light" id="apolloone">
+    <h2>ApolloOne</h2>
+    <p class="tagline">The fastest photo &amp; video viewer for Mac.</p>
+    <div class="cta-group">
+        <a class="cta" href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">Learn more ›</a>
+    </div>
+</section>
+
+<section class="section" id="camerrawx">
+    <h2>Camera RawX</h2>
+    <p class="tagline">RAW processing, redefined.</p>
+    <div class="cta-group">
+        <a class="cta" href="https://apps.apple.com/app/camera-rawx/id6504917977?mt=12">Learn more ›</a>
+    </div>
+</section>
+
+<section class="section section-light" id="contact">
+    <h2>Get in Touch</h2>
+    <p class="tagline">Bug reports, feature requests, or just say hi.</p>
+    <div class="cta-group">
+        <a class="cta" href="mailto:albert@anogeissus.com">albert@anogeissus.com ›</a>
+    </div>
+</section>
+
+<footer>
+    <p>
+        <a href="#contact">Contact</a>
+        <a href="https://apps.apple.com/developer/anogeissus/id1044484671">App Store</a>
+    </p>
+    <p style="margin-top: 12px;">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
