@@ -1,0 +1,397 @@
+/* ============================================
+   Anogeissus — Global Styles
+   Apple.com-inspired, clean & minimal
+   ============================================ */
+
+/* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    background: #fff;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Navigation ---- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    z-index: 100;
+    padding: 0 24px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #1d1d1f;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 20px;
+    opacity: 0.72;
+    transition: opacity 0.2s;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* ---- Hero ---- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px 80px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    padding: 0 20px;
+}
+
+.hero-text.visible {
+    opacity: 1;
+}
+
+/* Brand messages */
+.hero-text.brand h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: #1d1d1f;
+}
+
+/* Review messages */
+.hero-text.review .stars {
+    font-size: 28px;
+    color: #f5a623;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+}
+
+.hero-text.review blockquote {
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.3;
+    color: #6e6e73;
+    letter-spacing: -0.01em;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.45;
+    transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 0.7;
+}
+
+.scroll-indicator span {
+    font-size: 13px;
+    color: #86868b;
+    letter-spacing: 0.05em;
+}
+
+.scroll-indicator .arrow {
+    font-size: 20px;
+    color: #86868b;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+/* ---- Sections ---- */
+.section {
+    padding: 100px 24px;
+    text-align: center;
+}
+
+.section-alt {
+    background: #f5f5f7;
+}
+
+.section h2 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: #1d1d1f;
+}
+
+.section .tagline {
+    font-size: clamp(16px, 2.5vw, 24px);
+    color: #6e6e73;
+    margin-bottom: 16px;
+}
+
+.section .details {
+    font-size: 17px;
+    color: #86868b;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.5;
+}
+
+/* Screenshot placeholders */
+.screenshot-placeholder {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #e8e8ed;
+    border-radius: 12px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #86868b;
+    font-size: 15px;
+}
+
+/* ---- CTAs ---- */
+.cta-group {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cta {
+    font-size: 18px;
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cta:hover {
+    color: #0077ed;
+    text-decoration: underline;
+}
+
+.app-store-badge {
+    height: 40px;
+    transition: opacity 0.2s;
+}
+
+.app-store-badge:hover {
+    opacity: 0.8;
+}
+
+/* ---- Testimonials ---- */
+.testimonials {
+    padding: 100px 24px;
+    background: #fff;
+}
+
+.testimonials h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #1d1d1f;
+}
+
+.testimonials .section-subtitle {
+    font-size: 18px;
+    color: #6e6e73;
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.testimonials-group {
+    max-width: 1100px;
+    margin: 0 auto 56px;
+}
+
+.testimonials-group h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1d1d1f;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: #f5f5f7;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: left;
+}
+
+.testimonial-card .stars {
+    font-size: 18px;
+    color: #f5a623;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.testimonial-card p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #1d1d1f;
+    font-style: italic;
+}
+
+/* ---- Footer ---- */
+footer {
+    background: #f5f5f7;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 48px 24px 40px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto 32px;
+}
+
+.footer-col h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.footer-col a {
+    display: block;
+    color: #6e6e73;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.footer-col a:hover {
+    color: #1d1d1f;
+}
+
+footer .copyright {
+    text-align: center;
+    color: #86868b;
+    font-size: 13px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 24px;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+    nav a {
+        margin: 0 10px;
+        font-size: 13px;
+    }
+
+    .hero {
+        height: 100vh;
+        padding: 48px 20px 80px;
+    }
+
+    .hero-container {
+        min-height: 140px;
+    }
+
+    .hero-text.brand h1 {
+        font-size: clamp(28px, 7vw, 44px);
+    }
+
+    .hero-text.review blockquote {
+        font-size: clamp(22px, 5vw, 34px);
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .testimonials {
+        padding: 60px 20px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-columns {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+    }
+
+    .scroll-indicator {
+        bottom: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 0 12px;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    nav a {
+        margin: 0 8px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .hero-text.review .stars {
+        font-size: 22px;
+    }
+}

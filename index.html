@@ -4,170 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anogeissus — ApolloOne, Camera RawX & KatClaw</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            background: #fff;
-            color: #1d1d1f;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            z-index: 100;
-            padding: 0 24px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            color: #1d1d1f;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 0 20px;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        nav a:hover { opacity: 1; }
-
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 24px 80px;
-            background: #fff;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 80px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            color: #1d1d1f;
-        }
-
-        .hero p {
-            font-size: clamp(18px, 3vw, 28px);
-            color: #6e6e73;
-            max-width: 600px;
-            line-height: 1.4;
-        }
-
-        .section {
-            padding: 100px 24px;
-            text-align: center;
-        }
-
-        .section-alt {
-            background: #f5f5f7;
-        }
-
-        .section h2 {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-            color: #1d1d1f;
-        }
-
-        .section .tagline {
-            font-size: clamp(16px, 2.5vw, 24px);
-            color: #6e6e73;
-            margin-bottom: 16px;
-        }
-
-        .section .details {
-            font-size: 17px;
-            color: #86868b;
-            max-width: 600px;
-            margin: 0 auto 32px;
-            line-height: 1.5;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .cta {
-            font-size: 18px;
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .cta:hover { color: #0077ed; text-decoration: underline; }
-
-        .app-store-badge {
-            height: 40px;
-            transition: opacity 0.2s;
-        }
-
-        .app-store-badge:hover { opacity: 0.8; }
-
-        footer {
-            background: #f5f5f7;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 40px 24px;
-            text-align: center;
-        }
-
-        footer .links {
-            margin-bottom: 16px;
-        }
-
-        footer a {
-            color: #6e6e73;
-            text-decoration: none;
-            font-size: 13px;
-            margin: 0 12px;
-        }
-
-        footer a:hover { color: #1d1d1f; }
-
-        footer .copyright {
-            color: #86868b;
-            font-size: 13px;
-        }
-
-        @media (max-width: 600px) {
-            nav a { margin: 0 10px; font-size: 13px; }
-            .section { padding: 60px 20px; }
-            .hero { padding: 100px 20px 60px; min-height: 60vh; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <nav>
     <a href="#apolloone">ApolloOne</a>
-    <a href="#camerrawx">Camera RawX</a>
-    <a href="#katclaw">KatClaw</a>
+    <a href="#camerarawx">Camera RawX</a>
+    <a href="#support">Support</a>
+    <a href="#blog">Blog</a>
+    <a href="#download">Download</a>
     <a href="#contact">Contact</a>
 </nav>
 
+<!-- Animated Hero -->
 <section class="hero">
-    <h1>Anogeissus</h1>
-    <p>Professional photo tools for Mac. Built for photographers who value speed and precision.</p>
+    <div class="hero-container" id="hero-container">
+        <!-- JS injects cycling text here -->
+    </div>
+    <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div class="arrow">↓</div>
+    </div>
 </section>
 
+<!-- ApolloOne -->
 <section class="section section-alt" id="apolloone">
     <h2>ApolloOne</h2>
     <p class="tagline">The fastest photo and video viewer for Mac.</p>
@@ -180,7 +41,8 @@
     </div>
 </section>
 
-<section class="section" id="camerrawx">
+<!-- Camera RawX -->
+<section class="section" id="camerarawx">
     <h2>Camera RawX</h2>
     <p class="tagline">See every RAW file in Finder.</p>
     <p class="details">Quick Look and thumbnails for camera RAW files that macOS doesn't support natively. Renders in about 1 second on Apple Silicon. Supports Canon, Nikon, Fujifilm, Sony, and more.</p>
@@ -192,6 +54,7 @@
     </div>
 </section>
 
+<!-- KatClaw -->
 <section class="section section-alt" id="katclaw">
     <h2>KatClaw</h2>
     <p class="tagline">Your AI assistant, secured.</p>
@@ -201,19 +64,86 @@
     </div>
 </section>
 
-<section class="section" id="contact">
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+    <h2>What Photographers Say</h2>
+    <p class="section-subtitle">Real reviews from the Mac App Store.</p>
+
+    <div class="testimonials-group">
+        <h3>ApolloOne</h3>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Mouse wheel through burst mode RAW photos with instantaneous response, no blackouts, no low-res rendering."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Does everything I need. Works perfect as a photo &amp; video viewer — even with a clicker for projector slideshows."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"This app made me realize how much I hate catalog-based apps. Great work. Money well spent."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Feature rich, very fast, actively developed. I emailed about a problem — new release on the App Store within days."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials-group">
+        <h3>Camera RawX</h3>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"A must-have if you shoot RAW. Seeing Finder previews is a huge advantage. A steal even at twice the price."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"If this had been £100 I would have still bought it. I nearly paid £250 for a bigger card just to shoot RAW+JPEG as a workaround. This made it so much easier."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"I'm so relieved. Finally! Someone heard my prayers!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Does exactly what it says on the tin. Works flawlessly. Displays my RAW images much faster than previously."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section section-alt" id="contact">
     <h2>Get in Touch</h2>
     <p class="tagline">Bug reports, feature requests, or just say hi.</p>
 </section>
 
+<!-- Footer -->
 <footer>
-    <div class="links">
-        <a href="#contact">Contact</a>
-        <a href="https://apps.apple.com/developer/anogeissus/id1044484671">App Store</a>
-        <a href="https://katclaw.ai">KatClaw</a>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="#apolloone">ApolloOne</a>
+            <a href="#camerarawx">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="#support">Support</a>
+            <a href="#blog">Blog</a>
+            <a href="#download">Download</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#contact">Contact</a>
+            <a href="https://apps.apple.com/developer/anogeissus/id1044484671">App Store</a>
+        </div>
     </div>
     <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
 </footer>
 
+<script src="js/hero.js"></script>
 </body>
 </html>
