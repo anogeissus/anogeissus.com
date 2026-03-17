@@ -96,11 +96,13 @@ nav a:hover {
 
 /* Review messages */
 .hero-app-name {
-    font-size: clamp(20px, 3vw, 30px);
-    font-weight: 300;
-    font-style: italic;
+    font-size: 16px;
+    font-weight: 600;
     color: #86868b;
-    margin-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    font-style: normal;
 }
 
 .hero-text.review .hero-stars {
