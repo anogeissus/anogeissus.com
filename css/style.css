@@ -94,6 +94,17 @@ nav a:hover {
     color: #1d1d1f;
 }
 
+/* App name under review quotes */
+.hero-app-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 16px;
+    font-style: normal;
+}
+
 /* Review messages */
 .hero-text.review .stars {
     font-size: 28px;

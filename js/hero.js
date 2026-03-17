@@ -13,17 +13,17 @@
         { text: 'Blazing-fast RAW viewing. Instant.', type: 'brand' },
 
         // ApolloOne reviews
-        { text: 'Instantaneous response. No blackouts. No low-res rendering.', type: 'review' },
-        { text: 'This app made me realize how much I hate catalog-based apps.', type: 'review' },
-        { text: 'Money well spent.', type: 'review' },
-        { text: 'I emailed about a problem — new release within days.', type: 'review' },
-        { text: 'Works perfect — even with a clicker for projector slideshows.', type: 'review' },
+        { text: 'Instantaneous response. No blackouts. No low-res rendering.', type: 'review', app: 'ApolloOne' },
+        { text: 'This app made me realize how much I hate catalog-based apps.', type: 'review', app: 'ApolloOne' },
+        { text: 'Money well spent.', type: 'review', app: 'ApolloOne' },
+        { text: 'I emailed about a problem — new release within days.', type: 'review', app: 'ApolloOne' },
+        { text: 'Works perfect — even with a clicker for projector slideshows.', type: 'review', app: 'ApolloOne' },
 
         // Camera RawX reviews
-        { text: 'A steal even at twice the price.', type: 'review' },
-        { text: 'If this had been £100 I would have still bought it.', type: 'review' },
-        { text: 'Finally! Someone heard my prayers!', type: 'review' },
-        { text: 'Works flawlessly. Exactly what it says on the tin.', type: 'review' }
+        { text: 'A steal even at twice the price.', type: 'review', app: 'Camera RawX' },
+        { text: 'If this had been £100 I would have still bought it.', type: 'review', app: 'Camera RawX' },
+        { text: 'Finally! Someone heard my prayers!', type: 'review', app: 'Camera RawX' },
+        { text: 'Works flawlessly. Exactly what it says on the tin.', type: 'review', app: 'Camera RawX' }
     ];
 
     var FADE_DURATION = 800;   // ms — matches CSS transition
@@ -41,7 +41,8 @@
         } else {
             el.innerHTML =
                 '<div class="stars">★★★★★</div>' +
-                '<blockquote>\u201c' + phrase.text + '\u201d</blockquote>';
+                '<blockquote>\u201c' + phrase.text + '\u201d</blockquote>' +
+                '<div class="hero-app-name">\u2014 ' + phrase.app + '</div>';
         }
 
         return el;
