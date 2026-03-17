@@ -96,11 +96,12 @@ nav a:hover {
 
 /* Review messages */
 .hero-app-name {
-    font-family: 'Dancing Script', cursive;
-    font-size: 32px;
-    font-weight: 700;
-    color: #1d1d1f;
-    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
     font-style: normal;
 }
 
