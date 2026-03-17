@@ -1,94 +1,107 @@
 /* ============================================
-   Hero Text Cycling Animation
-   Fades through brand messages & reviews
+   Hero Screenshot Rotation
+   Photography tools first, testimonials/captions below
    ============================================ */
 
 (function () {
     'use strict';
 
-    var phrases = [
-        // Brand messages
-        { text: 'Professional photo tools for Mac.', type: 'brand' },
-        { text: 'Built by photographers, for photographers.', type: 'brand' },
-        { text: 'Blazing-fast RAW viewing. Instant.', type: 'brand' },
-
-        // ApolloOne reviews
-        { text: 'Instantaneous response. No blackouts. No low-res rendering.', type: 'review', app: 'ApolloOne' },
-        { text: 'This app made me realize how much I hate catalog-based apps.', type: 'review', app: 'ApolloOne' },
-        { text: 'Money well spent.', type: 'review', app: 'ApolloOne' },
-        { text: 'I emailed about a problem — new release within days.', type: 'review', app: 'ApolloOne' },
-        { text: 'Works perfect — even with a clicker for projector slideshows.', type: 'review', app: 'ApolloOne' },
-
-        // Camera RawX reviews
-        { text: 'A steal even at twice the price.', type: 'review', app: 'Camera RawX' },
-        { text: 'If this had been £100 I would have still bought it.', type: 'review', app: 'Camera RawX' },
-        { text: 'Finally! Someone heard my prayers!', type: 'review', app: 'Camera RawX' },
-        { text: 'Works flawlessly. Exactly what it says on the tin.', type: 'review', app: 'Camera RawX' }
+    var slides = [
+        {
+            label: 'ApolloOne',
+            image: 'images/apolloone-quick-edit.jpg',
+            alt: 'ApolloOne Quick Edit screenshot',
+            caption: 'Browse at up to <strong>32 fps on M1 Ultra</strong>, view full-resolution images instantly, and make non-destructive adjustments with <strong>Quick Edit</strong>.'
+        },
+        {
+            label: 'Camera RawX',
+            image: 'images/camerarawx-quick-look.jpg',
+            alt: 'Camera RawX Quick Look screenshot',
+            caption: 'Open unsupported RAW files with <strong>RawBridge™</strong>, with fast previews and practical Finder integration for real-world workflows.'
+        }
     ];
 
-    var FADE_DURATION = 800;   // ms — matches CSS transition
-    var DISPLAY_TIME = 3500;   // ms — how long text stays visible
-    var container = document.getElementById('hero-container');
+    var DISPLAY_TIME = 6500;
+    var showcase = document.getElementById('hero-showcase');
+    var captionStrip = document.getElementById('hero-caption-strip');
     var currentIndex = 0;
-    var heroEl = null;
+    var activeSlide = null;
+    var activeCaption = null;
 
-    function createHeroElement(phrase) {
+    function createDots() {
+        return '<span class="hero-window-dot"></span><span class="hero-window-dot"></span><span class="hero-window-dot"></span>';
+    }
+
+    function createSlide(slide) {
         var el = document.createElement('div');
-        el.className = 'hero-text ' + phrase.type;
-
-        if (phrase.type === 'brand') {
-            el.innerHTML = '<h1>' + phrase.text + '</h1>';
-        } else {
-            el.innerHTML =
-                '<div class="stars">★★★★★</div>' +
-                '<blockquote>\u201c' + phrase.text + '\u201d</blockquote>' +
-                '<div class="hero-app-name">\u2014 ' + phrase.app + '</div>';
-        }
-
+        el.className = 'hero-slide';
+        el.innerHTML =
+            '<div class="hero-window">' +
+                '<div class="hero-window-bar">' + createDots() + '</div>' +
+                '<div class="hero-window-body">' +
+                    '<img src="' + slide.image + '" alt="' + slide.alt + '">' +
+                '</div>' +
+            '</div>';
         return el;
     }
 
-    function showNext() {
-        var phrase = phrases[currentIndex];
-        var newEl = createHeroElement(phrase);
+    function createCaption(slide) {
+        var el = document.createElement('div');
+        el.className = 'hero-caption';
+        el.innerHTML =
+            '<div class="hero-caption-label">' + slide.label + '</div>' +
+            '<div class="hero-caption-text">' + slide.caption + '</div>';
+        return el;
+    }
 
-        container.appendChild(newEl);
+    function swapSlide() {
+        var slide = slides[currentIndex];
+        var nextSlide = createSlide(slide);
+        var nextCaption = createCaption(slide);
 
-        // Force reflow so the transition triggers
-        newEl.offsetHeight; // eslint-disable-line no-unused-expressions
+        showcase.appendChild(nextSlide);
+        captionStrip.appendChild(nextCaption);
 
-        // Fade in
+        nextSlide.offsetHeight;
+        nextCaption.offsetHeight;
+
         requestAnimationFrame(function () {
-            newEl.classList.add('visible');
+            nextSlide.classList.add('visible');
+            nextCaption.classList.add('visible');
         });
 
-        // Store reference for fade-out
-        var prevEl = heroEl;
-        heroEl = newEl;
-
-        // Fade out the previous element
-        if (prevEl) {
-            prevEl.classList.remove('visible');
+        if (activeSlide) {
+            activeSlide.classList.remove('visible');
             setTimeout(function () {
-                if (prevEl.parentNode) prevEl.parentNode.removeChild(prevEl);
-            }, FADE_DURATION);
+                if (activeSlide && activeSlide.parentNode) {
+                    activeSlide.parentNode.removeChild(activeSlide);
+                }
+            }, 900);
         }
 
-        // Advance index
-        currentIndex = (currentIndex + 1) % phrases.length;
+        if (activeCaption) {
+            activeCaption.classList.remove('visible');
+            setTimeout(function () {
+                if (activeCaption && activeCaption.parentNode) {
+                    activeCaption.parentNode.removeChild(activeCaption);
+                }
+            }, 800);
+        }
+
+        activeSlide = nextSlide;
+        activeCaption = nextCaption;
+        currentIndex = (currentIndex + 1) % slides.length;
     }
 
-    function startCycle() {
-        showNext();
-        setInterval(function () {
-            showNext();
-        }, DISPLAY_TIME + FADE_DURATION);
+    function startRotation() {
+        if (!showcase || !captionStrip) return;
+        swapSlide();
+        setInterval(swapSlide, DISPLAY_TIME);
     }
 
-    // Wait for DOM
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startCycle);
+        document.addEventListener('DOMContentLoaded', startRotation);
     } else {
-        startCycle();
+        startRotation();
     }
 })();

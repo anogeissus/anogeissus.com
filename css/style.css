@@ -51,74 +51,157 @@ nav a:hover {
 
 /* ---- Hero ---- */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 48px 24px 80px;
-    background: #fff;
+    padding: 100px 24px 96px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f7f9 100%);
     position: relative;
     overflow: hidden;
 }
 
-.hero-container {
-    position: relative;
-    width: 100%;
+.hero-copy {
+    max-width: 980px;
+    margin: 0 auto 40px;
+}
+
+.hero-eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6e6e73;
+    margin-bottom: 14px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.03;
+    color: #1d1d1f;
+    margin-bottom: 18px;
+}
+
+.hero-subhead {
     max-width: 900px;
-    min-height: 160px;
+    margin: 0 auto;
+    font-size: clamp(18px, 2.2vw, 26px);
+    line-height: 1.45;
+    color: #6e6e73;
+}
+
+.hero-showcase {
+    position: relative;
+    width: min(1120px, 100%);
+    min-height: 620px;
+    margin: 0 auto 20px;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero-text {
-    position: absolute;
+.hero-slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-window {
     width: 100%;
+    max-width: 1080px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12), 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hero-window-bar {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    background: linear-gradient(180deg, #f7f7f8 0%, #ececef 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hero-window-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d1d1d6;
+}
+
+.hero-window-body {
+    background: #fff;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+.hero-window-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    display: block;
+}
+
+.hero-caption-strip {
+    width: min(980px, 100%);
+    min-height: 72px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-caption {
+    position: absolute;
+    inset: 0;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     padding: 0 20px;
 }
 
-.hero-text.visible {
+.hero-caption.visible {
     opacity: 1;
 }
 
-/* Brand messages */
-.hero-text.brand h1 {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    color: #1d1d1f;
-}
-
-/* App name under review quotes */
-.hero-app-name {
-    font-size: 15px;
+.hero-caption-label {
+    font-size: 13px;
     font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: #86868b;
-    letter-spacing: 0.02em;
-    margin-top: 16px;
-    font-style: normal;
 }
 
-/* Review messages */
-.hero-text.review .stars {
-    font-size: 28px;
-    color: #f5a623;
-    margin-bottom: 16px;
-    letter-spacing: 4px;
+.hero-caption-text {
+    font-size: clamp(14px, 1.7vw, 18px);
+    line-height: 1.45;
+    color: #4d4d52;
+    max-width: 760px;
 }
 
-.hero-text.review blockquote {
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.3;
-    color: #6e6e73;
-    letter-spacing: -0.01em;
+.hero-caption-text strong {
+    color: #1d1d1f;
 }
 
 /* Scroll indicator */
