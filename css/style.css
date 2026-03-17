@@ -99,8 +99,7 @@ nav a:hover {
     font-size: 15px;
     font-weight: 600;
     color: #86868b;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     margin-top: 16px;
     font-style: normal;
 }
