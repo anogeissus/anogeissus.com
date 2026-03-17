@@ -23,11 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
         el.className = 'hero-text ' + phrase.type;
 
         if (phrase.type === 'review') {
-            var appName = document.createElement('div');
-            appName.className = 'hero-app-name';
-            appName.textContent = phrase.app;
-            el.appendChild(appName);
-
             var stars = document.createElement('div');
             stars.className = 'hero-stars';
             stars.textContent = '★★★★★';
@@ -37,6 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var text = document.createElement('div');
         text.textContent = phrase.text;
         el.appendChild(text);
+
+        if (phrase.type === 'review') {
+            var appName = document.createElement('div');
+            appName.className = 'hero-app-name';
+            appName.textContent = '— ' + phrase.app;
+            el.appendChild(appName);
+        }
 
         container.appendChild(el);
         return el;
