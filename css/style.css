@@ -205,18 +205,18 @@ nav a:hover {
 }
 
 .section h2 {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: clamp(28px, 3.8vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.07;
     margin-bottom: 12px;
     color: #1d1d1f;
 }
 
 .section .tagline {
     font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: clamp(16px, 2.5vw, 24px);
+    font-size: clamp(15px, 2vw, 21px);
     font-weight: 400;
     color: #6e6e73;
     margin-bottom: 16px;
@@ -224,7 +224,7 @@ nav a:hover {
 
 .section .details {
     font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 400;
     color: #86868b;
     max-width: 600px;
