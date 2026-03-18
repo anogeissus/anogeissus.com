@@ -65,13 +65,21 @@
 <body>
 
 <nav>
-    <a href="#apolloone">ApolloOne</a>
-    <a href="#camerarawx">Camera RawX</a>
-    <a href="#support">Support</a>
-    <a href="#blog">Blog</a>
-    <a href="#download">Download</a>
-    <a href="#contact">Contact</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="#apolloone">ApolloOne</a>
+        <a href="#camerarawx">Camera RawX</a>
+        <a href="#support">Support</a>
+        <a href="#blog">Blog</a>
+        <a href="#download">Download</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
+<div class="nav-overlay" id="nav-overlay"></div>
 
 <!-- Animated Hero -->
 <section class="hero">
@@ -162,5 +170,32 @@
 </footer>
 
 <script src="js/hero.js"></script>
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+
+    // Close menu when a link is tapped
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
 </body>
 </html>
