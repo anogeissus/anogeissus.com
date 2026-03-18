@@ -3,6 +3,21 @@
    Apple.com-inspired, clean & minimal
    ============================================ */
 
+/* Web fonts — SF Pro Display (Regular + Semibold) */
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'), url('../fonts/sf-pro-display-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 600;
+    src: local('☺'), url('../fonts/sf-pro-display-semibold.woff2') format('woff2');
+}
+
 /* Reset */
 *, *::before, *::after {
     margin: 0;
@@ -69,9 +84,10 @@ nav a:hover {
 }
 
 .hero h1 {
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(28px, 3.8vw, 48px);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 600;
+    letter-spacing: -0.003em;
     line-height: 1.08;
     color: #1d1d1f;
     margin-bottom: 14px;
@@ -199,13 +215,17 @@ nav a:hover {
 }
 
 .section .tagline {
+    font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(16px, 2.5vw, 24px);
+    font-weight: 400;
     color: #6e6e73;
     margin-bottom: 16px;
 }
 
 .section .details {
+    font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 17px;
+    font-weight: 400;
     color: #86868b;
     max-width: 600px;
     margin: 0 auto 32px;
@@ -495,41 +515,6 @@ footer .copyright {
     .hero-window-bar {
         height: 36px;
         padding: 0 12px;
-    }
-
-    .hero-window-dot {
-        width: 9px;
-        height: 9px;
-    }
-}
-
-window-bar {
-        height: 36px;
-        padding: 0 12px;
-    }
-
-    .hero-window-dot {
-        width: 9px;
-        height: 9px;
-    }
-}
-
- 12px;
-    }
-
-    .hero-window-dot {
-        width: 9px;
-        height: 9px;
-    }
-}
-
-ro-window-dot {
-        width: 9px;
-        height: 9px;
-    }
-}
-
- 12px;
     }
 
     .hero-window-dot {
