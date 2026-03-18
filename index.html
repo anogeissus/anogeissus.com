@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anogeissus — ApolloOne, Camera RawX & KatClaw</title>
-    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -20,15 +20,18 @@
 <!-- Animated Hero -->
 <section class="hero">
     <div class="hero-copy">
-        <p class="hero-eyebrow">ApolloOne + Camera RawX</p>
         <h1>Photography tools that don’t get in your way</h1>
-        <p class="hero-subhead">Browse at up to <strong>32 fps on M1 Ultra</strong>—and even faster on newer Apple silicon—use <strong>Quick Edit</strong> for non-destructive adjustments on RAW, JPEG, HEIF/HEIC, TIFF, and PNG, and open unsupported RAW files with <strong>RawBridge™</strong>.</p>
+        <div class="hero-caption-strip hero-caption-top">
+            <div class="hero-caption-label" id="hero-label">ApolloOne</div>
+            <div class="hero-caption-text" id="hero-caption">Browse at up to <strong>32 fps on M1 Ultra</strong>, view full-resolution images instantly, display <strong>AF points</strong> recorded in the image, and make non-destructive adjustments with <strong>Quick Edit</strong>.</div>
+        </div>
     </div>
-    <div class="hero-showcase" id="hero-showcase">
-        <!-- JS injects rotating screenshots here -->
-    </div>
-    <div class="hero-caption-strip" id="hero-caption-strip">
-        <!-- JS injects rotating captions here -->
+    <div class="hero-showcase">
+        <div class="hero-window" id="hero-window">
+            <div class="hero-window-body">
+                <img id="hero-image" src="images/apolloone-quick-edit.jpg" alt="ApolloOne Quick Edit screenshot">
+            </div>
+        </div>
     </div>
     <div class="scroll-indicator">
         <span>Scroll to explore</span>
@@ -42,7 +45,7 @@
     <p class="tagline">The fastest image viewer on the planet.</p>
     <p class="details">Browse at up to 32 fps on M1 Ultra, view full-resolution images instantly, and use Quick Edit for non-destructive adjustments on RAW, JPEG, HEIF/HEIC, TIFF, and PNG. Built-in EXIF editing, metadata tools, and GPS maps keep the rest of your workflow moving.</p>
     <div class="cta-group">
-        <a class="cta" href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">Learn more ›</a>
+        <a class="cta cta-pill" href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">Learn more</a>
         <a href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">
             <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-mac-app-store.svg" alt="Download on the Mac App Store">
         </a>
@@ -55,7 +58,7 @@
     <p class="tagline">Unsupported RAW files, now open with RawBridge™.</p>
     <p class="details">Camera RawX uses RawBridge™ to open camera RAW files that macOS doesn’t support natively. Fast previews, practical Finder integration, and broad camera coverage for Canon, Nikon, Fujifilm, Sony, and more.</p>
     <div class="cta-group">
-        <a class="cta" href="https://apps.apple.com/app/camera-rawx/id6504917977?mt=12">Learn more ›</a>
+        <a class="cta cta-pill" href="https://apps.apple.com/app/camera-rawx/id6504917977?mt=12">Learn more</a>
         <a href="https://apps.apple.com/app/camera-rawx/id6504917977?mt=12">
             <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-mac-app-store.svg" alt="Download on the Mac App Store">
         </a>
@@ -68,7 +71,7 @@
     <p class="tagline">Your AI assistant, secured.</p>
     <p class="details">The native macOS companion for OpenClaw. Security-first design with exec approvals, allowlists, and health checks built in.</p>
     <div class="cta-group">
-        <a class="cta" href="https://katclaw.ai">Learn more at katclaw.ai ›</a>
+        <a class="cta cta-pill" href="https://katclaw.ai">Learn more</a>
     </div>
 </section>
 
@@ -104,4 +107,6 @@
 
 <script src="js/hero.js"></script>
 </body>
+</html>
+body>
 </html>
