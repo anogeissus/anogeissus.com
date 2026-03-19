@@ -72,7 +72,9 @@ nav a:hover {
 
 /* Nav links — inline on desktop, dropdown on mobile */
 .nav-links {
-    display: contents;
+    display: flex;
+    align-items: center;
+    gap: 0;
 }
 
 /* Hamburger — hidden on desktop */
