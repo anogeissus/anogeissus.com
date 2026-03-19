@@ -179,6 +179,15 @@
     margin-bottom: 12px;
 }
 
+/* Footnote */
+.product-footnote {
+    font-size: 14px;
+    color: #86868b;
+    margin-top: 20px;
+    max-width: 480px;
+    line-height: 1.5;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .product-hero {
