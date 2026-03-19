@@ -70,11 +70,9 @@ nav a:hover {
     opacity: 1;
 }
 
-/* Nav links wrapper — horizontal on desktop */
+/* Nav links — inline on desktop, dropdown on mobile */
 .nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: contents;
 }
 
 /* Hamburger — hidden on desktop */
