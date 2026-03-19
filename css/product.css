@@ -48,6 +48,10 @@
     margin-bottom: 28px;
 }
 
+.product-hero-desc strong {
+    color: #1d1d1f;
+}
+
 /* Feature sections — stacked: text above, full-width image below */
 .feature-stacked {
     display: flex;
