@@ -668,42 +668,24 @@ footer .copyright {
     }
 
     .hero-arrow {
-        width: 34px;
-        height: 34px;
+        display: none;
     }
 
-    .hero-arrow-left { left: 4px; }
-    .hero-arrow-right { right: 4px; }
-
     .hero-showcase {
-        padding: 0 48px;
+        padding: 0 12px;
+    }
+
+    .hero-window-body img {
+        height: auto;
+        width: 100%;
+    }
+
+    .hero-caption-text {
+        font-size: 15px;
     }
 
     .hero-dot {
         width: 7px;
         height: 7px;
-    }
-}
-
-@media (max-width: 480px) {
-    nav {
-        padding: 0 12px;
-        overflow-x: auto;
-        justify-content: flex-start;
-    }
-
-    nav a {
-        margin: 0 8px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    .hero {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .hero-caption-text {
-        font-size: 12px;
     }
 }
