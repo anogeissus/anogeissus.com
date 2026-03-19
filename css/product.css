@@ -183,10 +183,11 @@
     margin-bottom: 12px;
 }
 
-/* Retina-sized images — constrain to logical pixel width */
+/* Retina-sized images — constrain to logical pixel width, centered */
 .feature-image-retina img {
     max-width: 640px;
     width: 100%;
+    margin: 0 auto;
 }
 
 /* Footnote */
