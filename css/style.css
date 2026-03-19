@@ -142,18 +142,18 @@ nav a:hover {
 
 .hero-copy {
     max-width: 980px;
-    margin: 0 auto 4px;
+    margin: 0 auto 12px;
     flex-shrink: 0;
 }
 
 .hero h1 {
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: clamp(24px, 3vw, 38px);
+    font-size: clamp(26px, 3.2vw, 42px);
     font-weight: 600;
     letter-spacing: -0.003em;
     line-height: 1.1;
     color: #1d1d1f;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 /* Caption strip — compact, sits between headline and image */
@@ -168,7 +168,7 @@ nav a:hover {
 }
 
 .hero-caption-label {
-    font-size: clamp(16px, 1.6vw, 22px);
+    font-size: clamp(18px, 1.8vw, 24px);
     font-weight: 650;
     letter-spacing: -0.01em;
     text-transform: none !important;
@@ -190,7 +190,7 @@ nav a:hover {
 }
 
 .hero-caption-text {
-    font-size: clamp(14px, 1.2vw, 17px);
+    font-size: clamp(15px, 1.3vw, 18px);
     line-height: 1.4;
     color: #6e6e73;
     max-width: 680px;
@@ -210,7 +210,7 @@ nav a:hover {
     flex: 0 1 auto;
     min-height: 0;
     margin: 0 auto;
-    margin-top: 12px;
+    margin-top: 18px;
     position: relative;
     display: flex;
     align-items: center;
