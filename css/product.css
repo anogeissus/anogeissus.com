@@ -183,6 +183,12 @@
     margin-bottom: 12px;
 }
 
+/* Retina-sized images — constrain to logical pixel width */
+.feature-image-retina img {
+    max-width: 640px;
+    width: 100%;
+}
+
 /* Footnote */
 .product-footnote {
     font-size: 14px;
