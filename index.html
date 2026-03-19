@@ -109,9 +109,16 @@
     <p class="tagline">The fastest image viewer on the planet.</p>
     <p class="details">WIRED's Best Image Viewer two years running. Browse at up to 32 fps on M1 Ultra with 64-bit precision and 10-bit Liquid Retina display support. Non-destructive Quick Edit with InstantBake™ for instant JPEG output via AirDrop or drag-and-drop. Full EXIF and IPTC metadata editing, GPS mapping with Google Street View, autofocus point display, batch renaming and conversion, split-view comparison, and video playback with frame-by-frame scrubbing — all without importing a single file. Supports RAW, JPEG, HEIF, TIFF, PNG, and 40+ camera formats through the RawBridge™ engine, in 11 languages.</p>
     <div class="section-video">
-        <video autoplay loop muted playsinline>
+        <video id="speed-video" loop muted playsinline>
             <source src="images/apolloone-speed.mp4" type="video/mp4">
         </video>
+        <div class="video-controls">
+            <span class="video-label">See actual browsing speed</span>
+            <button class="video-toggle" id="speed-toggle" aria-label="Play video">
+                <svg class="icon-play" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 2.5L15 9L4 15.5V2.5Z" fill="currentColor"/></svg>
+                <svg class="icon-pause" width="18" height="18" viewBox="0 0 18 18" fill="none" style="display:none"><rect x="3" y="2" width="4" height="14" rx="1" fill="currentColor"/><rect x="11" y="2" width="4" height="14" rx="1" fill="currentColor"/></svg>
+            </button>
+        </div>
     </div>
     <div class="cta-group">
         <a class="cta cta-pill" href="apolloone.html">Learn more</a>
@@ -200,6 +207,34 @@
     navLinks.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', close);
     });
+})();
+
+// Speed video play/stop toggle
+(function () {
+    var video = document.getElementById('speed-video');
+    var btn = document.getElementById('speed-toggle');
+    if (!video || !btn) return;
+    var playIcon = btn.querySelector('.icon-play');
+    var pauseIcon = btn.querySelector('.icon-pause');
+
+    function updateIcon() {
+        var playing = !video.paused;
+        playIcon.style.display = playing ? 'none' : '';
+        pauseIcon.style.display = playing ? '' : 'none';
+    }
+
+    btn.addEventListener('click', function () {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+            video.currentTime = 0;
+        }
+        updateIcon();
+    });
+
+    video.addEventListener('play', updateIcon);
+    video.addEventListener('pause', updateIcon);
 })();
 </script>
 </body>

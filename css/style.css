@@ -406,6 +406,40 @@ nav a:hover {
     display: block;
 }
 
+.video-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.video-label {
+    font-size: 15px;
+    color: #86868b;
+}
+
+.video-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.video-toggle:hover {
+    background: #fff;
+    color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
 /* Screenshot placeholders */
 .screenshot-placeholder {
     max-width: 800px;
