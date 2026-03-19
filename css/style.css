@@ -70,6 +70,13 @@ nav a:hover {
     opacity: 1;
 }
 
+/* Nav links wrapper — horizontal on desktop */
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Hamburger — hidden on desktop */
 .hamburger {
     display: none;
