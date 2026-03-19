@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Anogeissus</title>
+    <meta name="description" content="Privacy Policy for Anogeissus Limited — ApolloOne and Camera RawX.">
+    <link rel="canonical" href="https://anogeissus.com/privacy.html">
+    <link rel="stylesheet" href="css/style.css?v=16">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/#apolloone">ApolloOne</a>
+        <a href="/#camerarawx">Camera RawX</a>
+        <a href="/#support">Support</a>
+        <a href="/#blog">Blog</a>
+        <a href="/#contact">Contact</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+        <h1>Privacy Policy</h1>
+
+        <p>By accessing this website and any of its pages you are agreeing to the terms set out below and by continuing to use this website following the posting of any changes to these terms will signify your consent to the changes made.</p>
+
+        <h2>Internet Communications</h2>
+        <p>Messages sent over the Internet cannot be guaranteed to be completely secure. We will not be responsible for any damages incurred by users as a result of any delay, loss, diversion, alteration or corruption of any message either sent to or received from us at the users' request, over the Internet. We are not responsible in any manner for direct, indirect, special or consequential damages arising out of the use of this website.</p>
+        <p>Communication over the Internet may be subject to interruption, transmission blackout, delayed transmission due to Internet traffic or incorrect data transmission due to the public nature of the Internet or otherwise.</p>
+
+        <h2>Internet Privacy Policy Statement</h2>
+        <p>Anogeissus Limited ("we", "us" "our") builds its business on trust between our customers and ourselves. To preserve the confidentiality of all personal data you provide to us, we maintain the following privacy principles:</p>
+        <ul>
+            <li>We collect personal data that we believe to be relevant and required for us to communicate with you.</li>
+            <li>We use your personal data to provide you with better customer services and products.</li>
+            <li>We will not disclose your personal data to any external organization unless we (i) have your consent or (ii) are required by law or (iii) have previously informed you.</li>
+            <li>We may be required from time to time to disclose your personal data to governmental or judicial bodies or agencies or our regulators, but we will only do so under proper authority.</li>
+            <li>We aim to keep your personal data on our records accurate and up-to-date.</li>
+            <li>All our staff and all third parties with permitted access to your personal data are specifically required to observe our confidentiality obligations.</li>
+        </ul>
+        <p>By maintaining our commitment to these principles, we will ensure that we respect the inherent trust that you place in us.</p>
+
+        <h2>Disclaimer</h2>
+        <p>While every care has been taken in preparing the information and materials contained in this site, such information and materials are provided to you "as is" without warranty or representation of any kind, express or implied. In particular, no warranty or representation regarding non-infringement, security, accuracy, fitness for a particular purpose or freedom from computer virus, Trojan horses, worms, software bombs or similar items is given in conjunction with such information and materials.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="/#apolloone">ApolloOne</a>
+            <a href="/#camerarawx">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="/#support">Support</a>
+            <a href="/#blog">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="/#contact">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>

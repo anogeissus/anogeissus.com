@@ -574,6 +574,77 @@ nav a:hover {
     font-style: italic;
 }
 
+/* ---- Legal Pages ---- */
+.legal-page {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #fff;
+    text-align: left;
+}
+
+.legal-content {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.legal-content h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: #1d1d1f;
+    margin-bottom: 24px;
+}
+
+.legal-content h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-top: 36px;
+    margin-bottom: 12px;
+}
+
+.legal-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.legal-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #6e6e73;
+    margin-bottom: 12px;
+}
+
+.legal-content ul {
+    margin: 0 0 16px 24px;
+    color: #6e6e73;
+}
+
+.legal-content li {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.legal-content a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.legal-content a:hover {
+    color: #0077ed;
+    text-decoration: underline;
+}
+
+.legal-updated {
+    font-size: 14px;
+    color: #86868b;
+    margin-bottom: 24px;
+}
+
 /* ---- Footer ---- */
 footer {
     background: #f5f5f7;
