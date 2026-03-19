@@ -18,7 +18,7 @@
             icon: 'images/camerarawx-icon.png?v=2',
             image: 'images/camerarawx-quick-look.jpg',
             alt: 'Camera RawX Quick Look screenshot',
-            caption: 'Displays thumbnails for unsupported RAW files in Finder, with the <strong>RawBridge™</strong> engine powering full-resolution Quick Look previews.'
+            caption: 'Displays thumbnails for unsupported RAW files in Finder, with the <strong>RawBridge™</strong> engine — the same high-performance RAW decoder used in ApolloOne — powering full-resolution <strong>Quick Look</strong> previews.'
         }
     ];
 
