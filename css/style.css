@@ -685,6 +685,19 @@ footer .copyright {
 
     .hero-caption-text {
         font-size: 15px;
+        min-height: 0;
+    }
+
+    .hero-copy {
+        margin-bottom: 6px;
+    }
+
+    .hero-showcase {
+        margin-top: 8px;
+    }
+
+    .hero {
+        padding-bottom: 20px;
     }
 
     .hero-dot {
