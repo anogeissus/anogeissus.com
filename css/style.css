@@ -392,6 +392,20 @@ nav a:hover {
     line-height: 1.5;
 }
 
+/* Section video */
+.section-video {
+    max-width: 900px;
+    margin: 0 auto 36px;
+}
+
+.section-video video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: block;
+}
+
 /* Screenshot placeholders */
 .screenshot-placeholder {
     max-width: 800px;
