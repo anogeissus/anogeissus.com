@@ -146,8 +146,7 @@ nav a:hover {
     min-width: 180px;
 }
 
-.nav-dropdown.open .nav-dropdown-menu,
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown.open .nav-dropdown-menu {
     display: block;
 }
 
