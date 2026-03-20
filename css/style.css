@@ -440,6 +440,12 @@ nav a:hover {
     border-color: rgba(0, 0, 0, 0.15);
 }
 
+/* Section icon */
+.section-icon {
+    border-radius: 14px;
+    margin-bottom: 16px;
+}
+
 /* Section image */
 .section-image {
     max-width: 900px;
