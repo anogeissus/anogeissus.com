@@ -145,9 +145,19 @@
     </button>
     <div class="nav-links" id="nav-links">
         <a href="/">Home</a>
-        <a href="/#apolloone">ApolloOne</a>
-        <a href="/#camerarawx">Camera RawX</a>
-        <a href="/#support">Support</a>
+        <a href="apolloone.html">ApolloOne</a>
+        <a href="camerarawx.html">Camera RawX</a>
+        <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+            <div class="nav-dropdown-menu"><div class="nav-dropdown-inner">
+                <a href="apolloone-faq.html">ApolloOne FAQ</a>
+                <a href="recovery.html">Recovery</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="download-script.html">Download script</a>
+                <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+                <a href="contact.html">Contact</a>
+            </div></div>
+        </div>
         <a href="/#blog">Blog</a>
     </div>
 </nav>
@@ -242,8 +252,24 @@
         });
     }
     navLinks.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', close);
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
     });
+
+    // Support dropdown toggle (click-based)
+    var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+    var dropdown = document.querySelector('.nav-dropdown');
+    if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+        });
+    }
 })();
 </script>
 </body>
