@@ -850,12 +850,14 @@ footer .copyright {
         border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
     }
 
+    /* Hide dropdown by default on mobile — only show on click (open class) */
     .nav-dropdown-menu {
-        display: flex;
+        display: none !important;
         flex-direction: column;
         position: static;
         transform: none;
         margin: 0;
+        padding-top: 0;
         background: rgba(0, 0, 0, 0.02);
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
@@ -864,6 +866,14 @@ footer .copyright {
         box-shadow: none;
         padding: 0;
         min-width: 0;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+        display: none !important;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+        display: flex !important;
     }
 
     .nav-dropdown-menu a {
