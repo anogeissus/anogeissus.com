@@ -191,9 +191,7 @@
         </div>
         <div class="footer-col">
             <h4>Resources</h4>
-            <a href="apolloone-faq.html">ApolloOne FAQ</a>
-            <a href="recovery.html">Recovery</a>
-            <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+            <a href="#" class="footer-support-link">Support</a>
             <a href="/#blog">Blog</a>
         </div>
         <div class="footer-col">
@@ -226,6 +224,23 @@
 
     hamburger.addEventListener('click', toggle);
     overlay.addEventListener('click', close);
+
+    var footerSupport = document.querySelector('.footer-support-link');
+    if (footerSupport) {
+        footerSupport.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window.innerWidth <= 768) {
+                hamburger.classList.add('open');
+                navLinks.classList.add('open');
+                overlay.classList.add('visible');
+            }
+            setTimeout(function () {
+                var dd = document.querySelector('.nav-dropdown');
+                if (dd) dd.classList.add('open');
+            }, 400);
+        });
+    }
     navLinks.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', close);
     });
