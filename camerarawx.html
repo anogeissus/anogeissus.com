@@ -31,13 +31,13 @@
         <a href="/#apolloone">ApolloOne</a>
         <div class="nav-dropdown">
             <a href="#" class="nav-dropdown-toggle">Support ▾</a>
-            <div class="nav-dropdown-menu">
+            <div class="nav-dropdown-menu"><div class="nav-dropdown-inner">
                 <a href="apolloone-faq.html">ApolloOne FAQ</a>
                 <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
                 <a href="recovery.html">Recovery</a>
                 <a href="tutorials.html">Tutorials</a>
                 <a href="download-script.html">User Script</a>
-            </div>
+            </div></div>
         </div>
         <a href="/#blog">Blog</a>
     </div>
@@ -156,6 +156,17 @@
     navLinks.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', close);
     });
+    var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+    var dropdown = document.querySelector('.nav-dropdown');
+    if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener('click', function (e) {
+            e.preventDefault(); e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+        });
+    }
 })();
 </script>
 </body>

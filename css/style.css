@@ -130,7 +130,12 @@ nav a:hover {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 8px;
+    margin-top: 0;
+    padding-top: 8px;
+    z-index: 200;
+}
+
+.nav-dropdown-menu .nav-dropdown-inner {
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -139,10 +144,9 @@ nav a:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     padding: 8px 0;
     min-width: 180px;
-    z-index: 200;
 }
 
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown.open .nav-dropdown-menu {
     display: block;
 }
 
