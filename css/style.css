@@ -113,6 +113,54 @@ nav a:hover {
     transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Nav dropdown — desktop */
+.nav-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-dropdown-toggle {
+    cursor: pointer;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 180px;
+    z-index: 200;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 14px;
+    color: #1d1d1f;
+    opacity: 1;
+    margin: 0;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.nav-dropdown-menu a:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
 /* Overlay for closing menu on tap */
 .nav-overlay {
     display: none;
@@ -658,6 +706,20 @@ nav a:hover {
     margin-bottom: 4px;
 }
 
+.legal-content code {
+    font-family: "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 14px;
+    background: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #1d1d1f;
+}
+
+.legal-content ol {
+    margin: 4px 0 12px 24px;
+    color: #1d1d1f;
+}
+
 .legal-content a {
     color: #0066cc;
     text-decoration: none;
@@ -766,6 +828,44 @@ footer .copyright {
 
     .nav-links a:hover {
         background: rgba(0, 0, 0, 0.03);
+    }
+
+    /* Dropdown inline on mobile */
+    .nav-dropdown {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-dropdown-toggle {
+        margin: 0 !important;
+        padding: 16px 24px !important;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .nav-dropdown-menu {
+        display: flex;
+        flex-direction: column;
+        position: static;
+        transform: none;
+        margin: 0;
+        background: rgba(0, 0, 0, 0.02);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        min-width: 0;
+    }
+
+    .nav-dropdown-menu a {
+        padding: 14px 24px 14px 44px !important;
+        font-size: 17px !important;
+        font-weight: 400 !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .hero {

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera RawX FAQ | Anogeissus</title>
+    <meta name="description" content="Frequently asked questions about Camera RawX — troubleshooting thumbnails and QuickLook cache.">
+    <link rel="canonical" href="https://anogeissus.com/camera-rawx-faq.html">
+    <link rel="stylesheet" href="css/style.css?v=16">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/#apolloone">ApolloOne</a>
+        <a href="/#camerarawx">Camera RawX</a>
+        <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+            <div class="nav-dropdown-menu">
+                <a href="apolloone-faq.html">ApolloOne FAQ</a>
+                <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+                <a href="recovery.html">Recovery</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="download-script.html">User Script</a>
+            </div>
+        </div>
+        <a href="/#blog">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+        <h1>Camera RawX FAQ</h1>
+
+        <h2>Thumbnails are not showing up in existing folders</h2>
+        <p>It is possible the QuickLook cache believes that the thumbnails are up-to-date and does not call Camera RawX to generate a new thumbnail, but provides the thumbnail from the cache instead. If you see thumbnails being generated in a new folder, but generic thumbnails are presented in an existing folder, you will need to clear the QuickLook cache.</p>
+        <p>Open the Terminal app, and type the following:</p>
+        <p><code>qlmanage -r</code></p>
+        <p><code>qlmanage -r cache</code></p>
+        <p>Optionally, you may need to reset the Finder plist file:</p>
+        <p><code>rm -rf ~/Library/Preferences/com.apple.finder.plist</code></p>
+        <p>Then finally, restart Finder:</p>
+        <p><code>killall Finder</code></p>
+        <p>You can choose to reboot your Mac instead of killing Finder.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="/#apolloone">ApolloOne</a>
+            <a href="/#camerarawx">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="apolloone-faq.html">ApolloOne FAQ</a>
+            <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+            <a href="recovery.html">Recovery</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApolloOne FAQ | Anogeissus</title>
+    <meta name="description" content="Frequently asked questions about ApolloOne — editions, upgrades, NAS, JPEG XL, and more.">
+    <link rel="canonical" href="https://anogeissus.com/apolloone-faq.html">
+    <link rel="stylesheet" href="css/style.css?v=16">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/#apolloone">ApolloOne</a>
+        <a href="/#camerarawx">Camera RawX</a>
+        <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+            <div class="nav-dropdown-menu">
+                <a href="apolloone-faq.html">ApolloOne FAQ</a>
+                <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+                <a href="recovery.html">Recovery</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="download-script.html">User Script</a>
+            </div>
+        </div>
+        <a href="/#blog">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+        <h1>ApolloOne FAQ</h1>
+
+        <h2>What is the difference between the free version and the Standard Edition?</h2>
+        <ul>
+            <li>Standard Edition allows you to edit EXIF, Makernotes and most XMP/IPTC data fields in the Inspector. Just double click a field and select or type in a new value.</li>
+            <li>Allows multi-file/batch operations (set GPS coordinates, image rotation, change file creation dates, remove metadata, edit metadata, etc.)</li>
+            <li>Batch Rename of files. It can get country and city info by using reverse geocode.</li>
+            <li>Cropping of images.</li>
+            <li>Folder browser has the ability to resolve folder aliases and symbolic links.</li>
+            <li>Image file aliases can be resolved and displayed. You can also perform tagging and metadata changes to the original file via the alias.</li>
+            <li>Keyword filters.</li>
+            <li>Add new IPTC / XMP Tags.</li>
+            <li>Sort by User Defined Sequence.</li>
+            <li>Display of camera AF points and camera detected faces.</li>
+            <li>iTunes music can be played without the 30 seconds limit when running the slideshow.</li>
+            <li>Shuffled playback for slideshow.</li>
+            <li>Unlimited dragging of images or videos from the main window to an external application (such as WhatsApp and word processing applications).</li>
+        </ul>
+
+        <h2>What do I get with the Pro Edition?</h2>
+        <ul>
+            <li>Batch Image Resize and Format Conversion functions, including HEIC format.</li>
+            <li>Batch Image Export, including RAW to JPEG conversions.</li>
+            <li>Crop, resize and export images in HEIC format.</li>
+            <li>Import files from memory cards with Auto Resume feature.</li>
+            <li>Split View for side-by-side image comparison. Synchronized zoom and pan feature.</li>
+            <li>Additional EXIF Toolbox functions: Set EXIF Digitized Date to File Creation Date and Sync XMP Sidecar File to Image.</li>
+            <li>Browsing History for quickly switching between multiple events or projects.</li>
+            <li>Favorite EXIF Tags in the Inspector. Custom filtering of EXIF metadata you wish to see.</li>
+            <li>Search files with any EXIF Tags in the Inspector with RegEx support.</li>
+            <li>Filters for video files, RAW files, GPS Distance Measurement, GPS Altitude Distance and inverting filter.</li>
+            <li>GPS Distance Measurement functions.</li>
+            <li>Export 16-bit TIFF and PNG file formats.</li>
+            <li>Record slideshow output to a video file.</li>
+            <li>Attach, replace metadata using templates.</li>
+            <li>User customizable Shortcut keys.</li>
+            <li>Display compressed Fujifilm RAF files using Apple RAW engine.</li>
+            <li>Display HE/HE* compressed Nikon NEF files.</li>
+        </ul>
+
+        <h2>I purchased version 1.x, do I have to pay again for version 2 or version 3?</h2>
+        <p>There is no need to pay again, you are automatically upgraded to version 2 or version 3 Standard Edition, all new features will be available to you.</p>
+
+        <h2>I purchased version 2.x, do I have to pay again for version 3?</h2>
+        <p>For version 2 paid users, you will receive a perpetual license for Standard Edition in version 3. All existing features in version 2 will be available to you, plus some additional new features. You can explore new features in version 3 Pro Edition by starting the 14-day free trial.</p>
+        <p>If you are happy with the new features in the Pro Edition, you can subscribe to the Pro Edition for 1/2 the regular subscription price compared to a new user who has never purchased version 2.x.</p>
+
+        <h2>I purchased version 2.x, and if I subscribed to the Pro Edition for one year and decided not to continue with the subscription for the next year, do I get my Standard Edition Perpetual License back?</h2>
+        <p>YES! When you decided not to renew for the Pro Edition, you will get your Standard Edition Perpetual License back. We continue to improve ApolloOne, new exciting features will come to the Pro Edition first.</p>
+
+        <h2>Can I use the free version indefinitely?</h2>
+        <p>Sure you can! However, a message will popup reminding you to purchase a subscription after using the free version for 14 days. We hope you enjoy using ApolloOne!</p>
+
+        <h2>Working with NAS</h2>
+        <p>Apple has discontinued the support for AFP (Apple Filing Protocol) since macOS 10.9. Apple currently recommend SMB networking protocol when connecting to a NAS device. Current AFP implementation (up and including macOS Monterey and Ventura) is very buggy and can cause ApolloOne to appear to hang when accessing a NAS folder.</p>
+        <p>To work around this bug, you need to remove all network folders you added in ApolloOne. Then login to your NAS and enable SMB protocol (if not already enabled). Then disable AFP protocol. You may lose connection to your NAS once AFP is disabled. You will need to reconnect to the NAS using Finder and macOS will use the SMB protocol instead.</p>
+        <p>Once AFP is disabled, you can add your network folders back to Places in ApolloOne.</p>
+
+        <h2>Working with JPEG XL Files</h2>
+        <p>ApolloOne may not be able to display metadata with certain JPEG XL files. You need to install CPAN Brotli module in order to decode these JPEG XL metadata.</p>
+        <p>To do so, open Terminal, and type:</p>
+        <p><code>sudo cpan -i IO::Uncompress::Brotli</code></p>
+        <p>You will be asked for your login password, assuming you have administrator privilege.</p>
+        <p>This may take a few minutes to install. Once installation is complete, you should be able to see all the metadata with your JPEG XL files.</p>
+
+        <h2>Music not playing in Slideshow</h2>
+        <p>Under newer versions of macOS such as Sequoia, you may need to add permission to allow ApolloOne to access the music tracks and playlists in Apple Music. Usually, ApolloOne will prompt you for permission when you start the Slideshow to allow access to Apple Music. If you answered "Don't Allow", you can add this permission back later on under System Settings.</p>
+        <p>Go to System Settings > Privacy & Security > Media & Apple Music</p>
+        <p>Add ApolloOne to the list to allow access to Apple Music.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="/#apolloone">ApolloOne</a>
+            <a href="/#camerarawx">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="apolloone-faq.html">ApolloOne FAQ</a>
+            <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+            <a href="recovery.html">Recovery</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
+    });
+})();
+</script>
+</body>
+</html>

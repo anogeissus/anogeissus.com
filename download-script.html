@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download User Script | Anogeissus</title>
+    <meta name="description" content="Download the ApolloOne user script for Trash Put Back and file Comments synchronization.">
+    <link rel="canonical" href="https://anogeissus.com/download-script.html">
+    <link rel="stylesheet" href="css/style.css?v=16">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/#apolloone">ApolloOne</a>
+        <a href="/#camerarawx">Camera RawX</a>
+        <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+            <div class="nav-dropdown-menu">
+                <a href="apolloone-faq.html">ApolloOne FAQ</a>
+                <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+                <a href="recovery.html">Recovery</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="download-script.html">User Script</a>
+            </div>
+        </div>
+        <a href="/#blog">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+        <h1>Download ApolloOne User Script</h1>
+
+        <p>ApolloOne makes use of a User Script to enable the Trash Put Back feature via Finder. It also provides you with the ability to synchronize file Comments between ApolloOne and the system. It is not absolutely necessary to install the script if you do not want these extra features.</p>
+
+        <h2>Instruction for User Script installation</h2>
+        <ol>
+            <li>Download the user script by clicking the Download Script button below.</li>
+            <li>From ApolloOne's menu, select "Preferences… > Startup & Delete", and click the "Install" button.</li>
+        </ol>
+
+        <p>We apologize for this inconvenience, this procedure is required by Apple in order for the app to be in compliant with the App Store standard.</p>
+
+        <div class="cta-group" style="margin-top: 32px;">
+            <a class="cta cta-pill" href="#">Download Script</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="/#apolloone">ApolloOne</a>
+            <a href="/#camerarawx">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="apolloone-faq.html">ApolloOne FAQ</a>
+            <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+            <a href="recovery.html">Recovery</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
+    });
+})();
+</script>
+</body>
+</html>
