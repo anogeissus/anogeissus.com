@@ -281,11 +281,11 @@ nav a:hover {
 }
 
 .hero-arrow-left {
-    left: calc(50% - 620px);
+    left: calc(50% - 600px);
 }
 
 .hero-arrow-right {
-    right: calc(50% - 620px);
+    right: calc(50% - 600px);
 }
 
 /* Hero dots — inside the image, bottom edge */
