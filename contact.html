@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Anogeissus</title>
+    <meta name="description" content="Contact Anogeissus — questions, support, bug reports, or feature requests for ApolloOne and Camera RawX.">
+    <link rel="canonical" href="https://anogeissus.com/contact.html">
+    <link rel="stylesheet" href="css/style.css?v=16">
+    <style>
+        .contact-layout {
+            display: flex;
+            min-height: calc(100vh - 42px);
+            margin-top: 42px;
+        }
+
+        .contact-image {
+            flex: 0 0 50%;
+            max-width: 50%;
+            overflow: hidden;
+        }
+
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .contact-form-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 48px;
+            background: #f5f5f7;
+        }
+
+        .contact-form-area h1 {
+            font-size: 36px;
+            font-weight: 400;
+            font-style: italic;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .contact-form-area p {
+            font-size: 16px;
+            color: #6e6e73;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+            color: #1d1d1f;
+            background: #fff;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #86868b;
+        }
+
+        .contact-form textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form .form-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .contact-form button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #1d1d1f;
+            cursor: pointer;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+
+        .contact-form button:hover {
+            color: #0066cc;
+        }
+
+        /* Honeypot */
+        .contact-form .hp-field {
+            display: none;
+        }
+
+        /* Success message */
+        .form-success {
+            display: none;
+            font-size: 16px;
+            color: #1d1d1f;
+            padding: 16px 0;
+        }
+
+        .form-success.visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .contact-layout {
+                flex-direction: column;
+            }
+
+            .contact-image {
+                flex: none;
+                max-width: 100%;
+                height: 300px;
+            }
+
+            .contact-form-area {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/#apolloone">ApolloOne</a>
+        <a href="/#camerarawx">Camera RawX</a>
+        <a href="/#support">Support</a>
+        <a href="/#blog">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<div class="contact-layout">
+    <div class="contact-image">
+        <img src="images/contact-office.jpg" alt="Modern office workspace">
+    </div>
+    <div class="contact-form-area">
+        <h1>Questions?</h1>
+        <p>If you have questions or require support, please contact us using the form below:</p>
+
+        <form class="contact-form" id="contact-form" action="https://api.anogeissus.com/contact" method="POST">
+            <!-- Honeypot — hidden, bots fill it in -->
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+
+            <input type="text" name="name" placeholder="Name *" required>
+            <input type="email" name="email" placeholder="Email *" required>
+            <input type="text" name="subject" placeholder="Subject">
+            <textarea name="message" placeholder="Message" required></textarea>
+
+            <div class="form-actions">
+                <button type="submit">Send</button>
+            </div>
+        </form>
+
+        <div class="form-success" id="form-success">
+            ✓ Message received. We'll get back to you soon.
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="/#apolloone">ApolloOne</a>
+            <a href="/#camerarawx">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="/#support">Support</a>
+            <a href="/#blog">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
