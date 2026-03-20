@@ -579,12 +579,22 @@ nav a:hover {
     padding-top: 80px;
     padding-bottom: 80px;
     background: #fff;
-    text-align: left;
+    text-align: left !important;
 }
 
 .legal-content {
     max-width: 780px;
     margin: 0 auto;
+    text-align: left;
+}
+
+.legal-content h1,
+.legal-content h2,
+.legal-content h3,
+.legal-content p,
+.legal-content ul,
+.legal-content li {
+    text-align: left;
 }
 
 .legal-content h1 {
