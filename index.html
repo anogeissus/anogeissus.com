@@ -228,9 +228,11 @@
     hamburger.addEventListener('click', toggle);
     overlay.addEventListener('click', close);
 
-    // Close menu when a link is tapped
+    // Close menu when a link is tapped (but not the dropdown toggle)
     navLinks.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', close);
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
     });
 
     // Support dropdown toggle (click-based)

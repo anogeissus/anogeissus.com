@@ -154,7 +154,9 @@
     hamburger.addEventListener('click', toggle);
     overlay.addEventListener('click', close);
     navLinks.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', close);
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
     });
     var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
     var dropdown = document.querySelector('.nav-dropdown');
