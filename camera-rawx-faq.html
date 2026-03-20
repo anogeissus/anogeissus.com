@@ -39,7 +39,14 @@
     <div class="legal-content">
         <h1>Camera RawX FAQ</h1>
 
-        <h2>Thumbnails are not showing up in existing folders</h2>
+        <h2>1. My RAW file is not supported by Camera RawX</h2>
+        <ul>
+            <li>If your camera's RAW file is not supported by Camera RawX, please email us so that we can add the file extension support in a future release.</li>
+            <li>Current supported RAW files are: Adobe DNG, Canon (.CR2, .CR3 files), Fujifilm (including compressed RAF files), Nikon (including HE/HE* lossless compressed NEF files), Olympus, Panasonic, Sigma Foveon X3F, and Sony (.ARW and .ARQ).</li>
+            <li>Camera RawX has been tested with macOS Sequoia 15.3.1, 15.4 and all functions performed accordingly. If it does not work for you, please contact us for help.</li>
+        </ul>
+
+        <h2>2. Thumbnails are not showing up in existing folders</h2>
         <p>It is possible the QuickLook cache believes that the thumbnails are up-to-date and does not call Camera RawX to generate a new thumbnail, but provides the thumbnail from the cache instead. If you see thumbnails being generated in a new folder, but generic thumbnails are presented in an existing folder, you will need to clear the QuickLook cache.</p>
         <p>Open the Terminal app, and type the following:</p>
         <p><code>qlmanage -r</code></p>
@@ -49,6 +56,10 @@
         <p>Then finally, restart Finder:</p>
         <p><code>killall Finder</code></p>
         <p>You can choose to reboot your Mac instead of killing Finder.</p>
+
+        <h2>3. Thumbnails are not showing up for Sigma Foveon .X3F RAW files</h2>
+        <p>The Sigma ProPhoto software is interfering Camera RawX when generating the thumbnail. It is unfortunate that you have to remove the ProPhoto software in order for Camera RawX to render thumbnails.</p>
+        <p>It is an inherent issue for macOS, in which it does not try other extensions once a software match is found for the file extension that is not recognized by the macOS.</p>
     </div>
 </section>
 
