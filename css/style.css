@@ -285,7 +285,8 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 8px;
     position: relative;
 }
 
