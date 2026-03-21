@@ -1007,7 +1007,18 @@ footer .copyright {
     .footer-columns {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 28px;
+        gap: 20px;
+    }
+
+    .footer-col a {
+        display: inline;
+        margin-bottom: 0;
+    }
+
+    .footer-col a + a::before {
+        content: " | ";
+        color: #c7c7cc;
+        margin: 0 6px;
     }
 
     .hero-arrow {
