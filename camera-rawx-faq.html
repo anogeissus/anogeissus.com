@@ -7,6 +7,39 @@
     <meta name="description" content="Frequently asked questions about Camera RawX — troubleshooting thumbnails and QuickLook cache.">
     <link rel="canonical" href="https://anogeissus.com/camera-rawx-faq.html">
     <link rel="stylesheet" href="css/style.css?v=22">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "My RAW file is not supported by Camera RawX",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contact us so we can add support. Currently supported: Adobe DNG, Canon (.CR2, .CR3), Fujifilm (including compressed RAF), Nikon (including HE/HE* NEF), Olympus, Panasonic, Sigma Foveon X3F, and Sony (.ARW, .ARQ)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Thumbnails are not showing up in existing folders",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clear the QuickLook cache by running 'qlmanage -r' then 'qlmanage -r cache' in Terminal. Optionally reset Finder preferences and restart Finder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Thumbnails are not showing up for Sigma Foveon .X3F RAW files",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Sigma ProPhoto software interferes with Camera RawX. You need to remove ProPhoto software for Camera RawX to render thumbnails."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 

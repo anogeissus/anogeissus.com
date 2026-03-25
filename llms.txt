@@ -1,0 +1,22 @@
+# Anogeissus
+
+> Professional photography tools for Mac.
+
+Anogeissus builds macOS software for photographers. Our products include ApolloOne (the fastest image viewer on the planet) and Camera RawX (Quick Look and Finder thumbnails for unsupported RAW files using the RawBridge™ engine).
+
+## Products
+
+- [ApolloOne](https://anogeissus.com/apolloone.html): The fastest photo and video viewer for macOS. Browse at up to 32 fps, view full-resolution images instantly, display AF points, edit EXIF metadata, GPS maps with Street View, Quick Edit for non-destructive adjustments. Available as Free, Standard, and Pro editions.
+- [Camera RawX](https://anogeissus.com/camerarawx.html): A macOS extension that adds Quick Look previews and Finder thumbnails for camera RAW files that macOS doesn't support natively. Powered by the RawBridge™ engine. Supports Canon, Nikon, Fujifilm, Sony, Olympus, Panasonic, Samsung, Sigma Foveon, and Adobe DNG.
+- [KatClaw](https://katclaw.ai): The native macOS companion for OpenClaw. AI automation with security-first design.
+
+## Links
+
+- Homepage: https://anogeissus.com
+- ApolloOne on App Store: https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
+- Camera RawX on App Store: https://apps.apple.com/app/camera-rawx/id6587554858?mt=12
+- Support: https://anogeissus.com/apolloone-faq.html
+- Contact: https://anogeissus.com/contact.html
+- Privacy: https://anogeissus.com/privacy.html
+- Terms: https://anogeissus.com/terms.html
+- Full details: https://anogeissus.com/llms-full.txt

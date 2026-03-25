@@ -1,0 +1,104 @@
+# Anogeissus — Full Product Information
+
+> Professional photography tools for Mac. Built by photographers, for photographers.
+
+Website: https://anogeissus.com
+Company: Anogeissus Limited
+
+---
+
+## ApolloOne — The Fastest Image Viewer on the Planet
+
+ApolloOne is a high-performance photo and video viewer for macOS designed for professional photographers and enthusiasts who need speed and precision.
+
+### Key Features
+- Browse photos at up to 32 fps on M1 Ultra — 100MP RAW files load instantly
+- Full image resolution display, not scaled-down previews — ready for immediate zoom and edit
+- Quick Edit for non-destructive adjustments on RAW, JPEG, HEIF/HEIC, TIFF, and PNG
+- EXIF Inspector — view and edit comprehensive camera metadata, double-click any field to change it
+- Camera AF point overlay — see autofocus points recorded in the image (unique feature)
+- Interactive Maps — Apple Maps and Google Maps with Street View, drag-and-drop GPS editing
+- Spotlight indexing — find photos by address, camera model, or shooting data from Spotlight
+- Contact Sheet mode with histogram
+- Split View for side-by-side image comparison with synchronized zoom and pan
+- GPU-accelerated slideshow with Apple Music playlist support
+- Customizable toolbar to match your workflow
+- Auto Advance Mode for fast file culling
+- Batch operations: rename, resize, convert, export (including HEIC and 16-bit TIFF/PNG)
+- RegEx search across any EXIF metadata field
+- Supports RAW, JPEG, HEIF/HEIC, TIFF, PNG, JPEG XL, video files, and more
+
+### Editions
+- **Free**: Browse and view — works indefinitely
+- **Standard**: Adds EXIF editing, batch operations, cropping, AF point overlay, keyword filters, slideshow music
+- **Pro**: Adds Split View, batch resize/convert, HEIC export, card import, RegEx search, and more
+
+### System Requirements
+- macOS 11 Big Sur and above
+- Apple Silicon or Intel Macs
+
+### App Store
+https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
+
+### Customer Reviews (App Store)
+- ★★★★★ "ApolloOne's speed is no joke: I can mouse wheel through burst mode RAW photos with instantaneous response, no screen blackouts, and no temporary low-resolution image rendering."
+- ★★★★★ "This app made me realize how much I hate catalog-based apps. Great work. Money well spent."
+- ★★★★★ "Feature rich, very fast, actively developed. I emailed the developer with a minor problem and within days a new release was on the App Store."
+- ★★★★★ "Works perfect as a photo & video viewer — even with a clicker for projector slideshows."
+
+---
+
+## Camera RawX — Quick Look for Every RAW File
+
+Camera RawX is a macOS extension that adds Quick Look previews and Finder thumbnails for camera RAW files that macOS doesn't support natively. Powered by the RawBridge™ engine — the same high-performance RAW decoder used in ApolloOne.
+
+### Key Features
+- Renders a RAW image in about 1 second on Apple Silicon
+- Adds Finder thumbnails for unsupported RAW files
+- Full-resolution Quick Look previews
+- Works with ApolloOne's Quick Edit — adjustments and crop applied automatically in Quick Look
+- Fujifilm compressed RAF and Nikon HE/HE* via Apple RAW decoder for high visual quality
+
+### Supported Formats
+Adobe DNG, Canon (.CR2, .CR3), Fujifilm (including compressed RAF), Nikon (including HE/HE* NEF), Olympus, Panasonic, Samsung, Sigma Foveon X3F, Sony (.ARW, .ARQ)
+
+### System Requirements
+- macOS 12 Monterey and above
+- Apple Silicon or Intel Macs
+- 4GB RAM minimum, 8GB recommended
+
+### App Store
+https://apps.apple.com/app/camera-rawx/id6587554858?mt=12
+
+### Customer Reviews (App Store)
+- ★★★★★ "A must-have if you shoot RAW. Seeing Finder previews is a huge advantage. A steal even at twice the price."
+- ★★★★★ "If this had been £100 I would have still bought it. I nearly paid £250 for a bigger card just to shoot RAW+JPEG as a workaround."
+- ★★★★★ "Does exactly what it says on the tin. Works flawlessly. Displays my RAW images much faster than previously."
+- ★★★★★ "I'm so relieved. Finally! Someone heard my prayers!"
+
+---
+
+## KatClaw — AI Automation for macOS
+
+KatClaw is the native macOS companion for OpenClaw. Security-first design with exec approvals, allowlists, and health checks built in.
+
+Website: https://katclaw.ai
+
+---
+
+## Support
+
+- ApolloOne FAQ: https://anogeissus.com/apolloone-faq.html
+- Camera RawX FAQ: https://anogeissus.com/camera-rawx-faq.html
+- Recovery: https://anogeissus.com/recovery.html
+- Tutorials: https://anogeissus.com/tutorials.html
+- Contact: https://anogeissus.com/contact.html
+
+## Legal
+
+- Privacy Policy: https://anogeissus.com/privacy.html
+- Terms of Use: https://anogeissus.com/terms.html
+
+## Developer
+
+- App Store Developer Page: https://apps.apple.com/developer/anogeissus-limited/id1041775931
