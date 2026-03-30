@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Anogeissus</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/css/style.css?v=22">
+    <style>
+        .error-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .error-page h1 {
+            font-size: 6rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        .error-page h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+        }
+        .error-page p {
+            color: #86868b;
+            margin-bottom: 2rem;
+            max-width: 420px;
+        }
+        .error-page .cta {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #1d1d1f;
+            color: #fff;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .error-page .cta:hover {
+            background: #424245;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/apolloone.html">ApolloOne</a>
+        <a href="/camerarawx.html">Camera RawX</a>
+        <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+            <div class="nav-dropdown-content">
+                <h5>ApolloOne</h5>
+                <a href="/apolloone-faq.html">FAQ</a>
+                <a href="/recovery.html">Recovery</a>
+                <a href="/tutorials.html">Tutorials</a>
+                <a href="/download-script.html">Download script</a>
+                <h5>Camera RawX</h5>
+                <a href="/camera-rawx-faq.html">FAQ</a>
+            </div>
+        </div>
+        <a href="#blog">Blog</a>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+</nav>
+
+<section class="error-page">
+    <h1>404</h1>
+    <h2>Page not found</h2>
+    <p>The page you're looking for doesn't exist or has been moved.</p>
+    <a class="cta" href="/">Back to Home</a>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="/apolloone.html">ApolloOne</a>
+            <a href="/camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="/apolloone-faq.html">Support</a>
+            <a href="/#blog">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="/contact.html">Contact</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/terms.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        if (!a.classList.contains('nav-dropdown-toggle')) {
+            a.addEventListener('click', close);
+        }
+    });
+
+    var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+    var dropdown = document.querySelector('.nav-dropdown');
+    if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    }
+})();
+</script>
+</body>
+</html>
