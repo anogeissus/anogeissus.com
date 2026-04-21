@@ -272,6 +272,32 @@
             if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
         });
     }
+
+    // Contact form: POST to Worker via fetch, show inline success instead of navigating
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('form-success');
+    if (form && success) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            try {
+                var res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                });
+                var data = await res.json();
+                if (!data.ok) throw new Error(data.error || 'fail');
+                form.style.display = 'none';
+                success.classList.add('visible');
+            } catch (err) {
+                btn.disabled = false;
+                btn.textContent = 'Send';
+                alert('Sorry, something went wrong. Please email support@anogeissus.com directly.');
+            }
+        });
+    }
 })();
 </script>
 </body>
