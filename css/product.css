@@ -187,11 +187,13 @@
     margin-bottom: 12px;
 }
 
-/* Retina-sized images — constrain to logical pixel width, centered */
-.feature-image-retina img {
-    max-width: 640px;
+/* Retina-sized images — constrain to logical pixel width, centered, no frame */
+.feature-stacked .feature-image-retina img {
+    max-width: 752px;
     width: 100%;
     margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* Footnote */
