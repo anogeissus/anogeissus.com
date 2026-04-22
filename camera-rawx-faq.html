@@ -26,7 +26,7 @@
           "name": "Thumbnails are not showing up in existing folders",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Clear the QuickLook cache by running 'qlmanage -r' then 'qlmanage -r cache' in Terminal. Optionally reset Finder preferences and restart Finder."
+            "text": "Clear the QuickLook cache by running 'qlmanage -r' then 'qlmanage -r cache' in Terminal, then reboot your Mac so Finder regenerates the thumbnails."
           }
         },
         {
@@ -87,11 +87,7 @@
         <p>Open the Terminal app, and type the following:</p>
         <p><code>qlmanage -r</code></p>
         <p><code>qlmanage -r cache</code></p>
-        <p>Optionally, you may need to reset the Finder plist file:</p>
-        <p><code>rm -rf ~/Library/Preferences/com.apple.finder.plist</code></p>
-        <p>Then finally, restart Finder:</p>
-        <p><code>killall Finder</code></p>
-        <p>You can choose to reboot your Mac instead of killing Finder.</p>
+        <p>Then reboot your Mac so Finder regenerates the thumbnails. On recent versions of macOS, restarting Finder alone is no longer enough — a full reboot is required.</p>
 
         <h2>3. Thumbnails are not showing up for Sigma Foveon .X3F RAW files</h2>
         <p>Fixed in <strong>Camera RawX 2.4.0</strong>. Update from the Mac App Store and X3F thumbnails will render correctly, even with Sigma Photo Pro installed.</p>
