@@ -16,7 +16,7 @@
     <meta property="og:site_name" content="Anogeissus">
 
     <link rel="stylesheet" href="css/style.css?v=22">
-    <link rel="stylesheet" href="css/product.css?v=3">
+    <link rel="stylesheet" href="css/product.css?v=6">
 </head>
 <body>
 
@@ -52,10 +52,33 @@
     <img class="product-hero-icon no-frame" src="images/apolloone-icon.png" alt="ApolloOne icon" width="96" height="96">
     <h1>ApolloOne</h1>
     <p class="product-hero-tagline">The fastest image viewer on the planet.</p>
-    <p class="product-hero-desc">WIRED's Best Image Viewer two years running. Browse at up to 32 fps on M1 Ultra with 64-bit precision and 10-bit Liquid Retina display support — every image displayed at <strong>full resolution</strong>, not a scaled-down preview. Non-destructive Quick Edit with InstaBake™ for instant JPEG output via AirDrop or drag-and-drop. Full EXIF and IPTC metadata editing, GPS mapping with Google Street View, autofocus point display, batch renaming and conversion, split-view comparison, and video playback with frame-by-frame scrubbing — all without importing a single file. Supports RAW, JPEG, HEIF, TIFF, PNG, and 40+ camera formats through the RawBridge™ engine, in 11 languages.</p>
+    <p class="product-hero-desc">WIRED's Best Image Viewer two years running, now with <strong>full HDR support</strong>. Browse at up to 32 fps on M1 Ultra with 64-bit precision and 10-bit Liquid Retina display support — every image displayed at <strong>full resolution</strong>, not a scaled-down preview. Non-destructive Quick Edit with InstaBake™ for instant JPEG output via AirDrop or drag-and-drop. Full EXIF and IPTC metadata editing, GPS mapping with Google Street View, autofocus point display, batch renaming and conversion, split-view comparison, and video playback with frame-by-frame scrubbing — all without importing a single file. Supports RAW, JPEG, HEIF, TIFF, PNG, and 40+ camera formats through the RawBridge™ engine, in 11 languages.</p>
 </section>
 
-<!-- 1. AF Points -->
+<!-- 1. HDR -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>HDR Display &amp; Export</h2>
+        <p>See your RAW files with full dynamic range on HDR-capable Macs<sup><a class="footnote-ref" href="#hdr-requirements">*</a></sup> — 10-bit color, EDR-aware rendering, and a one-click <strong>HDR toggle</strong> in the toolbar. Filmstrip thumbnails render in HDR too, and a dual <strong>SDR + HDR histogram</strong> shows how much of your image pushes into the HDR highlight range. Export full HDR to <strong>AVIF</strong> or <strong>JPEG XL</strong> in PQ colorspace, gain-map <strong>JPEG</strong> and <strong>HEIC</strong> that stay viewable on SDR displays, or scene-linear <strong>OpenEXR</strong>. Supports HDR RAW, Apple gain-map HEIC/JPEG, PQ-encoded AVIF, JPEG XL, and OpenEXR.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-hdr.jpg" alt="ApolloOne HDR mode with HDR toggle in toolbar, HDR filmstrip thumbnails, and dual SDR + HDR histogram" loading="lazy">
+    </div>
+</section>
+
+<!-- 2. HDR Visualizer -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>HDR Visualizer</h2>
+        <p>See exactly where your highlights push past SDR white. Four false-color bands — cyan at <strong>+1 EV</strong>, blue at <strong>+2 EV</strong>, purple at <strong>+3 EV</strong>, and magenta at <strong>+4 EV</strong> — overlay the image to show how bright each highlight actually is. Hover over any band in the histogram to isolate just that zone on the image.</p>
+        <p>Hover any pixel to read its per-channel value in the inspector's RGB patches — <strong>0–255</strong> for SDR, <strong>+X.X EV</strong> for channels that extend into HDR. Exact headroom, per channel, to a tenth of a stop.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-hdr-visualizer.jpg" alt="ApolloOne HDR Visualizer showing cyan, blue, purple, and magenta false-color bands on the sky above a cathedral" loading="lazy">
+    </div>
+</section>
+
+<!-- 3. AF Points -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Autofocus Point Display</h2>
@@ -66,7 +89,7 @@
     </div>
 </section>
 
-<!-- 2. Split View -->
+<!-- 4. Split View -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Side-by-Side Comparison</h2>
@@ -77,7 +100,7 @@
     </div>
 </section>
 
-<!-- 3. EXIF & Metadata -->
+<!-- 5. EXIF & Metadata -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Deep EXIF &amp; Metadata</h2>
@@ -88,7 +111,7 @@
     </div>
 </section>
 
-<!-- 4. User Metadata & Tagging -->
+<!-- 6. User Metadata & Tagging -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Tagging, Rating &amp; Keywords</h2>
@@ -99,7 +122,7 @@
     </div>
 </section>
 
-<!-- 5. Contact Sheet -->
+<!-- 7. Contact Sheet -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Contact Sheet &amp; Histogram</h2>
@@ -110,7 +133,7 @@
     </div>
 </section>
 
-<!-- 6. Built-in Maps -->
+<!-- 8. Built-in Maps -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>GPS &amp; Built-in Maps</h2>
@@ -121,7 +144,7 @@
     </div>
 </section>
 
-<!-- 7. Street View -->
+<!-- 9. Street View -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Google Street View</h2>
@@ -132,7 +155,7 @@
     </div>
 </section>
 
-<!-- 8. Quick Edit -->
+<!-- 10. Quick Edit -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Quick Edit</h2>
@@ -154,6 +177,11 @@
         </a>
     </div>
     <p class="product-footnote">After the trial, ApolloOne continues to work as a free edition — no subscription required, no lockout. Upgrade whenever you're ready.</p>
+</section>
+
+<!-- Page footnotes -->
+<section class="page-footnotes">
+    <p id="hdr-requirements"><sup>*</sup> HDR display requires an EDR-capable screen: a MacBook Pro with Liquid Retina XDR (14″ or 16″, 2021 or later), or any Mac paired with an Apple Studio Display, Apple Studio Display XDR, 30″ Apple Pro Display XDR, or a compatible third-party HDR display. Peak brightness varies: up to 600 nits on Studio Display, 1,600 nits on Pro Display XDR, and 2,000 nits on Studio Display XDR. SDR-only Macs display HDR images in SDR with automatic tone-mapping.</p>
 </section>
 
 <!-- Footer -->

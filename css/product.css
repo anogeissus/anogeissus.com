@@ -92,6 +92,10 @@
     color: #1d1d1f;
 }
 
+.feature-stacked .feature-text p + p {
+    margin-top: 16px;
+}
+
 .feature-stacked .feature-image {
     width: 100%;
     max-width: 1100px;
@@ -197,6 +201,34 @@
     margin-top: 20px;
     max-width: 480px;
     line-height: 1.5;
+}
+
+.page-footnotes {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px 48px;
+    color: #86868b;
+    font-size: 13px;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.page-footnotes p {
+    scroll-margin-top: 80px;
+}
+
+.page-footnotes p + p {
+    margin-top: 8px;
+}
+
+.footnote-ref {
+    color: #6e6e73;
+    text-decoration: none;
+    margin-left: 1px;
+}
+
+.footnote-ref:hover {
+    text-decoration: underline;
 }
 
 /* Mobile */
