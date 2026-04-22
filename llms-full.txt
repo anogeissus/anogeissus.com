@@ -9,11 +9,14 @@ Company: Anogeissus Limited
 
 ## ApolloOne — The Fastest Image Viewer on the Planet
 
-ApolloOne is a high-performance photo and video viewer for macOS designed for professional photographers and enthusiasts who need speed and precision.
+ApolloOne is a high-performance photo and video viewer for macOS designed for professional photographers and enthusiasts who need speed and precision, with full HDR display and export support.
 
 ### Key Features
 - Browse photos at up to 32 fps on M1 Ultra — 100MP RAW files load instantly
 - Full image resolution display, not scaled-down previews — ready for immediate zoom and edit
+- Full HDR display on EDR-capable Macs: 10-bit color, HDR RAW rendering, HDR filmstrip thumbnails via gain-map HEIC cache, one-click HDR toggle in the toolbar, dual SDR + HDR histogram
+- HDR Visualizer: four false-color bands (cyan +1 EV, blue +2 EV, purple +3 EV, magenta +4 EV) overlay the image to show highlight headroom; hover a band in the histogram to isolate that zone. Per-pixel inspector shows 0–255 for SDR channels and +X.X EV for channels above SDR white
+- HDR export: AVIF and JPEG XL in PQ colorspace for full HDR; gain-map JPEG and HEIC that stay viewable on SDR displays; scene-linear OpenEXR for professional workflows
 - Quick Edit for non-destructive adjustments on RAW, JPEG, HEIF/HEIC, TIFF, and PNG
 - EXIF Inspector — view and edit comprehensive camera metadata, double-click any field to change it
 - Camera AF point overlay — see autofocus points recorded in the image (unique feature)
@@ -26,7 +29,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 - Auto Advance Mode for fast file culling
 - Batch operations: rename, resize, convert, export (including HEIC and 16-bit TIFF/PNG)
 - RegEx search across any EXIF metadata field
-- Supports RAW, JPEG, HEIF/HEIC, TIFF, PNG, JPEG XL, video files, and more
+- Supports RAW, HDR RAW, JPEG, HEIF/HEIC (including Apple gain-map HDR), TIFF, PNG, JPEG XL, AVIF (including PQ HDR), OpenEXR (read and write), video files, and more
 
 ### Editions
 - **Free**: Browse and view — works indefinitely
@@ -50,12 +53,12 @@ https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
 
 ## Camera RawX — Quick Look for Every RAW File
 
-Camera RawX is a macOS extension that adds Quick Look previews and Finder thumbnails for camera RAW files that macOS doesn't support natively. Powered by the RawBridge™ engine — the same high-performance RAW decoder used in ApolloOne.
+Camera RawX is a macOS extension that adds Quick Look previews and Finder thumbnails for camera RAW files that macOS doesn't support natively. HDR RAW files preview in full HDR on EDR-capable Macs. Powered by the RawBridge™ engine — the same high-performance RAW decoder used in ApolloOne.
 
 ### Key Features
 - Renders a RAW image in about 1 second on Apple Silicon
 - Adds Finder thumbnails for unsupported RAW files
-- Full-resolution Quick Look previews
+- Full-resolution Quick Look previews with HDR rendering for HDR RAW files on EDR-capable Macs
 - Works with ApolloOne's Quick Edit — adjustments and crop applied automatically in Quick Look
 - Fujifilm compressed RAF and Nikon HE/HE* via Apple RAW decoder for high visual quality
 
