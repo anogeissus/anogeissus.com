@@ -104,17 +104,25 @@
         }
 
         .contact-form button {
-            background: none;
+            background: #0071e3;
             border: none;
-            font-size: 16px;
-            color: #1d1d1f;
+            color: #fff;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 980px;
             cursor: pointer;
-            padding: 8px 0;
-            transition: color 0.2s;
+            transition: background 0.2s;
+            min-width: 96px;
         }
 
         .contact-form button:hover {
-            color: #0066cc;
+            background: #0077ed;
+        }
+
+        .contact-form button:disabled {
+            background: #a0c9f5;
+            cursor: not-allowed;
         }
 
         /* Honeypot */
