@@ -283,6 +283,18 @@
     }
 
     // Contact form: POST to Worker via fetch, show inline success instead of navigating
+    function waitForTurnstileToken(form, timeoutMs) {
+        return new Promise(function (resolve) {
+            var started = Date.now();
+            (function check() {
+                var tokenEl = form.querySelector('input[name="cf-turnstile-response"]');
+                if (tokenEl && tokenEl.value) return resolve(tokenEl.value);
+                if (Date.now() - started >= timeoutMs) return resolve('');
+                setTimeout(check, 120);
+            })();
+        });
+    }
+
     var form = document.getElementById('contact-form');
     var success = document.getElementById('form-success');
     if (form && success) {
@@ -293,7 +305,11 @@
             btn.textContent = 'Sending…';
             try {
                 var captchaToken = form.querySelector('input[name="cf-turnstile-response"]');
-                if (!captchaToken || !captchaToken.value) {
+                var tokenValue = (captchaToken && captchaToken.value) ? captchaToken.value : '';
+                if (!tokenValue) {
+                    tokenValue = await waitForTurnstileToken(form, 3500);
+                }
+                if (!tokenValue) {
                     throw new Error('captcha_required');
                 }
 
