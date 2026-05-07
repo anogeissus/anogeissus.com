@@ -87,6 +87,10 @@
             justify-content: flex-end;
         }
 
+        .captcha-wrap {
+            margin: 8px 0 16px;
+        }
+
         .contact-form button {
             background: none;
             border: none;
@@ -136,6 +140,7 @@
     </style>
 </head>
 <body>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <nav>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -181,6 +186,10 @@
             <input type="email" name="email" placeholder="Email *" required>
             <input type="text" name="subject" placeholder="Subject">
             <textarea name="message" placeholder="Message" required></textarea>
+
+            <div class="captcha-wrap">
+                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+            </div>
 
             <div class="form-actions">
                 <button type="submit">Send</button>
@@ -283,6 +292,11 @@
             btn.disabled = true;
             btn.textContent = 'Sending…';
             try {
+                var captchaToken = form.querySelector('input[name="cf-turnstile-response"]');
+                if (!captchaToken || !captchaToken.value) {
+                    throw new Error('captcha_required');
+                }
+
                 var res = await fetch(form.action, {
                     method: 'POST',
                     body: new FormData(form),
@@ -294,7 +308,14 @@
             } catch (err) {
                 btn.disabled = false;
                 btn.textContent = 'Send';
-                alert('Sorry, something went wrong. Please email support@anogeissus.com directly.');
+                if (err && err.message === 'captcha_required') {
+                    alert('Please complete the captcha before sending.');
+                } else {
+                    alert('Sorry, something went wrong. Please email support@anogeissus.com directly.');
+                }
+                if (window.turnstile) {
+                    window.turnstile.reset();
+                }
             }
         });
     }
