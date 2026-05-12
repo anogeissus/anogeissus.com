@@ -11,6 +11,7 @@
   const signOutBtn = document.getElementById('signout-btn');
 
   let editingId = null;
+  let currentRows = [];
 
   function getSession() {
     try {
@@ -84,20 +85,25 @@
   }
 
   async function loadPosts() {
-    postsTbody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
+    postsTbody.innerHTML = '<tr><td colspan="6">Loading…</td></tr>';
     try {
-      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at&order=published_at.desc.nullslast&order=created_at.desc');
-      if (!data || data.length === 0) {
-        postsTbody.innerHTML = '<tr><td colspan="5">No posts yet.</td></tr>';
+      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at&order=published_at.desc.nullslast,created_at.desc');
+      currentRows = data || [];
+      if (!currentRows.length) {
+        postsTbody.innerHTML = '<tr><td colspan="6">No posts yet.</td></tr>';
         return;
       }
 
-      postsTbody.innerHTML = data.map((p) => `
+      postsTbody.innerHTML = currentRows.map((p, idx) => `
         <tr>
           <td>${p.title}</td>
           <td>${p.slug}</td>
           <td>${p.status}</td>
-          <td>${p.published_at ? new Date(p.published_at).toLocaleDateString() : '-'}</td>
+          <td>${p.published_at ? new Date(p.published_at).toLocaleString() : '-'}</td>
+          <td>
+            <button data-move="up" data-id="${p.id}" ${idx === 0 ? 'disabled' : ''}>↑</button>
+            <button data-move="down" data-id="${p.id}" ${idx === currentRows.length - 1 ? 'disabled' : ''}>↓</button>
+          </td>
           <td>
             <button data-edit="${p.id}">Edit</button>
             <button data-delete="${p.id}" class="danger">Delete</button>
@@ -105,7 +111,7 @@
         </tr>
       `).join('');
     } catch (err) {
-      postsTbody.innerHTML = `<tr><td colspan="5">Could not load posts: ${err.message || String(err)}</td></tr>`;
+      postsTbody.innerHTML = `<tr><td colspan="6">Could not load posts: ${err.message || String(err)}</td></tr>`;
     }
   }
 
@@ -222,12 +228,48 @@
     saveMsg.textContent = '';
   });
 
+  async function movePost(id, direction) {
+    const idx = currentRows.findIndex((r) => r.id === id);
+    if (idx < 0) return;
+    const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (swapIdx < 0 || swapIdx >= currentRows.length) return;
+
+    const a = currentRows[idx];
+    const b = currentRows[swapIdx];
+
+    const aTime = a.published_at || a.created_at || new Date().toISOString();
+    const bTime = b.published_at || b.created_at || new Date().toISOString();
+
+    saveMsg.textContent = 'Reordering...';
+    await api(`blog_posts?id=eq.${a.id}`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: { published_at: bTime }
+    });
+    await api(`blog_posts?id=eq.${b.id}`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: { published_at: aTime }
+    });
+    saveMsg.textContent = 'Order updated.';
+    await loadPosts();
+  }
+
   postsTbody.addEventListener('click', async (e) => {
     const editId = e.target.getAttribute('data-edit');
     const delId = e.target.getAttribute('data-delete');
+    const moveDir = e.target.getAttribute('data-move');
+    const moveId = e.target.getAttribute('data-id');
 
     if (editId) await loadPostById(editId);
     if (delId) await deletePost(delId);
+    if (moveDir && moveId) {
+      try {
+        await movePost(moveId, moveDir);
+      } catch (err) {
+        saveMsg.textContent = 'Reorder failed: ' + (err.message || String(err));
+      }
+    }
   });
 
   ensureAuthUI();

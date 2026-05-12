@@ -91,7 +91,7 @@
 
     try {
       const data = await api(
-        "blog_posts?select=title,slug,excerpt,content,cover_image_url,published_at,created_at&status=eq.published&order=published_at.desc.nullslast&order=created_at.desc"
+        "blog_posts?select=title,slug,excerpt,content,cover_image_url,published_at,created_at&status=eq.published&order=published_at.desc.nullslast,created_at.desc"
       );
 
       if (!data || data.length === 0) {
