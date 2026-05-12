@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Translation Errors | Anogeissus</title>
+    <meta name="description" content="Report ApolloOne translation issues so we can include fixes in the next release.">
+    <link rel="canonical" href="https://anogeissus.com/report-translation-errors.html">
+    <link rel="stylesheet" href="css/style.css?v=22">
+    <style>
+        .contact-layout { display: flex; min-height: calc(100vh - 42px); margin-top: 42px; }
+        .contact-image { flex: 0 0 50%; max-width: 50%; overflow: hidden; }
+        .contact-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .contact-form-area { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 60px 48px; background: #f5f5f7; }
+        .contact-form-area h1 { font-size: 36px; font-weight: 400; font-style: italic; color: #1d1d1f; margin-bottom: 16px; font-family: Georgia, "Times New Roman", serif; }
+        .contact-form-area p { font-size: 16px; color: #6e6e73; margin-bottom: 32px; line-height: 1.5; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; border: 1px solid rgba(0,0,0,.15); border-radius: 4px; font-size: 16px; font-family: inherit; color: #1d1d1f; background: #fff; margin-bottom: 16px; transition: border-color .2s; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #0066cc; }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: #86868b; }
+        .contact-form textarea { height: 160px; resize: vertical; }
+        .contact-form .form-actions { display: flex; justify-content: flex-end; }
+        .captcha-row { margin: 8px 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        @media (max-width: 520px) { .captcha-row { flex-direction: column; align-items: flex-start; } }
+        .contact-form button { background: #0071e3; border: none; color: #fff; padding: 10px 24px; font-size: 15px; font-weight: 500; border-radius: 980px; cursor: pointer; transition: background .2s; min-width: 96px; }
+        .contact-form button:hover { background: #0077ed; }
+        .contact-form button:disabled { background: #a0c9f5; cursor: not-allowed; }
+        .contact-form .hp-field { display: none; }
+        .form-success { display: none; font-size: 16px; color: #1d1d1f; padding: 16px 0; }
+        .form-success.visible { display: block; }
+        @media (max-width: 768px) {
+            .contact-layout { flex-direction: column; }
+            .contact-image { flex: none; max-width: 100%; height: 300px; }
+            .contact-form-area { padding: 40px 24px; }
+        }
+    </style>
+</head>
+<body>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="apolloone.html">ApolloOne</a>
+        <a href="camerarawx.html">Camera RawX</a>
+        <div class="nav-dropdown">
+            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+            <div class="nav-dropdown-menu"><div class="nav-dropdown-inner">
+                <span class="nav-dropdown-label">ApolloOne</span>
+                <a href="apolloone-faq.html">FAQ</a>
+                <a href="recovery.html">Recovery</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="download-script.html">Download script</a>
+                <a href="report-translation-errors.html">Report translation errors</a>
+                <div class="nav-dropdown-divider"></div>
+                <span class="nav-dropdown-label">Camera RawX</span>
+                <a href="camera-rawx-faq.html">FAQ</a>
+            </div></div>
+        </div>
+        <a href="/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<div class="contact-layout">
+    <div class="contact-image">
+        <img src="images/report-translation-errors.jpg" alt="Translation report illustration">
+    </div>
+    <div class="contact-form-area">
+        <h1>Report translation errors</h1>
+        <p>If you found any translation errors, please provide us with the corrections so they can be included in the next release.</p>
+
+        <form class="contact-form" id="translation-form" action="https://api.anogeissus.com/contact" method="POST">
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="subject" value="Translation Error Report">
+
+            <input type="text" name="name" placeholder="Name *" required>
+            <input type="email" name="email" placeholder="Email *" required>
+            <input type="text" name="translation_error" placeholder="Translation error *" required>
+            <textarea name="message" placeholder="Description *" required></textarea>
+
+            <div class="captcha-row">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAADK77x0Mv1towNte"></div>
+                <div class="form-actions"><button type="submit">Send</button></div>
+            </div>
+        </form>
+
+        <div class="form-success" id="form-success">✓ Message received. Thank you for helping us improve translations.</div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col"><h4>Products</h4><a href="/#apolloone">ApolloOne</a><a href="/#camerarawx">Camera RawX</a><a href="https://katclaw.ai">KatClaw</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="#" class="footer-support-link">Support</a><a href="/blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="termsofuse.html">Terms of Use</a></div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() { var isOpen = hamburger.classList.toggle('open'); navLinks.classList.toggle('open', isOpen); overlay.classList.toggle('visible', isOpen); }
+    function close() { hamburger.classList.remove('open'); navLinks.classList.remove('open'); overlay.classList.remove('visible'); }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+
+    var footerSupport = document.querySelector('.footer-support-link');
+    if (footerSupport) {
+        footerSupport.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window.innerWidth <= 768) { hamburger.classList.add('open'); navLinks.classList.add('open'); overlay.classList.add('visible'); }
+            setTimeout(function () { var dd = document.querySelector('.nav-dropdown'); if (dd) dd.classList.add('open'); }, 400);
+        });
+    }
+
+    navLinks.querySelectorAll('a').forEach(function (a) { if (!a.classList.contains('nav-dropdown-toggle')) a.addEventListener('click', close); });
+
+    var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+    var dropdown = document.querySelector('.nav-dropdown');
+    if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); dropdown.classList.toggle('open'); });
+        document.addEventListener('click', function (e) { if (!dropdown.contains(e.target)) dropdown.classList.remove('open'); });
+    }
+
+    function waitForTurnstileToken(form, timeoutMs) {
+        return new Promise(function (resolve) {
+            var started = Date.now();
+            (function check() {
+                var tokenEl = form.querySelector('input[name="cf-turnstile-response"]');
+                if (tokenEl && tokenEl.value) return resolve(tokenEl.value);
+                if (Date.now() - started >= timeoutMs) return resolve('');
+                setTimeout(check, 120);
+            })();
+        });
+    }
+
+    var form = document.getElementById('translation-form');
+    var success = document.getElementById('form-success');
+    if (form && success) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            try {
+                var captchaToken = form.querySelector('input[name="cf-turnstile-response"]');
+                var tokenValue = (captchaToken && captchaToken.value) ? captchaToken.value : '';
+                if (!tokenValue) tokenValue = await waitForTurnstileToken(form, 3500);
+                if (!tokenValue) throw new Error('captcha_required');
+
+                var res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+                var data = await res.json();
+                if (!data.ok) throw new Error(data.error || 'fail');
+                form.style.display = 'none';
+                success.classList.add('visible');
+            } catch (err) {
+                btn.disabled = false;
+                btn.textContent = 'Send';
+                if (err && err.message === 'captcha_required') {
+                    alert('Please complete the captcha before sending.');
+                } else {
+                    alert('Sorry, something went wrong. Please email support@anogeissus.com directly.');
+                }
+                if (window.turnstile) window.turnstile.reset();
+            }
+        });
+    }
+})();
+</script>
+</body>
+</html>
