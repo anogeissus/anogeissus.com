@@ -37,33 +37,48 @@
   }
 
   async function loadPosts() {
-    const { data, error } = await client
-      .from('blog_posts')
-      .select('id, title, slug, status, published_at, created_at')
-      .order('created_at', { ascending: false });
+    postsTbody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
 
-    if (error) {
-      postsTbody.innerHTML = '<tr><td colspan="5">Could not load posts.</td></tr>';
-      return;
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Request timeout while loading posts.')), 12000);
+    });
+
+    try {
+      const result = await Promise.race([
+        client
+          .from('blog_posts')
+          .select('id, title, slug, status, published_at, created_at')
+          .order('created_at', { ascending: false }),
+        timeoutPromise
+      ]);
+
+      const { data, error } = result;
+
+      if (error) {
+        postsTbody.innerHTML = `<tr><td colspan="5">Could not load posts: ${error.message}</td></tr>`;
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        postsTbody.innerHTML = '<tr><td colspan="5">No posts yet.</td></tr>';
+        return;
+      }
+
+      postsTbody.innerHTML = data.map((p) => `
+        <tr>
+          <td>${p.title}</td>
+          <td>${p.slug}</td>
+          <td>${p.status}</td>
+          <td>${p.published_at ? new Date(p.published_at).toLocaleDateString() : '-'}</td>
+          <td>
+            <button data-edit="${p.id}">Edit</button>
+            <button data-delete="${p.id}" class="danger">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    } catch (err) {
+      postsTbody.innerHTML = `<tr><td colspan="5">Could not load posts: ${err.message || String(err)}</td></tr>`;
     }
-
-    if (!data || data.length === 0) {
-      postsTbody.innerHTML = '<tr><td colspan="5">No posts yet.</td></tr>';
-      return;
-    }
-
-    postsTbody.innerHTML = data.map((p) => `
-      <tr>
-        <td>${p.title}</td>
-        <td>${p.slug}</td>
-        <td>${p.status}</td>
-        <td>${p.published_at ? new Date(p.published_at).toLocaleDateString() : '-'}</td>
-        <td>
-          <button data-edit="${p.id}">Edit</button>
-          <button data-delete="${p.id}" class="danger">Delete</button>
-        </td>
-      </tr>
-    `).join('');
   }
 
   async function loadPostById(id) {
