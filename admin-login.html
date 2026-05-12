@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Anogeissus</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="css/style.css?v=24">
+</head>
+<body>
+<section class="section legal-page blog-admin-page">
+  <div class="legal-content">
+    <h1>Blog Admin Login</h1>
+    <div class="blog-admin-card" style="max-width:560px;margin:16px auto 0;">
+      <form id="login-form" class="blog-admin-form">
+        <label>Email<input id="email" type="email" required autocomplete="username"></label>
+        <label>Password<input id="password" type="password" required autocomplete="current-password"></label>
+        <button type="submit">Sign In</button>
+      </form>
+      <p id="auth-msg" class="blog-admin-msg"></p>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/admin-login.js"></script>
+</body>
+</html>

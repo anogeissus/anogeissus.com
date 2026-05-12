@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Anogeissus</title>
+  <meta name="description" content="Product updates and technical posts from Anogeissus.">
+  <link rel="canonical" href="https://anogeissus.com/blog.html">
+  <link rel="stylesheet" href="css/style.css?v=23">
+</head>
+<body>
+<nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="apolloone.html">ApolloOne</a>
+    <a href="camerarawx.html">Camera RawX</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+  </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page blog-page">
+  <div class="legal-content">
+    <h1>Anogeissus Blog</h1>
+    <p class="legal-updated">Updates, release notes, and deep dives.</p>
+    <div id="blog-list" class="blog-list">
+      <p class="blog-empty">Loading posts…</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-columns">
+    <div class="footer-col"><h4>Products</h4><a href="apolloone.html">ApolloOne</a><a href="camerarawx.html">Camera RawX</a><a href="https://katclaw.ai">KatClaw</a></div>
+    <div class="footer-col"><h4>Resources</h4><a href="blog.html">Blog</a><a href="tutorials.html">Tutorials</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+  <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+  var h=document.getElementById('hamburger'),n=document.getElementById('nav-links'),o=document.getElementById('nav-overlay');
+  function t(){var x=h.classList.toggle('open');n.classList.toggle('open',x);o.classList.toggle('visible',x)}
+  function c(){h.classList.remove('open');n.classList.remove('open');o.classList.remove('visible')}
+  h.addEventListener('click',t);o.addEventListener('click',c);
+  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)});
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/blog.js"></script>
+</body>
+</html>

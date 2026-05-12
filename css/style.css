@@ -864,6 +864,161 @@ footer .copyright {
 }
 
 /* ---- Mobile ---- */
+/* ---- Blog ---- */
+.blog-page {
+    padding-top: 90px;
+}
+
+.blog-list {
+    display: grid;
+    gap: 26px;
+    margin-top: 28px;
+}
+
+.blog-card {
+    background: #f5f5f7;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.blog-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+
+.blog-card h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.blog-card h2 a {
+    color: #1d1d1f;
+    text-decoration: none;
+}
+
+.blog-card h2 a:hover {
+    text-decoration: underline;
+}
+
+.blog-date {
+    color: #6e6e73;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.blog-card p,
+.blog-post-excerpt,
+.blog-post-content p {
+    color: #1d1d1f;
+    font-size: 17px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+}
+
+.blog-readmore {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.blog-readmore:hover {
+    text-decoration: underline;
+}
+
+.blog-empty {
+    color: #6e6e73;
+}
+
+.blog-post-article h1 {
+    font-size: clamp(30px, 4vw, 44px);
+    margin-bottom: 8px;
+}
+
+.blog-post-cover {
+    width: 100%;
+    border-radius: 12px;
+    margin: 18px 0 22px;
+}
+
+/* ---- Blog Admin ---- */
+.blog-admin-page {
+    padding-top: 54px;
+}
+
+.blog-admin-card {
+    background: #f5f5f7;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.blog-admin-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.blog-admin-form {
+    display: grid;
+    gap: 10px;
+}
+
+.blog-admin-form label {
+    font-size: 14px;
+    color: #1d1d1f;
+    display: grid;
+    gap: 6px;
+}
+
+.blog-admin-form input,
+.blog-admin-form textarea,
+.blog-admin-form select {
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    padding: 9px 10px;
+    font: inherit;
+}
+
+.blog-admin-form button,
+.blog-admin-actions button,
+.blog-admin-table button {
+    border: 0;
+    border-radius: 999px;
+    background: #0066cc;
+    color: #fff;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.blog-admin-table button.danger {
+    background: #c62828;
+}
+
+.blog-admin-msg {
+    margin-top: 8px;
+    color: #6e6e73;
+}
+
+.blog-table-wrap {
+    overflow-x: auto;
+}
+
+.blog-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.blog-admin-table th,
+.blog-admin-table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #e3e3e8;
+}
+
 @media (max-width: 768px) {
     nav {
         justify-content: flex-start;
