@@ -14,6 +14,19 @@
   <div class="nav-links" id="nav-links">
     <a href="apolloone.html">ApolloOne</a>
     <a href="camerarawx.html">Camera RawX</a>
+    <div class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Support ▾</a>
+      <div class="nav-dropdown-menu"><div class="nav-dropdown-inner">
+        <span class="nav-dropdown-label">ApolloOne</span>
+        <a href="apolloone-faq.html">FAQ</a>
+        <a href="recovery.html">Recovery</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="download-script.html">Download script</a>
+        <div class="nav-dropdown-divider"></div>
+        <span class="nav-dropdown-label">Camera RawX</span>
+        <a href="camera-rawx-faq.html">FAQ</a>
+      </div></div>
+    </div>
     <a href="contact.html">Contact</a>
     <a href="blog.html">Blog</a>
   </div>
@@ -45,7 +58,14 @@
   function t(){var x=h.classList.toggle('open');n.classList.toggle('open',x);o.classList.toggle('visible',x)}
   function c(){h.classList.remove('open');n.classList.remove('open');o.classList.remove('visible')}
   h.addEventListener('click',t);o.addEventListener('click',c);
-  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)});
+  n.querySelectorAll('a').forEach(function(a){if(!a.classList.contains('nav-dropdown-toggle'))a.addEventListener('click',c)});
+
+  var dropdownToggle=document.querySelector('.nav-dropdown-toggle');
+  var dropdown=document.querySelector('.nav-dropdown');
+  if(dropdownToggle&&dropdown){
+    dropdownToggle.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();dropdown.classList.toggle('open');});
+    document.addEventListener('click',function(e){if(!dropdown.contains(e.target)){dropdown.classList.remove('open');}});
+  }
 })();
 </script>
 <script src="js/supabase-config.js"></script>
