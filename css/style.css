@@ -869,6 +869,10 @@ footer .copyright {
     padding-top: 90px;
 }
 
+.blog-page .legal-content {
+    max-width: 980px;
+}
+
 .blog-list {
     display: grid;
     gap: 26px;
