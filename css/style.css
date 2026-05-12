@@ -889,7 +889,7 @@ footer .copyright {
 
 .blog-card h2 {
     font-size: 28px;
-    margin-bottom: 6px;
+    margin: 0 0 6px;
 }
 
 .blog-card h2 a {
