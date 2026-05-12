@@ -9,10 +9,51 @@
     <link rel="stylesheet" href="css/style.css?v=22">
     <style>
         .legal-page {
+            background: transparent;
+            min-height: calc(100vh - 42px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .legal-page::before {
+            content: "";
+            position: fixed;
+            top: 42px;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('images/tutorials-bg.jpg');
-            background-position: center center;
+            background-position: left center;
             background-repeat: no-repeat;
-            background-size: auto;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .legal-content {
+            max-width: 760px;
+            margin: 0 5vw 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+        }
+
+        .tutorial-video {
+            max-width: 620px;
+            margin-left: 0;
+        }
+
+        @media (max-width: 900px) {
+            .legal-content {
+                margin: 0 auto;
+                max-width: 92vw;
+            }
+            .tutorial-video {
+                max-width: 100%;
+            }
+            .legal-page::before {
+                background-position: center center;
+            }
         }
     </style>
 </head>
