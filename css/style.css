@@ -991,6 +991,9 @@ footer .copyright {
     border-radius: 8px;
     padding: 9px 10px;
     font: inherit;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .blog-admin-form button,
@@ -1004,6 +1007,11 @@ footer .copyright {
     cursor: pointer;
     font-size: 14px;
     line-height: 1.2;
+}
+
+.blog-admin-form button {
+    width: 100%;
+    max-width: 100%;
 }
 
 .blog-admin-table button[data-move] {
