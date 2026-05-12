@@ -998,8 +998,14 @@ footer .copyright {
     color: #fff;
     padding: 10px 14px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.2;
+}
+
+.blog-admin-table button[data-move] {
+    padding: 6px 9px;
+    min-width: 30px;
+    font-size: 13px;
 }
 
 .blog-admin-table button.danger {
