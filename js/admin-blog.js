@@ -131,37 +131,46 @@
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const title = document.getElementById('title').value.trim();
-    const slugInput = document.getElementById('slug').value.trim();
-    const slug = slugify(slugInput || title);
+    try {
+      const title = document.getElementById('title').value.trim();
+      const slugInput = document.getElementById('slug').value.trim();
+      const slug = slugify(slugInput || title);
 
-    const payload = {
-      title,
-      slug,
-      excerpt: document.getElementById('excerpt').value.trim(),
-      cover_image_url: document.getElementById('cover_image_url').value.trim() || null,
-      content: document.getElementById('content').value,
-      status: document.getElementById('status').value,
-      published_at: document.getElementById('published_at').value ? new Date(document.getElementById('published_at').value).toISOString() : null
-    };
+      if (!slug) {
+        saveMsg.textContent = 'Slug is empty. Use English letters/numbers in title or fill slug manually.';
+        return;
+      }
 
-    saveMsg.textContent = editingId ? 'Updating...' : 'Creating...';
+      const payload = {
+        title,
+        slug,
+        excerpt: document.getElementById('excerpt').value.trim(),
+        cover_image_url: document.getElementById('cover_image_url').value.trim() || null,
+        content: document.getElementById('content').value,
+        status: document.getElementById('status').value,
+        published_at: document.getElementById('published_at').value ? new Date(document.getElementById('published_at').value).toISOString() : null
+      };
 
-    let result;
-    if (editingId) {
-      result = await client.from('blog_posts').update(payload).eq('id', editingId);
-    } else {
-      result = await client.from('blog_posts').insert(payload);
+      saveMsg.textContent = editingId ? 'Updating...' : 'Creating...';
+
+      let result;
+      if (editingId) {
+        result = await client.from('blog_posts').update(payload).eq('id', editingId);
+      } else {
+        result = await client.from('blog_posts').insert(payload);
+      }
+
+      if (result.error) {
+        saveMsg.textContent = result.error.message;
+        return;
+      }
+
+      saveMsg.textContent = editingId ? 'Post updated.' : 'Post created.';
+      resetForm();
+      await loadPosts();
+    } catch (err) {
+      saveMsg.textContent = 'Create failed: ' + (err && err.message ? err.message : String(err));
     }
-
-    if (result.error) {
-      saveMsg.textContent = result.error.message;
-      return;
-    }
-
-    saveMsg.textContent = editingId ? 'Post updated.' : 'Post created.';
-    resetForm();
-    await loadPosts();
   });
 
   document.getElementById('title').addEventListener('input', () => {
