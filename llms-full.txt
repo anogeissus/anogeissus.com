@@ -100,7 +100,7 @@ Website: https://katclaw.ai
 ## Legal
 
 - Privacy Policy: https://anogeissus.com/privacy.html
-- Terms of Use: https://anogeissus.com/terms.html
+- Terms of Use: https://anogeissus.com/termsofuse.html
 
 ## Developer
 

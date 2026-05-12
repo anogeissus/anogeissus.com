@@ -18,5 +18,5 @@ Anogeissus builds macOS software for photographers. Our products include ApolloO
 - Support: https://anogeissus.com/apolloone-faq.html
 - Contact: https://anogeissus.com/contact.html
 - Privacy: https://anogeissus.com/privacy.html
-- Terms: https://anogeissus.com/terms.html
+- Terms: https://anogeissus.com/termsofuse.html
 - Full details: https://anogeissus.com/llms-full.txt
