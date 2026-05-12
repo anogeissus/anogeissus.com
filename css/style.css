@@ -908,12 +908,16 @@ footer .copyright {
 }
 
 .blog-card p,
-.blog-post-excerpt,
 .blog-post-content p {
     color: #1d1d1f;
     font-size: 17px;
     line-height: 1.65;
     margin-bottom: 12px;
+}
+
+.blog-collapsed p,
+.blog-post-excerpt {
+    font-weight: 600;
 }
 
 .blog-readmore {
