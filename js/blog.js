@@ -33,7 +33,15 @@
   }
 
   function textToHtml(text) {
-    const blocks = (text || '').trim().split(/\n\s*\n/g);
+    const raw = (text || '').trim();
+    if (!raw) return '';
+
+    // If HTML tags are present, treat as trusted HTML authored by admin.
+    if (/<\s*\/?\s*[a-z][^>]*>/i.test(raw)) {
+      return raw;
+    }
+
+    const blocks = raw.split(/\n\s*\n/g);
     return blocks.map((b) => `<p>${escapeHtml(b).replace(/\n/g, '<br>')}</p>`).join('');
   }
 
