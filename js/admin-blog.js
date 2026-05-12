@@ -67,6 +67,14 @@
       .replace(/-+/g, '-');
   }
 
+  function toDateTimeLocalValue(value) {
+    if (!value) return '';
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return '';
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
   function resetForm() {
     editingId = null;
     postForm.reset();
@@ -78,7 +86,7 @@
   async function loadPosts() {
     postsTbody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
     try {
-      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at&order=created_at.desc');
+      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at&order=published_at.desc.nullslast&order=created_at.desc');
       if (!data || data.length === 0) {
         postsTbody.innerHTML = '<tr><td colspan="5">No posts yet.</td></tr>';
         return;
@@ -114,7 +122,7 @@
       document.getElementById('cover_image_url').value = data.cover_image_url || '';
       document.getElementById('content').value = data.content || '';
       document.getElementById('status').value = data.status || 'draft';
-      document.getElementById('published_at').value = data.published_at ? data.published_at.substring(0, 16) : '';
+      document.getElementById('published_at').value = toDateTimeLocalValue(data.published_at);
       document.getElementById('save-btn').textContent = 'Update Post';
       saveMsg.textContent = `Editing: ${data.title}`;
     } catch (err) {
@@ -163,14 +171,19 @@
         return;
       }
 
+      const status = document.getElementById('status').value;
+      const publishedInput = document.getElementById('published_at').value;
+
       const payload = {
         title,
         slug,
         excerpt: document.getElementById('excerpt').value.trim(),
         cover_image_url: document.getElementById('cover_image_url').value.trim() || null,
         content: document.getElementById('content').value,
-        status: document.getElementById('status').value,
-        published_at: document.getElementById('published_at').value ? new Date(document.getElementById('published_at').value).toISOString() : null
+        status,
+        published_at: publishedInput
+          ? new Date(publishedInput).toISOString()
+          : (status === 'published' ? new Date().toISOString() : null)
       };
 
       saveMsg.textContent = editingId ? 'Updating...' : 'Creating...';
