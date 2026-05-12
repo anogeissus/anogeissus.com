@@ -1,11 +1,21 @@
 (function () {
   const cfg = window.ANOGEISSUS_SUPABASE;
-  if (!cfg || cfg.url.includes('YOUR-PROJECT-REF')) {
-    console.error('Supabase config missing: js/supabase-config.js');
-    return;
+
+  function setListMessage(msg) {
+    const container = document.getElementById('blog-list');
+    if (container) container.innerHTML = `<p class="blog-empty">${msg}</p>`;
   }
 
-  const client = window.supabase.createClient(cfg.url, cfg.anonKey);
+  function setPostMessage(msg) {
+    const root = document.getElementById('blog-post');
+    if (root) root.innerHTML = `<p class="blog-empty">${msg}</p>`;
+  }
+
+  if (!cfg || !cfg.url || !cfg.anonKey || cfg.url.includes('YOUR-PROJECT-REF')) {
+    setListMessage('Blog config is not ready yet.');
+    setPostMessage('Blog config is not ready yet.');
+    return;
+  }
 
   function escapeHtml(str) {
     return (str || '')
@@ -27,36 +37,60 @@
     return blocks.map((b) => `<p>${escapeHtml(b).replace(/\n/g, '<br>')}</p>`).join('');
   }
 
+  async function api(pathAndQuery) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+
+    try {
+      const res = await fetch(`${cfg.url}/rest/v1/${pathAndQuery}`, {
+        headers: {
+          apikey: cfg.anonKey,
+          Authorization: `Bearer ${cfg.anonKey}`
+        },
+        signal: controller.signal
+      });
+
+      const text = await res.text();
+      let json = null;
+      try { json = text ? JSON.parse(text) : null; } catch (_) {}
+
+      if (!res.ok) {
+        const msg = (json && (json.message || json.error_description || json.error)) || `HTTP ${res.status}`;
+        throw new Error(msg);
+      }
+
+      return json;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
   async function loadBlogList() {
     const container = document.getElementById('blog-list');
     if (!container) return;
 
-    const { data, error } = await client
-      .from('blog_posts')
-      .select('title, slug, excerpt, cover_image_url, published_at, created_at')
-      .eq('status', 'published')
-      .order('published_at', { ascending: false, nullsFirst: false })
-      .order('created_at', { ascending: false });
+    try {
+      const data = await api(
+        "blog_posts?select=title,slug,excerpt,cover_image_url,published_at,created_at&status=eq.published&order=published_at.desc.nullslast,created_at.desc"
+      );
 
-    if (error) {
-      container.innerHTML = '<p class="blog-empty">Could not load posts yet.</p>';
-      return;
+      if (!data || data.length === 0) {
+        container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
+        return;
+      }
+
+      container.innerHTML = data.map((post) => `
+        <article class="blog-card">
+          ${post.cover_image_url ? `<a href="blog-post.html?slug=${encodeURIComponent(post.slug)}"><img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}"></a>` : ''}
+          <h2><a href="blog-post.html?slug=${encodeURIComponent(post.slug)}">${escapeHtml(post.title)}</a></h2>
+          <div class="blog-date">${formatDate(post.published_at || post.created_at)}</div>
+          <p>${escapeHtml(post.excerpt || '')}</p>
+          <a class="blog-readmore" href="blog-post.html?slug=${encodeURIComponent(post.slug)}">Read more →</a>
+        </article>
+      `).join('');
+    } catch (err) {
+      container.innerHTML = `<p class="blog-empty">Could not load posts: ${escapeHtml(err.message || String(err))}</p>`;
     }
-
-    if (!data || data.length === 0) {
-      container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
-      return;
-    }
-
-    container.innerHTML = data.map((post) => `
-      <article class="blog-card">
-        ${post.cover_image_url ? `<a href="blog-post.html?slug=${encodeURIComponent(post.slug)}"><img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}"></a>` : ''}
-        <h2><a href="blog-post.html?slug=${encodeURIComponent(post.slug)}">${escapeHtml(post.title)}</a></h2>
-        <div class="blog-date">${formatDate(post.published_at || post.created_at)}</div>
-        <p>${escapeHtml(post.excerpt || '')}</p>
-        <a class="blog-readmore" href="blog-post.html?slug=${encodeURIComponent(post.slug)}">Read more →</a>
-      </article>
-    `).join('');
   }
 
   async function loadBlogPost() {
@@ -71,29 +105,31 @@
       return;
     }
 
-    const { data, error } = await client
-      .from('blog_posts')
-      .select('title, slug, excerpt, content, cover_image_url, published_at, created_at')
-      .eq('status', 'published')
-      .eq('slug', slug)
-      .single();
+    try {
+      const rows = await api(
+        `blog_posts?select=title,slug,excerpt,content,cover_image_url,published_at,created_at&status=eq.published&slug=eq.${encodeURIComponent(slug)}&limit=1`
+      );
 
-    if (error || !data) {
-      root.innerHTML = '<p class="blog-empty">Post not found.</p>';
-      return;
+      const data = rows && rows[0];
+      if (!data) {
+        root.innerHTML = '<p class="blog-empty">Post not found.</p>';
+        return;
+      }
+
+      document.title = `${data.title} | Anogeissus Blog`;
+
+      root.innerHTML = `
+        <article class="blog-post-article">
+          <h1>${escapeHtml(data.title)}</h1>
+          <div class="blog-date">${formatDate(data.published_at || data.created_at)}</div>
+          ${data.cover_image_url ? `<img class="blog-post-cover" src="${escapeHtml(data.cover_image_url)}" alt="${escapeHtml(data.title)}">` : ''}
+          ${data.excerpt ? `<p class="blog-post-excerpt">${escapeHtml(data.excerpt)}</p>` : ''}
+          <div class="blog-post-content">${textToHtml(data.content)}</div>
+        </article>
+      `;
+    } catch (err) {
+      root.innerHTML = `<p class="blog-empty">Could not load post: ${escapeHtml(err.message || String(err))}</p>`;
     }
-
-    document.title = `${data.title} | Anogeissus Blog`;
-
-    root.innerHTML = `
-      <article class="blog-post-article">
-        <h1>${escapeHtml(data.title)}</h1>
-        <div class="blog-date">${formatDate(data.published_at || data.created_at)}</div>
-        ${data.cover_image_url ? `<img class="blog-post-cover" src="${escapeHtml(data.cover_image_url)}" alt="${escapeHtml(data.title)}">` : ''}
-        ${data.excerpt ? `<p class="blog-post-excerpt">${escapeHtml(data.excerpt)}</p>` : ''}
-        <div class="blog-post-content">${textToHtml(data.content)}</div>
-      </article>
-    `;
   }
 
   loadBlogList();
