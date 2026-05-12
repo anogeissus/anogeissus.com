@@ -51,6 +51,12 @@
     return blocks.map((b) => `<p>${escapeHtml(b).replace(/\n/g, '<br>')}</p>`).join('');
   }
 
+  function renderExpandedContent(post) {
+    const excerpt = post.excerpt ? `<p class="blog-post-excerpt">${escapeHtml(post.excerpt)}</p>` : '';
+    const content = post.content ? `<div class="blog-post-content">${textToHtml(post.content)}</div>` : '';
+    return `${excerpt}${content}`;
+  }
+
   async function api(pathAndQuery) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 12000);
@@ -85,7 +91,7 @@
 
     try {
       const data = await api(
-        "blog_posts?select=title,slug,excerpt,cover_image_url,published_at,created_at&status=eq.published&order=published_at.desc.nullslast,created_at.desc"
+        "blog_posts?select=title,slug,excerpt,content,cover_image_url,published_at,created_at&status=eq.published&order=published_at.desc.nullslast,created_at.desc"
       );
 
       if (!data || data.length === 0) {
@@ -93,15 +99,40 @@
         return;
       }
 
-      container.innerHTML = data.map((post) => `
-        <article class="blog-card">
-          ${post.cover_image_url ? `<a href="blog-post.html?slug=${encodeURIComponent(post.slug)}"><img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}"></a>` : ''}
-          <h2><a href="blog-post.html?slug=${encodeURIComponent(post.slug)}">${escapeHtml(post.title)}</a></h2>
+      container.innerHTML = data.map((post, idx) => `
+        <article class="blog-card" id="blog-card-${idx}">
+          ${post.cover_image_url ? `<img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}">` : ''}
+          <h2>${escapeHtml(post.title)}</h2>
           <div class="blog-date">${formatDate(post.published_at || post.created_at)}</div>
-          <p>${escapeHtml(post.excerpt || '')}</p>
-          <a class="blog-readmore" href="blog-post.html?slug=${encodeURIComponent(post.slug)}">Read more →</a>
+          <div class="blog-collapsed">${post.excerpt ? `<p>${escapeHtml(post.excerpt)}</p>` : ''}</div>
+          <div class="blog-expanded" style="display:none;">${renderExpandedContent(post)}</div>
+          <a class="blog-readmore" href="#" data-action="expand">Read more →</a>
+          <a class="blog-readmore" href="#" data-action="collapse" style="display:none;">Collapse ↑</a>
         </article>
       `).join('');
+
+      container.querySelectorAll('.blog-card').forEach((card) => {
+        const expand = card.querySelector('[data-action="expand"]');
+        const collapse = card.querySelector('[data-action="collapse"]');
+        const collapsed = card.querySelector('.blog-collapsed');
+        const expanded = card.querySelector('.blog-expanded');
+
+        expand.addEventListener('click', (e) => {
+          e.preventDefault();
+          collapsed.style.display = 'none';
+          expanded.style.display = '';
+          expand.style.display = 'none';
+          collapse.style.display = '';
+        });
+
+        collapse.addEventListener('click', (e) => {
+          e.preventDefault();
+          collapsed.style.display = '';
+          expanded.style.display = 'none';
+          expand.style.display = '';
+          collapse.style.display = 'none';
+        });
+      });
     } catch (err) {
       container.innerHTML = `<p class="blog-empty">Could not load posts: ${escapeHtml(err.message || String(err))}</p>`;
     }
