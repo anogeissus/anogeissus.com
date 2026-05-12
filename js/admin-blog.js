@@ -1,11 +1,8 @@
 (function () {
   const cfg = window.ANOGEISSUS_SUPABASE;
-  if (!cfg || cfg.url.includes('YOUR-PROJECT-REF')) {
-    console.error('Supabase config missing: js/supabase-config.js');
+  if (!cfg || !cfg.url || !cfg.anonKey || cfg.url.includes('YOUR-PROJECT-REF')) {
     return;
   }
-
-  const client = window.supabase.createClient(cfg.url, cfg.anonKey);
 
   const appCard = document.getElementById('app-card');
   const saveMsg = document.getElementById('save-msg');
@@ -14,6 +11,48 @@
   const signOutBtn = document.getElementById('signout-btn');
 
   let editingId = null;
+
+  function getSession() {
+    try {
+      return JSON.parse(localStorage.getItem('anogeissus_blog_session') || 'null');
+    } catch {
+      return null;
+    }
+  }
+
+  function clearSession() {
+    localStorage.removeItem('anogeissus_blog_session');
+  }
+
+  async function api(pathAndQuery, options = {}) {
+    const session = getSession();
+    if (!session || !session.access_token) {
+      window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
+      throw new Error('Not authenticated');
+    }
+
+    const res = await fetch(`${cfg.url}/rest/v1/${pathAndQuery}`, {
+      method: options.method || 'GET',
+      headers: {
+        apikey: cfg.anonKey,
+        Authorization: `Bearer ${session.access_token}`,
+        'Content-Type': 'application/json',
+        ...(options.headers || {})
+      },
+      body: options.body ? JSON.stringify(options.body) : undefined
+    });
+
+    const text = await res.text();
+    let data = null;
+    try { data = text ? JSON.parse(text) : null; } catch (_) {}
+
+    if (!res.ok) {
+      const msg = (data && (data.message || data.error_description || data.error || data.msg)) || `HTTP ${res.status}`;
+      throw new Error(msg);
+    }
+
+    return data;
+  }
 
   function show(el, visible) {
     if (el) el.style.display = visible ? '' : 'none';
@@ -38,27 +77,8 @@
 
   async function loadPosts() {
     postsTbody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
-
-    const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error('Request timeout while loading posts.')), 12000);
-    });
-
     try {
-      const result = await Promise.race([
-        client
-          .from('blog_posts')
-          .select('id, title, slug, status, published_at, created_at')
-          .order('created_at', { ascending: false }),
-        timeoutPromise
-      ]);
-
-      const { data, error } = result;
-
-      if (error) {
-        postsTbody.innerHTML = `<tr><td colspan="5">Could not load posts: ${error.message}</td></tr>`;
-        return;
-      }
-
+      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at&order=created_at.desc');
       if (!data || data.length === 0) {
         postsTbody.innerHTML = '<tr><td colspan="5">No posts yet.</td></tr>';
         return;
@@ -82,65 +102,52 @@
   }
 
   async function loadPostById(id) {
-    const { data, error } = await client
-      .from('blog_posts')
-      .select('*')
-      .eq('id', id)
-      .single();
+    try {
+      const rows = await api(`blog_posts?select=*&id=eq.${id}&limit=1`);
+      const data = rows && rows[0];
+      if (!data) return;
 
-    if (error || !data) return;
-
-    editingId = id;
-    document.getElementById('title').value = data.title || '';
-    document.getElementById('slug').value = data.slug || '';
-    document.getElementById('excerpt').value = data.excerpt || '';
-    document.getElementById('cover_image_url').value = data.cover_image_url || '';
-    document.getElementById('content').value = data.content || '';
-    document.getElementById('status').value = data.status || 'draft';
-    document.getElementById('published_at').value = data.published_at ? data.published_at.substring(0, 16) : '';
-    document.getElementById('save-btn').textContent = 'Update Post';
-    saveMsg.textContent = `Editing: ${data.title}`;
+      editingId = id;
+      document.getElementById('title').value = data.title || '';
+      document.getElementById('slug').value = data.slug || '';
+      document.getElementById('excerpt').value = data.excerpt || '';
+      document.getElementById('cover_image_url').value = data.cover_image_url || '';
+      document.getElementById('content').value = data.content || '';
+      document.getElementById('status').value = data.status || 'draft';
+      document.getElementById('published_at').value = data.published_at ? data.published_at.substring(0, 16) : '';
+      document.getElementById('save-btn').textContent = 'Update Post';
+      saveMsg.textContent = `Editing: ${data.title}`;
+    } catch (err) {
+      saveMsg.textContent = 'Load failed: ' + (err.message || String(err));
+    }
   }
 
   async function deletePost(id) {
     if (!window.confirm('Delete this post?')) return;
-
-    const { error } = await client.from('blog_posts').delete().eq('id', id);
-    if (error) {
-      saveMsg.textContent = error.message;
-      return;
+    try {
+      await api(`blog_posts?id=eq.${id}`, { method: 'DELETE' });
+      saveMsg.textContent = 'Post deleted.';
+      if (editingId === id) resetForm();
+      await loadPosts();
+    } catch (err) {
+      saveMsg.textContent = err.message || String(err);
     }
-
-    saveMsg.textContent = 'Post deleted.';
-    if (editingId === id) resetForm();
-    await loadPosts();
   }
 
   async function ensureAuthUI() {
-    try {
-      const { data: sessionData, error } = await client.auth.getSession();
-      if (error) throw error;
-      const session = sessionData && sessionData.session;
-
-      if (!session) {
-        window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
-        return;
-      }
-
-      show(appCard, true);
-      await loadPosts();
-    } catch (err) {
-      show(appCard, true);
-      if (saveMsg) {
-        saveMsg.textContent = 'Session check failed: ' + (err && err.message ? err.message : String(err));
-      }
+    const session = getSession();
+    if (!session || !session.access_token) {
+      window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
+      return;
     }
+
+    show(appCard, true);
+    await loadPosts();
   }
 
-  signOutBtn.addEventListener('click', async () => {
-    await client.auth.signOut();
-    resetForm();
-    await ensureAuthUI();
+  signOutBtn.addEventListener('click', () => {
+    clearSession();
+    window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
   });
 
   postForm.addEventListener('submit', async (e) => {
@@ -168,23 +175,25 @@
 
       saveMsg.textContent = editingId ? 'Updating...' : 'Creating...';
 
-      let result;
       if (editingId) {
-        result = await client.from('blog_posts').update(payload).eq('id', editingId);
+        await api(`blog_posts?id=eq.${editingId}`, {
+          method: 'PATCH',
+          headers: { Prefer: 'return=representation' },
+          body: payload
+        });
       } else {
-        result = await client.from('blog_posts').insert(payload);
-      }
-
-      if (result.error) {
-        saveMsg.textContent = result.error.message;
-        return;
+        await api('blog_posts', {
+          method: 'POST',
+          headers: { Prefer: 'return=representation' },
+          body: payload
+        });
       }
 
       saveMsg.textContent = editingId ? 'Post updated.' : 'Post created.';
       resetForm();
       await loadPosts();
     } catch (err) {
-      saveMsg.textContent = 'Create failed: ' + (err && err.message ? err.message : String(err));
+      saveMsg.textContent = 'Create failed: ' + (err.message || String(err));
     }
   });
 
@@ -206,14 +215,6 @@
 
     if (editId) await loadPostById(editId);
     if (delId) await deletePost(delId);
-  });
-
-  client.auth.onAuthStateChange(async (event) => {
-    if (event === 'SIGNED_OUT') {
-      window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
-      return;
-    }
-    await ensureAuthUI();
   });
 
   ensureAuthUI();

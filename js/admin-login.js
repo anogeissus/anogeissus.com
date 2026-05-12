@@ -1,20 +1,42 @@
 (function () {
   const cfg = window.ANOGEISSUS_SUPABASE;
-  if (!cfg || cfg.url.includes('YOUR-PROJECT-REF')) {
-    console.error('Supabase config missing: js/supabase-config.js');
+  if (!cfg || !cfg.url || !cfg.anonKey || cfg.url.includes('YOUR-PROJECT-REF')) {
     return;
   }
 
-  const client = window.supabase.createClient(cfg.url, cfg.anonKey);
   const form = document.getElementById('login-form');
   const msg = document.getElementById('auth-msg');
 
   const params = new URLSearchParams(window.location.search);
   const next = params.get('next') || '/admin-panel.html';
 
-  async function redirectIfLoggedIn() {
-    const { data } = await client.auth.getSession();
-    if (data.session) window.location.href = next;
+  function saveSession(session) {
+    localStorage.setItem('anogeissus_blog_session', JSON.stringify(session));
+  }
+
+  function getSession() {
+    try {
+      return JSON.parse(localStorage.getItem('anogeissus_blog_session') || 'null');
+    } catch {
+      return null;
+    }
+  }
+
+  async function checkSession() {
+    const s = getSession();
+    if (!s || !s.access_token) return;
+
+    try {
+      const res = await fetch(cfg.url + '/auth/v1/user', {
+        headers: {
+          apikey: cfg.anonKey,
+          Authorization: 'Bearer ' + s.access_token
+        }
+      });
+      if (res.ok) {
+        window.location.href = next;
+      }
+    } catch (_) {}
   }
 
   form.addEventListener('submit', async (e) => {
@@ -24,18 +46,28 @@
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 
-    const { error } = await client.auth.signInWithPassword({ email, password });
-    if (error) {
-      msg.textContent = error.message;
-      return;
+    try {
+      const res = await fetch(cfg.url + '/auth/v1/token?grant_type=password', {
+        method: 'POST',
+        headers: {
+          apikey: cfg.anonKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        msg.textContent = data.error_description || data.msg || data.error || 'Sign in failed';
+        return;
+      }
+
+      saveSession(data);
+      window.location.href = next;
+    } catch (err) {
+      msg.textContent = err.message || String(err);
     }
-
-    window.location.href = next;
   });
 
-  client.auth.onAuthStateChange((_event, session) => {
-    if (session) window.location.href = next;
-  });
-
-  redirectIfLoggedIn();
+  checkSession();
 })();
