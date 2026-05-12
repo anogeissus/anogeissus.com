@@ -29,7 +29,13 @@
   function formatDate(value) {
     if (!value) return '';
     const d = new Date(value);
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    return d.toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit'
+    });
   }
 
   function textToHtml(text) {
