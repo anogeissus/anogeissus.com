@@ -84,13 +84,21 @@
     document.getElementById('save-btn').textContent = 'Create Post';
   }
 
+  function sortRows(rows) {
+    return [...rows].sort((a, b) => {
+      const at = new Date(a.published_at || a.created_at || 0).getTime();
+      const bt = new Date(b.published_at || b.created_at || 0).getTime();
+      return bt - at;
+    });
+  }
+
   async function loadPosts() {
-    postsTbody.innerHTML = '<tr><td colspan="6">Loading…</td></tr>';
+    postsTbody.innerHTML = '<tr><td colspan="7">Loading…</td></tr>';
     try {
-      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at&order=published_at.desc.nullslast,created_at.desc');
-      currentRows = data || [];
+      const data = await api('blog_posts?select=id,title,slug,status,published_at,created_at');
+      currentRows = sortRows(data || []);
       if (!currentRows.length) {
-        postsTbody.innerHTML = '<tr><td colspan="6">No posts yet.</td></tr>';
+        postsTbody.innerHTML = '<tr><td colspan="7">No posts yet.</td></tr>';
         return;
       }
 
@@ -100,6 +108,7 @@
           <td>${p.slug}</td>
           <td>${p.status}</td>
           <td>${p.published_at ? new Date(p.published_at).toLocaleString() : '-'}</td>
+          <td>${p.created_at ? new Date(p.created_at).toLocaleString() : '-'}</td>
           <td>
             <button data-move="up" data-id="${p.id}" ${idx === 0 ? 'disabled' : ''}>↑</button>
             <button data-move="down" data-id="${p.id}" ${idx === currentRows.length - 1 ? 'disabled' : ''}>↓</button>
@@ -111,7 +120,7 @@
         </tr>
       `).join('');
     } catch (err) {
-      postsTbody.innerHTML = `<tr><td colspan="6">Could not load posts: ${err.message || String(err)}</td></tr>`;
+      postsTbody.innerHTML = `<tr><td colspan="7">Could not load posts: ${err.message || String(err)}</td></tr>`;
     }
   }
 
@@ -231,25 +240,19 @@
   async function movePost(id, direction) {
     const idx = currentRows.findIndex((r) => r.id === id);
     if (idx < 0) return;
-    const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
-    if (swapIdx < 0 || swapIdx >= currentRows.length) return;
+    const neighborIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (neighborIdx < 0 || neighborIdx >= currentRows.length) return;
 
-    const a = currentRows[idx];
-    const b = currentRows[swapIdx];
-
-    const aTime = a.published_at || a.created_at || new Date().toISOString();
-    const bTime = b.published_at || b.created_at || new Date().toISOString();
+    const target = currentRows[idx];
+    const neighbor = currentRows[neighborIdx];
+    const neighborTime = new Date(neighbor.published_at || neighbor.created_at || Date.now()).getTime();
+    const newTime = direction === 'up' ? neighborTime + 1000 : neighborTime - 1000;
 
     saveMsg.textContent = 'Reordering...';
-    await api(`blog_posts?id=eq.${a.id}`, {
+    await api(`blog_posts?id=eq.${target.id}`, {
       method: 'PATCH',
       headers: { Prefer: 'return=representation' },
-      body: { published_at: bTime }
-    });
-    await api(`blog_posts?id=eq.${b.id}`, {
-      method: 'PATCH',
-      headers: { Prefer: 'return=representation' },
-      body: { published_at: aTime }
+      body: { published_at: new Date(newTime).toISOString() }
     });
     saveMsg.textContent = 'Order updated.';
     await loadPosts();

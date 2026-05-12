@@ -85,21 +85,31 @@
     }
   }
 
+  function sortPosts(posts) {
+    return [...posts].sort((a, b) => {
+      const at = new Date(a.published_at || a.created_at || 0).getTime();
+      const bt = new Date(b.published_at || b.created_at || 0).getTime();
+      return bt - at;
+    });
+  }
+
   async function loadBlogList() {
     const container = document.getElementById('blog-list');
     if (!container) return;
 
     try {
       const data = await api(
-        "blog_posts?select=title,slug,excerpt,content,cover_image_url,published_at,created_at&status=eq.published&order=published_at.desc.nullslast,created_at.desc"
+        "blog_posts?select=title,slug,excerpt,content,cover_image_url,published_at,created_at&status=eq.published"
       );
 
-      if (!data || data.length === 0) {
+      const sorted = sortPosts(data || []);
+
+      if (!sorted.length) {
         container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
         return;
       }
 
-      container.innerHTML = data.map((post, idx) => `
+      container.innerHTML = sorted.map((post, idx) => `
         <article class="blog-card" id="blog-card-${idx}">
           ${post.cover_image_url ? `<img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}">` : ''}
           <h2>${escapeHtml(post.title)}</h2>
