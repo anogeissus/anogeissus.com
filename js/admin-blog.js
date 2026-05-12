@@ -64,9 +64,11 @@
     return (value || '')
       .toLowerCase()
       .trim()
+      .replace(/[._]+/g, '-')
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
-      .replace(/-+/g, '-');
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
   }
 
   function toDateTimeLocalValue(value) {
