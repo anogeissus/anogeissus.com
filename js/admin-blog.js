@@ -108,7 +108,7 @@
       const session = sessionData && sessionData.session;
 
       if (!session) {
-        window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-blog.html');
+        window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
         return;
       }
 
@@ -186,7 +186,7 @@
 
   client.auth.onAuthStateChange(async (event) => {
     if (event === 'SIGNED_OUT') {
-      window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-blog.html');
+      window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-panel.html');
       return;
     }
     await ensureAuthUI();

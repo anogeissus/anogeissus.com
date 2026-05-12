@@ -10,7 +10,7 @@
   const msg = document.getElementById('auth-msg');
 
   const params = new URLSearchParams(window.location.search);
-  const next = params.get('next') || '/admin-blog.html';
+  const next = params.get('next') || '/admin-panel.html';
 
   async function redirectIfLoggedIn() {
     const { data } = await client.auth.getSession();
