@@ -12,6 +12,7 @@
 
   let editingId = null;
   let currentRows = [];
+  let slugManuallyEdited = false;
 
   function getSession() {
     try {
@@ -78,6 +79,7 @@
 
   function resetForm() {
     editingId = null;
+    slugManuallyEdited = false;
     postForm.reset();
     document.getElementById('status').value = 'draft';
     document.getElementById('published_at').value = '';
@@ -133,6 +135,7 @@
       editingId = id;
       document.getElementById('title').value = data.title || '';
       document.getElementById('slug').value = data.slug || '';
+      slugManuallyEdited = true;
       document.getElementById('excerpt').value = data.excerpt || '';
       document.getElementById('cover_image_url').value = data.cover_image_url || '';
       document.getElementById('content').value = data.content || '';
@@ -227,9 +230,15 @@
 
   document.getElementById('title').addEventListener('input', () => {
     const slugEl = document.getElementById('slug');
-    if (!slugEl.value.trim()) {
+    if (!slugManuallyEdited) {
       slugEl.value = slugify(document.getElementById('title').value);
     }
+  });
+
+  document.getElementById('slug').addEventListener('input', () => {
+    const slugEl = document.getElementById('slug');
+    const auto = slugify(document.getElementById('title').value);
+    slugManuallyEdited = slugEl.value.trim() !== '' && slugEl.value !== auto;
   });
 
   document.getElementById('new-btn').addEventListener('click', () => {
