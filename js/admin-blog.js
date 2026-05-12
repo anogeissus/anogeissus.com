@@ -110,8 +110,8 @@
           <td>${p.published_at ? new Date(p.published_at).toLocaleString() : '-'}</td>
           <td>${p.created_at ? new Date(p.created_at).toLocaleString() : '-'}</td>
           <td>
-            <button data-move="left" data-id="${p.id}" ${idx === 0 ? 'disabled' : ''}>←</button>
-            <button data-move="right" data-id="${p.id}" ${idx === currentRows.length - 1 ? 'disabled' : ''}>→</button>
+            <button data-move="up" data-id="${p.id}" ${idx === 0 ? 'disabled' : ''}>↑</button>
+            <button data-move="down" data-id="${p.id}" ${idx === currentRows.length - 1 ? 'disabled' : ''}>↓</button>
           </td>
           <td>
             <button data-edit="${p.id}">Edit</button>
@@ -240,14 +240,14 @@
   async function movePost(id, direction) {
     const idx = currentRows.findIndex((r) => r.id === id);
     if (idx < 0) return;
-    const isLeft = direction === 'left';
-    const neighborIdx = isLeft ? idx - 1 : idx + 1;
+    const isUp = direction === 'up';
+    const neighborIdx = isUp ? idx - 1 : idx + 1;
     if (neighborIdx < 0 || neighborIdx >= currentRows.length) return;
 
     const target = currentRows[idx];
     const neighbor = currentRows[neighborIdx];
     const neighborTime = new Date(neighbor.published_at || neighbor.created_at || Date.now()).getTime();
-    const newTime = isLeft ? neighborTime + 1000 : neighborTime - 1000;
+    const newTime = isUp ? neighborTime + 1000 : neighborTime - 1000;
 
     saveMsg.textContent = 'Reordering...';
     await api(`blog_posts?id=eq.${target.id}`, {
