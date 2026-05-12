@@ -30,12 +30,13 @@
         }
 
         .legal-content {
-            max-width: 760px;
-            margin: 0 5vw 0 auto;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 24px;
-            border-radius: 12px;
-            backdrop-filter: blur(2px);
+            width: 620px;
+            max-width: calc(100vw - 32px);
+            margin: 0 3vw 0 auto;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            backdrop-filter: none;
         }
 
         .tutorial-video {
@@ -45,6 +46,7 @@
 
         @media (max-width: 900px) {
             .legal-content {
+                width: auto;
                 margin: 0 auto;
                 max-width: 92vw;
             }
