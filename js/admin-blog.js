@@ -102,16 +102,24 @@
   }
 
   async function ensureAuthUI() {
-    const { data: sessionData } = await client.auth.getSession();
-    const session = sessionData.session;
+    try {
+      const { data: sessionData, error } = await client.auth.getSession();
+      if (error) throw error;
+      const session = sessionData && sessionData.session;
 
-    if (!session) {
-      window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-blog.html');
-      return;
+      if (!session) {
+        window.location.href = '/admin-login.html?next=' + encodeURIComponent('/admin-blog.html');
+        return;
+      }
+
+      show(appCard, true);
+      await loadPosts();
+    } catch (err) {
+      show(appCard, true);
+      if (saveMsg) {
+        saveMsg.textContent = 'Session check failed: ' + (err && err.message ? err.message : String(err));
+      }
     }
-
-    show(appCard, true);
-    await loadPosts();
   }
 
   signOutBtn.addEventListener('click', async () => {
