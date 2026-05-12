@@ -954,6 +954,10 @@ footer .copyright {
     padding-top: 54px;
 }
 
+.blog-admin-page .legal-content {
+    max-width: 1100px;
+}
+
 .blog-admin-card {
     background: #f5f5f7;
     border-radius: 14px;
@@ -1006,6 +1010,9 @@ footer .copyright {
     padding: 6px 9px;
     min-width: 30px;
     font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .blog-admin-table button.danger {
