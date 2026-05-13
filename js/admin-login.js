@@ -8,7 +8,18 @@
   const msg = document.getElementById('auth-msg');
 
   const params = new URLSearchParams(window.location.search);
-  const next = params.get('next') || '/admin-panel.html';
+  const next = sanitizeNext(params.get('next'));
+
+  function sanitizeNext(candidate) {
+    if (!candidate || typeof candidate !== 'string') return '/admin-panel.html';
+    if (!candidate.startsWith('/')) return '/admin-panel.html';
+    if (candidate.startsWith('//')) return '/admin-panel.html';
+
+    const lower = candidate.toLowerCase();
+    if (lower.startsWith('/javascript:') || lower.startsWith('/data:')) return '/admin-panel.html';
+
+    return candidate;
+  }
 
   function saveSession(session) {
     localStorage.setItem('anogeissus_blog_session', JSON.stringify(session));
