@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Anogeissus</title>
     <meta name="description" content="Contact Anogeissus — questions, support, bug reports, or feature requests for ApolloOne and Camera RawX.">
+    <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
+
     <link rel="canonical" href="https://anogeissus.com/contact.html">
     <link rel="stylesheet" href="css/style.css?v=22">
     <style>
@@ -204,6 +207,8 @@
         <form class="contact-form" id="contact-form" action="https://api.anogeissus.com/contact" method="POST">
             <!-- Honeypot — hidden, bots fill it in -->
             <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+            <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="form_started_at" id="form-started-at">
 
             <input type="text" name="name" placeholder="Name *" required>
             <input type="email" name="email" placeholder="Email *" required>
@@ -319,6 +324,10 @@
 
     var form = document.getElementById('contact-form');
     var success = document.getElementById('form-success');
+    var minSubmitMs = 4000;
+    var blockedPhrases = ['xevil', '2captcha', 'anti-captcha', 'rucaptcha', 'deathbycaptcha', 'turnstile'];
+    var startedInput = document.getElementById('form-started-at');
+    if (startedInput) startedInput.value = String(Date.now());
     if (form && success) {
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -326,6 +335,20 @@
             btn.disabled = true;
             btn.textContent = 'Sending…';
             try {
+                var startedAt = Number((startedInput && startedInput.value) || '0');
+                if (!startedAt || (Date.now() - startedAt) < minSubmitMs) {
+                    throw new Error('too_fast');
+                }
+
+                var bodyText = [
+                    (form.querySelector('input[name="name"]') || {}).value || '',
+                    (form.querySelector('input[name="subject"]') || {}).value || '',
+                    (form.querySelector('textarea[name="message"]') || {}).value || ''
+                ].join(' ').toLowerCase();
+                if (blockedPhrases.some(function (p) { return bodyText.indexOf(p) !== -1; })) {
+                    throw new Error('blocked_content');
+                }
+
                 var captchaToken = form.querySelector('input[name="cf-turnstile-response"]');
                 var tokenValue = (captchaToken && captchaToken.value) ? captchaToken.value : '';
                 if (!tokenValue) {
@@ -348,6 +371,10 @@
                 btn.textContent = 'Send';
                 if (err && err.message === 'captcha_required') {
                     alert('Please complete the captcha before sending.');
+                } else if (err && err.message === 'too_fast') {
+                    alert('Please wait a few seconds before submitting the form.');
+                } else if (err && err.message === 'blocked_content') {
+                    alert('Your message was blocked by spam protection. If this is a mistake, email support@anogeissus.com directly.');
                 } else {
                     alert('Sorry, something went wrong. Please email support@anogeissus.com directly.');
                 }
