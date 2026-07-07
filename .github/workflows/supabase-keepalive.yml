@@ -1,0 +1,24 @@
+name: Supabase keep-alive
+
+# Supabase pauses free-tier projects after 7 days without database activity.
+# A read query counts as activity, so ping the blog_posts table twice a week.
+# The anon key is already public (shipped in js/supabase-config.js).
+
+on:
+  schedule:
+    - cron: '17 3 * * 1,4' # 03:17 UTC every Monday and Thursday
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query blog_posts
+        run: |
+          ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcnJ0ZnpiZWRxamZjZHlzcHhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1OTg5MDMsImV4cCI6MjA5NDE3NDkwM30.SNiqhB1Hn1QQKn85DUtZM8_8NyZvvb71vgNxVVPasNY"
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' \
+            'https://rjrrtfzbedqjfcdyspxg.supabase.co/rest/v1/blog_posts?select=slug&limit=1' \
+            -H "apikey: ${ANON_KEY}" \
+            -H "Authorization: Bearer ${ANON_KEY}")
+          echo "Supabase responded with HTTP ${STATUS}"
+          test "${STATUS}" = "200"
