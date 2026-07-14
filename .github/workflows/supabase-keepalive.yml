@@ -1,7 +1,11 @@
 name: Supabase keep-alive
 
-# Supabase pauses free-tier projects after 7 days without database activity.
-# A read query counts as activity, so ping the blog_posts table twice a week.
+# Supabase pauses free-tier projects after 7 days without database activity,
+# and REST READS turned out not to count: the scheduled read pings returned
+# 200 on 2026-07-09 and 07-13, and the project was still paused on 07-14.
+# The ping is now a real WRITE — public.keepalive_ping(), a SECURITY DEFINER
+# function (one-time SQL in "anogeissus Setup"/blog-setup.md §6) that stamps
+# the one-row public.keepalive table. blog_posts is never touched.
 # The anon key is already public (shipped in js/supabase-config.js).
 
 on:
@@ -13,12 +17,16 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Query blog_posts
+      - name: Call keepalive_ping
         run: |
           ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcnJ0ZnpiZWRxamZjZHlzcHhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1OTg5MDMsImV4cCI6MjA5NDE3NDkwM30.SNiqhB1Hn1QQKn85DUtZM8_8NyZvvb71vgNxVVPasNY"
-          STATUS=$(curl -s -o /dev/null -w '%{http_code}' \
-            'https://rjrrtfzbedqjfcdyspxg.supabase.co/rest/v1/blog_posts?select=slug&limit=1' \
+          RESPONSE=$(curl -s -w '\n%{http_code}' \
+            -X POST 'https://rjrrtfzbedqjfcdyspxg.supabase.co/rest/v1/rpc/keepalive_ping' \
             -H "apikey: ${ANON_KEY}" \
-            -H "Authorization: Bearer ${ANON_KEY}")
-          echo "Supabase responded with HTTP ${STATUS}"
+            -H "Authorization: Bearer ${ANON_KEY}" \
+            -H 'Content-Type: application/json' \
+            -d '{}')
+          STATUS=$(printf '%s' "$RESPONSE" | tail -n 1)
+          BODY=$(printf '%s' "$RESPONSE" | sed '$d')
+          echo "Supabase responded with HTTP ${STATUS}: ${BODY}"
           test "${STATUS}" = "200"
