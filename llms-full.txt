@@ -1,6 +1,6 @@
 # Anogeissus — Full Product Information
 
-> Professional photography tools for Mac. Built by photographers, for photographers.
+> Professional photography tools for Mac, iPad, and iPhone. Built by photographers, for photographers.
 
 Website: https://anogeissus.com
 Company: Anogeissus Limited
@@ -48,6 +48,29 @@ https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
 - ★★★★★ "This app made me realize how much I hate catalog-based apps. Great work. Money well spent."
 - ★★★★★ "Feature rich, very fast, actively developed. I emailed the developer with a minor problem and within days a new release was on the App Store."
 - ★★★★★ "Works perfect as a photo & video viewer — even with a clicker for projector slideshows."
+
+---
+
+## ApolloOne GO — RAW Culling for iPad and iPhone (Coming Soon)
+
+ApolloOne GO brings the ApolloOne workflow to iPad and iPhone: a fast RAW viewer and culling tool for reviewing a shoot in the field. Browse any folder, external drive, or SD card straight from the Files app — no import, no library — or plug the camera itself into the USB-C port and browse the shoot right off the body. Powered by the same RawBridge™ engine as ApolloOne and Camera RawX.
+
+### Key Features
+- Camera connection: plug the camera body into USB-C and browse it directly — works even with cameras that never mount as a drive (uses the same protocol as Photos import). Fast thumbnail grid, full-screen embedded JPEG previews with pinch-zoom and AF point/face overlays, then import only the selected keepers at USB speed
+- Full-resolution RAW viewing (folder and SD-card sources) with HDR display on HDR-capable devices, or embedded JPEG previews for maximum speed
+- Camera AF point and face overlays to verify focus at a glance
+- Pick/Reject culling with two thumb-sized buttons, mirrored placement for left-handed use, optional on-screen navigation buttons
+- Culling decisions written as standard macOS Finder color tags (green = pick, red = reject) that sync through iCloud Drive — ApolloOne and Finder on the Mac see them automatically, with no export step, database, or sidecar files
+- Contact sheet with three zoom levels, sorting, and All/Picked/Rejected filters
+- Batch operations: pick, reject, or unmark ranges of images; copy, move, or delete
+- AirDrop original RAW files, RAW with JPG/HIF pairs, or lightweight embedded JPEGs
+- Applies Quick Edit adjustments made in ApolloOne on display
+- Opens RAW formats iPadOS can't handle on its own via RawBridge™
+
+### Availability
+Coming soon to the App Store for iPad and iPhone. One-time purchase, no subscription.
+
+Details: https://anogeissus.com/apolloone-go.html
 
 ---
 

@@ -1,12 +1,13 @@
 # Anogeissus
 
-> Professional photography tools for Mac.
+> Professional photography tools for Mac, iPad, and iPhone.
 
-Anogeissus builds macOS software for photographers. Our products include ApolloOne (the fastest image viewer on the planet, now with full HDR support) and Camera RawX (Quick Look and Finder thumbnails for unsupported RAW files using the RawBridge™ engine, with HDR Quick Look on EDR-capable Macs).
+Anogeissus builds software for photographers. Our products include ApolloOne (the fastest image viewer on the planet, now with full HDR support), ApolloOne GO (a RAW viewer and culling tool for iPad and iPhone, coming soon), and Camera RawX (Quick Look and Finder thumbnails for unsupported RAW files using the RawBridge™ engine, with HDR Quick Look on EDR-capable Macs).
 
 ## Products
 
 - [ApolloOne](https://anogeissus.com/apolloone.html): The fastest photo and video viewer for macOS, now with full HDR support. Browse at up to 32 fps, view full-resolution HDR RAW files, display AF points, edit EXIF metadata, GPS maps with Street View, Quick Edit for non-destructive adjustments, HDR Visualizer with four false-color EV bands, and HDR export to AVIF, JPEG XL, gain-map JPEG/HEIC, and OpenEXR. Available as Free, Standard, and Pro editions.
+- [ApolloOne GO](https://anogeissus.com/apolloone-go.html): A fast RAW viewer and culling tool for iPad and iPhone — coming soon to the App Store. Browse folders, drives, and SD cards in place through the Files app, or connect the camera itself over USB-C and browse it directly (embedded JPEG previews) and import only your picks. Full-resolution RAW viewing with HDR display and AF point overlays, thumb-friendly Pick/Reject culling, contact sheet with batch operations, and AirDrop export. Culling decisions are written as standard Finder color tags that sync through iCloud, so ApolloOne on the Mac picks them up automatically. Powered by the RawBridge™ engine. One-time purchase, no subscription.
 - [Camera RawX](https://anogeissus.com/camerarawx.html): A macOS extension that adds Quick Look previews and Finder thumbnails for camera RAW files that macOS doesn't support natively, with HDR Quick Look on EDR-capable Macs. Powered by the RawBridge™ engine. Supports Canon, Nikon, Fujifilm, Sony, Olympus, Panasonic, Samsung, Sigma Foveon, and Adobe DNG.
 - [KatClaw](https://katclaw.ai): The native macOS companion for OpenClaw. AI automation with security-first design.
 
