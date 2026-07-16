@@ -114,6 +114,7 @@ Website: https://katclaw.ai
 
 ## Support
 
+- Support hub: https://anogeissus.com/support.html
 - ApolloOne FAQ: https://anogeissus.com/apolloone-faq.html
 - Camera RawX FAQ: https://anogeissus.com/camera-rawx-faq.html
 - Recovery: https://anogeissus.com/recovery.html

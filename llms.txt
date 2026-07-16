@@ -16,7 +16,7 @@ Anogeissus builds software for photographers. Our products include ApolloOne (th
 - Homepage: https://anogeissus.com
 - ApolloOne on App Store: https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
 - Camera RawX on App Store: https://apps.apple.com/app/camera-rawx/id6587554858?mt=12
-- Support: https://anogeissus.com/apolloone-faq.html
+- Support: https://anogeissus.com/support.html
 - Contact: https://anogeissus.com/contact.html
 - Privacy: https://anogeissus.com/privacy.html
 - Terms: https://anogeissus.com/termsofuse.html

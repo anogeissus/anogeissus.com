@@ -62,19 +62,9 @@
     </button>
     <div class="nav-links" id="nav-links">
         <a href="/apolloone.html">ApolloOne</a>
+        <a href="/apolloone-go.html">ApolloOne GO</a>
         <a href="/camerarawx.html">Camera RawX</a>
-        <div class="nav-dropdown">
-            <a href="#" class="nav-dropdown-toggle">Support ▾</a>
-            <div class="nav-dropdown-content">
-                <h5>ApolloOne</h5>
-                <a href="/apolloone-faq.html">FAQ</a>
-                <a href="/recovery.html">Recovery</a>
-                <a href="/tutorials.html">Tutorials</a>
-                <a href="/download-apolloone-user-script.html">Download script</a>
-                <h5>Camera RawX</h5>
-                <a href="/camera-rawx-faq.html">FAQ</a>
-            </div>
-        </div>
+        <a href="/support.html">Support</a>
         <a href="/blog.html">Blog</a>
     </div>
     <div class="nav-overlay" id="nav-overlay"></div>
@@ -92,12 +82,13 @@
         <div class="footer-col">
             <h4>Products</h4>
             <a href="/apolloone.html">ApolloOne</a>
+            <a href="/apolloone-go.html">ApolloOne GO</a>
             <a href="/camerarawx.html">Camera RawX</a>
             <a href="https://katclaw.ai">KatClaw</a>
         </div>
         <div class="footer-col">
             <h4>Resources</h4>
-            <a href="/apolloone-faq.html">Support</a>
+            <a href="/support.html">Support</a>
             <a href="/blog.html">Blog</a>
         </div>
         <div class="footer-col">
@@ -132,25 +123,8 @@
     overlay.addEventListener('click', close);
 
     navLinks.querySelectorAll('a').forEach(function (a) {
-        if (!a.classList.contains('nav-dropdown-toggle')) {
-            a.addEventListener('click', close);
-        }
+        a.addEventListener('click', close);
     });
-
-    var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
-    var dropdown = document.querySelector('.nav-dropdown');
-    if (dropdownToggle && dropdown) {
-        dropdownToggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            dropdown.classList.toggle('open');
-        });
-        document.addEventListener('click', function (e) {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('open');
-            }
-        });
-    }
 })();
 </script>
 </body>
