@@ -57,6 +57,11 @@
             margin-top: 10px;
             line-height: 1.6;
         }
+        .hdr-demo-credit {
+            font-size: 13px;
+            color: #86868b;
+            margin-top: 14px;
+        }
         /* Capability detection: assume SDR, let an HDR display override. */
         .dr-hdr { display: none; }
         .dr-sdr { display: block; }
@@ -152,25 +157,26 @@
         <h2>See it for yourself</h2>
 
         <div class="hdr-callout">
-            <span class="dr-hdr"><strong>Your display is reporting high dynamic range.</strong> The comparison below should show a real difference — the HDR version's highlights will extend visibly brighter than the page's white background.</span>
-            <span class="dr-sdr"><strong>Your display or browser is reporting standard dynamic range.</strong> The two images below will look nearly identical, and that is the point of this article rather than a contradiction of it: the information exists in the file, but this screen cannot show it to you. On an XDR MacBook Pro or a recent iPhone, in Safari or Chrome, the second image gains about four stops of highlight range. Firefox does not yet render HDR images on any display.</span>
+            <span class="dr-hdr"><strong>Your display is reporting high dynamic range.</strong> The comparisons below should show a real difference — in each pair, the HDR version's highlights will extend visibly brighter than the page's white background.</span>
+            <span class="dr-sdr"><strong>Your display or browser is reporting standard dynamic range.</strong> Each pair below will look nearly identical, and that is the point of this article rather than a contradiction of it: the information exists in the file, but this screen cannot show it to you. On an XDR MacBook Pro or a recent iPhone, in Safari or Chrome, the HDR half of each pair gains about four stops of highlight range. Firefox does not yet render HDR images on any display.</span>
         </div>
 
         <div class="hdr-demo">
             <div class="hdr-demo-pair">
                 <div class="hdr-demo-figure">
                     <a href="images/store-signs-sdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/store-signs-sdr.jpg" width="3120" height="2080" alt="Illuminated store signs, conventional SDR export — the brightest signs are clipped to flat white.">
+                        <img src="images/store-signs-sdr.jpg" width="3120" height="2080" alt="Illuminated shop signs at dusk, conventional SDR export — the neon reads as flat colour rather than as light.">
                     </a>
-                    <p class="hdr-demo-caption"><strong>SDR.</strong> Highlights clipped to white. This is what a conventional JPEG export preserves. Click for full size.</p>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> The signs are all there and nothing looks broken. But an SDR export has nowhere above white to put a light source, so the neon gets pulled down into the same range as the wall behind it. It reads as coloured paint. Click for full size.</p>
                 </div>
                 <div class="hdr-demo-figure">
                     <a href="images/store-signs-hdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/store-signs-hdr.jpg" width="3120" height="2080" alt="The same RAW file exported as a gain-map JPEG — colour and detail survive in the illuminated signs.">
+                        <img src="images/store-signs-hdr.jpg" width="3120" height="2080" alt="The same RAW file exported as a gain-map JPEG — the neon sits above white and reads as genuinely lit.">
                     </a>
-                    <p class="hdr-demo-caption"><strong>HDR.</strong> The same RAW file, same processing, exported as a gain-map JPEG. Colour and detail survive where the SDR version has only white. Click for full size.</p>
+                    <p class="hdr-demo-caption"><strong>HDR.</strong> Same RAW file, same processing, exported as a gain-map JPEG. The neon is allowed to sit above white, where it was in the world, and the signs read as light sources instead of as pigment. Click for full size.</p>
                 </div>
             </div>
+            <p class="hdr-demo-credit">Fujifilm X-H2S, XF 10-24mm F4 R OIS.</p>
         </div>
 
         <p>Night scenes make the point hardest, because almost everything worth seeing is a light source.</p>
@@ -190,7 +196,10 @@
                     <p class="hdr-demo-caption"><strong>HDR.</strong> The bulbs keep their colour and separate from one another, because they are allowed to sit above white instead of being pushed down onto it. Click for full size.</p>
                 </div>
             </div>
+            <p class="hdr-demo-credit">Sony A7R V, FE 50mm F1.2 GM. Photograph &copy; David Redfearn.</p>
         </div>
+
+        <p>Those two frames came off a Fujifilm and a Sony, and it makes no difference. The extra range is not a feature either manufacturer added — it is what the sensor recorded, sitting in the RAW file, waiting on an export format willing to carry it. Every camera in this class has been capturing it for years.</p>
 
         <h2>"But you can't print it"</h2>
 
