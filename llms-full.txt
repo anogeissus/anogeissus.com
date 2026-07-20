@@ -37,7 +37,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 - **Pro**: Adds Split View, batch resize/convert, HEIC export, card import, RegEx search, and more
 
 ### System Requirements
-- macOS 11 Big Sur and above
+- macOS 12 Monterey and above
 - Apple Silicon or Intel Macs
 
 ### App Store
