@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Only Using Half Your RAW File — What True HDR Really Means | Anogeissus</title>
+    <meta name="description" content="There is as much as 4 stops of information above SDR white in a typical RAW file, and a traditional export throws all of it away. What true HDR actually means, why HEIF/HLG was the wrong turn, and why cameras should write JPEG with a gain map.">
+    <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
+
+    <!-- DRAFT: unlisted while the demo images are being finalised.
+         Remove this line to publish. -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="canonical" href="https://anogeissus.com/what-is-true-hdr.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://anogeissus.com/what-is-true-hdr.html">
+    <meta property="og:title" content="You're Only Using Half Your RAW File">
+    <meta property="og:description" content="As much as 4 stops of highlight information sits in every RAW file, and a traditional export throws all of it away. What true HDR actually means — and what cameras should be writing instead.">
+    <meta property="og:image" content="https://anogeissus.com/images/apolloone-icon.png">
+    <meta property="og:site_name" content="Anogeissus">
+
+    <link rel="stylesheet" href="css/style.css?v=22">
+
+    <style>
+        /* Article-specific: HDR capability messaging + demo placeholders */
+        .hdr-callout {
+            border-left: 3px solid #0066cc;
+            padding: 14px 18px;
+            margin: 28px 0;
+            background: rgba(0, 102, 204, 0.06);
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .hdr-demo {
+            margin: 32px 0;
+        }
+        /* Stacked, not side-by-side: at article width a 3:2 frame in a half-column
+           is too small to read highlight detail, which is the whole point here. */
+        .hdr-demo-pair {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+        .hdr-demo-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .hdr-demo-caption {
+            font-size: 14px;
+            color: #6e6e73;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        /* Capability detection: assume SDR, let an HDR display override. */
+        .dr-hdr { display: none; }
+        .dr-sdr { display: block; }
+        @media (dynamic-range: high) {
+            .dr-hdr { display: block; }
+            .dr-sdr { display: none; }
+        }
+        .article-lede {
+            font-size: 19px;
+            line-height: 1.65;
+            color: #1d1d1f;
+        }
+        /* The site's legal-page type scale (h1 22 / h2 20 / body 16) was built for
+           short policy pages with no lede. On a long article it collapses: h2 ends up
+           only 1px above the 19px lede, so headings stop reading as headings. Restore
+           real steps — 28 / 22 / 19 / 16. Scoped to this page only. */
+        .legal-content h1 {
+            font-size: 28px;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .legal-content h2 {
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        .article-deck {
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #6e6e73;
+            margin: 0 0 30px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="apolloone.html">ApolloOne</a>
+        <a href="apolloone-go.html">ApolloOne GO</a>
+        <a href="camerarawx.html">Camera RawX</a>
+        <a href="support.html">Support</a>
+        <a href="/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+
+        <h1>You're Only Using Half Your RAW File</h1>
+        <p class="article-deck">“On highlight headroom, HDR displays, and the file format that is holding photography back”</p>
+
+        <p class="article-lede">Every photographer has learned to pull up shadows. It is the first thing anyone does with a RAW file: drag the shadow slider right, watch detail appear out of the murk, feel good about how much the sensor captured.</p>
+
+        <p class="article-lede">Almost nobody looks the other way.</p>
+
+        <p>There is as much as <strong>4 stops of information above SDR white</strong> in a typical RAW file — real colour, real detail, real gradation — and a traditional export throws every bit of it away. Not compresses it. Throws it away. Those specular highlights on water, the sun flaring off glass, the inside of a sunlit cloud, the neon sign at dusk: your sensor recorded them. Your JPEG did not.</p>
+
+        <p>We call the result "blown highlights" and treat it as a fact of photography. It is not. It is a property of the file format we chose to save into.</p>
+
+        <h2>Why nobody noticed</h2>
+
+        <p>The blind spot has an honest origin. For thirty years the output was SDR — a print, or a screen that could show roughly six stops. When the destination cannot represent anything above diffuse white, there is nowhere to put those extra stops, so the entire imaging pipeline was built to discard them early and gracefully. Highlight roll-off, that gentle shoulder we all learned to love, is a <em>compression</em> strategy: it takes information you cannot display and squeezes it into a range you can.</p>
+
+        <p>That was the correct engineering decision. The constraint that justified it is gone.</p>
+
+        <p>The habit outlived it. We still expose to protect highlights we could now keep. We still evaluate images on displays that cannot show what we captured. We still export to a format designed around a limitation our hardware no longer has.</p>
+
+        <h2>The hardware already caught up</h2>
+
+        <p>This is what makes the argument urgent rather than theoretical. Every M-series MacBook Pro has an XDR display. Recent iPhones and iPads have HDR screens. You are not waiting for new hardware — you are probably reading this on it.</p>
+
+        <p>The displays arrived first, quietly, and the photographs never followed.</p>
+
+        <h2>What "true HDR" actually means</h2>
+
+        <p>The term needs rescuing, because it has meant three different things and two of them are not this.</p>
+
+        <p>It does not mean the tone-mapped look of 2012 — the grey skies, haloed edges and crunchy local contrast that gave "HDR" its bad name. That was an attempt to <em>cram</em> high dynamic range into a low dynamic range file, and it looked like it.</p>
+
+        <p>It does not mean an exposure blend, where you merge brackets to recover a scene one frame could not hold.</p>
+
+        <p>True HDR is simpler and less dramatic: the scene's actual range, delivered to a display that can actually show it. No tricks, no local contrast games. A highlight that was four stops brighter than white in the world is four stops brighter than white on your screen. It looks <em>normal</em> — which is precisely the point. It looks like the scene did.</p>
+
+        <h2>See it for yourself</h2>
+
+        <div class="hdr-callout">
+            <span class="dr-hdr"><strong>Your display is reporting high dynamic range.</strong> The comparison below should show a real difference — the HDR version's highlights will extend visibly brighter than the page's white background.</span>
+            <span class="dr-sdr"><strong>Your display or browser is reporting standard dynamic range.</strong> The two images below will look nearly identical, and that is the point of this article rather than a contradiction of it: the information exists in the file, but this screen cannot show it to you. On an XDR MacBook Pro or a recent iPhone, in Safari or Chrome, the right-hand image gains about four stops of highlight range. Firefox does not yet support gain-map HDR on any display.</span>
+        </div>
+
+        <div class="hdr-demo">
+            <div class="hdr-demo-pair">
+                <div class="hdr-demo-figure">
+                    <a href="images/hdr-demo-sdr.jpg" target="_blank" rel="noopener">
+                        <img src="images/hdr-demo-sdr.jpg" width="3120" height="2080" alt="Conventional SDR export — the brightest highlights are clipped to flat white.">
+                    </a>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> Highlights clipped to white. This is what a conventional JPEG export preserves. Click for full size.</p>
+                </div>
+                <div class="hdr-demo-figure">
+                    <a href="images/hdr-demo-hdr.jpg" target="_blank" rel="noopener">
+                        <img src="images/hdr-demo-hdr.jpg" width="3120" height="2080" alt="The same RAW file exported as a gain-map JPEG — colour and detail survive in the highlights.">
+                    </a>
+                    <p class="hdr-demo-caption"><strong>HDR.</strong> The same RAW file, same processing, exported as a gain-map JPEG. Colour and detail survive where the SDR version has only white. Click for full size.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>"But you can't print it"</h2>
+
+        <p>This is the strongest objection and it deserves a straight answer: correct. You cannot print an HDR image. Ink on paper has a contrast ratio, and it is not going up.</p>
+
+        <p>But look at where photographs are actually seen now. Sharing has moved to mobile, and mobile devices overwhelmingly have HDR displays. The photograph you post is far more likely to be viewed on an OLED phone held at arm's length than on any print. If you are optimising for the medium your audience actually uses, HDR is not a niche — it is the common case, and SDR is the compromise.</p>
+
+        <p>Print remains print. Nothing about shooting for HDR stops you making an SDR rendering for paper; that is a single export away. The reverse is not true. Save an SDR JPEG and those four stops are gone for good.</p>
+
+        <h2>Getting the bits to the viewer</h2>
+
+        <p>So how do those highlights reach someone else's screen? This is where the format question finally matters, and where the industry has partly gone the wrong way.</p>
+
+        <p><strong>HEIF with an HLG transfer function</strong> — the route several manufacturers took — has two failure modes. Outside Apple's ecosystem the file is often simply unopenable. And on an SDR screen it does not degrade to something correct; it degrades to something <em>wrong</em>, washed out and flat, because the viewer has no idea how to interpret the transfer function. A format that looks broken to half your audience is not a sharing format.</p>
+
+        <p><strong>JPEG with a gain map</strong> (standardised as ISO 21496-1) solves exactly this. The file is an ordinary JPEG plus a small auxiliary image describing, per pixel, how much brighter the HDR rendering should be. An SDR viewer sees a completely normal photograph and never knows the gain map is there. An HDR viewer applies it and sees the full range. One file, correct everywhere, no forked workflow.</p>
+
+        <p><strong>JPEG XL</strong> is the best long-term answer for <em>capture and archival</em> — small, full colour depth, HDR throughout, lossy like JPEG but at far higher quality per byte. It is the format RAW should eventually give way to. It is not, today, a delivery format: Safari decodes it natively, but Chrome still hides it behind a flag and Firefox does the same, so most of your audience cannot see a JXL file at all.</p>
+
+        <p>These are not competing choices. Gain-map JPEG solves sharing now. JPEG XL solves archival later.</p>
+
+        <h2>The camera is the last SDR link in the chain</h2>
+
+        <p>Think about where the dynamic range actually goes on a shoot today. Your eye sees a scene with enormous range. The sensor captures most of it. Then you compose that scene through an <em>SDR</em> electronic viewfinder, check it on an <em>SDR</em> rear screen, and save it to a file format that discards the top four stops — before finally viewing it on a display that could have shown you all of it.</p>
+
+        <p>Every link in that chain is capable except the ones inside the camera.</p>
+
+        <p>That is worth sitting with, because it reframes the problem. This is not a missing feature. It is the only remaining bottleneck in an otherwise HDR-ready pipeline: Apple ships XDR displays on every MacBook Pro, plenty of third-party monitors do HDR, the operating systems support it, phones already shoot it, and the viewing and editing software exists. The camera industry is the last holdout in a chain that everyone else has already upgraded.</p>
+
+        <h2>Why this is in the manufacturers' interest</h2>
+
+        <p>Here is the part camera makers should care about most, and it is commercial rather than technical.</p>
+
+        <p>Mirrorless bodies and sensors have become extraordinary. Autofocus is uncanny, stabilisation is remarkable, resolution and burst rates long ago passed what most photographers need. Which raises an awkward question for anyone selling cameras: <strong>what is left to put on the box?</strong> The spec race that drove upgrades for a decade is largely finished. Existing owners look at a new body and struggle to justify it.</p>
+
+        <p>HDR is the answer sitting in plain sight. It is not an incremental half-stop of something; it is a visibly different photograph, on hardware customers already own. And it is a genuine product generation:</p>
+
+        <ul>
+            <li><strong>HDR electronic viewfinders</strong> — compose the scene with the range you are actually capturing, instead of a flattened preview of it.</li>
+            <li><strong>HDR rear LCDs</strong> — judge a shot in the field and see the real highlights, not a clipped approximation.</li>
+            <li><strong>HDR file output</strong> — a file that carries the range home and displays correctly when it gets there.</li>
+        </ul>
+
+        <p>That is a headline feature set, not a firmware footnote. It gives a manufacturer something to demonstrate on a shop floor that a customer can see in a single glance — which is exactly what the current generation of bodies lacks.</p>
+
+        <h2>What that means concretely</h2>
+
+        <p><strong>Now: write JPEG + gain map in-camera.</strong> The usual objection is pipeline cost — can a camera really do this at burst rates? It already can. A gain map is a ratio between the SDR and HDR renderings, quantised to 8 bits and downsampled; it rides the JPEG encoder every camera already has, rather than requiring a new codec block. And the proof is in everyone's pocket: phones have been producing gain-map HDR stills at capture rate for years, on a fraction of the silicon a flagship camera carries. If a phone can do it in a burst, so can a camera with a dedicated image processor.</p>
+
+        <p><strong>Next: HDR EVFs and rear screens.</strong> This one is real hardware and real cost, and it is also the part that sells bodies. Shooting HDR through an SDR viewfinder is like mixing a record on headphones that cannot reproduce bass — you can do it, but you are working blind in exactly the region you are trying to control.</p>
+
+        <p>Sony has come furthest here, and the A7R VI is worth studying precisely because it gets so much right. It is the first camera with an HDR-capable viewfinder — 10-bit HLG, DCI-P3, roughly three times brighter than its predecessor — and it captures HDR stills. That is the correct direction, and it makes the rest of the industry's position harder to defend.</p>
+
+        <p>It also shows how easily you can build half a workflow. The viewfinder shows you high dynamic range, but the histogram beside it still measures SDR — so you can <em>see</em> the highlight range and have no way to <em>measure</em> it, which is the one thing a histogram exists to do. And the file it writes is HEIF with the HLG curve: the format that will not open reliably off an Apple device and degrades wrongly rather than gracefully. Sony solved the expensive part, the display, and then handed the result to the delivery format most likely to strand it.</p>
+
+        <p>Note what that first gap is not: a hardware limitation. The panel already renders high dynamic range; teaching the histogram to measure it is a firmware question. The most valuable HDR feature Sony could ship next may cost nothing to manufacture.</p>
+
+        <p>That is not a criticism of a good camera so much as a description of the opportunity. The hardware is already arriving. What is missing is the rest of the chain around it — the metering that matches the viewfinder, and an output format that survives the trip to someone else's screen.</p>
+
+        <p><strong>Later: JPEG XL as the archival format.</strong> Here the engineering objection is real and worth stating honestly — software JXL encoding is slow, and doing it at capture rate plausibly requires dedicated hardware. That is a genuine ask with a genuine cost, and it will take a product cycle or three. It is still the right destination: small files, full colour depth, HDR throughout, in the role RAW occupies now.</p>
+
+        <p>The near-term request is the modest one. The bits are already in the file. The encoder is already in the camera. The displays are already in our hands. What is missing is a menu item.</p>
+
+        <p>It is 2026. Photography spent the better part of a decade with "HDR" meaning a garish, over-processed look, because that was the only way to hint at high dynamic range inside a low dynamic range file. That constraint is gone, the hardware is on desks and in pockets, and the real thing looks nothing like the parody. There is no good reason for the picture to still stop at SDR white.</p>
+
+        <h2>What you can do today</h2>
+
+        <p>You do not have to wait for any of this to see what your own files contain.</p>
+
+        <p>ApolloOne's <strong>HDR Visualizer</strong> was built for precisely this question. It overlays four false-colour bands on the image — cyan at +1 EV, blue at +2, purple at +3, magenta at +4 — so you can see exactly which highlights push past SDR white and by how much. Hover any pixel and the inspector reads out per-channel headroom to a tenth of a stop. Open a RAW file you shot last year and look at how much of it you have never seen.</p>
+
+        <p>When you want to share what you find, <a href="apolloone.html">ApolloOne</a> exports full HDR to AVIF or JPEG XL in PQ, and gain-map JPEG or HEIC that stay correct on SDR displays. <a href="camerarawx.html">Camera RawX</a> brings HDR previews to Quick Look for RAW files macOS cannot open on its own. And <a href="apolloone-go.html">ApolloOne GO</a> puts the same HDR rendering on an iPad or iPhone, so you can judge the real range of a shot in the field — on the kind of display you will probably end up sharing it on.</p>
+
+        <p>Every HDR image on this page was exported from ApolloOne as a gain-map JPEG. That is the whole argument in one file: it looks right on your phone, it looks right on your laptop, and if your screen can show you those four stops, it just did.</p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="apolloone.html">ApolloOne</a>
+            <a href="apolloone-go.html">ApolloOne GO</a>
+            <a href="camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="support.html">Support</a>
+            <a href="/blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
