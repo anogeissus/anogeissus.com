@@ -221,6 +221,10 @@
 
         <p><strong>JPEG with a gain map</strong> (standardised as ISO 21496-1) solves exactly this. The file is an ordinary JPEG plus a small auxiliary image describing, per pixel, how much brighter the HDR rendering should be. An SDR viewer sees a completely normal photograph and never knows the gain map is there. An HDR viewer applies it and sees the full range. One file, correct everywhere, no forked workflow.</p>
 
+        <p>There is a wrinkle worth knowing before you rely on that. The gain map itself is standardised; the <em>signalling</em> that tells a viewer to go looking for one is not, yet. Apple writes its own marker and hangs the gain map's parameters off the auxiliary image. Google's Ultra HDR — which is what Chrome reads — expects a version tag and a container directory on the main image instead. Apple's software reads both conventions. Chrome, today, reads only Google's.</p>
+
+        <p>So a gain-map JPEG written on a Mac can open as a flat SDR photograph in Chrome, on a display perfectly capable of showing the HDR version, with nothing on screen to suggest anything was withheld. The file is not broken and the standard is not at fault — the reader simply was not told where to look. A file can carry both conventions at once, and then every current viewer handles it correctly, but that has to be done on purpose. If you are choosing an exporter, it is worth asking whether it does.</p>
+
         <p><strong>JPEG XL</strong> is the best long-term answer for <em>capture and archival</em> — small, full colour depth, HDR throughout, lossy like JPEG but at far higher quality per byte. It is the format RAW should eventually give way to. It is not, today, a delivery format: Safari decodes it natively, but Chrome still hides it behind a flag and Firefox does the same, so most of your audience cannot see a JXL file at all.</p>
 
         <p>These are not competing choices. Gain-map JPEG solves sharing now. JPEG XL solves archival later.</p>
@@ -275,7 +279,7 @@
 
         <p>ApolloOne's <strong>HDR Visualizer</strong> was built for precisely this question. It overlays four false-colour bands on the image — cyan at +1 EV, blue at +2, purple at +3, magenta at +4 — so you can see exactly which highlights push past SDR white and by how much. Hover any pixel and the inspector reads out per-channel headroom to a tenth of a stop. Open a RAW file you shot last year and look at how much of it you have never seen.</p>
 
-        <p>When you want to share what you find, <a href="apolloone.html">ApolloOne</a> exports full HDR to AVIF or JPEG XL in PQ, and gain-map JPEG or HEIC that stay correct on SDR displays. <a href="camerarawx.html">Camera RawX</a> brings HDR previews to Quick Look for RAW files macOS cannot open on its own. And <a href="apolloone-go.html">ApolloOne GO</a> puts the same HDR rendering on an iPad or iPhone, so you can judge the real range of a shot in the field — on the kind of display you will probably end up sharing it on.</p>
+        <p>When you want to share what you find, <a href="apolloone.html">ApolloOne</a> exports full HDR to AVIF or JPEG XL in PQ, and gain-map JPEG or HEIC that stay correct on SDR displays. Its gain-map JPEGs carry both signalling conventions, so the same file opens as HDR in Chrome and in Safari rather than only one of them. <a href="camerarawx.html">Camera RawX</a> brings HDR previews to Quick Look for RAW files macOS cannot open on its own. And <a href="apolloone-go.html">ApolloOne GO</a> puts the same HDR rendering on an iPad or iPhone, so you can judge the real range of a shot in the field — on the kind of display you will probably end up sharing it on.</p>
 
         <p>Every HDR image on this page was exported from ApolloOne as a gain-map JPEG. That is the whole argument in one file: it looks right on your phone, it looks right on your laptop, and if your screen can show you those four stops, it just did.</p>
 
