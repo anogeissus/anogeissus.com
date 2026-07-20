@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HDR browser test matrix</title>
+<title>HDR browser test</title>
 <meta name="robots" content="noindex, nofollow">
 
 <style>
@@ -46,138 +46,75 @@
     footer { margin-top: 60px; font-size: 13px; color: #6e6e73; }
 </style>
 
-<h1>HDR browser test matrix</h1>
-<p class="sub">Which HDR image formats actually render as HDR, per browser and per device.</p>
+<h1>HDR browser test</h1>
+<p class="sub">Does your browser display HDR photographs? Two HDR formats and an SDR control.</p>
 
 <div class="note">
-    <strong>How to read this page.</strong> On an HDR-capable screen, images 1&ndash;3 should show highlights
-    noticeably brighter than this page's white background. Image 4 is the SDR control and should never
-    do that. If an image looks flat or dull next to the control, that browser is showing you its SDR base
-    and ignoring the HDR data.
+    <strong>How to read this page.</strong> On an HDR-capable screen the first two images should show
+    highlights noticeably brighter than this page's white background. The third is an ordinary JPEG and
+    should never do that &mdash; judge the other two against it.
     <br><br>
-    Note which of 1&ndash;3 pop on each browser and device. That combination identifies what is supported.
+    If an image looks flat next to the control, your browser is showing its SDR base and ignoring the
+    HDR data. That isn't a fault in the file: a gain-map JPEG is designed to degrade to a correct
+    photograph exactly this way.
 </div>
 
 <div class="test">
-    <span class="tag">Test 1 &middot; Google Ultra HDR</span>
-    <h2>Gain-map JPEG, Ultra HDR signalling</h2>
+    <span class="tag">1 &middot; Gain-map JPEG</span>
+    <h2>JPEG with an ISO gain map and Ultra HDR signalling</h2>
     <p class="cap">
-        Shot on a Pixel 6 Pro. Carries <code>hdrgm</code> and <code>Container:Directory</code> on the
-        primary image &mdash; the signalling Chrome's gain-map path looks for. Declared headroom 6.31&times;.
-        This is the known-good reference: if gain-map JPEG works at all in a browser, it works here.
-    </p>
-    <img src="images/hdrtest-ultrahdr.jpg" alt="Ultra HDR gain-map JPEG test image">
-</div>
-
-<div class="test">
-    <span class="tag">Test 2 &middot; Apple gain map</span>
-    <h2>Gain-map JPEG, as ApolloOne writes it</h2>
-    <p class="cap">
-        Same scene as the SDR control. Written by CoreImage on macOS 15: carries Apple's <code>AROT</code>
-        segment, and the gain-map metadata sits on the sub-image rather than the primary. No
-        <code>Container:Directory</code>. Declared headroom 8.20&times;.
-    </p>
-    <img src="images/hdrtest-arot.jpg" alt="Apple AROT gain-map JPEG test image">
-</div>
-
-<div class="test">
-    <span class="tag">Test 3 &middot; AVIF PQ</span>
-    <h2>HDR AVIF, no gain map</h2>
-    <p class="cap">
-        Same scene again, exported as AVIF with BT.2020 primaries and the PQ transfer function, signalled
-        through CICP. No gain map and no SDR fallback &mdash; a browser either understands PQ or it doesn't.
-    </p>
-    <img src="images/hdr-demo-hdr.avif" alt="HDR AVIF PQ test image">
-</div>
-
-<div class="test">
-    <span class="tag">Test 5 &middot; Fix candidate A</span>
-    <h2>ApolloOne file with Ultra HDR signalling added</h2>
-    <p class="cap">
-        Test 2's file with <code>hdrgm:Version</code> and a <code>Container:Directory</code> injected into
-        the primary image. Nothing re-encoded &mdash; same pixels, same gain map, same
-        <code>AROT</code> segment, byte-identical size. Only the signalling changed.
-        Still declares headroom 8.20&times;.
+        Exported from <strong>ApolloOne 4.7.0</strong>. An ordinary JPEG carrying a gain map that describes,
+        per pixel, how much brighter the HDR rendering should be, plus the signalling every current reader
+        needs: Apple's <code>AROT</code> segment, the ISO gain map, and <code>hdrgm</code> with a
+        <code>Container:Directory</code> on the primary image for Chrome. Declared headroom 8.20&times;.
         <br><br>
-        <strong>If this pops in Chrome where test 2 didn't, signalling was the whole problem.</strong>
+        One file that shows HDR where it can and a correct SDR photograph where it can't.
     </p>
-    <img src="images/hdrtest-ao-ultrahdr.jpg" alt="ApolloOne gain-map JPEG with Ultra HDR signalling added">
+    <img src="images/hdrtest-ao-ultrahdr.jpg" alt="Gain-map JPEG exported from ApolloOne 4.7.0">
 </div>
 
 <div class="test">
-    <span class="tag">Test 6 &middot; Fix candidate B</span>
-    <h2>Same, plus headroom capped to 3&times;</h2>
+    <span class="tag">2 &middot; AVIF</span>
+    <h2>HDR AVIF in PQ &mdash; for reference</h2>
     <p class="cap">
-        Test 5 with the declared headroom brought down from 8.20&times; to 3&times;, which lifts the SDR base
-        roughly half a stop. That base is what Safari on Sequoia, Firefox, and every SDR screen actually
-        show, so it has to look like a decent photograph on its own.
-        <br><br>
-        <strong>Compare against test 4 on a screen showing SDR &mdash; this one should sit much closer to
-        it than test 2 does.</strong>
+        The same frame exported as AVIF with BT.2020 primaries and the PQ transfer function, signalled
+        through CICP. No gain map and no SDR fallback, so a browser either understands PQ or it doesn't.
+        Included as a second opinion: where both render, they should look close.
     </p>
-    <img src="images/hdrtest-ao-ultrahdr-cap3.jpg" alt="ApolloOne gain-map JPEG with Ultra HDR signalling and capped headroom">
+    <img src="images/hdr-demo-hdr.avif" alt="HDR AVIF in PQ, same frame">
 </div>
 
 <div class="test">
-    <span class="tag">Test 7 &middot; Fix candidate C</span>
-    <h2>Real SDR rendering as the base, full headroom kept</h2>
-    <p class="cap">
-        Instead of deriving the SDR base by compressing the HDR master, this uses test 4 &mdash; the
-        proper SDR export &mdash; as the base, with the gain map carrying the difference up to the master.
-        Full 8.20&times; headroom retained, Ultra HDR signalling present.
-        <br><br>
-        The base here is pixel-for-pixel the SDR export, so an SDR viewer sees a correctly rendered
-        photograph rather than a brightened flat one.
-        <strong>On a screen showing SDR this should look like test 4, not washed out; on Chrome and
-        iPhone it should be as bright as test 5.</strong>
-    </p>
-    <img src="images/hdrtest-ao-realbase.jpg" alt="ApolloOne gain-map JPEG built on a real SDR rendering">
-</div>
-
-<div class="test">
-    <span class="tag">Test 8 &middot; Fix candidate D</span>
-    <h2>Tone-mapped base lifted through a soft shoulder</h2>
-    <p class="cap">
-        Test 7 failed because the SDR export clips about 10% of the frame to flat white, and a gain map
-        multiplying flat white gives blown highlights rather than recovered detail. This keeps the
-        tone-mapped base &mdash; which holds gradation all the way up &mdash; and lifts it through a curve
-        that approaches white without ever reaching it. Clipping measures 0.000%.
-        <br><br>
-        Profile now sits on top of the Google reference: base level 0.29 against its 0.30, and 8.1% of
-        pixels above white at 2&times; headroom against its 9.7%.
-        <strong>This is the candidate. It should look like a normal photograph on SDR and full HDR in
-        Chrome and on iPhone, with no blown highlights anywhere.</strong>
-    </p>
-    <img src="images/hdrtest-ao-shoulder.jpg" alt="ApolloOne gain-map JPEG with a soft-shoulder SDR base">
-</div>
-
-<div class="test">
-    <span class="tag">Test 4 &middot; SDR control</span>
+    <span class="tag">3 &middot; SDR control</span>
     <h2>Ordinary JPEG</h2>
     <p class="cap">
-        Plain sRGB, no HDR data of any kind. This is the baseline &mdash; judge the three above against it.
+        Plain sRGB, no HDR data of any kind. The baseline.
     </p>
     <img src="images/hdr-demo-sdr.jpg" alt="SDR control image">
 </div>
 
 <div class="test">
-    <h2>What each outcome means</h2>
+    <h2>What the result means</h2>
     <table>
-        <tr><th>Result</th><th>Reading</th></tr>
-        <tr><td>1 and 2 both bright</td><td>Browser handles gain-map JPEG in both flavours. Nothing to fix.</td></tr>
-        <tr><td>1 bright, 2 flat</td><td>Browser wants Ultra HDR signalling. ApolloOne needs to add it.</td></tr>
-        <tr><td>1 and 2 flat, 3 bright</td><td>Browser does PQ but not gain maps. AVIF is the delivery route.</td></tr>
-        <tr><td>All flat</td><td>No web HDR on this browser or device, whatever the file says.</td></tr>
-        <tr><td>5 bright where 2 was flat</td><td>Signalling confirmed as the fix. Ship it in ApolloOne.</td></tr>
-        <tr><td>6 closer to 4 than 2 is</td><td>Headroom cap confirmed as the fix for the SDR fallback.</td></tr>
+        <tr><th>What you see</th><th>Reading</th></tr>
+        <tr><td>1 and 2 both brighter than 3</td><td>Your browser handles both HDR formats.</td></tr>
+        <tr><td>2 brighter, 1 flat</td><td>PQ works, gain maps don't. Unusual &mdash; worth telling us.</td></tr>
+        <tr><td>1 brighter, 2 flat</td><td>Gain maps work, PQ doesn't.</td></tr>
+        <tr><td>All three alike</td><td>No web HDR on this browser or display, whatever the file says.</td></tr>
     </table>
+    <p class="cap">
+        Known behaviour as of July 2026: Safari on macOS 15 Sequoia renders no HDR images in web pages at
+        all; macOS 26 and iOS/iPadOS 26 render gain-map JPEG correctly. Chrome renders both formats, but
+        only reads gain maps carrying the Ultra HDR signalling. Firefox renders neither.
+        <br><br>
+        How close 1 and 2 look depends on your display's headroom rather than on the formats. The further
+        a display falls short of the file's declared range, the more the gain-map version trades highlight
+        detail for brightness.
+    </p>
 </div>
 
 <footer>
-    Test 1 &copy; Mishaal Rahman, gain map extraction by Dylan Raga, used under
-    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, from the
-    <a href="https://github.com/MishaalRahmanGH/Ultra_HDR_Samples">Ultra HDR Samples</a> repository.
-    Tests 2&ndash;4 exported from ApolloOne 4.7.0.
+    All images exported from ApolloOne 4.7.0 from a single Fujifilm X-H2S raw file, same processing.
     <br><br>
     Unlisted diagnostic page &mdash; not indexed, not linked from the site.
 </footer>
