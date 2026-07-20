@@ -119,6 +119,22 @@
 </div>
 
 <div class="test">
+    <span class="tag">Test 7 &middot; Fix candidate C</span>
+    <h2>Real SDR rendering as the base, full headroom kept</h2>
+    <p class="cap">
+        Instead of deriving the SDR base by compressing the HDR master, this uses test 4 &mdash; the
+        proper SDR export &mdash; as the base, with the gain map carrying the difference up to the master.
+        Full 8.20&times; headroom retained, Ultra HDR signalling present.
+        <br><br>
+        The base here is pixel-for-pixel the SDR export, so an SDR viewer sees a correctly rendered
+        photograph rather than a brightened flat one.
+        <strong>On a screen showing SDR this should look like test 4, not washed out; on Chrome and
+        iPhone it should be as bright as test 5.</strong>
+    </p>
+    <img src="images/hdrtest-ao-realbase.jpg" alt="ApolloOne gain-map JPEG built on a real SDR rendering">
+</div>
+
+<div class="test">
     <span class="tag">Test 4 &middot; SDR control</span>
     <h2>Ordinary JPEG</h2>
     <p class="cap">
