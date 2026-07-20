@@ -100,10 +100,12 @@
     <h2>What the result means</h2>
     <table>
         <tr><th>What you see</th><th>Reading</th></tr>
-        <tr><td>1 and 2 both brighter than 3</td><td>Your browser handles both HDR formats.</td></tr>
-        <tr><td>2 brighter, 1 flat</td><td>PQ works, gain maps don't. Unusual &mdash; worth telling us.</td></tr>
+        <tr><td>1 and 2 both brighter than 3</td><td>Your browser handles both HDR formats. Nothing to do.</td></tr>
+        <tr><td>All three alike</td><td>No HDR is reaching you. On a Mac this is usually the macOS version
+            rather than the browser or the screen &mdash; see below.</td></tr>
+        <tr><td>2 brighter, 1 flat</td><td>PQ works, gain maps don't. Older Chrome, or a browser that
+            hasn't adopted gain maps.</td></tr>
         <tr><td>1 brighter, 2 flat</td><td>Gain maps work, PQ doesn't.</td></tr>
-        <tr><td>All three alike</td><td>No web HDR on this browser or display, whatever the file says.</td></tr>
     </table>
     <p class="cap">
         How close 1 and 2 look depends on your display's headroom rather than on the formats. The further
