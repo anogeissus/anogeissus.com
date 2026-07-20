@@ -91,6 +91,34 @@
 </div>
 
 <div class="test">
+    <span class="tag">Test 5 &middot; Fix candidate A</span>
+    <h2>ApolloOne file with Ultra HDR signalling added</h2>
+    <p class="cap">
+        Test 2's file with <code>hdrgm:Version</code> and a <code>Container:Directory</code> injected into
+        the primary image. Nothing re-encoded &mdash; same pixels, same gain map, same
+        <code>AROT</code> segment, byte-identical size. Only the signalling changed.
+        Still declares headroom 8.20&times;.
+        <br><br>
+        <strong>If this pops in Chrome where test 2 didn't, signalling was the whole problem.</strong>
+    </p>
+    <img src="images/hdrtest-ao-ultrahdr.jpg" alt="ApolloOne gain-map JPEG with Ultra HDR signalling added">
+</div>
+
+<div class="test">
+    <span class="tag">Test 6 &middot; Fix candidate B</span>
+    <h2>Same, plus headroom capped to 3&times;</h2>
+    <p class="cap">
+        Test 5 with the declared headroom brought down from 8.20&times; to 3&times;, which lifts the SDR base
+        roughly half a stop. That base is what Safari on Sequoia, Firefox, and every SDR screen actually
+        show, so it has to look like a decent photograph on its own.
+        <br><br>
+        <strong>Compare against test 4 on a screen showing SDR &mdash; this one should sit much closer to
+        it than test 2 does.</strong>
+    </p>
+    <img src="images/hdrtest-ao-ultrahdr-cap3.jpg" alt="ApolloOne gain-map JPEG with Ultra HDR signalling and capped headroom">
+</div>
+
+<div class="test">
     <span class="tag">Test 4 &middot; SDR control</span>
     <h2>Ordinary JPEG</h2>
     <p class="cap">
@@ -107,6 +135,8 @@
         <tr><td>1 bright, 2 flat</td><td>Browser wants Ultra HDR signalling. ApolloOne needs to add it.</td></tr>
         <tr><td>1 and 2 flat, 3 bright</td><td>Browser does PQ but not gain maps. AVIF is the delivery route.</td></tr>
         <tr><td>All flat</td><td>No web HDR on this browser or device, whatever the file says.</td></tr>
+        <tr><td>5 bright where 2 was flat</td><td>Signalling confirmed as the fix. Ship it in ApolloOne.</td></tr>
+        <tr><td>6 closer to 4 than 2 is</td><td>Headroom cap confirmed as the fix for the SDR fallback.</td></tr>
     </table>
 </div>
 
