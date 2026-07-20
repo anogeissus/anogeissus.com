@@ -57,6 +57,9 @@
     If an image looks flat next to the control, your browser is showing its SDR base and ignoring the
     HDR data. That isn't a fault in the file: a gain-map JPEG is designed to degrade to a correct
     photograph exactly this way.
+    <br><br>
+    On a Mac, the usual cause is the macOS version rather than the browser or the screen &mdash; see
+    <a href="#macos">what your macOS version decides</a> below.
 </div>
 
 <div class="test">
@@ -103,13 +106,37 @@
         <tr><td>All three alike</td><td>No web HDR on this browser or display, whatever the file says.</td></tr>
     </table>
     <p class="cap">
-        Known behaviour as of July 2026: Safari on macOS 15 Sequoia renders no HDR images in web pages at
-        all; macOS 26 and iOS/iPadOS 26 render gain-map JPEG correctly. Chrome renders both formats, but
-        only reads gain maps carrying the Ultra HDR signalling. Firefox renders neither.
-        <br><br>
         How close 1 and 2 look depends on your display's headroom rather than on the formats. The further
         a display falls short of the file's declared range, the more the gain-map version trades highlight
         detail for brightness.
+    </p>
+</div>
+
+<div class="test" id="macos">
+    <h2>On a Mac, your macOS version decides this</h2>
+
+    <p>If all three images looked alike on a Mac with an HDR-capable screen, the most likely reason is the
+    operating system rather than the browser or the display.</p>
+
+    <table>
+        <tr><th>&nbsp;</th><th>Safari</th><th>Chrome</th></tr>
+        <tr><td>macOS 15 Sequoia</td><td>no HDR at all</td><td>HDR works</td></tr>
+        <tr><td>macOS 26 Tahoe and later</td><td>HDR works</td><td>HDR works</td></tr>
+        <tr><td>iOS / iPadOS 26</td><td>HDR works</td><td>&mdash;</td></tr>
+    </table>
+
+    <p>Safari on Sequoia does not render HDR photographs in a web page at all &mdash; not gain-map JPEG,
+    not AVIF, no matter how capable the display. It shows the SDR version and gives no indication there
+    was anything more in the file. Tahoe fixed this, and every release since has kept it.</p>
+
+    <p><strong>If you care about seeing photographs as they were made, this is a good reason to move to
+    Tahoe.</strong> The HDR images on this page, and increasingly across the web, are carrying detail your
+    current Safari is discarding before it reaches your eyes.</p>
+
+    <p class="cap">
+        Staying on Sequoia for now? Chrome renders HDR correctly there, so you can see what you are
+        missing without upgrading anything. On iPhone and iPad the current releases handle HDR properly and
+        nothing needs changing. Firefox does not yet render HDR images on any platform.
     </p>
 </div>
 
