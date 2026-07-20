@@ -135,6 +135,23 @@
 </div>
 
 <div class="test">
+    <span class="tag">Test 8 &middot; Fix candidate D</span>
+    <h2>Tone-mapped base lifted through a soft shoulder</h2>
+    <p class="cap">
+        Test 7 failed because the SDR export clips about 10% of the frame to flat white, and a gain map
+        multiplying flat white gives blown highlights rather than recovered detail. This keeps the
+        tone-mapped base &mdash; which holds gradation all the way up &mdash; and lifts it through a curve
+        that approaches white without ever reaching it. Clipping measures 0.000%.
+        <br><br>
+        Profile now sits on top of the Google reference: base level 0.29 against its 0.30, and 8.1% of
+        pixels above white at 2&times; headroom against its 9.7%.
+        <strong>This is the candidate. It should look like a normal photograph on SDR and full HDR in
+        Chrome and on iPhone, with no blown highlights anywhere.</strong>
+    </p>
+    <img src="images/hdrtest-ao-shoulder.jpg" alt="ApolloOne gain-map JPEG with a soft-shoulder SDR base">
+</div>
+
+<div class="test">
     <span class="tag">Test 4 &middot; SDR control</span>
     <h2>Ordinary JPEG</h2>
     <p class="cap">
