@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Camera RawX 2.5.0"
+date: 2026-05-12 18:05:00 +0000
+summary: "Enhanced HDR RAW rendering. Improved camera support."
+---
+<ul>
+      <li>Hasselblad X2D II 100C support — Quick Look previews and thumbnails now render 3FR files from the X2D II 100C body via Apple&#39;s native RAW decoder (macOS Sonoma or later required).</li>
+      <li>Unified Quick Look rendering on every display — a custom filmic tone curve and hue-masked sky/sunset chroma enhancement now run on both EDR-capable and standard displays, so Quick Look previews match ApolloOne&#39;s on-canvas look regardless of HDR mode. Visibly richer skies, sunsets, and clouds.</li>
+      <li>Enhanced HDR Quick Look rendering — adaptive tone mapping measures each image&#39;s actual highlight peak and calibrates to your display&#39;s current HDR headroom, for faithful highlight detail on every EDR-capable Mac.</li>
+      <li>Updated Shadow &amp; Highlight filter to match ApolloOne 4.5.0 (smoother lift across mid-shadows on dense foliage; highlight knee preserves blue-sky brightness during recovery).</li>
+      <li>Refined HDR Quick Look tone mapping — caps the source headroom at the panel&#39;s potential headroom, preventing midtone dimming on EDR-constrained displays (Studio Display) when previewing high-peak files.</li>
+      <li>Quick Look filmic chain ships in a neutral configuration. Users wanting Highlight Contrast, Sky Enhancer, or Sunset Enhancer tuning can edit RAW files in ApolloOne, where these adjustments live as Quick Edit sliders.</li>
+      </ul>

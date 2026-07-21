@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | Anogeissus Blog</title>
+  <meta name="description" content="{{ page.summary | escape }}">
+    <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
+
+  <link rel="canonical" href="https://anogeissus.com{{ page.url }}">
+  <link rel="stylesheet" href="/css/style.css?v=23">
+  <style>.blog-backlink a{color:inherit;text-decoration:none;opacity:.7}.blog-backlink a:hover{opacity:1}</style>
+</head>
+<body>
+<nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Home</a>
+    <a href="/apolloone.html">ApolloOne</a>
+    <a href="/camerarawx.html">Camera RawX</a>
+    <a href="/support.html">Support</a>
+    <a href="/blog.html">Blog</a>
+  </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page blog-page">
+  <div class="legal-content">
+    <p class="blog-backlink"><a href="/blog.html">← All posts</a></p>
+    <article class="blog-post-article">
+      <h1>{{ page.title }}</h1>
+      <div class="blog-date">{{ page.date | date: "%B %-d, %Y, %-I:%M %p" }}</div>
+      {% if page.cover_image_url %}<img class="blog-post-cover" src="{{ page.cover_image_url }}" alt="{{ page.title | escape }}">{% endif %}
+      {% if page.summary %}<p class="blog-post-excerpt">{{ page.summary | escape }}</p>{% endif %}
+      <div class="blog-post-content">{{ content }}</div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-columns">
+    <div class="footer-col"><h4>Products</h4><a href="/apolloone.html">ApolloOne</a><a href="/camerarawx.html">Camera RawX</a><a href="https://katclaw.ai">KatClaw</a></div>
+    <div class="footer-col"><h4>Resources</h4><a href="/blog.html">Blog</a><a href="/tutorials.html">Tutorials</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="/privacy.html">Privacy</a><a href="/termsofuse.html">Terms</a></div>
+  </div>
+  <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+  var h=document.getElementById('hamburger'),n=document.getElementById('nav-links'),o=document.getElementById('nav-overlay');
+  function t(){var x=h.classList.toggle('open');n.classList.toggle('open',x);o.classList.toggle('visible',x)}
+  function c(){h.classList.remove('open');n.classList.remove('open');o.classList.remove('visible')}
+  h.addEventListener('click',t);o.addEventListener('click',c);
+  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)});
+
+})();
+</script>
+</body>
+</html>

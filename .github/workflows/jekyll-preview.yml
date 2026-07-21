@@ -1,0 +1,23 @@
+# TEMPORARY — prototype-only. Builds the jekyll-blog branch with the same
+# builder GitHub Pages uses (github-pages gem) and uploads the result as an
+# artifact for local preview. Delete this file when the branch merges or dies.
+name: Jekyll preview build
+
+on:
+  push:
+    branches: [jekyll-blog]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site

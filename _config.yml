@@ -1,0 +1,7 @@
+# Jekyll config — the GitHub Pages legacy builder picks this up automatically.
+# Only the blog uses Jekyll features (_posts, _layouts, Liquid in blog.html and
+# sitemap.xml). Every other file has no front matter and passes through verbatim.
+title: Anogeissus
+url: "https://anogeissus.com"
+timezone: UTC
+permalink: /blog/:title/

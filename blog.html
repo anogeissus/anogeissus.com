@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,7 @@
 
   <link rel="canonical" href="https://anogeissus.com/blog.html">
   <link rel="stylesheet" href="css/style.css?v=23">
+  <style>.blog-card h2 a{color:inherit;text-decoration:none}</style>
 </head>
 <body>
 <nav>
@@ -29,7 +32,17 @@
     <h1>What we've been cooking</h1>
     <p class="legal-updated">Updates, release notes, and deep dives.</p>
     <div id="blog-list" class="blog-list">
-      <p class="blog-empty">Loading posts…</p>
+      {% for post in site.posts %}
+      <article class="blog-card" id="blog-card-{{ forloop.index0 }}">
+        {% if post.cover_image_url %}<img src="{{ post.cover_image_url }}" alt="{{ post.title | escape }}">{% endif %}
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <div class="blog-date">{{ post.date | date: "%B %-d, %Y, %-I:%M %p" }}</div>
+        <div class="blog-collapsed">{% if post.summary %}<p>{{ post.summary | escape }}</p>{% endif %}</div>
+        <div class="blog-expanded" style="display:none;">{% if post.summary %}<p class="blog-post-excerpt">{{ post.summary | escape }}</p>{% endif %}<div class="blog-post-content">{{ post.content }}</div></div>
+        <a class="blog-readmore" href="#" data-action="expand">Read more →</a>
+        <a class="blog-readmore" href="#" data-action="collapse" style="display:none;">Collapse ↑</a>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -51,9 +64,27 @@
   h.addEventListener('click',t);o.addEventListener('click',c);
   n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)});
 
+  document.querySelectorAll('.blog-card').forEach(function (card) {
+    var expand = card.querySelector('[data-action="expand"]');
+    var collapse = card.querySelector('[data-action="collapse"]');
+    var collapsed = card.querySelector('.blog-collapsed');
+    var expanded = card.querySelector('.blog-expanded');
+    expand.addEventListener('click', function (e) {
+      e.preventDefault();
+      collapsed.style.display = 'none';
+      expanded.style.display = '';
+      expand.style.display = 'none';
+      collapse.style.display = '';
+    });
+    collapse.addEventListener('click', function (e) {
+      e.preventDefault();
+      collapsed.style.display = '';
+      expanded.style.display = 'none';
+      expand.style.display = '';
+      collapse.style.display = 'none';
+    });
+  });
 })();
 </script>
-<script src="js/supabase-config.js"></script>
-<script src="js/blog.js?v=7"></script>
 </body>
 </html>
