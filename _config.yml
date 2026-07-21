@@ -4,4 +4,12 @@
 title: Anogeissus
 url: "https://anogeissus.com"
 timezone: UTC
-permalink: /blog/:title/
+
+# Permalink scoped to posts only — a global `permalink:` template also
+# relocates any PAGE with front matter (blog.html would move to /blog/).
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      permalink: /blog/:title/
