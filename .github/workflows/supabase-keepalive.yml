@@ -7,10 +7,14 @@ name: Supabase keep-alive
 # function (one-time SQL in "anogeissus Setup"/blog-setup.md §6) that stamps
 # the one-row public.keepalive table. blog_posts is never touched.
 # The anon key is already public (shipped in js/supabase-config.js).
+# Mon+Thu writes were still not enough — pause-warning email on 2026-07-21
+# despite verified 200s on 07-16 and 07-20. Supabase's bar is "sufficient
+# activity over the past week" (docs suggest a few requests per day), so the
+# ping now runs three times a day.
 
 on:
   schedule:
-    - cron: '17 3 * * 1,4' # 03:17 UTC every Monday and Thursday
+    - cron: '17 3,11,19 * * *' # 03:17, 11:17, 19:17 UTC daily
   workflow_dispatch:
 
 jobs:
