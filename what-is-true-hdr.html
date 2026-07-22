@@ -231,6 +231,16 @@
 
         <p>These are not competing choices. Gain-map JPEG solves sharing now. JPEG XL solves archival later.</p>
 
+        <h2>The apps haven't caught up with the browsers</h2>
+
+        <p>There is one more gap between you and your audience, and it is worth knowing exactly where it sits. The browsers have finished their half: since iOS 26, every browser on an iPhone renders gain-map HDR — they all share Apple's WebKit engine, so one engine change upgraded all of them at once — and desktop Chrome has done it since 2023. The apps photographs actually travel through are further behind.</p>
+
+        <p>The list of apps that will show your photograph in HDR today is short: Apple's Photos and Messages, Instagram and Threads — in feed posts, not Stories, and only when the upload keeps its original aspect ratio — Google Photos, and Lightroom. Facebook flattens photographs to SDR on upload, even though its HDR video passes. The chat apps mostly lose the gain map at the compression step: a default photo send in WhatsApp or Telegram re-encodes the image and the highlights go with it, though both deliver the file byte-for-byte intact if you send it as a document instead — whether the app at the other end then <em>displays</em> the HDR is a separate question. Signal re-encodes on every path, by design. And for a long tail of others — X, TikTok, Reddit, the mail apps, the cloud drives — nobody has published a test at all, which is itself a measure of how early it is.</p>
+
+        <p>The reason is structural rather than technical. iOS hands every app the SDR rendering by default; showing the HDR takes a deliberate request that each developer has to make. That is the whole story of why the web got there first — one engine change flipped every browser together, while the apps have to say yes one at a time.</p>
+
+        <p>None of this argues for waiting. A gain-map JPEG fails soft: wherever support is missing, your audience sees an ordinary, correct photograph — never a broken one — and the same file lights up as support arrives. The plumbing is moving too: libvips, the image library inside many websites' upload pipelines, learned to carry gain maps through a resize in late 2025. Each service still has to turn that on — the gain map rides the same switch most pipelines use to strip location data — but the excuse that the tooling could not do it is gone. "Uploads strip it" is a statement with a shelf life.</p>
+
         <h2>The camera is the last SDR link in the chain</h2>
 
         <p>Think about where the dynamic range actually goes on a shoot today. Your eye sees a scene with enormous range. The sensor captures most of it. Then you compose that scene through an <em>SDR</em> electronic viewfinder, check it on an <em>SDR</em> rear screen, and save it to a file format that discards the top four stops — before finally viewing it on a display that could have shown you all of it.</p>
