@@ -8,10 +8,6 @@
     <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
     <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
 
-    <!-- DRAFT: unlisted while the demo images are being finalized.
-         Remove this line to publish. -->
-    <meta name="robots" content="noindex, nofollow">
-
     <link rel="canonical" href="https://anogeissus.com/what-is-true-hdr.html">
 
     <!-- Open Graph -->
@@ -257,6 +253,10 @@
         <p>There is a wrinkle worth knowing before you rely on that. The gain map itself is standardized; the <em>signaling</em> that tells a viewer to go looking for one is not, yet. Apple writes its own marker and hangs the gain map's parameters off the auxiliary image. Google's Ultra HDR — which is what Chrome reads — expects a version tag and a container directory on the main image instead. Apple's software reads both conventions. Chrome, today, reads only Google's.</p>
 
         <p>So a gain-map JPEG written on a Mac can open as a flat SDR photograph in Chrome, on a display perfectly capable of showing the HDR version, with nothing on screen to suggest anything was withheld. The file is not broken and the standard is not at fault — the reader simply was not told where to look. A file can carry both conventions at once, and then every current viewer handles it correctly, but that has to be done on purpose. If you are choosing an exporter, it is worth asking whether it does.</p>
+
+        <p><strong>HEIC with a gain map</strong> — the file an iPhone writes by default — looks like the obvious refinement, and the instinct behind it is sound: the same SDR-plus-gain-map idea, in the container Apple already uses, at roughly half the size of the equivalent JPEG. The saving is real, and unlike HLG the HDR mechanism is the right one. Inside Apple's ecosystem it is an excellent format.</p>
+
+        <p>What it cannot do is travel. HEIC is HEVC video compression inside a picture file, and HEVC comes with patent licensing that browser makers outside Apple have declined to buy: Chrome and Firefox have never opened a HEIC and show no sign of starting — not flattened, not washed out, simply unopenable — and a Windows machine needs a paid codec add-on before its own Photos app will look at one. Safari renders it, gain map and all. Nothing else does. So the size advantage buys a file that most of the web treats as a download rather than a photograph. The failure is different in kind from HLG's — right mechanism, wrong reach — but for sharing the result is the same. Half the bytes are no bargain when half your audience gets none of them.</p>
 
         <p><strong>JPEG XL</strong> is the best long-term answer for <em>capture and archival</em> — small, full color depth, HDR throughout, lossy like JPEG but at far higher quality per byte. It is the format RAW should eventually give way to. It is not, today, a delivery format: Safari decodes it natively, but Chrome still hides it behind a flag and Firefox does the same, so most of your audience cannot see a JXL file at all.</p>
 
