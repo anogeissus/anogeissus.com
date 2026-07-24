@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See What Your RAW Files Have Been Hiding | Anogeissus</title>
+    <meta name="description" content="Every RAW file you've shot holds up to four stops of real light your screen has never shown you. ApolloOne shows it — and saves it in a photo you can share.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
+
+    <link rel="canonical" href="https://anogeissus.com/what-your-raw-files-are-hiding.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://anogeissus.com/what-your-raw-files-are-hiding.html">
+    <meta property="og:title" content="See What Your RAW Files Have Been Hiding">
+    <meta property="og:description" content="Up to four stops of real light sits in every RAW file you've shot — and your screen has never shown it to you. ApolloOne shows it, and saves it in a photo you can share.">
+    <meta property="og:image" content="https://anogeissus.com/images/apolloone-icon.png">
+    <meta property="og:site_name" content="Anogeissus">
+
+    <link rel="stylesheet" href="css/style.css?v=22">
+
+    <style>
+        /* Shares the demo/callout conventions of what-is-true-hdr.html */
+        .hdr-callout {
+            border-left: 3px solid #0066cc;
+            padding: 14px 18px;
+            margin: 28px 0;
+            background: rgba(0, 102, 204, 0.06);
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .hdr-demo {
+            margin: 32px 0;
+        }
+        .hdr-demo-pair {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+        .hdr-demo-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .hdr-demo-caption {
+            font-size: 14px;
+            color: #6e6e73;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .hdr-demo-credit {
+            font-size: 13px;
+            color: #86868b;
+            margin-top: 14px;
+        }
+        .hdr-demo-placeholder {
+            border: 2px dashed #c7c7cc;
+            border-radius: 10px;
+            padding: 56px 24px;
+            text-align: center;
+            color: #86868b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        /* Capability detection: assume SDR, let an HDR display override. */
+        .dr-hdr { display: none; }
+        .dr-sdr { display: block; }
+        @media (dynamic-range: high) {
+            .dr-hdr { display: block; }
+            .dr-sdr { display: none; }
+        }
+        .article-lede {
+            font-size: 19px;
+            line-height: 1.65;
+            color: #1d1d1f;
+        }
+        .legal-content h1 {
+            font-size: 28px;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .legal-content h2 {
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        .article-deck {
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #6e6e73;
+            margin: 0 0 30px;
+        }
+        .steps-list li {
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="apolloone.html">ApolloOne</a>
+        <a href="apolloone-go.html">ApolloOne GO</a>
+        <a href="camerarawx.html">Camera RawX</a>
+        <a href="support.html">Support</a>
+        <a href="/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+
+        <h1>See What Your RAW Files Have Been Hiding</h1>
+        <p class="article-deck">Your camera captured it. Your exports have been throwing it away.</p>
+
+        <p class="article-lede">Every RAW file you've ever shot holds up to four stops of real light your screen has never shown you — the glow of neon, sunlight inside a cloud, the shimmer of a white dress. It isn't lost. It's in the file, waiting for a screen that can show it. You probably own one already.</p>
+
+        <div class="hdr-callout">
+            <span class="dr-hdr"><strong>Your display is reporting high dynamic range.</strong> In each pair below, the second image's highlights should extend visibly brighter than the white of this page.</span>
+            <span class="dr-sdr"><strong>Your display or browser is reporting standard dynamic range.</strong> The pairs below will look nearly identical here — the extra light is in the file, but this screen can't show it. Open this page on an M-series MacBook Pro or a recent iPhone, in Safari or Chrome.</span>
+            <br><br>
+            Not sure what your browser is doing? <a href="hdr-browser-test.html">Test it here</a>.
+        </div>
+
+        <h2>Lights that actually glow</h2>
+
+        <p>In every export you've ever made, nothing reads as switched on. A lit neon sign and the printed card beside it land on the same white, because SDR has nowhere brighter to put a light. In HDR the lamps and the neon rise above white and glow in their own color.</p>
+
+        <div class="hdr-demo">
+            <div class="hdr-demo-pair">
+                <div class="hdr-demo-figure">
+                    <a href="images/store-signs-sdr.jpg" target="_blank" rel="noopener">
+                        <img src="images/store-signs-sdr.jpg" width="3120" height="2080" alt="A shop window of lit lamps, a neon OUVERT sign and a screen, conventional SDR export — nothing reads as switched on.">
+                    </a>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> A window full of lit lamps, a neon sign and a glowing screen — and not one of them reads as lit.</p>
+                </div>
+                <div class="hdr-demo-figure">
+                    <a href="images/store-signs-hdr.jpg" target="_blank" rel="noopener">
+                        <img src="images/store-signs-hdr.jpg" width="3120" height="2080" alt="The same RAW file exported as an HDR JPEG — the lamps, neon and screen rise above white and read as lit.">
+                    </a>
+                    <p class="hdr-demo-caption"><strong>HDR.</strong> Same RAW file. The lamps, the neon and the screen switch back on.</p>
+                </div>
+            </div>
+            <p class="hdr-demo-credit">Fujifilm X-H2S, XF 10-24mm F4 R OIS.</p>
+        </div>
+
+        <h2>Snow and clouds that shine</h2>
+
+        <p>Point a camera at a sunlit landscape and SDR files the cloud, the haze and the snow beneath them at the same value — the brightest third of the scene flattens into one white. In HDR the cloud is luminous again, the snow keeps its texture, and the depth comes back.</p>
+
+        <div class="hdr-demo">
+            <div class="hdr-demo-pair">
+                <div class="hdr-demo-figure">
+                    <a href="images/snow-peaks-sdr.jpg" target="_blank" rel="noopener">
+                        <img src="images/snow-peaks-sdr.jpg" width="2592" height="1944" alt="A high mountain valley with snow-covered peaks under cloud, conventional SDR export — the sunlit cloud bank and the snowfields converge on the same white.">
+                    </a>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> The cloud bank sitting on the range and the snow beneath it converge on the same white.</p>
+                </div>
+                <div class="hdr-demo-figure">
+                    <a href="images/snow-peaks-hdr.jpg" target="_blank" rel="noopener">
+                        <img src="images/snow-peaks-hdr.jpg" width="2592" height="1944" alt="The same valley as an HDR JPEG — the sunlit cloud rises above white and the snowfields keep their texture.">
+                    </a>
+                    <p class="hdr-demo-caption"><strong>HDR.</strong> Same RAW file. The cloud shines, the snow keeps its texture, and the valley gets its depth back.</p>
+                </div>
+            </div>
+            <p class="hdr-demo-credit">OM System OM-1, M.Zuiko Digital ED 12-45mm F4 Pro. Photograph &copy; Shane Dias.</p>
+        </div>
+
+        <h2>Whites that stay alive</h2>
+
+        <p>A wedding dress in sunlight, a white shirt on a stage — SDR blows them out to a flat patch. In HDR the folds, the sheen and the embroidery are all still there. They were always in the file.</p>
+
+        <div class="hdr-demo">
+            <div class="hdr-demo-placeholder">
+                Portrait comparison coming soon.
+            </div>
+        </div>
+
+        <h2>See it in your own files</h2>
+
+        <ol class="steps-list">
+            <li><strong>Open a RAW file in ApolloOne.</strong> On an HDR screen — any M-series MacBook Pro, or a recent iPhone or iPad with ApolloOne GO — the full range appears immediately. Nothing to switch on.</li>
+            <li><strong>Edit as you always do.</strong> Exposure, white balance, color. The extra stops stay live while you work.</li>
+            <li><strong>Export as HDR JPEG.</strong> One file: full brightness on HDR screens, a normal, correct photograph everywhere else. HEIC and JPEG XL are there too if you want them.</li>
+        </ol>
+
+        <p>Those four stops have been in every RAW file you've ever kept. <a href="apolloone.html">Open one from last year</a> and look.</p>
+
+        <p>Want to know where those stops have been going — and why the file format, not your camera, was the bottleneck? Read the full story: <a href="what-is-true-hdr.html">Your Exports Are Four Stops Behind Your Camera</a>.</p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="apolloone.html">ApolloOne</a>
+            <a href="apolloone-go.html">ApolloOne GO</a>
+            <a href="camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="support.html">Support</a>
+            <a href="/blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
