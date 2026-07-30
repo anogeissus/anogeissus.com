@@ -51,7 +51,7 @@ https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
 
 ---
 
-## ApolloOne GO — RAW Culling for iPad and iPhone (Coming Soon)
+## ApolloOne GO — RAW Culling for iPad and iPhone
 
 ApolloOne GO brings the ApolloOne workflow to iPad and iPhone: a fast RAW viewer and culling tool for reviewing a shoot in the field. Browse any folder, external drive, or SD card straight from the Files app — no import, no library — or plug the camera itself into the USB-C port and browse the shoot right off the body. Powered by the same RawBridge™ engine as ApolloOne and Camera RawX.
 
@@ -67,8 +67,15 @@ ApolloOne GO brings the ApolloOne workflow to iPad and iPhone: a fast RAW viewer
 - Applies Quick Edit adjustments made in ApolloOne on display
 - Opens RAW formats iPadOS can't handle on its own via RawBridge™
 
+### System Requirements
+- iPadOS or iOS 16 and above
+- iPad and iPhone
+
 ### Availability
-Coming soon to the App Store for iPad and iPhone. One-time purchase, no subscription.
+On the App Store for iPad and iPhone. Free to download with a 14-day free trial; one-time purchase to unlock, no subscription.
+
+### App Store
+https://apps.apple.com/app/apolloone-go/id6787626656
 
 Details: https://anogeissus.com/apolloone-go.html
 

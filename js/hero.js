@@ -18,7 +18,7 @@
             icon: 'images/apolloone-go-icon.png',
             image: 'images/apolloone-go-viewer.jpg',
             alt: 'ApolloOne GO RAW viewer on iPad with AF point overlay and Pick and Reject buttons',
-            caption: 'ApolloOne for <strong>iPad and iPhone</strong> — full-resolution RAW with <strong>HDR and AF points</strong>, thumb-friendly <strong>Pick/Reject culling</strong>, and decisions that sync to your Mac as <strong>Finder tags</strong> through iCloud. <strong>Coming soon.</strong>'
+            caption: 'ApolloOne for <strong>iPad and iPhone</strong> — full-resolution RAW with <strong>HDR and AF points</strong>, thumb-friendly <strong>Pick/Reject culling</strong>, and decisions that sync to your Mac as <strong>Finder tags</strong> through iCloud. <strong>Now on the App Store.</strong>'
         },
         {
             label: 'Camera RawX',
