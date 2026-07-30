@@ -53,6 +53,8 @@ https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
 
 ## ApolloOne GO — RAW Culling for iPad and iPhone
 
+ApolloOne GO displays camera RAW files only. It is not a general image viewer: JPEG, HEIC/HIF, TIFF, PNG and GIF files are not shown, and a folder holding only those will look empty. Culling reads the full-size JPEG preview embedded inside each RAW, and the Pick/Reject decision is attached to the RAW rather than to a JPEG copy, so it reaches the Mac against the images that will be edited. The decision is a standard Finder color tag — file metadata kept by the operating system — so the RAW files themselves are never modified. RAW+JPEG pairs are listed by their RAW; copy, move, delete and AirDrop can include the matching JPG/HIF companions.
+
 ApolloOne GO brings the ApolloOne workflow to iPad and iPhone: a fast RAW viewer and culling tool for reviewing a shoot in the field. Browse any folder, external drive, or SD card straight from the Files app — no import, no library — or plug the camera itself into the USB-C port and browse the shoot right off the body. Powered by the same RawBridge™ engine as ApolloOne and Camera RawX.
 
 ### Key Features
@@ -78,6 +80,7 @@ On the App Store for iPad and iPhone. Free to download with a 14-day free trial;
 https://apps.apple.com/app/apolloone-go/id6787626656
 
 Details: https://anogeissus.com/apolloone-go.html
+FAQ: https://anogeissus.com/apolloone-go-faq.html
 
 ---
 

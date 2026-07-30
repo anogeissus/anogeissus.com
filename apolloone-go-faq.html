@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApolloOne GO FAQ | Anogeissus</title>
+    <meta name="description" content="Questions to ask before you download ApolloOne GO — what it shows (RAW files only, not JPEG or HEIC), supported formats, the free trial, camera connection, and how picks reach your Mac.">
+    <link rel="icon" type="image/png" href="/images/apolloone-go-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-go-icon.png">
+
+    <link rel="canonical" href="https://anogeissus.com/apolloone-go-faq.html">
+    <link rel="stylesheet" href="css/style.css?v=22">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is ApolloOne GO a general image viewer for JPEG, HEIC, TIFF, PNG or GIF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ApolloOne GO displays camera RAW files only. JPEG, HEIC/HIF, TIFF, PNG and GIF files are not shown, and a folder holding only those files will look empty. GO is a culling tool for the RAW shoot: it reads the full-size JPEG preview the camera embedded inside each RAW file, and it tags the RAW files with your Pick and Reject decisions so they arrive on your Mac against the images you will actually edit. Those tags are standard Finder color tags — your RAW files are never modified. If you shoot RAW+JPEG, GO lists the RAW of each pair, and copy, move, delete and AirDrop can include the matching JPG/HIF files so pairs stay together."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which RAW formats does ApolloOne GO support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Adobe DNG, Canon (.CR2, .CR3, .CRW), Fujifilm including compressed RAF, Nikon including HE and HE* NEF, Olympus and OM System, Panasonic, Pentax, Samsung, Sigma Foveon X3F, Sony (.ARW, .ARQ) and Hasselblad. This is the same range as ApolloOne on the Mac, with one exception: GoPro GPR is not supported on iPhone and iPad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I connect my camera directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Connect the camera body to the USB-C port and ApolloOne GO browses the card inside it, using the same protocol the Photos app uses for import — so it works with cameras that never mount as a drive. Browse a thumbnail grid grouped by capture day, open full-screen embedded JPEG previews with AF point and face overlays, select the keepers, and import only those. Rejects never leave the camera. A memory card in a USB-C reader works the same way, and either source can be culled before a single file is copied."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a Mac, or ApolloOne on the Mac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ApolloOne GO is a complete tool on its own — browse, view, cull and import without any Mac involved. If you do run ApolloOne on a Mac, your culling decisions travel there automatically through iCloud."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do my Pick and Reject decisions reach my Mac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each decision becomes a standard macOS Finder color tag — green for a pick, red for a reject. When the folder is in iCloud Drive, the tags sync to your Mac on their own. Open the folder in Finder or ApolloOne and the decisions are already there. No export step, no database, no proprietary sidecar files."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I use Lightroom, not ApolloOne — can I still use GO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with one step on the Mac. ApolloOne GO records its decisions as Finder tags, which Lightroom doesn't read. ApolloOne on the Mac converts them as it imports the card: picks become XMP pick metadata and rejects become the XMP standard's rejected rating, both written to the sidecar file Lightroom reads. The chain is cull in GO, import the card with ApolloOne, then import into Lightroom with the decisions already attached. Importing on the iPad instead skips that conversion — the decisions stay as Finder tags, which is right for Finder and ApolloOne but invisible to Lightroom. So if Lightroom is your editor, ApolloOne is the piece that makes GO's culling land in it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I try it before buying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The download is free and the first 14 days are a full trial with every feature unlocked — no account, no sign-up, no card details. After 14 days ApolloOne GO stops working until you unlock it with the one-time in-app purchase."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it a subscription?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. One in-app purchase unlocks the app permanently. There is nothing to renew and no account to create."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which devices does it run on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "iPhone and iPad running iOS or iPadOS 16 or later. The interface adapts to both, and on an iPad with a hardware keyboard the whole culling pass can be done from the keys."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a Mac version of GO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ApolloOne GO is for iPhone and iPad. On the Mac, ApolloOne is the full application — GO is the field companion to it, not a replacement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My camera isn't detected over USB-C",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "First, make sure the cable is a data cable — charge-only USB-C cables are a common cause. On recent Fujifilm bodies, open the Network/USB Setting menu, set USB POWER SUPPLY/COMM SETTING to POWER SUPPLY OFF/COMM ON, and choose the USB CARD READER connection mode. On the Nikon Z8 and Z9, turn Airplane mode off and set the camera's USB connection mode to PTP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which card readers work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SD readers draw little power and usually work plugged straight in. Power-hungry readers — CFexpress especially — can draw more than an iPhone or iPad USB-C port supplies, and a long import may stop partway with copy failures. The fix is a powered USB-C hub, which a USB-C power bank can feed in the field. Nothing already copied is lost, and running Import again resumes where it stopped."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it edit RAW files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. GO views and culls; it is not a RAW developer. Quick Edit adjustments you made in ApolloOne on the Mac do travel with the files, and GO applies them on display, so an image you adjusted at your desk looks the same in the field."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it import into the Photos app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. GO works with files and folders through the Files app — iCloud Drive, On My iPhone or iPad, external drives and memory cards. Imports land in a folder you choose. The Photos library is neither read nor written, because Photos assets cannot carry the Finder tags that make the round trip to your Mac work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it change my original files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your RAW files are never rewritten. Picking and rejecting sets a standard Finder color tag — the same tag you could apply by hand in Finder. A Finder tag is file metadata kept by the operating system alongside the file; not a single byte inside the RAW is touched, exactly as when you tag a file in Finder on your Mac. Copy, move and delete happen only when you ask for them, and each is confirmed before it runs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it need an internet connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Browsing, viewing, culling, importing and AirDrop all work fully offline — which is the point, given where culling usually happens. A connection is needed only to make or restore the purchase, and for iCloud to carry your decisions to your Mac."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it play video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ApolloOne GO handles RAW still images only. ApolloOne on the Mac plays video."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="apolloone.html">ApolloOne</a>
+        <a href="apolloone-go.html">ApolloOne GO</a>
+        <a href="camerarawx.html">Camera RawX</a>
+        <a href="support.html">Support</a>
+        <a href="/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+        <h1>ApolloOne GO FAQ</h1>
+        <p>Questions worth answering before you download. If yours isn't here, <a href="contact.html">ask us</a> — and once the app is installed, Getting Started and a longer FAQ live in its Settings.</p>
+
+        <h2>Is ApolloOne GO a general image viewer for JPEG, HEIC, TIFF, PNG or GIF?</h2>
+        <p><strong>No — and this is the one thing to know before you download it.</strong> ApolloOne GO displays <strong>camera RAW files only</strong>. JPEG, HEIC/HIF, TIFF, PNG and GIF files are not shown, and a folder holding only those files will look empty.</p>
+        <p>That is deliberate. GO is a culling tool for the RAW shoot. It reads the full-size JPEG preview your camera already embedded inside each RAW file — which is how it swipes through a card at speed — and it tags <strong>the RAW files</strong> with your Pick and Reject decisions, so those decisions arrive on your Mac against the images you will actually edit. Listing the JPEGs alongside would show every shot twice and put your ratings on the wrong file.</p>
+        <p>To be clear about what "tags" means: these are standard Finder color tags, the same ones you could apply by hand in Finder. <strong>Your RAW files are never modified</strong> — see <a href="#originals">below</a>.</p>
+        <p>If you shoot RAW+JPEG, GO lists the RAW of each pair. When you copy, move, delete or AirDrop, you can include the matching JPG/HIF files so the pairs stay together.</p>
+        <p>If what you want is a viewer for finished JPEGs, ApolloOne GO is not that app.</p>
+
+        <h2>Which RAW formats does ApolloOne GO support?</h2>
+        <p>Adobe DNG, Canon (.CR2, .CR3, .CRW), Fujifilm including compressed RAF, Nikon including HE and HE* NEF, Olympus and OM System, Panasonic, Pentax, Samsung, Sigma Foveon X3F, Sony (.ARW, .ARQ) and Hasselblad.</p>
+        <p>That is the same range as ApolloOne on the Mac, with one exception: <strong>GoPro GPR is not supported</strong> on iPhone and iPad. If your camera's RAW files don't open, <a href="contact.html">tell us</a> — that is usually how a format gets added.</p>
+
+        <h2>Can I connect my camera directly?</h2>
+        <p>Yes. Plug the camera body into the USB-C port and GO browses the card inside it, using the same protocol the Photos app uses for import — so it works even with cameras that never mount as a drive. You get a thumbnail grid grouped by capture day, full-screen embedded JPEG previews with pinch-zoom and AF point and face overlays, and then you select the keepers and <strong>import only those</strong>. The rejects never leave the camera.</p>
+        <p>A memory card in a USB-C reader works the same way, and either source can be culled before a single file is copied. If your camera doesn't show up, <a href="#notdetected">a camera setting is usually the reason</a>.</p>
+
+        <h2>Do I need a Mac, or ApolloOne on the Mac?</h2>
+        <p>Neither. ApolloOne GO is complete on its own: browse, view, cull and import with no Mac involved. If you do run ApolloOne on a Mac, your culling decisions travel there automatically — but that is a bonus, not a requirement.</p>
+
+        <h2>How do my Pick and Reject decisions reach my Mac?</h2>
+        <p>Each decision becomes a standard macOS <strong>Finder color tag</strong> — green for a pick, red for a reject. When the folder lives in iCloud Drive, those tags sync to your Mac on their own. Open the folder in Finder or in ApolloOne and the decisions are simply there. No export step, no database, no proprietary sidecar files.</p>
+
+        <h2>I use Lightroom, not ApolloOne — can I still use GO?</h2>
+        <p>Yes, with one step on the Mac. GO records its decisions as Finder tags, which Lightroom doesn't read. <strong><a href="apolloone.html">ApolloOne</a> on the Mac converts them as it imports the card</strong>: picks become XMP pick metadata and rejects become the XMP standard's rejected rating, both written to the sidecar file Lightroom reads. The chain is cull in GO → import the card with ApolloOne → import into Lightroom with the decisions already attached.</p>
+        <p>Import on the iPad instead and that conversion doesn't happen — the decisions stay as Finder tags, which is exactly right for Finder and ApolloOne, but invisible to Lightroom. So if Lightroom is your editor, <a href="apolloone.html">ApolloOne</a> is the piece that makes GO's culling land in it — and it does the rest of the desk work too: HDR RAW viewing, EXIF, AF points, Quick Edit.</p>
+
+        <h2>Can I try it before buying?</h2>
+        <p>Yes. The download is free and the first <strong>14 days are a full trial</strong> with every feature unlocked — no account, no sign-up, no card details. After 14 days ApolloOne GO stops working until you unlock it with the one-time in-app purchase. Two weeks is deliberately enough for a real shoot, not just a look around.</p>
+
+        <h2>Is it a subscription?</h2>
+        <p>No. One in-app purchase unlocks the app permanently. Nothing to renew, no account to create.</p>
+
+        <h2>Which devices does it run on?</h2>
+        <p>iPhone and iPad running <strong>iOS or iPadOS 16 or later</strong>. The interface adapts to both, and on an iPad with a hardware keyboard the whole culling pass can be driven from the keys — arrows to navigate, P to pick, X to reject.</p>
+
+        <h2>Is there a Mac version of GO?</h2>
+        <p>ApolloOne GO is for iPhone and iPad. On the Mac, <a href="apolloone.html">ApolloOne</a> is the full application — GO is its field companion, not a replacement.</p>
+
+        <h2 id="notdetected">My camera isn't detected over USB-C</h2>
+        <p>First check the cable: charge-only USB-C cables are a common cause, and the cable must carry data.</p>
+        <ul>
+            <li><strong>Recent Fujifilm bodies</strong> (GFX100S II, GFX100 II and others): in the Network/USB Setting menu, set <strong>USB POWER SUPPLY/COMM SETTING</strong> to <strong>POWER SUPPLY OFF/COMM ON</strong>, and choose the <strong>USB CARD READER</strong> connection mode. On the factory AUTO setting the camera may pick charging over communication and never appear.</li>
+            <li><strong>Nikon Z8 and Z9</strong>: turn <strong>Airplane mode off</strong> — these bodies will not open a USB data connection while it is on — and set the camera's USB connection mode to <strong>PTP</strong>.</li>
+        </ul>
+
+        <h2>Which card readers work?</h2>
+        <p>SD readers draw little power and usually work plugged straight in. Power-hungry readers — <strong>CFexpress especially</strong> — can draw more than an iPhone or iPad USB-C port supplies; partway through a long import the reader browns out and the remaining copies fail. The fix is external power: run the reader through a powered USB-C hub, which a USB-C power bank can feed in the field. Nothing already copied is lost, and running Import again resumes where it stopped.</p>
+
+        <h2>Does it edit RAW files?</h2>
+        <p>No. GO views and culls — it is not a RAW developer. Quick Edit adjustments you made in ApolloOne on the Mac <em>do</em> travel with the files, and GO applies them on display, so an image you adjusted at your desk looks the same in the field.</p>
+
+        <h2>Does it import into the Photos app?</h2>
+        <p>No. GO works with files and folders through the <strong>Files app</strong> — iCloud Drive, On My iPhone or iPad, external drives and memory cards — and imports land in a folder you choose. The Photos library is neither read nor written: Photos assets can't carry the Finder tags that make the round trip to your Mac work.</p>
+
+        <h2 id="originals">Will it change my original files?</h2>
+        <p><strong>No. Your RAW files are never rewritten.</strong> Picking and rejecting sets a standard Finder color tag — the same tag you could apply by hand in Finder. A Finder tag is file metadata kept by the operating system alongside the file; not a single byte inside the RAW is touched, exactly as when you tag a file in Finder on your Mac.</p>
+        <p>Copy, move and delete happen only when you ask for them, and each is confirmed before it runs.</p>
+
+        <h2>Does it need an internet connection?</h2>
+        <p>Browsing, viewing, culling, importing and AirDrop all work <strong>fully offline</strong> — which matters, given where culling usually happens. A connection is needed only to make or restore the purchase, and for iCloud to carry your decisions home.</p>
+
+        <h2>Does it play video?</h2>
+        <p>No. ApolloOne GO handles RAW still images only. <a href="apolloone.html">ApolloOne</a> on the Mac plays video.</p>
+
+        <h2>Still have a question?</h2>
+        <p><a href="contact.html">Get in touch</a> — we answer. You can also read more about the app on the <a href="apolloone-go.html">ApolloOne GO page</a>, or <a href="https://apps.apple.com/app/apolloone-go/id6787626656">get it on the App Store</a> and start the free trial.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="apolloone.html">ApolloOne</a>
+            <a href="apolloone-go.html">ApolloOne GO</a>
+            <a href="camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="support.html">Support</a>
+            <a href="/blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
