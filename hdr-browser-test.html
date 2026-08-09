@@ -70,6 +70,10 @@
     highlights noticeably brighter than this page's white background. The third is an ordinary JPEG and
     should never do that &mdash; judge the other two against it.
     <br><br>
+    Look at the bright parts only &mdash; here, the sunlit fabric sails and the windows behind them. All
+    three are the same photograph, and the brick, the flowers and the shadows are meant to look identical
+    in all three. What changes is the highlights, not the overall brightness of the picture.
+    <br><br>
     If an image looks flat next to the control, your browser is showing its SDR base and ignoring the
     HDR data. That isn't a fault in the file: a gain-map JPEG is designed to degrade to a correct
     photograph exactly this way.
@@ -121,12 +125,12 @@
     <h2>What the result means</h2>
     <table>
         <tr><th>What you see</th><th>Reading</th></tr>
-        <tr><td>1 and 2 both brighter than 3</td><td>Your browser handles both HDR formats. Nothing to do.</td></tr>
-        <tr><td>All three alike</td><td>No HDR is reaching you. On Windows, HDR is probably switched off;
+        <tr><td>Highlights brighter in 1 and 2 than in 3</td><td>Your browser handles both HDR formats. Nothing to do.</td></tr>
+        <tr><td>Highlights the same in all three</td><td>No HDR is reaching you. On Windows, HDR is probably switched off;
             on a Mac it is usually the macOS version rather than the browser or the screen. Both below.</td></tr>
-        <tr><td>2 brighter, 1 flat</td><td>PQ works, gain maps don't. Older Chrome, or a browser that
+        <tr><td>Highlights brighter in 2, flat in 1</td><td>PQ works, gain maps don't. Older Chrome, or a browser that
             hasn't adopted gain maps.</td></tr>
-        <tr><td>1 brighter, 2 flat</td><td>Gain maps work, PQ doesn't.</td></tr>
+        <tr><td>Highlights brighter in 1, flat in 2</td><td>Gain maps work, PQ doesn't.</td></tr>
     </table>
     <p class="cap">
         How close 1 and 2 look depends on your display's headroom rather than on the formats. The further
@@ -138,8 +142,8 @@
 <div class="test" id="macos">
     <h2>On a Mac, your macOS version decides this</h2>
 
-    <p>If all three images looked alike on a Mac with an HDR-capable screen, the most likely reason is the
-    operating system rather than the browser or the display.</p>
+    <p>If the highlights looked the same in all three on a Mac with an HDR-capable screen, the most likely
+    reason is the operating system rather than the browser or the display.</p>
 
     <table>
         <tr><th>&nbsp;</th><th>Safari</th><th>Chrome</th></tr>
@@ -173,10 +177,10 @@
 
     <table>
         <tr><th>What you see</th><th>What to do</th></tr>
-        <tr><td>All three images alike</td><td>HDR is off. Settings &rsaquo; System &rsaquo; Display &rsaquo; Use HDR.</td></tr>
+        <tr><td>Highlights the same in all three</td><td>HDR is off. Settings &rsaquo; System &rsaquo; Display &rsaquo; Use HDR.</td></tr>
         <tr><td>Everything looks washed out once HDR is on</td><td>Normal, and fixable: adjust
             <em>SDR content brightness</em> on that same settings page.</td></tr>
-        <tr><td>Still alike with HDR on</td><td>Check the browser &mdash; see below.</td></tr>
+        <tr><td>Still no highlight difference with HDR on</td><td>Check the browser &mdash; see below.</td></tr>
     </table>
 
     <p class="cap">
