@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
 
     <link rel="canonical" href="https://anogeissus.com/contact.html">
-    <link rel="stylesheet" href="css/style.css?v=22">
+    <link rel="stylesheet" href="css/style.css?v=24">
     <style>
         .contact-layout {
             display: flex;
@@ -159,6 +159,19 @@
             .contact-form-area {
                 padding: 40px 24px;
             }
+        }
+    
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .contact-form-area { background: #161617; }
+            .contact-form-area h1 { color: #f5f5f7; }
+            .contact-form-area p { color: #a1a1a6; }
+            .contact-form input,
+            .contact-form textarea { background: #1d1d1f; border-color: rgba(255, 255, 255, 0.24); color: #f5f5f7; }
+            .contact-form input:focus,
+            .contact-form textarea:focus { border-color: #2997ff; }
+            .contact-form button:disabled { background: #275a8c; }
+            .form-success { color: #f5f5f7; }
         }
     </style>
 </head>

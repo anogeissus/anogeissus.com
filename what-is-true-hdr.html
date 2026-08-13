@@ -18,7 +18,7 @@
     <meta property="og:image" content="https://anogeissus.com/images/apolloone-icon.png">
     <meta property="og:site_name" content="Anogeissus">
 
-    <link rel="stylesheet" href="css/style.css?v=22">
+    <link rel="stylesheet" href="css/style.css?v=24">
 
     <style>
         /* Article-specific: HDR capability messaging + demo placeholders */
@@ -90,6 +90,14 @@
             line-height: 1.5;
             color: #6e6e73;
             margin: 0 0 30px;
+        }
+    
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .hdr-callout { border-left-color: #2997ff; background: rgba(41, 151, 255, 0.12); }
+            .article-lede { color: #f5f5f7; }
+            .article-deck { color: #a1a1a6; }
+            .hdr-demo-caption { color: #a1a1a6; }
         }
     </style>
 </head>

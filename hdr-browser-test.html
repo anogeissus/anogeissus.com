@@ -60,6 +60,19 @@
        the spacing between sections is untouched. */
     .test:last-of-type { margin-bottom: 0; }
     footer { margin-top: 20px; font-size: 13px; color: #6e6e73; }
+
+    :root { color-scheme: light dark; }
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        body { background: #000; color: #f5f5f7; }
+        .sub, .cap, .zoom, footer { color: #a1a1a6; }
+        .test { border-top-color: #38383c; }
+        .tag { background: #2c2c2e; color: #c7c7cc; }
+        code { background: #2c2c2e; }
+        .note { border-left-color: #2997ff; background: rgba(41, 151, 255, 0.12); }
+        th { color: #a1a1a6; }
+        th, td { border-bottom-color: #38383c; }
+    }
 </style>
 
 <h1>HDR browser test</h1>

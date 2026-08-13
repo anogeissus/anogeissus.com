@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
 
     <link rel="canonical" href="https://anogeissus.com/tutorials.html">
-    <link rel="stylesheet" href="css/style.css?v=22">
+    <link rel="stylesheet" href="css/style.css?v=24">
     <style>
         .legal-page {
             background: transparent;
@@ -59,6 +59,22 @@
             .legal-page::before {
                 background-position: center center;
             }
+        }
+    
+        /* Dark mode: the fixed photo background stays light — keep the type dark over it */
+        @media (prefers-color-scheme: dark) {
+            .legal-content h1,
+            .legal-content h2,
+            .legal-content h3,
+            .legal-content p,
+            .legal-content ul,
+            .legal-content ol { color: #1d1d1f; }
+            .legal-content a { color: #0066cc; }
+            .legal-content a:hover { color: #0077ed; }
+            .legal-updated { color: #6e6e73; }
+            .tutorial-video h2 { color: #1d1d1f; }
+            .pdf-link:hover { background: rgba(245, 245, 247, 0.75); }
+            .pdf-link span { color: #0066cc; }
         }
     </style>
 </head>

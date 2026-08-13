@@ -18,7 +18,7 @@
     <meta property="og:image" content="https://anogeissus.com/images/apolloone-icon.png">
     <meta property="og:site_name" content="Anogeissus">
 
-    <link rel="stylesheet" href="css/style.css?v=22">
+    <link rel="stylesheet" href="css/style.css?v=24">
     <style>
         .support-hero {
             text-align: center;
@@ -140,6 +140,22 @@
 
         .support-page-bg {
             background: #f5f5f7;
+        }
+    
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .support-hero { background: #161617; }
+            .support-hero h1 { color: #f5f5f7; }
+            .support-hero p { color: #a1a1a6; }
+            .support-card { background: #1d1d1f; border-color: rgba(255, 255, 255, 0.1); }
+            .support-card-header h2 { color: #f5f5f7; }
+            .support-card li + li { border-top-color: rgba(255, 255, 255, 0.08); }
+            .support-card li a { color: #2997ff; }
+            .support-card li a:hover { color: #64b2ff; }
+            .support-contact h2 { color: #f5f5f7; }
+            .support-contact p { color: #a1a1a6; }
+            .support-alt a { color: #2997ff; }
+            .support-page-bg { background: #161617; }
         }
     </style>
 </head>
