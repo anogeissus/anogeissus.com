@@ -285,6 +285,53 @@
 }
 
 /* ============================================
+   iPad + iPhone shown side by side
+   The flex-grow values ARE the two aspect ratios (iPad 2752/2064 = 1.333,
+   iPhone 900/1955 = 0.46), so with flex-basis 0 the widths distribute in
+   proportion and both shots land at exactly the same height. No hardcoded
+   widths to re-derive if a screenshot is ever recaptured.
+   ============================================ */
+
+.feature-image.device-pair {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.feature-image.device-pair img {
+    min-width: 0;
+}
+
+.feature-image.device-pair .shot-ipad {
+    flex: 1.333;
+}
+
+.feature-image.device-pair .shot-iphone {
+    flex: 0.46;
+}
+
+/* Side by side gets too small to read on a phone, so stack instead. The flex
+   ratios must be cleared here or they would size the HEIGHTS in a column. */
+@media (max-width: 700px) {
+    .feature-image.device-pair {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .feature-image.device-pair .shot-ipad,
+    .feature-image.device-pair .shot-iphone {
+        flex: none;
+        width: 100%;
+    }
+
+    .feature-image.device-pair .shot-iphone {
+        max-width: 280px;
+    }
+}
+
+/* ============================================
    Dark mode — follows macOS/iOS appearance
    Append-only overrides; light rules above are untouched.
    ============================================ */
