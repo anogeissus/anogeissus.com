@@ -301,6 +301,7 @@
 
 .feature-image.device-pair img {
     min-width: 0;
+    cursor: zoom-in;
 }
 
 .feature-image.device-pair .shot-ipad {
@@ -355,6 +356,15 @@
         scrollbar-width: none;
     }
 
+    /* Spacers, as flex items rather than container padding: trailing padding on
+       a flex scroll container is dropped by some engines, and without room on
+       both sides the first and last slide can never reach the centre. */
+    .feature-image.device-pair::before,
+    .feature-image.device-pair::after {
+        content: "";
+        flex: 0 0 8%;
+    }
+
     .feature-image.device-pair::-webkit-scrollbar {
         display: none;
     }
@@ -363,16 +373,18 @@
        in the reader's hand. Both are sized by WIDTH: flex-basis auto would take
        the image's intrinsic 900px instead, and then max-height cannot drive the
        aspect ratio, which crops the shot rather than scaling it. */
+    /* Both slides share one box so a 4:3 shot and a 0.46 shot can centre on the
+       same snap points; object-fit letterboxes each image inside it. The radius
+       and shadow come off because they would trace the BOX, not the image. */
+    .feature-image.device-pair .shot-ipad,
     .feature-image.device-pair .shot-iphone {
-        flex: 0 0 62%;
-        height: auto;
-        scroll-snap-align: start;
-    }
-
-    .feature-image.device-pair .shot-ipad {
-        flex: 0 0 88%;
-        height: auto;
-        scroll-snap-align: start;
+        flex: 0 0 84%;
+        height: 58vh;
+        object-fit: contain;
+        scroll-snap-align: center;
+        border-radius: 0;
+        box-shadow: none;
+        cursor: zoom-in;
     }
 
     /* Scoped with :has() so no markup changes are needed; where :has() is
@@ -384,6 +396,92 @@
         font-size: 13px;
         color: #86868b;
     }
+}
+
+/* ============================================
+   Full-screen shot viewer (tap a screenshot to open)
+   Fit-to-screen first, tap again to magnify and drag to pan. Panning is the
+   scroll container doing the work, so it is native and momentum-scrolls on
+   touch; pinch-zoom still layers on top of it because the page never sets
+   user-scalable=no.
+   ============================================ */
+
+.shot-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.94);
+    display: none;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.shot-viewer.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Magnified: back to block flow so the overflowing image can be panned. */
+.shot-viewer.open.zoomed {
+    display: block;
+}
+
+.shot-viewer img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: zoom-in;
+}
+
+/* Magnify to the image's OWN pixels rather than a multiple of the viewport.
+   A percentage of the viewport upscales the 1320px phone shots into mush on a
+   large display; natural size is the honest maximum and stays sharp. */
+.shot-viewer.zoomed img {
+    max-width: none;
+    max-height: none;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    cursor: zoom-out;
+}
+
+.shot-viewer-close {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-size: 22px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.shot-viewer-hint {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 18px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    pointer-events: none;
+}
+
+.shot-viewer.zoomed .shot-viewer-hint {
+    display: none;
+}
+
+body.shot-viewer-open {
+    overflow: hidden;
 }
 
 /* ============================================
