@@ -456,8 +456,12 @@
     height: 40px;
     border: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
+    /* Dark disc with a light ring: the settings screenshots are mostly white at
+       the top, and a translucent white button vanished against them. This reads
+       on both a white settings list and a black viewer photo. */
+    background: rgba(0, 0, 0, 0.6);
     color: #fff;
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.55);
     font-size: 22px;
     line-height: 40px;
     text-align: center;

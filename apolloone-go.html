@@ -34,7 +34,7 @@
     </script>
 
     <link rel="stylesheet" href="css/style.css?v=24">
-    <link rel="stylesheet" href="css/product.css?v=12">
+    <link rel="stylesheet" href="css/product.css?v=13">
 </head>
 <body>
 
@@ -250,6 +250,10 @@
     var big = viewer.querySelector('img');
     var closeBtn = viewer.querySelector('.shot-viewer-close');
 
+    /* The viewer owns a history entry, so the phone's back gesture and the
+       browser back button dismiss it instead of leaving the page. */
+    var pushedState = false;
+
     function open(src, alt) {
         big.src = src;
         big.alt = alt || '';
@@ -257,13 +261,33 @@
         viewer.classList.remove('zoomed');
         document.body.classList.add('shot-viewer-open');
         closeBtn.focus();
+        if (!pushedState) {
+            history.pushState({ shotViewer: true }, '');
+            pushedState = true;
+        }
     }
 
-    function close() {
+    function dismiss() {
         viewer.classList.remove('open', 'zoomed');
         document.body.classList.remove('shot-viewer-open');
         big.removeAttribute('src');
     }
+
+    function close() {
+        if (pushedState) {
+            pushedState = false;
+            history.back();   // popstate does the dismissing
+        } else {
+            dismiss();
+        }
+    }
+
+    window.addEventListener('popstate', function () {
+        if (viewer.classList.contains('open')) {
+            pushedState = false;
+            dismiss();
+        }
+    });
 
     function toggleZoom() {
         var zoom = viewer.classList.toggle('zoomed');
