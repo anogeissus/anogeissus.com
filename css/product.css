@@ -311,23 +311,78 @@
     flex: 0.46;
 }
 
-/* Side by side gets too small to read on a phone, so stack instead. The flex
-   ratios must be cleared here or they would size the HEIGHTS in a column. */
+/* The markup puts the iPhone first, because that is the order the phone layout
+   needs and a scroll-snap container must not have `order` fighting DOM order —
+   when it does, the browser snaps to the visually-last item and the carousel
+   opens scrolled to its end. Wide screens do not scroll, so flipping back to
+   iPad-left here is free. */
+@media (min-width: 701px) {
+    .feature-image.device-pair .shot-ipad {
+        order: 1;
+    }
+
+    .feature-image.device-pair .shot-iphone {
+        order: 2;
+    }
+}
+
+/* On a phone, side by side is unreadable and stacking both is a lot of scrolling,
+   so swipe between them instead. scroll-snap gives a native swipe with no
+   JavaScript. The neighbouring shot peeks in at the edge, which is what tells
+   you there is more to see; the caption spells it out for anyone who misses it.
+   The flex ratios above must be cleared or they would fight the fixed widths. */
 @media (max-width: 700px) {
     .feature-image.device-pair {
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-    }
-
-    .feature-image.device-pair .shot-ipad,
-    .feature-image.device-pair .shot-iphone {
-        flex: none;
+        /* .feature-stacked is a centred column flex, so without an explicit
+           width this item sizes to its CONTENT — the full scroller width — and
+           drags the whole page into horizontal overflow. */
         width: 100%;
+        max-width: 100%;
+        /* justify-content is inherited as center from the desktop rule above.
+           In a scroll container whose content is wider than the box, centring
+           pushes the FIRST item to a negative offset that no amount of
+           scrolling can reach, so it opens permanently half cut off. */
+        justify-content: flex-start;
+        gap: 12px;
+        overflow-x: auto;
+        /* snap-align is start, not center: centring the first item at scroll 0
+           would need a negative scroll, so mandatory snapping shunts the
+           carousel sideways on load and the first shot opens half cut off. */
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 0;
+        -webkit-overflow-scrolling: touch;
+        align-items: center;
+        scrollbar-width: none;
     }
 
+    .feature-image.device-pair::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* The phone shot leads on a phone — it is the one that matches the device
+       in the reader's hand. Both are sized by WIDTH: flex-basis auto would take
+       the image's intrinsic 900px instead, and then max-height cannot drive the
+       aspect ratio, which crops the shot rather than scaling it. */
     .feature-image.device-pair .shot-iphone {
-        max-width: 280px;
+        flex: 0 0 62%;
+        height: auto;
+        scroll-snap-align: start;
+    }
+
+    .feature-image.device-pair .shot-ipad {
+        flex: 0 0 88%;
+        height: auto;
+        scroll-snap-align: start;
+    }
+
+    /* Scoped with :has() so no markup changes are needed; where :has() is
+       unsupported the hint simply does not render and the swipe still works. */
+    .feature-stacked:has(.device-pair)::after {
+        content: "Swipe to see it on the other device";
+        display: block;
+        margin-top: 10px;
+        font-size: 13px;
+        color: #86868b;
     }
 }
 
