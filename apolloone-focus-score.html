@@ -181,7 +181,7 @@
         <h1>How the ApolloOne Focus Score Works</h1>
         <p class="article-deck">One number, from 1 to 100, for how well the camera focused where it was aimed. Here is what that number is measured from, where the work runs on your Mac, and what changed in Build 5582.</p>
 
-        <p class="article-lede">A customer sent two frames of a dog, shot on a Z 9 at ISO 6400. Both came back at 100. One of them is a portrait that is good but not critically sharp, and the other is grossly out of focus. Working out why took the measurement apart, so this is a good moment to describe the whole of it in plain language.</p>
+        <p class="article-lede">A customer sent me two frames of his dog, shot on a Z 9 at ISO 6400. Both came back at 100. One is a portrait that is good without being critically sharp, and the other is grossly out of focus. Working out why meant taking my own measurement apart, so this is a good moment to describe the whole of it in plain language.</p>
 
         <h2>What the number is measured from</h2>
 
@@ -388,7 +388,7 @@
         </table>
         </div>
 
-        <p>Files are processed two to four at a time, following the core count, so several GPU renders and several CPU measurements overlap. On a folder of RAW files the wall-clock time is almost entirely the developing, which is why the scan is described as GPU-assisted rather than GPU-based. The parts that could use the Neural Engine already do, through Vision and through Apple's decoder. Nothing in the measurement itself is a neural network.</p>
+        <p>Files are processed two to four at a time, following the core count, so several GPU renders and several CPU measurements overlap. On a folder of RAW files the wall-clock time is almost entirely the developing, which is why I call it GPU-assisted rather than GPU-based. The parts that could use the Neural Engine already do, through Vision and through Apple's decoder. Nothing in the measurement itself is a neural network.</p>
 
         <h2>The two frames that broke it</h2>
 
@@ -408,13 +408,13 @@
             <p class="fs-cap">The actual measured areas, at full resolution, developed the way ApolloOne measures them. These two pictures produced the same score.</p>
         </div>
 
-        <p>The right-hand crop is the interesting one. There is nothing in it. No detail of any kind survived the miss, and the software still reported edges two pixels wide.</p>
+        <p>The right-hand crop is the interesting one. There is nothing in it. No detail of any kind survived the miss, and ApolloOne still reported edges two pixels wide.</p>
 
         <h2>What noise reduction leaves behind</h2>
 
         <p>The second look at high ISO works by turning noise reduction up to maximum and asking what is still there. On a frame of pure grain that check does its job and everything collapses. On this frame it did not.</p>
 
-        <p>The reason turns out to be a loop in the measurement itself. Before ApolloOne measures any edges it estimates how noisy the area is, so that it can set its thresholds above the noise. That estimate looks at the finest, highest-frequency variation in the picture, which is exactly what noise reduction removes. Run noise reduction at maximum and the estimate drops through the floor: on this file it fell from 0.741 to 0.247. The software then concluded the area was very clean, relaxed its thresholds accordingly, and started accepting things it would otherwise have thrown away.</p>
+        <p>The reason turned out to be a loop in my own measurement. Before ApolloOne measures any edges it estimates how noisy the area is, so that it can set its thresholds above the noise. That estimate looks at the finest, highest-frequency variation in the picture, which is exactly what noise reduction removes. Run noise reduction at maximum and the estimate drops through the floor: on this file it fell from 0.741 to 0.247. ApolloOne then concluded the area was very clean, relaxed its thresholds to match, and started accepting things it would otherwise have thrown away.</p>
 
         <p>What it accepted were the leftovers of the noise reduction. Strong smoothing does not produce a flat surface, it produces soft blotches, and the boundary between two blotches is narrow. A narrow boundary is what the Focus Score counts as fine detail.</p>
 
@@ -432,7 +432,7 @@
             <p class="fs-cap">Every edge the measurement accepted, painted onto the two areas. Red marks the ones narrow enough to count as sharp. On the right they are isolated specks in an empty field, and those specks set the score.</p>
         </div>
 
-        <p>Painting the accepted edges back onto the picture is what settled it. On the blurred frame they are single pixels, scattered, with nothing joining them up. On the eye they cluster in the dark part of the iris, where the noise is worst and the estimate describes it least well.</p>
+        <p>Painting the accepted edges back onto the picture is what settled it for me. On the blurred frame they are single pixels, scattered, with nothing joining them up. On the eye they cluster in the dark part of the iris, where the noise is worst and the estimate describes it least well.</p>
 
         <h2>Two new tests</h2>
 
@@ -440,7 +440,7 @@
 
         <h3>How many edges are there</h3>
 
-        <p>An in-focus focus area carries between 10 and 20 edges for every hundred pixels. The eye carried 2. The chest fur carried one edge for every thousand pixels. When the count is that low, the sharpest tenth of the edges is not a description of a subject, and ApolloOne now stops using it and reads the plain quarter instead. That alone takes the eye frame from 100 to 48, which is roughly what the photographer said he expected of it.</p>
+        <p>An in-focus focus area carries between 10 and 20 edges for every hundred pixels. The eye carried 2. The chest fur carried one edge for every thousand pixels. When the count is that low, the sharpest tenth of the edges is not a description of a subject, and ApolloOne now stops using it and reads the plain quarter instead. That alone takes the eye frame from 100 to 48, which is about what I would give it looking at it myself.</p>
 
         <h3>Do the edges line up</h3>
 
@@ -450,9 +450,9 @@
 
         <h2>Reading further down the list</h2>
 
-        <p>The first version of the fix declared such a frame unjudgeable and sent it to Unranked. That was the wrong answer. The reference folders of out-of-focus shots already score 1 to 5, and pushing them into Unranked would have been a step backwards: a photographer deletes a 3 at a glance, where an Unranked image has to be opened and looked at.</p>
+        <p>My first attempt at the fix declared such a frame unjudgeable and sent it to Unranked, and I threw that away. My reference folders of out-of-focus shots already score 1 to 5, and pushing them into Unranked would have been a step backwards: you delete a 3 at a glance, where an Unranked image has to be opened and looked at.</p>
 
-        <p>The way out was in the data already. Sort the widths of the blurred frame from narrowest to widest and the list is in two parts. The bottom half sits at 1.5 to 1.7 pixels, which is the noise-reduction residue. Above that it climbs steeply into the real blur, and by nine tenths of the way along the list it reads 13.6 pixels, the same figure the known out-of-focus reference frames give at their sharpest quarter.</p>
+        <p>The way out was already in the data I had. Sort the widths of the blurred frame from narrowest to widest and the list is in two parts. The bottom half sits at 1.5 to 1.7 pixels, which is the noise-reduction residue. Above that it climbs steeply into the real blur, and by nine tenths of the way along the list it reads 13.6 pixels, the same figure the known out-of-focus reference frames give at their sharpest quarter.</p>
 
         <figure class="fs-fig">
             <svg viewBox="0 0 720 330" role="img" aria-label="Edge widths sorted narrowest to widest. The sharp frame rises steadily from 2.5 to 11 pixels. The blurred frame stays flat near 1.6 pixels for the first half, then climbs steeply to 13.6 pixels at the ninetieth percentile.">
@@ -521,7 +521,7 @@
             <figcaption>Edge widths in the same focus area, sorted narrowest to widest, for a genuinely sharp frame and for the blurred one. The sharp frame climbs steadily. The blurred one is flat along the bottom, where the residue sits, and then jumps. Reading it at the 90th percentile instead of the sharpest quarter is what recovers the real blur.</figcaption>
         </figure>
 
-        <p>So when the contour test says the area holds specks rather than a picture, the score is taken from the 90th percentile of the same measurements. Nothing new is computed, and the reading is only used once we already know what kind of population it is. On a sharp frame the 90th percentile is meaningless, which is why it is never consulted there.</p>
+        <p>So when the contour test says the area holds specks rather than a picture, the score is taken from the 90th percentile of the same measurements. Nothing new is computed, and the reading is only used once ApolloOne already knows what kind of population it is. On a sharp frame the 90th percentile is meaningless, which is why it is never consulted there.</p>
 
         <div class="fs-note">
             <strong>The blurred frame goes from 100 to 6.</strong> The eye goes from 100 to 48. Both tests only ever apply to a result the second, noise-reduced developing produced, which is what keeps them away from every score that was already correct.
@@ -529,7 +529,7 @@
 
         <h2>What moved</h2>
 
-        <p>The change was checked against 456 files, covering three camera brands and every reference folder we have: known out-of-focus sets, a high-ISO set with ground truth, a 200-frame travel folder, a swimming meet, a lunch table with faces. Of those, 384 produced a measurement, 18 are handled by the second developing at all, and 8 changed.</p>
+        <p>I checked the change against 456 files, covering three camera brands and every reference folder I keep: known out-of-focus sets, a high-ISO set with ground truth, a 200-frame travel folder, a swimming meet, a lunch table with faces. Of those, 384 produced a measurement, 18 are handled by the second developing at all, and 8 changed.</p>
 
         <div class="fs-tablewrap">
         <table class="fs-table">
@@ -549,7 +549,7 @@
         </table>
         </div>
 
-        <p>Every other file in the set holds its score to the point, including the sharp frames at ISO 6400 to 10000 that the second developing was built for, the 36 travel frames whose measurement sits on the reconstruction floor, and the faces.</p>
+        <p>Every other file in the set held its score to the point, including the sharp frames at ISO 6400 to 10000 that the second developing was built for, the 36 travel frames whose measurement sits on the reconstruction floor, and the faces.</p>
 
         <h2>What the score still does not claim</h2>
 
