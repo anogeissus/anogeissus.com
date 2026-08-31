@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How the ApolloOne Focus Score Works | Anogeissus</title>
+    <meta name="description" content="What the Focus Score measures, which parts of the work run on the CPU, the GPU and the Neural Engine, and the Build 5582 change that stopped it scoring noise at high ISO.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="https://anogeissus.com/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="https://anogeissus.com/images/apolloone-icon.png">
+
+    <link rel="canonical" href="https://anogeissus.com/apolloone-focus-score.html">
+
+    <link rel="stylesheet" href="https://anogeissus.com/css/style.css?v=24">
+
+    <style>
+        /* Article typography, matching fujifilm-hdr-next-frontier.html */
+        .legal-content h1 {
+            font-size: 28px;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .legal-content h2 {
+            font-size: 22px;
+            margin-top: 44px;
+            margin-bottom: 10px;
+        }
+        .legal-content h3 {
+            font-size: 17px;
+            margin-top: 28px;
+        }
+        .article-deck {
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #6e6e73;
+            margin: 0 0 30px;
+        }
+        .article-lede {
+            font-size: 19px;
+            line-height: 1.65;
+            color: #1d1d1f;
+        }
+
+        /* Figures */
+        .fs-fig {
+            margin: 32px 0;
+            --fs-af: #c4550f;
+            color: #1d1d1f;
+        }
+        .fs-fig svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .fs-fig .af-s { stroke: var(--fs-af); }
+        .fs-fig .af-f { fill: var(--fs-af); }
+        .fs-fig figcaption,
+        .fs-cap {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #6e6e73;
+            margin-top: 14px;
+        }
+        .fs-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .fs-pair img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .fs-shot-label {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 13px;
+            color: #6e6e73;
+            margin: 8px 0 0;
+        }
+        .fs-shot-label b { color: #1d1d1f; font-weight: 600; }
+        @media (max-width: 700px) {
+            .fs-pair { grid-template-columns: 1fr; }
+        }
+
+        /* Tables */
+        .fs-tablewrap { overflow-x: auto; margin: 26px 0; }
+        .fs-table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .fs-table th,
+        .fs-table td {
+            text-align: left;
+            padding: 9px 14px 9px 0;
+            border-bottom: 1px solid #e5e5ea;
+            vertical-align: top;
+        }
+        .fs-table th {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #6e6e73;
+        }
+        .fs-table td.n, .fs-table th.n {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .fs-table .where { white-space: nowrap; font-weight: 700; }
+        .fs-table .sub { display: block; font-size: 13px; color: #6e6e73; font-weight: 400; }
+        .fs-table .after { color: #c4550f; font-weight: 700; }
+
+        .fs-note {
+            border-left: 3px solid #c4550f;
+            background: rgba(196, 85, 15, 0.06);
+            padding: 14px 18px;
+            margin: 28px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .byline {
+            font-size: 14px;
+            color: #6e6e73;
+            font-style: italic;
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid #e5e5ea;
+            line-height: 1.6;
+        }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .article-deck { color: #a1a1a6; }
+            .article-lede { color: #f5f5f7; }
+            .fs-fig { --fs-af: #f08a45; color: #f5f5f7; }
+            .fs-fig figcaption,
+            .fs-cap,
+            .fs-shot-label,
+            .fs-table th,
+            .fs-table .sub,
+            .byline { color: #a1a1a6; }
+            .fs-shot-label b { color: #f5f5f7; }
+            .fs-table th,
+            .fs-table td { border-bottom-color: #38383c; }
+            .fs-table .after { color: #f08a45; }
+            .fs-note { border-left-color: #f08a45; background: rgba(240, 138, 69, 0.12); }
+            .byline { border-top-color: #38383c; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="https://anogeissus.com/">Home</a>
+        <a href="https://anogeissus.com/apolloone.html">ApolloOne</a>
+        <a href="https://anogeissus.com/apolloone-go.html">ApolloOne GO</a>
+        <a href="https://anogeissus.com/camerarawx.html">Camera RawX</a>
+        <a href="https://anogeissus.com/support.html">Support</a>
+        <a href="https://anogeissus.com/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+
+        <h1>How the ApolloOne Focus Score Works</h1>
+        <p class="article-deck">One number, from 1 to 100, for how well the camera focused where it was aimed. Here is what that number is measured from, where the work runs on your Mac, and what changed in Build 5582.</p>
+
+        <p class="article-lede">A customer sent two frames of a dog, shot on a Z 9 at ISO 6400. Both came back at 100. One of them is a portrait that is good but not critically sharp, and the other is grossly out of focus. Working out why took the measurement apart, so this is a good moment to describe the whole of it in plain language.</p>
+
+        <h2>What the number is measured from</h2>
+
+        <p>Every RAW file records where the camera focused. ApolloOne reads that area out of the file and measures inside it, at the image's own full resolution. Nothing outside the focus area changes the score.</p>
+
+        <p>The measurement itself is one idea, repeated a few thousand times per photograph: how many pixels a boundary takes to go from dark to light.</p>
+
+        <figure class="fs-fig">
+            <svg viewBox="0 0 900 250" role="img" aria-label="The Focus Score path: the RAW file, the focus area the camera recorded, a re-developing with sharpening off, and the edge width that becomes the score, with a second developing at maximum noise reduction feeding in above ISO 6400.">
+              <defs>
+                <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+                </marker>
+                <marker id="ar-af" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" class="af-f"/>
+                </marker>
+              </defs>
+            
+              <g fill="none" stroke="currentColor" stroke-width="1.25">
+                <rect x="16"  y="56" width="120" height="50" rx="2"/>
+                <rect x="200" y="56" width="136" height="50" rx="2"/>
+                <rect x="400" y="56" width="200" height="50" rx="2"/>
+                <rect x="664" y="56" width="220" height="50" rx="2"/>
+              </g>
+            
+              <g font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="13.5" font-weight="600"
+                 fill="currentColor" text-anchor="middle">
+                <text x="76"  y="86">RAW file</text>
+                <text x="268" y="86">Focus area</text>
+                <text x="500" y="86">Develop, no sharpening</text>
+                <text x="774" y="86">Edge width, then score</text>
+              </g>
+            
+              <g stroke="currentColor" stroke-width="1.25" marker-end="url(#ar)">
+                <line x1="136" y1="81" x2="192" y2="81"/>
+                <line x1="336" y1="81" x2="392" y2="81"/>
+                <line x1="600" y1="81" x2="656" y2="81"/>
+              </g>
+            
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="currentColor"
+                 opacity=".72" text-anchor="middle">
+                <text x="164" y="42">the camera's</text>
+                <text x="164" y="54">own record</text>
+                <text x="364" y="42">that area</text>
+                <text x="364" y="54">only</text>
+                <text x="628" y="42">10 to 90%</text>
+                <text x="628" y="54">transition</text>
+              </g>
+            
+              <!-- the high-ISO second look -->
+              <g fill="none" class="af-s" stroke-width="1.25">
+                <rect x="400" y="168" width="200" height="50" rx="2"/>
+                <path d="M 500 106 L 500 168" marker-end="url(#ar-af)"/>
+                <path d="M 600 193 L 774 193 L 774 112" marker-end="url(#ar-af)"/>
+              </g>
+              <g font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="13.5" font-weight="600"
+                 class="af-f" text-anchor="middle">
+                <text x="500" y="192">Develop again, max NR</text>
+              </g>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" class="af-f" opacity=".9">
+                <text x="510" y="141">above ISO 6400</text>
+                <text x="612" y="184">this answer is scored</text>
+              </g>
+            </svg>
+            <figcaption>The main path. The focus area comes from the camera's own record in the file, the RAW is developed with sharpening turned off for that area alone, and the width of the edges inside it becomes the score. Above ISO 6400 a second developing runs with noise reduction at maximum, and its answer is the one that gets scored.</figcaption>
+        </figure>
+
+        <h3>Edge width</h3>
+
+        <p>Photograph the edge of a roof against a bright sky twice, once focused and once not. In the focused frame the roof line goes from dark to bright in about two pixels. In the missed frame the same line smears across ten or fifteen. That distance is the edge width, and measuring it is the whole of the Focus Score.</p>
+
+        <figure class="fs-fig">
+            <svg viewBox="0 0 720 290" role="img" aria-label="Brightness across one boundary in two frames. Focused, the transition from ten to ninety percent takes about two pixels. Missed, the same boundary takes about thirteen pixels.">
+              <defs>
+                <marker id="tick-l" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 10 0 L 0 5 L 10 10 z" fill="currentColor"/>
+                </marker>
+                <marker id="tick-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+                </marker>
+                <marker id="tick-l-af" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 10 0 L 0 5 L 10 10 z" class="af-f"/>
+                </marker>
+                <marker id="tick-r-af" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" class="af-f"/>
+                </marker>
+              </defs>
+            
+              <!-- axis -->
+              <line x1="60" y1="200" x2="670" y2="200" stroke="currentColor" stroke-width="1" opacity=".35"/>
+              <line x1="60" y1="40"  x2="60"  y2="200" stroke="currentColor" stroke-width="1" opacity=".35"/>
+            
+              <!-- 10% and 90% levels -->
+              <g stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" opacity=".45">
+                <line x1="60" y1="184" x2="670" y2="184"/>
+                <line x1="60" y1="56"  x2="670" y2="56"/>
+              </g>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="currentColor" opacity=".7">
+                <text x="14" y="60">90%</text>
+                <text x="14" y="188">10%</text>
+                <text x="14" y="34" font-size="10">bright</text>
+                <text x="14" y="216" font-size="10">dark</text>
+              </g>
+            
+              <!-- focused -->
+              <path d="M 60 200 L 330 200 C 348 200 352 40 370 40 L 670 40"
+                    fill="none" stroke="currentColor" stroke-width="2.25"/>
+              <!-- missed -->
+              <path d="M 60 200 L 220 200 C 300 200 420 40 500 40 L 670 40"
+                    fill="none" class="af-s" stroke-width="2.25" stroke-dasharray="7 4"/>
+            
+              <!-- width brackets -->
+              <line x1="330" y1="228" x2="370" y2="228" stroke="currentColor" stroke-width="1.25"
+                    marker-start="url(#tick-l)" marker-end="url(#tick-r)"/>
+              <line x1="228" y1="256" x2="492" y2="256" class="af-s" stroke-width="1.25"
+                    marker-start="url(#tick-l-af)" marker-end="url(#tick-r-af)"/>
+            
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+                <text x="384" y="232" fill="currentColor">2 px, in focus</text>
+                <text x="504" y="260" class="af-f">13 px, missed</text>
+              </g>
+            
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="currentColor" opacity=".6">
+                <text x="365" y="284" text-anchor="middle">distance across the boundary</text>
+              </g>
+            </svg>
+            <figcaption>The same boundary, focused and missed. Width is measured between the 10% and 90% brightness levels, which is the standard way of putting a number on an edge, and it is what a lens does to a boundary when focus is off.</figcaption>
+        </figure>
+
+        <p>A focus area holds thousands of edges, and most of them are not the finest thing in it. So ApolloOne sorts them by width and reads the sharpest quarter. If the best edges in the area are about two pixels wide, the camera got it. If the best edges in the area are seven pixels wide, nothing in that area is in focus.</p>
+
+        <p>That width is then put on a fixed scale. About two pixels is 100, and the number falls as the width grows. The scale does not depend on the rest of the folder, so the same photograph gets the same score anywhere, next to any other images.</p>
+
+        <h3>Why the RAW is developed again</h3>
+
+        <p>Every camera sharpens the picture it writes, and sharpening draws crisp edges around whatever detail is left. A frame the lens nearly missed comes out looking much like one it nailed. So ApolloOne does not judge a RAW file by the picture built into it. It develops the RAW itself, with sharpening off, for the focus area only. That costs a fraction of a second per image and it scores considerably harder: a frame that is perfectly useable but not critically sharp lands in the fifties where the camera's own picture would have put it in the nineties.</p>
+
+        <h3>The rules around the edges</h3>
+
+        <p>Three situations need their own handling.</p>
+
+        <ul>
+            <li><strong>Faces.</strong> Cameras smooth skin, and a face judged on skin alone reads softer than it is. When the focus area lands on a face, the file keeps the camera's own picture and is judged on the finest detail a face renders, the eyes and lashes and hair.</li>
+            <li><strong>An empty focus area.</strong> Focus and recompose puts the recorded area on blank sky. When there is nothing in it to judge, ApolloOne looks for the subject in the frame, then searches the whole frame, and only calls the image Unranked when neither finds anything.</li>
+            <li><strong>High ISO.</strong> Grain has hard little edges of its own, and above ISO 6400 what survives the camera's processing measures the same as fine detail. ApolloOne answers with a second developing of the same area, noise reduction at maximum: real detail survives that, grain does not. Above ISO 10000 even the second look can be fooled, and those images go to Unranked rather than get a guess.</li>
+        </ul>
+
+        <h2>Where the work runs</h2>
+
+        <p>Processing a folder keeps all three engines busy, and the split is not the one people usually expect. The heavy, slow part is developing the RAW, which is graphics work. The measurement that produces the number is arithmetic over a small grey image, and it is quick enough that putting it anywhere but the CPU would cost more than it saved.</p>
+
+        <div class="fs-tablewrap">
+        <table class="fs-table">
+            <thead>
+                <tr><th>Stage</th><th>Runs on</th><th>Why there</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Reading the focus area out of the file</td>
+                    <td class="where">CPU</td>
+                    <td>Walking a few hundred bytes of the maker note. Microseconds.</td>
+                </tr>
+                <tr>
+                    <td>Unpacking a format Apple cannot open<span class="sub">Nikon HE and HE*, compressed Fujifilm RAF</span></td>
+                    <td class="where">CPU</td>
+                    <td>The intoPIX and LibRaw decoders are CPU libraries. On those two formats this is the slowest single step.</td>
+                </tr>
+                <tr>
+                    <td>Finding faces and lifting the subject</td>
+                    <td class="where">Neural&nbsp;Engine</td>
+                    <td>Vision chooses its own hardware and takes the Neural Engine first. The subject mask has no CPU path at all, so on a Mac without a Neural Engine it falls to the GPU.</td>
+                </tr>
+                <tr>
+                    <td>Developing the RAW, sharpening off</td>
+                    <td class="where">GPU</td>
+                    <td>Core Image work, rendered through Metal. Only the tiles the focus area covers are drawn, which is what keeps it to a fraction of a second on a 45&nbsp;megapixel file.</td>
+                </tr>
+                <tr>
+                    <td>The second developing at maximum noise reduction</td>
+                    <td class="where">GPU</td>
+                    <td>The same pipeline with one setting changed, so the expensive preparation is not paid twice.</td>
+                </tr>
+                <tr>
+                    <td>Apple's machine-learning RAW decoder<span class="sub">where it covers the camera</span></td>
+                    <td class="where">Neural&nbsp;Engine</td>
+                    <td>Apple's own ML denoising. Where it is available its answer is good enough that the second developing is skipped.</td>
+                </tr>
+                <tr>
+                    <td>Measuring the edges</td>
+                    <td class="where">CPU</td>
+                    <td>Plain C over the grey channel of one small crop: a noise estimate, a gradient pass, a walk across each edge, a sort. A few milliseconds.</td>
+                </tr>
+                <tr>
+                    <td>Counting the edges and their neighbours<span class="sub">new in Build 5582</span></td>
+                    <td class="where">CPU</td>
+                    <td>One more pass over the same crop, in step with the edge count rather than the pixel count.</td>
+                </tr>
+                <tr>
+                    <td>Turning width into a score</td>
+                    <td class="where">CPU</td>
+                    <td>One power function per image.</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p>Files are processed two to four at a time, following the core count, so several GPU renders and several CPU measurements overlap. On a folder of RAW files the wall-clock time is almost entirely the developing, which is why the scan is described as GPU-assisted rather than GPU-based. The parts that could use the Neural Engine already do, through Vision and through Apple's decoder. Nothing in the measurement itself is a neural network.</p>
+
+        <h2>The two frames that broke it</h2>
+
+        <p>Both were shot at ISO 6400 with subject detection set to animals. Both scored 100. The focus area the camera recorded on the second one landed on flat chest fur.</p>
+
+        <div class="fs-fig">
+            <div class="fs-pair">
+                <div>
+                    <img src="https://anogeissus.com/images/focus-score-eye.jpg" alt="A crop of a dog's eye, softly focused, with a grid of small specular catchlights.">
+                    <p class="fs-shot-label"><span>The eye</span><b>scored 100</b></p>
+                </div>
+                <div>
+                    <img src="https://anogeissus.com/images/focus-score-fur.jpg" alt="A crop of pale chest fur, completely defocused, with no visible detail.">
+                    <p class="fs-shot-label"><span>The chest fur</span><b>scored 100</b></p>
+                </div>
+            </div>
+            <p class="fs-cap">The actual measured areas, at full resolution, developed the way ApolloOne measures them. These two pictures produced the same score.</p>
+        </div>
+
+        <p>The right-hand crop is the interesting one. There is nothing in it. No detail of any kind survived the miss, and the software still reported edges two pixels wide.</p>
+
+        <h2>What noise reduction leaves behind</h2>
+
+        <p>The second look at high ISO works by turning noise reduction up to maximum and asking what is still there. On a frame of pure grain that check does its job and everything collapses. On this frame it did not.</p>
+
+        <p>The reason turns out to be a loop in the measurement itself. Before ApolloOne measures any edges it estimates how noisy the area is, so that it can set its thresholds above the noise. That estimate looks at the finest, highest-frequency variation in the picture, which is exactly what noise reduction removes. Run noise reduction at maximum and the estimate drops through the floor: on this file it fell from 0.741 to 0.247. The software then concluded the area was very clean, relaxed its thresholds accordingly, and started accepting things it would otherwise have thrown away.</p>
+
+        <p>What it accepted were the leftovers of the noise reduction. Strong smoothing does not produce a flat surface, it produces soft blotches, and the boundary between two blotches is narrow. A narrow boundary is what the Focus Score counts as fine detail.</p>
+
+        <div class="fs-fig">
+            <div class="fs-pair">
+                <div>
+                    <img src="https://anogeissus.com/images/focus-score-eye-edges.jpg" alt="The eye crop with every measured edge marked in colour: red dots scattered across the dark iris, blue outlines tracing the catchlights.">
+                    <p class="fs-shot-label"><span>The eye</span><b>62% on contours</b></p>
+                </div>
+                <div>
+                    <img src="https://anogeissus.com/images/focus-score-fur-edges.jpg" alt="The chest-fur crop with every measured edge marked: isolated single-pixel specks scattered across an otherwise featureless field.">
+                    <p class="fs-shot-label"><span>The chest fur</span><b>6% on contours</b></p>
+                </div>
+            </div>
+            <p class="fs-cap">Every edge the measurement accepted, painted onto the two areas. Red marks the ones narrow enough to count as sharp. On the right they are isolated specks in an empty field, and those specks set the score.</p>
+        </div>
+
+        <p>Painting the accepted edges back onto the picture is what settled it. On the blurred frame they are single pixels, scattered, with nothing joining them up. On the eye they cluster in the dark part of the iris, where the noise is worst and the estimate describes it least well.</p>
+
+        <h2>Two new tests</h2>
+
+        <p>Neither test measures sharpness. Both ask whether there is enough in the area for a sharpness statistic to mean anything, and both are cheap because the measurement already knew the answer and was throwing it away.</p>
+
+        <h3>How many edges are there</h3>
+
+        <p>An in-focus focus area carries between 10 and 20 edges for every hundred pixels. The eye carried 2. The chest fur carried one edge for every thousand pixels. When the count is that low, the sharpest tenth of the edges is not a description of a subject, and ApolloOne now stops using it and reads the plain quarter instead. That alone takes the eye frame from 100 to 48, which is roughly what the photographer said he expected of it.</p>
+
+        <h3>Do the edges line up</h3>
+
+        <p>A real edge is a line. It continues: the pixel next to it is also on an edge, and so is the one after that. A speck of noise has nobody next to it. For every edge it accepts, ApolloOne now counts how many other accepted edges lie within three pixels.</p>
+
+        <p>Across 456 test files the separation is wide and there is nothing in the middle of it. In-focus areas have between 87% and 99% of their edges sitting on contours. Frames already ruled soft sit at 69% to 82%. The chest fur sits at 6%.</p>
+
+        <h2>Reading further down the list</h2>
+
+        <p>The first version of the fix declared such a frame unjudgeable and sent it to Unranked. That was the wrong answer. The reference folders of out-of-focus shots already score 1 to 5, and pushing them into Unranked would have been a step backwards: a photographer deletes a 3 at a glance, where an Unranked image has to be opened and looked at.</p>
+
+        <p>The way out was in the data already. Sort the widths of the blurred frame from narrowest to widest and the list is in two parts. The bottom half sits at 1.5 to 1.7 pixels, which is the noise-reduction residue. Above that it climbs steeply into the real blur, and by nine tenths of the way along the list it reads 13.6 pixels, the same figure the known out-of-focus reference frames give at their sharpest quarter.</p>
+
+        <figure class="fs-fig">
+            <svg viewBox="0 0 720 330" role="img" aria-label="Edge widths sorted narrowest to widest. The sharp frame rises steadily from 2.5 to 11 pixels. The blurred frame stays flat near 1.6 pixels for the first half, then climbs steeply to 13.6 pixels at the ninetieth percentile.">
+              <!-- grid -->
+              <g stroke="currentColor" stroke-width="1" opacity=".16">
+                <line x1="70" y1="280" x2="700" y2="280"/>
+                <line x1="70" y1="232" x2="700" y2="232"/>
+                <line x1="70" y1="184" x2="700" y2="184"/>
+                <line x1="70" y1="136" x2="700" y2="136"/>
+                <line x1="70" y1="88"  x2="700" y2="88"/>
+                <line x1="70" y1="40"  x2="700" y2="40"/>
+              </g>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="currentColor"
+                 opacity=".65" text-anchor="end">
+                <text x="60" y="284">0</text>
+                <text x="60" y="236">5</text>
+                <text x="60" y="188">10</text>
+                <text x="60" y="140">15</text>
+                <text x="60" y="92">20</text>
+                <text x="60" y="44">25</text>
+                
+              </g>
+            
+              <!-- percentile markers -->
+              <g stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" opacity=".38">
+                <line x1="225" y1="30" x2="225" y2="280"/>
+                <line x1="628" y1="30" x2="628" y2="280"/>
+              </g>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="currentColor" opacity=".7">
+                <text x="225" y="302" text-anchor="middle">sharpest quarter</text>
+                <text x="628" y="302" text-anchor="middle">90th</text>
+                <text x="385" y="322" text-anchor="middle" opacity=".8">edges sorted narrowest to widest</text>
+              </g>
+            
+              <!-- sharp keeper -->
+              <polyline points="132,268 225,256 380,241 535,212 628,171 684,74"
+                        fill="none" stroke="currentColor" stroke-width="2.25"/>
+              <g fill="currentColor">
+                <circle cx="225" cy="256" r="3.2"/>
+                <circle cx="628" cy="171" r="3.2"/>
+              </g>
+            
+              <!-- the blurred frame -->
+              <polyline points="132,266 225,265 380,264 535,229 628,150 684,56"
+                        fill="none" class="af-s" stroke-width="2.25" stroke-dasharray="7 4"/>
+              <g class="af-f">
+                <circle cx="225" cy="265" r="3.2"/>
+                <circle cx="628" cy="150" r="3.2"/>
+              </g>
+            
+              <!-- callouts -->
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5">
+                <text x="238" y="246" fill="currentColor">2.5 px</text>
+                <text x="238" y="284" class="af-f">1.6 px</text>
+                <text x="576" y="164" fill="currentColor" text-anchor="end">11.3 px</text>
+                <text x="576" y="136" class="af-f" text-anchor="end">13.6 px</text>
+              </g>
+            
+              <g font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="12.5" font-weight="600">
+                <line x1="70" y1="14" x2="94" y2="14" stroke="currentColor" stroke-width="2.25"/>
+                <text x="102" y="18" fill="currentColor">a sharp frame</text>
+                <line x1="228" y1="14" x2="252" y2="14" class="af-s" stroke-width="2.25" stroke-dasharray="7 4"/>
+                <text x="260" y="18" class="af-f">the blurred one</text>
+              </g>
+            </svg>
+            <figcaption>Edge widths in the same focus area, sorted narrowest to widest, for a genuinely sharp frame and for the blurred one. The sharp frame climbs steadily. The blurred one is flat along the bottom, where the residue sits, and then jumps. Reading it at the 90th percentile instead of the sharpest quarter is what recovers the real blur.</figcaption>
+        </figure>
+
+        <p>So when the contour test says the area holds specks rather than a picture, the score is taken from the 90th percentile of the same measurements. Nothing new is computed, and the reading is only used once we already know what kind of population it is. On a sharp frame the 90th percentile is meaningless, which is why it is never consulted there.</p>
+
+        <div class="fs-note">
+            <strong>The blurred frame goes from 100 to 6.</strong> The eye goes from 100 to 48. Both tests only ever apply to a result the second, noise-reduced developing produced, which is what keeps them away from every score that was already correct.
+        </div>
+
+        <h2>What moved</h2>
+
+        <p>The change was checked against 456 files, covering three camera brands and every reference folder we have: known out-of-focus sets, a high-ISO set with ground truth, a 200-frame travel folder, a swimming meet, a lunch table with faces. Of those, 384 produced a measurement, 18 are handled by the second developing at all, and 8 changed.</p>
+
+        <div class="fs-tablewrap">
+        <table class="fs-table">
+            <thead>
+                <tr><th>File</th><th>What it is</th><th class="n">Before</th><th class="n">After</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>untitled-3952</td><td>the chest fur, grossly out of focus</td><td class="n">100</td><td class="n after">6</td></tr>
+                <tr><td>untitled-3950</td><td>the eye, good but not critical</td><td class="n">100</td><td class="n after">48</td></tr>
+                <tr><td>7RV02291</td><td>a soft frame at ISO 8000</td><td class="n">37</td><td class="n after">16</td></tr>
+                <tr><td>_Z819375</td><td>out-of-focus reference</td><td class="n">5</td><td class="n after">1</td></tr>
+                <tr><td>_Z819378</td><td>out-of-focus reference</td><td class="n">5</td><td class="n after">2</td></tr>
+                <tr><td>_Z819374</td><td>out-of-focus reference</td><td class="n">4</td><td class="n after">1</td></tr>
+                <tr><td>_Z819377</td><td>out-of-focus reference</td><td class="n">4</td><td class="n after">1</td></tr>
+                <tr><td>_Z819376</td><td>out-of-focus reference</td><td class="n">3</td><td class="n after">1</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p>Every other file in the set holds its score to the point, including the sharp frames at ISO 6400 to 10000 that the second developing was built for, the 36 travel frames whose measurement sits on the reconstruction floor, and the faces.</p>
+
+        <h2>What the score still does not claim</h2>
+
+        <p>It describes how well the camera did where it was aimed. Most of the time that is the same question as whether the subject is sharp, and it stops being the same question when the camera was aimed somewhere else. A folder shot with the focus area pinned to the middle of the frame, subject moving around it, will score the middle of the frame.</p>
+
+        <p>It also describes the file in front of it. A RAW exported through a converter that reconstructs detail while it denoises will score higher than the camera's own version of the same frame, and one that leaves the sharpening to you will score lower. Both readings are honest accounts of the file each converter made, and neither is a verdict on the converter.</p>
+
+        <p>It remains a measurement of edges. It has no opinion on whether the photograph is worth keeping for any other reason, and a folder of well-focused frames that are all of the wrong moment will score high all the way through.</p>
+
+        <p class="byline">Focus Score is part of ApolloOne, and requires a Max Edition subscription or perpetual licence. The behaviour described here ships in Build 5582.</p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="https://anogeissus.com/apolloone.html">ApolloOne</a>
+            <a href="https://anogeissus.com/apolloone-go.html">ApolloOne GO</a>
+            <a href="https://anogeissus.com/camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="https://anogeissus.com/support.html">Support</a>
+            <a href="https://anogeissus.com/blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="https://anogeissus.com/contact.html">Contact</a>
+            <a href="https://anogeissus.com/privacy.html">Privacy</a>
+            <a href="https://anogeissus.com/termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
