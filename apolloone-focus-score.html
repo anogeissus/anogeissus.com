@@ -317,14 +317,14 @@
 
         <h3>Why the RAW is developed again</h3>
 
-        <p>Every camera sharpens the picture it writes, and sharpening draws crisp edges around whatever detail is left. A frame the lens nearly missed comes out looking much like one it nailed. So ApolloOne does not judge a RAW file by the picture built into it (embedded JPEG). It develops the RAW itself, with sharpening off, for the focus area only. That costs a fraction of a second per image and it scores considerably harder: a frame that is perfectly useable but not critically sharp lands in the fifties where the camera's own picture would have put it in the nineties.</p>
+        <p>Every camera sharpens the picture it writes, and sharpening draws crisp edges around whatever detail is left. A frame the lens nearly missed comes out looking much like one it nailed. So ApolloOne does not judge a RAW file by the picture built into it (embedded JPEG). It develops the RAW itself, with sharpening off, for the focus area only. That costs a fraction of a second per image and it scores considerably harder: a frame that is perfectly useable but not critically sharp lands in the fifties where the camera's processed JPEG image would have put it in the nineties.</p>
 
         <h3>The rules around the edges</h3>
 
         <p>Three situations need their own handling.</p>
 
         <ul>
-            <li><strong>Faces.</strong> Cameras smooth skin, and a face judged on skin alone reads softer than it is. When the focus area lands on a face, the file keeps the camera's own picture and is judged on the finest detail a face renders, the eyes and lashes and hair.</li>
+            <li><strong>Faces.</strong> Cameras smooth skin, and a face judged on skin alone reads softer than it is. When the focus area lands on a face, the file keeps the camera's processed JPEG image and is judged on the finest detail a face renders, the eyes and lashes and hair.</li>
             <li><strong>An empty focus area.</strong> Focus and recompose puts the recorded area on blank sky. When there is nothing in it to judge, ApolloOne looks for the subject in the frame, then searches the whole frame, and only calls the image Unranked when neither finds anything.</li>
             <li><strong>High ISO.</strong> Grain has hard little edges of its own, and above ISO 6400 what survives the camera's processing measures the same as fine detail. ApolloOne answers with a second developing of the same area, noise reduction at maximum: real detail survives that, grain does not. Above ISO 10000 even the second look can be fooled, and those images go to Unranked rather than get a guess.</li>
         </ul>
