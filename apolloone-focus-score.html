@@ -324,7 +324,7 @@
         <p>Three situations need their own handling.</p>
 
         <ul>
-            <li><strong>Faces.</strong> Cameras smooth skin, and a face judged on skin alone reads softer than it is. When the focus area lands on a face, the file keeps the camera's processed JPEG image and is judged on the finest detail a face renders, the eyes and lashes and hair.</li>
+            <li><strong>Faces.</strong> Cameras smooth skin, and a face judged on skin alone reads softer than it is. So when the focus area lands on a face, ApolloOne skips its own render and measures the camera's processed image instead: the JPEG or HEIF written beside the RAW if you shot RAW+JPEG, and otherwise the JPEG preview stored inside the RAW. It then judges the face on the finest detail one renders, the eyes and lashes and hair.</li>
             <li><strong>An empty focus area.</strong> Focus and recompose puts the recorded area on blank sky. When there is nothing in it to judge, ApolloOne looks for the subject in the frame, then searches the whole frame, and only calls the image Unranked when neither finds anything.</li>
             <li><strong>High ISO.</strong> Grain has hard little edges of its own, and above ISO 6400 what survives the camera's processing measures the same as fine detail. ApolloOne answers with a second developing of the same area, noise reduction at maximum: real detail survives that, grain does not. Above ISO 10000 even the second look can be fooled, and those images go to Unranked rather than get a guess.</li>
         </ul>
