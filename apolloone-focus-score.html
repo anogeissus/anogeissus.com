@@ -181,7 +181,7 @@
         <h1>How the ApolloOne Focus Score Works</h1>
         <p class="article-deck">One number, from 1 to 100, for how well the camera focused where it was aimed. Here is what that number is measured from, where the work runs on your Mac, and what changed in Build 5582.</p>
 
-        <p class="article-lede">A customer sent me two frames of his dog, shot on a Z 9 at ISO 6400. Both came back at 100. One is a portrait that is good without being critically sharp, and the other is grossly out of focus. Working out why meant taking my own measurement apart, so this is a good moment to describe the whole of it in plain language.</p>
+        <p class="article-lede">A customer sent us two frames of his dog, shot on a Z 9 at ISO 6400. Both came back at 100. One is a portrait that is good without being critically sharp, and the other is grossly out of focus. Working out why meant taking our own measurement apart, so this is a good moment to describe the whole of it in plain language.</p>
 
         <h2>What the number is measured from</h2>
 
@@ -331,7 +331,7 @@
 
         <h2>Where the work runs</h2>
 
-        <p>Processing a folder keeps all three engines busy, and the split is not the one people usually expect. The heavy, slow part is developing the RAW, which is graphics work. The measurement that produces the number is arithmetic over a small grey image, and it is quick enough that putting it anywhere but the CPU would cost more than it saved.</p>
+        <p>Processing a folder keeps all three engines busy, and the split is not the one people usually expect. The heavy, slow part is developing the RAW, which is graphics work. The measurement that produces the number is arithmetic over a small gray image, and it is quick enough that putting it anywhere but the CPU would cost more than it saved.</p>
 
         <div class="fs-tablewrap">
         <table class="fs-table">
@@ -372,10 +372,10 @@
                 <tr>
                     <td>Measuring the edges</td>
                     <td class="where">CPU</td>
-                    <td>Plain C over the grey channel of one small crop: a noise estimate, a gradient pass, a walk across each edge, a sort. A few milliseconds.</td>
+                    <td>Plain C over the gray channel of one small crop: a noise estimate, a gradient pass, a walk across each edge, a sort. A few milliseconds.</td>
                 </tr>
                 <tr>
-                    <td>Counting the edges and their neighbours<span class="sub">new in Build 5582</span></td>
+                    <td>Counting the edges and their neighbors<span class="sub">new in Build 5582</span></td>
                     <td class="where">CPU</td>
                     <td>One more pass over the same crop, in step with the edge count rather than the pixel count.</td>
                 </tr>
@@ -388,7 +388,7 @@
         </table>
         </div>
 
-        <p>Files are processed two to four at a time, following the core count, so several GPU renders and several CPU measurements overlap. On a folder of RAW files the wall-clock time is almost entirely the developing, which is why I call it GPU-assisted rather than GPU-based. The parts that could use the Neural Engine already do, through Vision and through Apple's decoder. Nothing in the measurement itself is a neural network.</p>
+        <p>Files are processed two to four at a time, following the core count, so several GPU renders and several CPU measurements overlap. On a folder of RAW files the wall-clock time is almost entirely the developing, which is why we call it GPU-assisted rather than GPU-based. The parts that could use the Neural Engine already do, through Vision and through Apple's decoder. Nothing in the measurement itself is a neural network.</p>
 
         <h2>The two frames that broke it</h2>
 
@@ -414,14 +414,14 @@
 
         <p>The second look at high ISO works by turning noise reduction up to maximum and asking what is still there. On a frame of pure grain that check does its job and everything collapses. On this frame it did not.</p>
 
-        <p>The reason turned out to be a loop in my own measurement. Before ApolloOne measures any edges it estimates how noisy the area is, so that it can set its thresholds above the noise. That estimate looks at the finest, highest-frequency variation in the picture, which is exactly what noise reduction removes. Run noise reduction at maximum and the estimate drops through the floor: on this file it fell from 0.741 to 0.247. ApolloOne then concluded the area was very clean, relaxed its thresholds to match, and started accepting things it would otherwise have thrown away.</p>
+        <p>The reason turned out to be a loop in our own measurement. Before ApolloOne measures any edges it estimates how noisy the area is, so that it can set its thresholds above the noise. That estimate looks at the finest, highest-frequency variation in the picture, which is exactly what noise reduction removes. Run noise reduction at maximum and the estimate drops through the floor: on this file it fell from 0.741 to 0.247. ApolloOne then concluded the area was very clean, relaxed its thresholds to match, and started accepting things it would otherwise have thrown away.</p>
 
         <p>What it accepted were the leftovers of the noise reduction. Strong smoothing does not produce a flat surface, it produces soft blotches, and the boundary between two blotches is narrow. A narrow boundary is what the Focus Score counts as fine detail.</p>
 
         <div class="fs-fig">
             <div class="fs-pair">
                 <div>
-                    <img src="https://anogeissus.com/images/focus-score-eye-edges.jpg" alt="The eye crop with every measured edge marked in colour: red dots scattered across the dark iris, blue outlines tracing the catchlights.">
+                    <img src="https://anogeissus.com/images/focus-score-eye-edges.jpg" alt="The eye crop with every measured edge marked in color: red dots scattered across the dark iris, blue outlines tracing the catchlights.">
                     <p class="fs-shot-label"><span>The eye</span><b>62% on contours</b></p>
                 </div>
                 <div>
@@ -432,7 +432,7 @@
             <p class="fs-cap">Every edge the measurement accepted, painted onto the two areas. Red marks the ones narrow enough to count as sharp. On the right they are isolated specks in an empty field, and those specks set the score.</p>
         </div>
 
-        <p>Painting the accepted edges back onto the picture is what settled it for me. On the blurred frame they are single pixels, scattered, with nothing joining them up. On the eye they cluster in the dark part of the iris, where the noise is worst and the estimate describes it least well.</p>
+        <p>Painting the accepted edges back onto the picture is what settled it for us. On the blurred frame they are single pixels, scattered, with nothing joining them up. On the eye they cluster in the dark part of the iris, where the noise is worst and the estimate describes it least well.</p>
 
         <h2>Two new tests</h2>
 
@@ -440,7 +440,7 @@
 
         <h3>How many edges are there</h3>
 
-        <p>An in-focus focus area carries between 10 and 20 edges for every hundred pixels. The eye carried 2. The chest fur carried one edge for every thousand pixels. When the count is that low, the sharpest tenth of the edges is not a description of a subject, and ApolloOne now stops using it and reads the plain quarter instead. That alone takes the eye frame from 100 to 48, which is about what I would give it looking at it myself.</p>
+        <p>An in-focus focus area carries between 10 and 20 edges for every hundred pixels. The eye carried 2. The chest fur carried one edge for every thousand pixels. When the count is that low, the sharpest tenth of the edges is not a description of a subject, and ApolloOne now stops using it and reads the plain quarter instead. That alone takes the eye frame from 100 to 48, which is about what we would give it looking at it ourselves.</p>
 
         <h3>Do the edges line up</h3>
 
@@ -450,9 +450,9 @@
 
         <h2>Reading further down the list</h2>
 
-        <p>My first attempt at the fix declared such a frame unjudgeable and sent it to Unranked, and I threw that away. My reference folders of out-of-focus shots already score 1 to 5, and pushing them into Unranked would have been a step backwards: you delete a 3 at a glance, where an Unranked image has to be opened and looked at.</p>
+        <p>Our first attempt at the fix declared such a frame unjudgeable and sent it to Unranked, and we threw that away. Our reference folders of out-of-focus shots already score 1 to 5, and pushing them into Unranked would have been a step backwards: you delete a 3 at a glance, where an Unranked image has to be opened and looked at.</p>
 
-        <p>The way out was already in the data I had. Sort the widths of the blurred frame from narrowest to widest and the list is in two parts. The bottom half sits at 1.5 to 1.7 pixels, which is the noise-reduction residue. Above that it climbs steeply into the real blur, and by nine tenths of the way along the list it reads 13.6 pixels, the same figure the known out-of-focus reference frames give at their sharpest quarter.</p>
+        <p>The way out was already in the data we had. Sort the widths of the blurred frame from narrowest to widest and the list is in two parts. The bottom half sits at 1.5 to 1.7 pixels, which is the noise-reduction residue. Above that it climbs steeply into the real blur, and by nine tenths of the way along the list it reads 13.6 pixels, the same figure the known out-of-focus reference frames give at their sharpest quarter.</p>
 
         <figure class="fs-fig">
             <svg viewBox="0 0 720 330" role="img" aria-label="Edge widths sorted narrowest to widest. The sharp frame rises steadily from 2.5 to 11 pixels. The blurred frame stays flat near 1.6 pixels for the first half, then climbs steeply to 13.6 pixels at the ninetieth percentile.">
@@ -529,7 +529,7 @@
 
         <h2>What moved</h2>
 
-        <p>I checked the change against 456 files, covering three camera brands and every reference folder I keep: known out-of-focus sets, a high-ISO set with ground truth, a 200-frame travel folder, a swimming meet, a lunch table with faces. Of those, 384 produced a measurement, 18 are handled by the second developing at all, and 8 changed.</p>
+        <p>We checked the change against 456 files, covering three camera brands and every reference folder we keep: known out-of-focus sets, a high-ISO set with ground truth, a 200-frame travel folder, a swimming meet, a lunch table with faces. Of those, 384 produced a measurement, 18 are handled by the second developing at all, and 8 changed.</p>
 
         <div class="fs-tablewrap">
         <table class="fs-table">
@@ -549,17 +549,17 @@
         </table>
         </div>
 
-        <p>Every other file scored exactly what it scored before. That covers the three groups I most wanted left alone: the genuinely sharp frames between ISO 6400 and 10000, which are the whole reason the second developing exists; 36 frames from the travel folder whose edges already measure as fine as the file can render them, which is the reading a test like this could most easily mistake for noise; and every frame with a face in it.</p>
+        <p>Every other file scored exactly what it scored before. That covers the three groups we most wanted left alone: the genuinely sharp frames between ISO 6400 and 10000, which are the whole reason the second developing exists; 36 frames from the travel folder whose edges already measure as fine as the file can render them, which is the reading a test like this could most easily mistake for noise; and every frame with a face in it.</p>
 
         <h2>What the score does not tell you</h2>
 
-        <p>The score measures how well the camera focused at the point it was aimed. Usually that is the same as asking whether your subject is sharp. That stops being true when the camera was aimed somewhere else. Shoot a folder with the focus area pinned to the centre and let the subject move around it, and the score describes the centre of the frame.</p>
+        <p>The score measures how well the camera focused at the point it was aimed. Usually that is the same as asking whether your subject is sharp. That stops being true when the camera was aimed somewhere else. Shoot a folder with the focus area pinned to the center and let the subject move around it, and the score describes the center of the frame.</p>
 
         <p>It also measures the file you hand it. A RAW put through a converter that rebuilds detail while it denoises will score higher than the camera's version of the same frame. One that denoises gently and leaves the sharpening to you will score lower. Both numbers are accurate descriptions of the files those converters wrote. If you rank several exports of one frame against each other, what you are ranking is the converters.</p>
 
         <p>And it only ever looks at edges. Whether the eyes are open, whether the light is any good, whether you want the picture at all: none of that reaches the measurement. A folder focused well throughout will score high throughout, including on frames you would never keep.</p>
 
-        <p class="byline">Focus Score is part of ApolloOne, and requires a Max Edition subscription or perpetual licence. The behaviour described here ships in Build 5582.</p>
+        <p class="byline">Focus Score is part of ApolloOne, and requires a Max Edition subscription or perpetual license. The behavior described here ships in Build 5582.</p>
 
     </div>
 </section>

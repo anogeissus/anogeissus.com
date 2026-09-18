@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cameras Supported by ML Processing | Anogeissus</title>
+    <meta name="description" content="The camera models Apple's machine learning RAW decoder covers in macOS 27, which ApolloOne uses for ML Processing. 51 models today, and more arrive with macOS updates.">
+    <link rel="icon" type="image/png" href="https://anogeissus.com/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="https://anogeissus.com/images/apolloone-icon.png">
+
+    <link rel="canonical" href="https://anogeissus.com/apolloone-ml-cameras.html">
+
+    <link rel="stylesheet" href="https://anogeissus.com/css/style.css?v=24">
+
+    <style>
+        /* Article typography, matching apolloone-focus-score.html */
+        .legal-content h1 {
+            font-size: 28px;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .legal-content h2 {
+            font-size: 22px;
+            margin-top: 44px;
+            margin-bottom: 10px;
+        }
+        .article-deck {
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #6e6e73;
+            margin: 0 0 30px;
+        }
+
+        /* Camera list */
+        .cam-brand {
+            margin-top: 34px;
+        }
+        .cam-brand h3 {
+            font-size: 17px;
+            margin: 0 0 10px;
+        }
+        .cam-brand h3 .count {
+            font-weight: 400;
+            color: #6e6e73;
+        }
+        .cam-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 32px;
+        }
+        .cam-list li {
+            break-inside: avoid;
+            padding: 5px 0;
+            border-bottom: 1px solid #e5e5ea;
+            font-size: 15px;
+        }
+        .cam-stamp {
+            font-size: 14px;
+            color: #6e6e73;
+            margin-top: 8px;
+        }
+        .byline {
+            font-size: 14px;
+            color: #6e6e73;
+            font-style: italic;
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid #e5e5ea;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .cam-list { columns: 1; }
+        }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .article-deck,
+            .cam-brand h3 .count,
+            .cam-stamp,
+            .byline { color: #a1a1a6; }
+            .cam-list li { border-bottom-color: #38383c; }
+            .byline { border-top-color: #38383c; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="https://anogeissus.com/">Home</a>
+        <a href="https://anogeissus.com/apolloone.html">ApolloOne</a>
+        <a href="https://anogeissus.com/apolloone-go.html">ApolloOne GO</a>
+        <a href="https://anogeissus.com/camerarawx.html">Camera RawX</a>
+        <a href="https://anogeissus.com/support.html">Support</a>
+        <a href="https://anogeissus.com/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+
+        <h1>Cameras Supported by ML Processing</h1>
+        <p class="article-deck">ML Processing runs on Apple's machine learning RAW decoder. Apple decides which cameras that decoder covers, and these are the models on the list today.</p>
+
+        <p>The list grows with macOS. When Apple adds a camera in a macOS update, ApolloOne picks it up on its own, with nothing to download from us. A RAW file from a camera that is not on the list is decoded normally, at the quality ApolloOne has always given it. What it misses is the machine learning noise reduction and the improved X-Trans demosaic.</p>
+
+        <p>Your own Mac has the current answer: in ApolloOne, choose <strong>RAW &gt; ML Processing Camera Support List</strong>. It reads the camera database of the macOS you are running, so it stays right as Apple extends the list. If your camera is missing here but shows up there, your macOS is newer than this page.</p>
+
+        <h2>The list</h2>
+        <p class="cam-stamp">51 models, read on September 17, 2026 from macOS 27.0 with RawCamera 9.50.0. Apple's database held 924 camera models in total at that moment.</p>
+
+        <div class="cam-brand">
+            <h3>Canon <span class="count">— 17</span></h3>
+            <ul class="cam-list">
+                <li>EOS 5D</li>
+                <li>EOS 5D Mark II</li>
+                <li>EOS 5D Mark III</li>
+                <li>EOS 5D Mark IV</li>
+                <li>EOS 6D</li>
+                <li>EOS 6D Mark II</li>
+                <li>EOS 2000D</li>
+                <li>EOS R</li>
+                <li>EOS R1</li>
+                <li>EOS R5</li>
+                <li>EOS R6</li>
+                <li>EOS R6 Mark II</li>
+                <li>EOS R8</li>
+                <li>EOS R50</li>
+                <li>EOS Rebel T7</li>
+                <li>EOS RP</li>
+                <li>R100</li>
+            </ul>
+        </div>
+
+        <div class="cam-brand">
+            <h3>Sony <span class="count">— 13</span></h3>
+            <ul class="cam-list">
+                <li>Alpha ILCE-7 II</li>
+                <li>Alpha ILCE-7C</li>
+                <li>Alpha ILCE-7C II</li>
+                <li>Alpha ILCE-7M3</li>
+                <li>Alpha ILCE-7M4</li>
+                <li>Alpha ILCE-7R III</li>
+                <li>Alpha ILCE-7R V</li>
+                <li>Alpha ILCE-7RM6B</li>
+                <li>Alpha ILCE-7S III</li>
+                <li>Alpha ILCE-6100</li>
+                <li>Alpha ILCE-6400</li>
+                <li>Alpha ILCE-6700</li>
+                <li>Cyber-shot DSC-RX1R III</li>
+            </ul>
+        </div>
+
+        <div class="cam-brand">
+            <h3>Panasonic <span class="count">— 10</span></h3>
+            <ul class="cam-list">
+                <li>LUMIX DC-G100</li>
+                <li>LUMIX DC-L10</li>
+                <li>LUMIX DC-S5M2</li>
+                <li>LUMIX DC-TZ200</li>
+                <li>LUMIX DC-TZ202</li>
+                <li>LUMIX DC-TZ220</li>
+                <li>LUMIX DMC-FZ28</li>
+                <li>LUMIX DMC-TX2</li>
+                <li>LUMIX DMC-ZS200</li>
+                <li>LUMIX DMC-ZS220</li>
+            </ul>
+        </div>
+
+        <div class="cam-brand">
+            <h3>Nikon <span class="count">— 5</span></h3>
+            <ul class="cam-list">
+                <li>D750</li>
+                <li>D850</li>
+                <li>Z 6 2</li>
+                <li>Z fc</li>
+                <li>Z50</li>
+            </ul>
+        </div>
+
+        <div class="cam-brand">
+            <h3>Sigma <span class="count">— 3</span></h3>
+            <ul class="cam-list">
+                <li>BF</li>
+                <li>FP</li>
+                <li>fp L</li>
+            </ul>
+        </div>
+
+        <div class="cam-brand">
+            <h3>Fujifilm <span class="count">— 2</span></h3>
+            <ul class="cam-list">
+                <li>X-T5</li>
+                <li>X-T50</li>
+            </ul>
+        </div>
+
+        <div class="cam-brand">
+            <h3>Leica <span class="count">— 1</span></h3>
+            <ul class="cam-list">
+                <li>D-Lux 8</li>
+            </ul>
+        </div>
+
+        <h2>If your camera is not here</h2>
+        <p>Nothing is missing from your copy of ApolloOne, and there is no setting to find. The decoder and the list are Apple's, so we cannot add a camera to it. You can ask Apple for yours through Feedback Assistant on your Mac, which is how the list has grown so far.</p>
+        <p>In the meantime ApolloOne decodes your RAW files as version 4 did, at the same quality. Every other Version 5 feature works whatever camera you shoot: tabs and windows, Stacks, Focus Score, the keyword tree, AI Keywords and AI Rating.</p>
+
+        <p class="byline">ML Processing is part of ApolloOne and requires macOS 27 or later and a Max Edition subscription or perpetual license. <a href="https://anogeissus.com/apolloone.html">Back to ApolloOne</a>.</p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="https://anogeissus.com/apolloone.html">ApolloOne</a>
+            <a href="https://anogeissus.com/apolloone-go.html">ApolloOne GO</a>
+            <a href="https://anogeissus.com/camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="https://anogeissus.com/support.html">Support</a>
+            <a href="https://anogeissus.com/blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="https://anogeissus.com/contact.html">Contact</a>
+            <a href="https://anogeissus.com/privacy.html">Privacy</a>
+            <a href="https://anogeissus.com/termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>

@@ -43,7 +43,7 @@
 <section class="product-hero">
     <img class="product-hero-icon no-frame" src="images/apolloone-icon.png" alt="ApolloOne icon" width="96" height="96">
     <h1>ApolloOne</h1>
-    <p class="product-hero-tagline">The fastest image viewer on the planet.</p>
+    <p class="product-hero-tagline">The fastest image viewer on the planet. — Now supercharged.</p>
     <p class="product-hero-desc"><strong>Version 5</strong> adds tabs and windows, List View, Stacks, Focus Score, AI Rating and AI Keywords. The biggest of them form the new <strong>Max Edition</strong>, free to try for 14 days.</p>
     <p class="product-hero-desc">WIRED's Best Image Viewer two years running, now with <strong>full HDR support</strong>. Browse at up to 32 fps on M1 Ultra with 64-bit precision and 10-bit Liquid Retina display support — every image displayed at <strong>full resolution</strong>, not a scaled-down preview. Non-destructive Quick Edit with InstaBake™ for instant JPEG output via AirDrop or drag-and-drop. Full EXIF and IPTC metadata editing, GPS mapping with Google Street View, autofocus point display, batch renaming and conversion, split-view comparison, and video playback with frame-by-frame scrubbing — all without importing a single file. Supports RAW, JPEG, HEIF, TIFF, PNG, and 40+ camera formats through the RawBridge™ engine, in 11 languages.</p>
 </section>
@@ -88,7 +88,8 @@
     <div class="feature-text">
         <h2>ML Processing</h2>
         <p>Apple's machine learning RAW decoder. Turn on <strong>RAW &gt; Use ML Processing</strong> and every supported RAW file is decoded with <strong>machine learning noise reduction</strong>; X-Trans files get a better demosaic as well. It applies to the image on screen and to everything you export, batch exports included. The title bar shows <strong>+ML</strong> while a machine learning render is on screen, and a checkbox in Quick Edit keeps any single image on the standard decoder.</p>
-        <p>Which cameras are covered is Apple's decision, and the list is not complete — the X-T5 is on it, the X100VI is not. A file the decoder cannot handle is rendered normally, with nothing for you to do. Machine learning decoding takes longer than the standard decode, so thumbnails and the slideshow stay on the standard decoder. Requires macOS 27 or later.</p>
+        <p>Apple's decoder covers <strong>51 camera models</strong> today, and macOS updates add more, which ApolloOne picks up on its own. A file it does not cover is rendered normally. The machine learning decode takes longer than the standard one, so thumbnails and the slideshow stay on the standard decoder. Requires macOS 27 or later.</p>
+        <p><a href="apolloone-ml-cameras.html">Cameras Supported by ML Processing</a> — the models Apple's decoder covers today, and what to do when yours is not among them.</p>
         <p>The comparison shows the standard decode on the left and the export of the ML-processed image on the right, both at 200%.</p>
     </div>
     <div class="feature-image">
@@ -229,7 +230,7 @@
     <div class="feature-text">
         <h2>Tagging, Rating &amp; Keywords</h2>
         <p>Organize your library the way you think. Add <strong>titles, descriptions, keywords, locations</strong>, and copyright — all written as <strong>XMP-standard metadata</strong> directly into the file. <strong>5-star rate</strong> and color-label images for quick culling, with support for both XMP labels and <strong>macOS Finder color tags</strong> — so your tags stay visible in Finder too. Copy and paste metadata across files in batch.</p>
-        <p>Version 5 adds a <strong>Custom</strong> tab to the Edit Metadata panel with the full <strong>IPTC Core and IPTC Extension</strong> catalogue, grouped into Content, Status, Creator, Location, Rights and Extension — City, State/Province, Country, Credit Line, Source, Instructions, Rights Usage Terms, Web Statement of Rights, Licensor URL, Digital Source Type, Event and the creator's contact block. <strong>Customize…</strong> hides the fields you never use so the form stays short, and every field loads, saves, copies and pastes across a whole selection the way the basic ones do. Web Statement of Rights and Licensor URL are the two fields Google Images reads for its <strong>Licensable</strong> badge.</p>
+        <p>Version 5 adds a <strong>Custom</strong> tab to the Edit Metadata panel with the full <strong>IPTC Core and IPTC Extension</strong> catalog, grouped into Content, Status, Creator, Location, Rights and Extension — City, State/Province, Country, Credit Line, Source, Instructions, Rights Usage Terms, Web Statement of Rights, Licensor URL, Digital Source Type, Event and the creator's contact block. <strong>Customize…</strong> hides the fields you never use so the form stays short, and every field loads, saves, copies and pastes across a whole selection the way the basic ones do. Web Statement of Rights and Licensor URL are the two fields Google Images reads for its <strong>Licensable</strong> badge.</p>
     </div>
     <div class="feature-image">
         <img src="images/apolloone-user-metadata.jpg?v=20260917" alt="ApolloOne metadata editor with keywords, star rating, and color labels" loading="lazy">
@@ -258,12 +259,24 @@
     </div>
 </section>
 
-<!-- 19. AppleScript -->
+<!-- 19. Status Bar -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Customizable Status Bar</h2>
+        <p>The strip along the bottom of the window reads out the shot: where you are in the folder, the image size, the date, the place the photo was taken, ISO, aperture, shutter, exposure compensation, focal length, color model and camera. It is the same readout in the viewer, the Contact Sheet and List View.</p>
+        <p><strong>View &gt; Customize Status Bar</strong>, or a right-click on the bar, raises a sheet of every field the bar is not showing. Each pill carries <strong>the current image's own value</strong>, so you can see what a field holds before you add it. Drag a pill into the bar to add it, drag a field out to remove it, and drag a divider to change a field's width. The sheet offers lens, focal length in 35mm, filename, file type, file size, white balance, metering mode, flash, software, color profile, orientation and the creation and modification dates, plus two spacers. Changes save as you make them and apply to every tab and window.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-status-bar.jpg" alt="ApolloOne Customize Status Bar sheet with draggable field pills above the status bar" loading="lazy">
+    </div>
+</section>
+
+<!-- 20. AppleScript -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>AppleScript Automation</h2>
-        <p>ApolloOne is scriptable. A script reads and writes the metadata of the images you selected — the whole selection at once, through the same writer the Edit Metadata panel uses. Scripts run from <strong>Script Editor</strong>, from the Shortcuts app's Run AppleScript action, from <strong>osascript</strong> in Terminal, and from any app that sends Apple events.</p>
-        <p><strong>every image</strong> walks the active window in the order you see, filters included, and <strong>color label, rating and pick</strong> are cheap enough to sift thousands of files in one pass. So the culling you do by hand — the stars, the picks, the colors — becomes the input to everything that follows.</p>
+        <p>ApolloOne is scriptable. A script reads and writes the metadata of the images you selected, the whole selection at once, through the same writer the Edit Metadata panel uses. Scripts run from <strong>Script Editor</strong>, from the Shortcuts app's Run AppleScript action, from <strong>osascript</strong> in Terminal, and from any app that sends Apple events.</p>
+        <p><strong>every image</strong> walks the active window in the order you see it, with any filter applied. <strong>Color label, rating and pick</strong> are cheap to read, so a script can sift thousands of files in one pass and act on the culling you already did by hand.</p>
     </div>
     <div class="feature-image">
         <pre style="background:#1d1d1f;color:#f5f5f7;border-radius:10px;padding:24px 28px;margin:0;overflow-x:auto;font:400 14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;text-align:left;box-shadow:0 16px 48px rgba(0,0,0,0.12),0 4px 16px rgba(0,0,0,0.06)">tell application "ApolloOne"
@@ -291,7 +304,7 @@ end tell</pre>
 
 <!-- Page footnotes -->
 <section class="page-footnotes">
-    <p id="edition-requirements">Tabs and windows, Stacks, Focus Score, AI Rating, AI Keywords, ML Processing and AppleScript automation require the Max Edition; List View requires the Standard Edition. The Keywords Manager is in every edition — the tree, the vocabularies, import, merge and export; the Max Edition is what writes a whole keyword branch, parents and synonyms included, into the file. AI Rating and AI Keywords also require macOS 27 or later on a Mac with Apple silicon, with Apple Intelligence turned on and the Mac signed in to iCloud, and Apple sets a daily limit per iCloud account.</p>
+    <p id="edition-requirements">Tabs and windows, Stacks, Focus Score, AI Rating, AI Keywords, ML Processing, the customizable status bar and AppleScript automation require the Max Edition; List View requires the Standard Edition. The Keywords Manager is in every edition — the tree, the vocabularies, import, merge and export; the Max Edition is what writes a whole keyword branch, parents and synonyms included, into the file. AI Rating and AI Keywords also require macOS 27 or later on a Mac with Apple silicon, with Apple Intelligence turned on and the Mac signed in to iCloud, and Apple sets a daily limit per iCloud account.</p>
     <p id="hdr-requirements"><sup>*</sup> HDR display requires an EDR-capable screen: a MacBook Pro with Liquid Retina XDR (14″ or 16″, 2021 or later), or any Mac paired with an Apple Studio Display, Apple Studio Display XDR, 30″ Apple Pro Display XDR, or a compatible third-party HDR display. Peak brightness varies: up to 600 nits on Studio Display, 1,600 nits on Pro Display XDR, and 2,000 nits on Studio Display XDR. SDR-only Macs display HDR images in SDR with automatic tone-mapping.</p>
     <p id="photo-credits">Quick Edit and Side-by-Side Comparison screenshots: photographs courtesy of Shane Dias. ML Processing comparison: photograph courtesy of David Redfearn.</p>
 </section>
