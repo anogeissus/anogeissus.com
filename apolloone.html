@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ApolloOne — The Fastest Image Viewer on the Planet | Anogeissus</title>
-    <meta name="description" content="ApolloOne — now with full HDR display and export. Browse at up to 32 fps, view HDR RAW files, AF points, GPS with Street View, EXIF metadata, and Quick Edit. Built for photographers on macOS.">
+    <meta name="description" content="ApolloOne — Version 5 adds tabs and windows, List View, Stacks, Focus Score, AI Rating and AI Keywords, alongside full HDR display and export, AF points, GPS with Street View, EXIF metadata, and Quick Edit. Built for photographers on macOS.">
     <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
     <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
 
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://anogeissus.com/apolloone.html">
     <meta property="og:title" content="ApolloOne — The Fastest Image Viewer on the Planet">
-    <meta property="og:description" content="Now with full HDR support. Browse at up to 32 fps, GPS with Street View, EXIF metadata, side-by-side comparison, and Quick Edit.">
+    <meta property="og:description" content="Version 5 adds tabs and windows, List View, Stacks, Focus Score, AI Rating and AI Keywords. Full HDR support, GPS with Street View, EXIF metadata, side-by-side comparison, and Quick Edit.">
     <meta property="og:image" content="https://anogeissus.com/images/apolloone-icon.png">
     <meta property="og:site_name" content="Anogeissus">
 
@@ -44,6 +44,7 @@
     <img class="product-hero-icon no-frame" src="images/apolloone-icon.png" alt="ApolloOne icon" width="96" height="96">
     <h1>ApolloOne</h1>
     <p class="product-hero-tagline">The fastest image viewer on the planet.</p>
+    <p class="product-hero-desc"><strong>Version 5</strong> adds tabs and windows, List View, Stacks, Focus Score, AI Rating and AI Keywords. The biggest of them form the new <strong>Max Edition</strong>, free to try for 14 days.</p>
     <p class="product-hero-desc">WIRED's Best Image Viewer two years running, now with <strong>full HDR support</strong>. Browse at up to 32 fps on M1 Ultra with 64-bit precision and 10-bit Liquid Retina display support — every image displayed at <strong>full resolution</strong>, not a scaled-down preview. Non-destructive Quick Edit with InstaBake™ for instant JPEG output via AirDrop or drag-and-drop. Full EXIF and IPTC metadata editing, GPS mapping with Google Street View, autofocus point display, batch renaming and conversion, split-view comparison, and video playback with frame-by-frame scrubbing — all without importing a single file. Supports RAW, JPEG, HEIF, TIFF, PNG, and 40+ camera formats through the RawBridge™ engine, in 11 languages.</p>
 </section>
 
@@ -55,7 +56,7 @@
         <p><a href="what-is-true-hdr.html">Your Exports Are Four Stops Behind Your Camera</a> — why there are as much as four stops of highlight information above SDR white in every RAW file, and what it takes to get them all the way to someone else's screen.</p>
     </div>
     <div class="feature-image">
-        <img src="images/apolloone-hdr.jpg?v=20260512" alt="ApolloOne HDR mode with HDR toggle in toolbar, HDR filmstrip thumbnails, and dual SDR + HDR histogram" loading="lazy">
+        <img src="images/apolloone-hdr.jpg?v=20260917" alt="ApolloOne HDR mode with HDR toggle in toolbar, HDR filmstrip thumbnails, and dual SDR + HDR histogram" loading="lazy">
     </div>
 </section>
 
@@ -67,95 +68,193 @@
         <p>Hover any pixel to read its per-channel value in the inspector's RGB patches — <strong>0–255</strong> for SDR, <strong>+X.X EV</strong> for channels that extend into HDR. Exact headroom, per channel, to a tenth of a stop.</p>
     </div>
     <div class="feature-image">
-        <img src="images/apolloone-hdr-visualizer.jpg" alt="ApolloOne HDR Visualizer showing cyan, blue, purple, and magenta false-color bands on the sky above a cathedral" loading="lazy">
+        <img src="images/apolloone-hdr-visualizer.jpg?v=20260917" alt="ApolloOne HDR Visualizer showing cyan, blue, purple, and magenta false-color bands on the sky above a cathedral" loading="lazy">
     </div>
 </section>
 
-<!-- 3. AF Points -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>Autofocus Point Display</h2>
-        <p>See exactly where your camera focused. ApolloOne reads <strong>AF point data</strong> embedded in your RAW and JPEG files and overlays them directly on the image — so you can instantly verify focus accuracy without zooming in. It also displays <strong>faces detected</strong> by the camera from embedded metadata. A feature no other viewer offers.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-af-point.jpg" alt="ApolloOne autofocus point overlay on image" loading="lazy">
-    </div>
-</section>
-
-<!-- 4. Split View -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>Side-by-Side Comparison</h2>
-        <p>Compare two images simultaneously with <strong>split view</strong> and synchronized zoom. Perfect for picking the best shot from a burst, comparing RAW vs JPEG, or evaluating different compositions — with full EXIF and map context alongside.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-split-view.jpg" alt="ApolloOne side-by-side comparison mode" loading="lazy">
-    </div>
-</section>
-
-<!-- 5. EXIF & Metadata -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>Deep EXIF &amp; Metadata</h2>
-        <p>Every detail your camera records, at a glance. A searchable metadata inspector shows <strong>EXIF, GPS, lens info, and more</strong> — alongside a full Places browser for navigating your photo library by folder or external drive. <strong>Double-click any editable field</strong> to change it on the fly — no separate dialog needed.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-exif-viewer.jpg" alt="ApolloOne EXIF metadata inspector with Places browser" loading="lazy">
-    </div>
-</section>
-
-<!-- 6. User Metadata & Tagging -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>Tagging, Rating &amp; Keywords</h2>
-        <p>Organize your library the way you think. Add <strong>titles, descriptions, keywords, locations</strong>, and copyright — all written as <strong>XMP-standard metadata</strong> directly into the file. <strong>5-star rate</strong> and color-label images for quick culling, with support for both XMP labels and <strong>macOS Finder color tags</strong> — so your tags stay visible in Finder too. Copy and paste metadata across files in batch.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-user-metadata.jpg" alt="ApolloOne metadata editor with keywords, star rating, and color labels" loading="lazy">
-    </div>
-</section>
-
-<!-- 7. Contact Sheet -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>Contact Sheet &amp; Histogram</h2>
-        <p>Browse hundreds of images in a <strong>thumbnail grid</strong> with RAW+JPEG pair badges and GPS indicators. Select any image to see full file details, camera settings, and a live <strong>RGB histogram</strong> — all without leaving the grid.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-contact-sheet.jpg?v=20260512" alt="ApolloOne thumbnail grid with histogram" loading="lazy">
-    </div>
-</section>
-
-<!-- 8. Built-in Maps -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>GPS &amp; Built-in Maps</h2>
-        <p>Every geotagged photo shows its location on an <strong>embedded Apple Maps</strong> panel with reverse-geocoded place names, coordinates, and altitude. Switch between Standard, Hybrid, and Satellite views — or search for any location directly from the map.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-builtin-maps.jpg" alt="ApolloOne GPS location with embedded Apple Maps" loading="lazy">
-    </div>
-</section>
-
-<!-- 9. Street View -->
-<section class="feature feature-stacked">
-    <div class="feature-text">
-        <h2>Google Street View</h2>
-        <p>Go beyond the pin. Drop into <strong>Google Street View</strong> right from the sidebar to see the actual surroundings where you took the photo — no browser needed. Perfect for revisiting a location or scouting the area around a shoot.</p>
-    </div>
-    <div class="feature-image">
-        <img src="images/apolloone-street-view.jpg" alt="ApolloOne GPS with Google Street View" loading="lazy">
-    </div>
-</section>
-
-<!-- 10. Quick Edit -->
+<!-- 3. Quick Edit -->
 <section class="feature feature-stacked">
     <div class="feature-text">
         <h2>Quick Edit</h2>
         <p>Non-destructive adjustments right inside the viewer. Tweak <strong>exposure, highlights, shadows, temperature, tint, contrast, saturation, vibrance</strong>, and unsharp mask — then export instantly with <strong>InstaBake™</strong> via AirDrop or drag-and-drop. No round-trip to another app required.</p>
     </div>
     <div class="feature-image">
-        <img src="images/apolloone-quick-edit2.jpg?v=20260512" alt="ApolloOne Quick Edit panel with adjustment sliders and histogram" loading="lazy">
+        <img src="images/apolloone-quick-edit2.jpg?v=20260917" alt="ApolloOne Quick Edit panel with adjustment sliders and histogram" loading="lazy">
+    </div>
+</section>
+
+<!-- 4. ML Processing -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>ML Processing</h2>
+        <p>Apple's machine learning RAW decoder. Turn on <strong>RAW &gt; Use ML Processing</strong> and every supported RAW file is decoded with <strong>machine learning noise reduction</strong>; X-Trans files get a better demosaic as well. It applies to the image on screen and to everything you export, batch exports included. The title bar shows <strong>+ML</strong> while a machine learning render is on screen, and a checkbox in Quick Edit keeps any single image on the standard decoder.</p>
+        <p>Which cameras are covered is Apple's decision, and the list is not complete — the X-T5 is on it, the X100VI is not. A file the decoder cannot handle is rendered normally, with nothing for you to do. Machine learning decoding takes longer than the standard decode, so thumbnails and the slideshow stay on the standard decoder. Requires macOS 27 or later.</p>
+        <p>The comparison shows the standard decode on the left and the export of the ML-processed image on the right, both at 200%.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-ml-processing.jpg" alt="ApolloOne split view at 200% of an ISO 6400 Sony A7R V portrait: the standard RAW decode on the left, the ML Processing export with the noise removed on the right" loading="lazy">
+    </div>
+</section>
+
+<!-- 5. Hierarchical Keywords -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Hierarchical Keywords</h2>
+        <p>A keyword tree with parents and synonyms, written the way <strong>Lightroom</strong> and <strong>Photo Mechanic</strong> read it. Keep your vocabulary as <strong>Animal &gt; Bird &gt; Osprey</strong>, drag a branch to rearrange it, give a keyword its synonyms, and import, merge or export a whole dictionary. Applying a keyword writes the entire branch into the file, so a search for Bird finds the ospreys too.</p>
+        <p><strong>Starter vocabularies</strong> are included in all 11 languages, ready to build on.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-keywords-manager.jpg" alt="ApolloOne Manage Keywords Dictionary with a keyword tree, synonyms and starter vocabulary" loading="lazy">
+    </div>
+</section>
+
+<!-- 6. Stacks -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Stacks</h2>
+        <p>Group a burst into one pile. Forty frames take up a single thumbnail carrying a count such as <strong>×12</strong>, the rating and tags of its key photo, and a name if you give it one. Stack a selection, drag thumbnails onto a pile to add them, and open the pile when you want to look inside.</p>
+        <p><strong>Auto-Stack</strong> groups a whole folder by the time between frames — the grid re-piles as you drag the slider, so you see the grouping before you commit to it. Bracketed sets, panorama sequences and continuous shooting stop filling the grid.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-stacks.jpg" alt="ApolloOne Contact Sheet with stacked piles showing frame counts and a named stack" loading="lazy">
+    </div>
+</section>
+
+<!-- 7. Focus Score -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Focus Score</h2>
+        <p>Grade a folder on how sharply the camera focused. Every still image is measured at the <strong>autofocus points your camera recorded</strong>, at full resolution, and gets a number from <strong>1 to 100</strong>. The scores show on the thumbnails, in the filmstrip and in their own List View column, and the Filter panel groups the folder into score bands so the frames that missed can be pulled out in one click. Processing runs in the background while you keep browsing.</p>
+        <p><a href="apolloone-focus-score.html">How the ApolloOne Focus Score Works</a> — what the number is measured from, where the work runs, and what it does not tell you.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-focus-score.jpg" alt="ApolloOne Focus Score with the measured area on the bird's eye, score badges in the filmstrip and score bands in the Filter panel" loading="lazy">
+    </div>
+</section>
+
+<!-- 8. AI Keywords -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>AI Keywords</h2>
+        <p>Keywords proposed for every photo: the subject, the <strong>species</strong> of an animal or plant by its common name, a recognizable place or landmark, a dish, and up to ten keywords a photographer would file the photo under. A <strong>preset</strong> tells the model what kind of shoot it is looking at — wildlife, birds, plants, landscape, wedding, people, food — without telling it what it must find, so a house in a folder of birds is still a house.</p>
+        <p>Proposals arrive as columns in List View next to the keywords the file carries today, and nothing is written until you apply them. Answers come back in the language of the vocabulary you are working in, and photos with GPS give the model the place, which helps it tell look-alike species apart.</p>
+        <p>The analysis runs on <strong>Apple's Private Cloud Compute</strong>, the same server-side Apple Intelligence macOS itself uses. A 1024-pixel copy of each photo is sent, Apple's servers answer and keep nothing, and the photos are not used for training. No third-party account, API key or subscription.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-ai-keywords.jpg" alt="ApolloOne AI Keywords proposals in List View with species column and keywords column" loading="lazy">
+    </div>
+</section>
+
+<!-- 9. AI Rating -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>AI Rating</h2>
+        <p>Cull a shoot the way you would cull it for a client. Each photo is rated <strong>1 to 5</strong> for keep-worthiness — 5 for one of the best frames, 1 for a technical failure — and the star written combines that judgment with the Focus Score, so only frames that are sharp enough are considered. Up to <strong>three short reasons</strong> are kept with every photo: sharp eye, good light, busy background. Once a folder has its Focus Scores, 300 photos are rated in about three minutes.</p>
+        <p>Like AI Keywords, it runs on <strong>Apple's Private Cloud Compute</strong>: no third-party account, API key or subscription.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-ai-rating.jpg" alt="ApolloOne AI Rating column showing stars with the reasons kept for each photo" loading="lazy">
+    </div>
+</section>
+
+<!-- 10. Tabs and Windows -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Tabs &amp; Windows</h2>
+        <p>Browse several shoots at the same time. Each tab keeps its own <strong>folder, selection, filters, sort order and display mode</strong>, so you can leave one shoot open, go looking through another, and switch back without waiting for a folder to load again. <strong>⌘T</strong> adds a tab, <strong>⌘N</strong> opens a second window, and dragging a tab out of the row makes it a window of its own.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-tabs.jpg" alt="ApolloOne viewer with four folder tabs open above the image" loading="lazy">
+    </div>
+</section>
+
+<!-- 11. Contact Sheet -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Contact Sheet &amp; Histogram</h2>
+        <p>Browse hundreds of images in a <strong>thumbnail grid</strong> with RAW+JPEG pair badges and GPS indicators. Select any image to see full file details, camera settings, and a live <strong>RGB histogram</strong> — all without leaving the grid.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-contact-sheet.jpg?v=20260917" alt="ApolloOne Contact Sheet with HDR thumbnails, RAW badges and GPS pins, and the SDR + HDR histogram in the inspector" loading="lazy">
+    </div>
+</section>
+
+<!-- 12. List View -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>List View</h2>
+        <p>The Contact Sheet as a sortable table. One row per image, with a thumbnail and the columns you would otherwise open the Inspector to read — <strong>filename, date, ISO, aperture, shutter, exposure compensation, focal length, lens</strong> and tags. Sort the whole folder by any of them to pick between frames on their settings rather than one at a time.</p>
+        <p>Add the <strong>Keywords</strong> column to type keywords straight into a row, with the same autocomplete as the metadata panel, and the <strong>Focus Score</strong> column to bring the sharpest frames to the top. Choose which columns you want from the heading menu.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-list-view.jpg" alt="ApolloOne List View with sortable EXIF columns and a tags column" loading="lazy">
+    </div>
+</section>
+
+<!-- 13. AF Points -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Autofocus Point Display</h2>
+        <p>See exactly where your camera focused. ApolloOne reads <strong>AF point data</strong> embedded in your RAW and JPEG files and overlays them directly on the image — so you can instantly verify focus accuracy without zooming in. It also displays <strong>faces detected</strong> by the camera from embedded metadata. A feature no other viewer offers.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-af-point.jpg?v=20260917" alt="ApolloOne autofocus point overlay on image" loading="lazy">
+    </div>
+</section>
+
+<!-- 14. Split View -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Side-by-Side Comparison</h2>
+        <p>Compare two images simultaneously with <strong>split view</strong> and synchronized zoom. Perfect for picking the best shot from a burst, comparing RAW vs JPEG, or evaluating different compositions — with full EXIF and map context alongside.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-split-view.jpg?v=20260917" alt="ApolloOne side-by-side comparison of two frames with synchronized zoom" loading="lazy">
+    </div>
+</section>
+
+<!-- 15. EXIF & Metadata -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Deep EXIF &amp; Metadata</h2>
+        <p>Every detail your camera records, at a glance. A searchable metadata inspector shows <strong>EXIF, GPS, lens info, and more</strong> — alongside a full Places browser for navigating your photo library by folder or external drive. <strong>Double-click any editable field</strong> to change it on the fly — no separate dialog needed.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-exif-viewer.jpg?v=20260917" alt="ApolloOne EXIF metadata inspector with Places browser" loading="lazy">
+    </div>
+</section>
+
+<!-- 16. User Metadata & Tagging -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Tagging, Rating &amp; Keywords</h2>
+        <p>Organize your library the way you think. Add <strong>titles, descriptions, keywords, locations</strong>, and copyright — all written as <strong>XMP-standard metadata</strong> directly into the file. <strong>5-star rate</strong> and color-label images for quick culling, with support for both XMP labels and <strong>macOS Finder color tags</strong> — so your tags stay visible in Finder too. Copy and paste metadata across files in batch.</p>
+        <p>Version 5 adds a <strong>Custom</strong> tab to the Edit Metadata panel with the full <strong>IPTC Core and IPTC Extension</strong> catalogue, grouped into Content, Status, Creator, Location, Rights and Extension — City, State/Province, Country, Credit Line, Source, Instructions, Rights Usage Terms, Web Statement of Rights, Licensor URL, Digital Source Type, Event and the creator's contact block. <strong>Customize…</strong> hides the fields you never use so the form stays short, and every field loads, saves, copies and pastes across a whole selection the way the basic ones do. Web Statement of Rights and Licensor URL are the two fields Google Images reads for its <strong>Licensable</strong> badge.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-user-metadata.jpg?v=20260917" alt="ApolloOne metadata editor with keywords, star rating, and color labels" loading="lazy">
+    </div>
+</section>
+
+<!-- 17. Built-in Maps -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>GPS &amp; Built-in Maps</h2>
+        <p>Every geotagged photo shows its location on an embedded map with reverse-geocoded place names, coordinates, and altitude. Your choice of <strong>Apple Maps</strong>, with Standard, Hybrid, and Satellite views, or <strong>Google Maps</strong>, with Standard, Hybrid, and Street View. On either map, drag the marker to a new spot to update the photo's GPS data, or search for any location directly from the map.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-builtin-maps.jpg?v=20260917" alt="ApolloOne GPS location with embedded Apple Maps" loading="lazy">
+    </div>
+</section>
+
+<!-- 18. Street View -->
+<section class="feature feature-stacked">
+    <div class="feature-text">
+        <h2>Google Street View</h2>
+        <p>Go beyond the pin. Drop into <strong>Google Street View</strong> right from the sidebar to see the actual surroundings where you took the photo — no browser needed. Perfect for revisiting a location or scouting the area around a shoot.</p>
+    </div>
+    <div class="feature-image">
+        <img src="images/apolloone-street-view.jpg?v=20260917" alt="ApolloOne GPS with Google Street View" loading="lazy">
     </div>
 </section>
 
@@ -163,19 +262,21 @@
 <section class="product-cta">
     <img class="product-hero-icon no-frame" src="images/apolloone-icon.png" alt="ApolloOne icon" width="64" height="64">
     <h2>Ready to try ApolloOne?</h2>
-    <p class="product-hero-desc">Free to download. 14-day free trial for Pro Edition features. Subscription and one-time purchase perpetual licenses available.</p>
+    <p class="product-hero-desc">Free to download. 14-day free trial of the Max Edition. Subscription and one-time purchase perpetual licenses available.</p>
     <div class="cta-group">
         <a href="https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12">
             <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-mac-app-store.svg" alt="Download on the Mac App Store">
         </a>
     </div>
     <p class="product-footnote">After the trial, ApolloOne continues to work as a free edition — no subscription required, no lockout. Upgrade whenever you're ready.</p>
-    <p class="product-footnote">Requires macOS 12 Monterey or later.</p>
+    <p class="product-footnote">Requires macOS 14 Sonoma or later.</p>
 </section>
 
 <!-- Page footnotes -->
 <section class="page-footnotes">
+    <p id="edition-requirements">Tabs and windows, Stacks, Focus Score, AI Rating, AI Keywords and ML Processing require the Max Edition; List View requires the Standard Edition. The Keywords Manager is in every edition — the tree, the vocabularies, import, merge and export; the Max Edition is what writes a whole keyword branch, parents and synonyms included, into the file. AI Rating and AI Keywords also require macOS 27 or later on a Mac with Apple silicon, with Apple Intelligence turned on and the Mac signed in to iCloud, and Apple sets a daily limit per iCloud account.</p>
     <p id="hdr-requirements"><sup>*</sup> HDR display requires an EDR-capable screen: a MacBook Pro with Liquid Retina XDR (14″ or 16″, 2021 or later), or any Mac paired with an Apple Studio Display, Apple Studio Display XDR, 30″ Apple Pro Display XDR, or a compatible third-party HDR display. Peak brightness varies: up to 600 nits on Studio Display, 1,600 nits on Pro Display XDR, and 2,000 nits on Studio Display XDR. SDR-only Macs display HDR images in SDR with automatic tone-mapping.</p>
+    <p id="photo-credits">Quick Edit and Side-by-Side Comparison screenshots: photographs courtesy of Shane Dias. ML Processing comparison: photograph courtesy of David Redfearn.</p>
 </section>
 
 <!-- Footer -->
