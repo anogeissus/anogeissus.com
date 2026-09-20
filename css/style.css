@@ -467,7 +467,7 @@ nav a:hover {
 
 .section .details {
     font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
     color: #86868b;
     max-width: 600px;
@@ -671,7 +671,7 @@ nav a:hover {
 }
 
 .testimonial-card p {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.55;
     color: #1d1d1f;
     font-style: italic;
@@ -724,7 +724,7 @@ nav a:hover {
 }
 
 .legal-content p {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.6;
     color: #1d1d1f;
     margin-bottom: 8px;
@@ -736,7 +736,7 @@ nav a:hover {
 }
 
 .legal-content li {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.6;
     margin-bottom: 4px;
 }
@@ -924,7 +924,7 @@ footer .copyright {
 .blog-card p,
 .blog-post-content p {
     color: #1d1d1f;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.65;
     margin-bottom: 12px;
 }
