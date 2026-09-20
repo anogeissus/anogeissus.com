@@ -1,3 +1,13 @@
+/* iOS text autosizing. WebKit inflates body copy when a page's layout is wide relative to the
+   visual viewport, sizing each block independently — on an unfolded iPhone Duo it rendered
+   17px paragraphs at roughly double while the nav row stayed normal (Albert msg 27492).
+   100% opts out without changing any declared size, and leaves the reader's own text-size
+   preference working. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 /* ============================================
    Anogeissus — Global Styles
    Apple.com-inspired, clean & minimal
@@ -457,7 +467,7 @@ nav a:hover {
 
 .section .details {
     font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     color: #86868b;
     max-width: 600px;
@@ -661,7 +671,7 @@ nav a:hover {
 }
 
 .testimonial-card p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.55;
     color: #1d1d1f;
     font-style: italic;
@@ -714,7 +724,7 @@ nav a:hover {
 }
 
 .legal-content p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     color: #1d1d1f;
     margin-bottom: 8px;
@@ -726,7 +736,7 @@ nav a:hover {
 }
 
 .legal-content li {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     margin-bottom: 4px;
 }
@@ -914,7 +924,7 @@ footer .copyright {
 .blog-card p,
 .blog-post-content p {
     color: #1d1d1f;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.65;
     margin-bottom: 12px;
 }
