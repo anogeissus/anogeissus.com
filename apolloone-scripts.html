@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApolloOne Community Scripts | Anogeissus</title>
+    <meta name="description" content="Free AppleScripts for ApolloOne: keywords from Claude AI, then title, headline, description and location for the photos you select.">
+    <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
+
+    <link rel="canonical" href="https://anogeissus.com/apolloone-scripts.html">
+    <link rel="stylesheet" href="css/style.css?v=26">
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/#apolloone">ApolloOne</a>
+        <a href="/#camerarawx">Camera RawX</a>
+        <a href="support.html">Support</a>
+        <a href="/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
+        <h1>ApolloOne Community Scripts</h1>
+
+        <p>Five AppleScripts that fill in metadata for the photos you select in ApolloOne: keywords from Claude AI, then the title, headline, description and location. They need ApolloOne 5.0.0 or later with the Max Edition.</p>
+
+        <h2>What's in the download</h2>
+        <ul>
+            <li><strong>Set keyword using Claude AI</strong> sends each photo to Claude and adds the species name to its keywords.</li>
+            <li><strong>Set title via keywords</strong> sets the title to the photo's last keyword, and puts a copy with underscores in the Comment field for batch renaming.</li>
+            <li><strong>Set description and headline</strong> builds the headline and description from the title, location and city.</li>
+            <li><strong>Set title description and headline via keywords</strong> does the two above in one pass.</li>
+            <li><strong>Set location information</strong> writes location, city, state, country and country code, with the city picked from your own list.</li>
+        </ul>
+
+        <h2>Install</h2>
+        <ol>
+            <li>Download the scripts with the button below and unzip them.</li>
+            <li>Open Terminal, type <code>bash</code> and a space, drag <code>install.sh</code> from the unzipped folder into the Terminal window, and press Return. It copies the scripts to <code>~/Library/Scripts/ApolloOne/</code> and asks whether to set up the Claude AI script as well.</li>
+            <li>Turn on the Scripts menu: open Script Editor (in Applications &gt; Utilities), choose Script Editor &gt; Settings &gt; General, and select "Show Script menu in menu bar". A scroll icon appears in the menu bar.</li>
+        </ol>
+
+        <h2>Run a script</h2>
+        <p>Select the photos in ApolloOne (&#8984;A selects all), click the scroll icon in the menu bar, and choose a script from the ApolloOne submenu. ApolloOne's progress bar above the status bar shows how far it has got, and a notification appears when it finishes.</p>
+
+        <h2>Keywords with Claude AI</h2>
+        <p>This script needs your own Anthropic API key. Get one from the <a href="https://console.anthropic.com">Anthropic Console</a>; the API is paid per use with no free tier, and a Claude subscription doesn't cover it. When <code>install.sh</code> asks, answer yes and paste the key. It installs the two Python packages the script uses, copies its helper <code>image-subject.py</code> to <code>~/Library/Application Support/ApolloOne Scripts/</code> and stores the key in your keychain.</p>
+        <ul>
+            <li>Each photo is resized to 1024 pixels and sent to Anthropic on your key and billing. With Claude Sonnet, the default, that comes to about $2.40 per 1,000 photos. Claude Opus, for hard look-alike species, is about $7.</li>
+            <li>RAW files work. macOS decodes each one to make the 1024-pixel copy, which adds about a second per photo, and a camera macOS doesn't support yet is skipped. ApolloOne writes the metadata of RAW files to an XMP sidecar.</li>
+            <li>Claude can name the same animal differently from another angle or pose. For a series of one animal, select only the clearest photo, run the script, and give the rest of the series the same keywords.</li>
+            <li>ApolloOne's built-in <a href="apolloone.html">AI Keywords</a> sends nothing to Anthropic; it runs on Apple's Private Cloud Compute. It also keywords a whole closed stack from its key photo.</li>
+        </ul>
+
+        <h2>The city list</h2>
+        <p>Set location information asks for a plain text file (UTF-8) with one place per line, city and state separated by a semicolon or a comma:</p>
+<pre style="background:#1d1d1f;color:#f5f5f7;border-radius:10px;padding:16px 20px;margin:0 0 24px;overflow-x:auto;font:400 14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;text-align:left">Amsterdam;Noord-Holland
+Utrecht;Utrecht</pre>
+        <p>The headline and description join the fields with "at" and "near". For other words, open the script in Script Editor and change the two lines at the top.</p>
+
+        <div class="cta-group" style="margin-top: 32px;">
+            <a class="cta cta-pill" href="downloads/apolloone-community-scripts.zip" download style="color: #fff;">Download Scripts</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="apolloone.html">ApolloOne</a>
+            <a href="camerarawx.html">Camera RawX</a>
+            <a href="https://katclaw.ai">KatClaw</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="apolloone-faq.html">ApolloOne FAQ</a>
+            <a href="camera-rawx-faq.html">Camera RawX FAQ</a>
+            <a href="recovery.html">Recovery</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
