@@ -55,13 +55,21 @@
         <p>Select the photos in ApolloOne (&#8984;A selects all), click the scroll icon in the menu bar, and choose a script from the ApolloOne submenu. ApolloOne's progress bar above the status bar shows how far it has got, and a notification appears when it finishes.</p>
 
         <h2>Keywords with Claude AI</h2>
-        <p>This script needs your own Anthropic API key. Get one from the <a href="https://console.anthropic.com">Anthropic Console</a>; the API is paid per use with no free tier, and a Claude subscription doesn't cover it. When <code>install.sh</code> asks, answer yes and paste the key. It installs the two Python packages the script uses, copies its helper <code>image-subject.py</code> to <code>~/Library/Application Support/ApolloOne Scripts/</code> and stores the key in your keychain.</p>
+        <p>This script needs your own Anthropic API key. When <code>install.sh</code> asks, answer yes and paste the key. It installs the two Python packages the script uses, copies its helper <code>image-subject.py</code> to <code>~/Library/Application Support/ApolloOne Scripts/</code> and stores the key in your keychain.</p>
         <ul>
             <li>Each photo is resized to 1024 pixels and sent to Anthropic on your key and billing. With Claude Sonnet, the default, that comes to about $2.40 per 1,000 photos. Claude Opus, for hard look-alike species, is about $7.</li>
             <li>RAW files work. macOS decodes each one to make the 1024-pixel copy, which adds about a second per photo, and a camera macOS doesn't support yet is skipped. ApolloOne writes the metadata of RAW files to an XMP sidecar.</li>
             <li>Claude can name the same animal differently from another angle or pose. For a series of one animal, select only the clearest photo, run the script, and give the rest of the series the same keywords.</li>
             <li>ApolloOne's built-in <a href="apolloone.html">AI Keywords</a> sends nothing to Anthropic; it runs on Apple's Private Cloud Compute. It also keywords a whole closed stack from its key photo.</li>
         </ul>
+
+        <h3>Getting an API key</h3>
+        <ol>
+            <li>Go to <a href="https://platform.claude.com">platform.claude.com</a> and sign in, or create an account. A Claude subscription doesn't include the API; it is billed separately.</li>
+            <li>Buy credits in <a href="https://platform.claude.com/settings/billing">Settings &gt; Billing</a>. The API is prepaid; the smallest purchase is $5, enough for about 2,000 photos with Claude Sonnet. Auto-reload is optional; leave it off and spending stops when the credit runs out.</li>
+            <li>Open <a href="https://platform.claude.com/settings/keys">Settings &gt; API keys</a>, click Create key, and give it a name such as ApolloOne.</li>
+            <li>Copy the key straight away. It starts with <code>sk-ant-</code>, and the Console shows it only once. If you lose it, create a new one.</li>
+        </ol>
 
         <h2>The city list</h2>
         <p>Set location information asks for a plain text file (UTF-8) with one place per line, city and state separated by a semicolon or a comma:</p>
