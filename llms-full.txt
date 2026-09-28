@@ -17,7 +17,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 - Stacks: group a burst, a bracket or a panorama sequence into one pile in the Contact Sheet; Auto-Stack groups by capture time
 - Focus Score: grades how sharply the camera focused, at the camera's own autofocus points and on detected faces, then filters by the result
 - AI Keywords and AI Rating: Apple Private Cloud Compute proposes keywords for each photo, and rates photos 1 to 5 on their merit as pictures (macOS 27 or later, Apple silicon, Apple Intelligence on)
-- ML Processing: Apple's machine learning RAW decoder with noise reduction and an improved X-Trans demosaic (macOS 27 or later, for supported cameras)
+- ML Processing: Apple's machine learning RAW decoder with noise reduction and an improved demosaic (macOS 27 or later, for supported cameras)
 - Hierarchical keywords: a keyword tree with synonyms and categories, written to the fields Lightroom and Photo Mechanic read
 - Customizable status bar, and AppleScript automation for reading and writing image metadata from scripts
 
