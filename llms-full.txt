@@ -45,7 +45,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 - **Free**: Browse and view. Works indefinitely
 - **Standard**: Adds tabs and windows, List View, AF point and face display, Batch Rename, batch GPS/rotation/date changes, cropping, EXIF, Makernotes and XMP/IPTC editing, slideshow with Apple Music, and more
 - **Pro**: Everything in Standard, plus Split View with synchronized zoom, batch resize, convert and export, memory card import with Backup to, HDR Mode for RAW, SDR Proof, HDR export (JPEG XL, AVIF, gain-map JPEG and HEIC), metadata templates, RegEx metadata filters, customizable shortcut keys, and hiding unused menu items
-- **Max**: Everything in Standard and Pro, plus ML Processing, Focus Score, Stacks, hierarchical keywords, Code Replacements, AI Keywords, AI Rating, the customizable status bar and AppleScript automation
+- **Max**: Everything in Standard and Pro, plus Liquid Glass Mode with its tab overview, ML Processing, Focus Score, Stacks, hierarchical keywords, Code Replacements, AI Keywords, AI Rating, the customizable status bar and AppleScript automation
 - Every installation starts with a 14-day Max Edition free trial; afterwards ApolloOne continues as the Free Edition. Subscriptions and one-time perpetual licenses are available, priced by the App Store in each customer's own currency
 
 ### System Requirements
