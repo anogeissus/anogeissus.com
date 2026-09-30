@@ -22,7 +22,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 - Customizable status bar, and AppleScript automation for reading and writing image metadata from scripts
 
 ### Key Features
-- Browse photos at up to 32 fps on M1 Ultra — 100MP RAW files load instantly
+- Browse photos at up to 55 fps on M1 Ultra — 100MP RAW files load instantly
 - Full image resolution display, not scaled-down previews — ready for immediate zoom and edit
 - Full HDR display on EDR-capable Macs: 10-bit color, HDR RAW rendering, HDR filmstrip thumbnails via gain-map HEIC cache, one-click HDR toggle in the toolbar, dual SDR + HDR histogram
 - HDR Visualizer: four false-color bands (cyan +1 EV, blue +2 EV, purple +3 EV, magenta +4 EV) overlay the image to show highlight headroom; hover a band in the histogram to isolate that zone. Per-pixel inspector shows 0–255 for SDR channels and +X.X EV for channels above SDR white

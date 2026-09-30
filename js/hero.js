@@ -11,7 +11,7 @@
             icon: 'images/apolloone-icon.png',
             image: 'images/apolloone-quick-edit.jpg?v=20260917',
             alt: 'ApolloOne Quick Edit screenshot',
-            caption: 'Browse at up to <strong>32 fps on M1 Ultra</strong>, view full-resolution images instantly, display <strong>AF points</strong> recorded in the image, and make non-destructive adjustments with <strong>Quick Edit</strong>.'
+            caption: 'Browse at up to <strong>55 fps on M1 Ultra</strong>, view full-resolution images instantly, display <strong>AF points</strong> recorded in the image, and make non-destructive adjustments with <strong>Quick Edit</strong>.'
         },
         {
             label: 'ApolloOne GO',
