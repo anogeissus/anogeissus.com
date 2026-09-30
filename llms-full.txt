@@ -134,14 +134,6 @@ https://apps.apple.com/app/camera-rawx/id6587554858?mt=12
 
 ---
 
-## KatClaw — AI Automation for macOS
-
-KatClaw is the native macOS companion for OpenClaw. Security-first design with exec approvals, allowlists, and health checks built in.
-
-Website: https://katclaw.ai
-
----
-
 ## Support
 
 - Support hub: https://anogeissus.com/support.html
