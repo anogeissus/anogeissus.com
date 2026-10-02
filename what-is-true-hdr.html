@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Exports Are Four Stops Behind Your Camera — What True HDR Really Means | Anogeissus</title>
-    <meta name="description" content="There is as much as 4 stops of information above SDR white in a typical RAW file — and every SDR export compresses it back under paper white. What true HDR actually means, why HEIF/HLG was the wrong turn, and why cameras should write JPEG with a gain map.">
+    <meta name="description" content="A typical RAW file holds as much as 4 stops of information above SDR white, and every SDR export compresses it back under paper white. What true HDR means, why HEIF/HLG was the wrong turn, and why cameras should write JPEG with a gain map.">
     <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
     <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
 
@@ -14,7 +14,7 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://anogeissus.com/what-is-true-hdr.html">
     <meta property="og:title" content="Your Exports Are Four Stops Behind Your Camera">
-    <meta property="og:description" content="As much as 4 stops of highlight information sits in every RAW file — recovered for decades, never displayed. What true HDR actually means — and what cameras should be writing instead.">
+    <meta property="og:description" content="A typical RAW file holds as much as 4 stops of highlight information that photographers have recovered for decades and never displayed. What true HDR means, and what cameras should be writing instead.">
     <meta property="og:image" content="https://anogeissus.com/images/apolloone-icon.png">
     <meta property="og:site_name" content="Anogeissus">
 
@@ -124,71 +124,67 @@
     <div class="legal-content">
 
         <h1>Your Exports Are Four Stops Behind Your Camera</h1>
-        <p class="article-deck">Your camera captures it. Your screen can show it. The file in between still can't carry it.</p>
+        <p class="article-deck">Your camera records the highlights and your screen can show them, but the file in between still can't carry them.</p>
 
         <div class="hdr-callout">
             <p><strong>TL;DR</strong></p>
             <ul>
-                <li>A typical RAW file holds as much as 4 stops of real detail above SDR white. Recovery has always reached it — but every SDR export rolls it off and files it back under paper white.</li>
-                <li>The displays are already here: most phones and recent laptops are HDR. The missing piece is the file, not the hardware.</li>
-                <li>The fix exists: JPEG with a gain map (ISO 21496-1). One file — full HDR where supported, a normal, correct photograph everywhere else. It fails soft, so exporting it costs nothing.</li>
+                <li>A typical RAW file holds as much as 4 stops of real detail above SDR white. Recovery has always reached it, but every SDR export rolls it off and files it back under paper white.</li>
+                <li>The displays are already here: most phones and recent laptops are HDR. What's missing is a file format that carries the range.</li>
+                <li>The fix exists: JPEG with a gain map (ISO 21496-1). The same file shows full HDR where it's supported and a normal, correct photograph everywhere else, so exporting it costs nothing.</li>
                 <li>Where it displays as HDR today: any browser on iOS 26, desktop Chrome, Apple Photos and Messages, Instagram and Threads feed posts, Lightroom. Facebook and most upload pipelines still flatten to SDR.</li>
-                <li>The last SDR link is the camera itself — SDR viewfinder, SDR rear screen, no HDR file output. Cameras should write gain-map JPEG in-camera; phones have done it at burst rate for years.</li>
+                <li>The last SDR link is the camera itself, with an SDR viewfinder, an SDR rear screen and no HDR file output. Cameras should write gain-map JPEG in-camera, as phones have done at burst rate for years.</li>
             </ul>
         </div>
 
-        <p class="article-lede">If you shoot RAW seriously, you already work the top of the file. You expose to the right, guard the highlights, and pull them back in the editor — recovery that RAW converters have been doing for twenty years.</p>
+        <p class="article-lede">If you shoot RAW seriously, you already work the top of the file. You expose to the right, protect the highlights and pull them back in the editor, which RAW converters have been able to do for twenty years.</p>
 
-        <p class="article-lede">So this is not an article about headroom you never knew you had. It is about what has always happened to that headroom on the way out.</p>
+        <p class="article-lede">You already know that headroom is there. This article is about what happens to it on the way out.</p>
 
-        <p>There is as much as <strong>4 stops of information above SDR white</strong> in a typical RAW file — real color, real detail, real gradation. Recovery reconstructs it; an SDR export then rolls it off and files it under diffuse white, because a print or an SDR screen has nowhere brighter to put it. The specular glint on water, the sun flaring off glass, the inside of a sunlit cloud: the detail survives the trip, but the brightness — the thing that made a highlight a highlight — does not.</p>
+        <p>A typical RAW file holds as much as <strong>4 stops of information above SDR white</strong>, with real color, detail and gradation in it. Recovery reconstructs it. An SDR export then rolls it off and files it under diffuse white, because a print or an SDR screen has nowhere brighter to put it. In the glint on water, the sun flaring off glass or the inside of a sunlit cloud, the detail survives the trip, but the brightness that made it a highlight does not.</p>
 
-        <p>We treat that roll-off as a fact of photography. It is not. It is a property of the output format we chose to save into, and of the displays it was designed for.</p>
+        <p>We treat that roll-off as a fact of photography, but it comes from the output format we save into and the displays that format was designed for.</p>
 
         <h2>Why it never felt like a loss</h2>
 
-        <p>The arrangement has an honest origin. For thirty years the output was SDR — a print, or a screen that could show roughly six stops. When the destination cannot represent anything above diffuse white, there is nowhere to put those extra stops, so the entire imaging pipeline was built to discard them early and gracefully. Highlight roll-off, that gentle shoulder we all learned to love, is a <em>compression</em> strategy: it takes information you cannot display and squeezes it into a range you can.</p>
+        <p>The arrangement has an honest origin. For thirty years the output was SDR: a print, or a screen that could show roughly six stops. When the destination can't represent anything above diffuse white, there is nowhere to put the extra stops, so the whole imaging pipeline was built to discard them early and gracefully. Highlight roll-off, the gentle shoulder we all learned to love, is a <em>compression</em> strategy. It takes information you can't display and squeezes it into a range you can.</p>
 
-        <p>That was the correct engineering decision. The constraint that justified it is gone.</p>
-
-        <p>The habit outlived it. We still expose to protect highlights we could now keep. We still evaluate images on displays that cannot show what we captured. We still export to a format designed around a limitation our hardware no longer has.</p>
+        <p>It was the right engineering decision at the time, and the constraint behind it has since gone away. The habit stayed. We still expose to protect highlights we could now keep, judge images on displays that can't show what we captured, and export to a format designed around a limitation our hardware no longer has.</p>
 
         <h2>The hardware already caught up</h2>
 
-        <p>This is what makes the argument urgent rather than theoretical. Every M-series MacBook Pro has an XDR display. Recent iPhones and iPads have HDR screens. You are not waiting for new hardware — you are probably reading this on it.</p>
-
-        <p>The displays arrived first, quietly, and the photographs never followed.</p>
+        <p>Every M-series MacBook Pro has an XDR display, and recent iPhones and iPads have HDR screens, so there's a good chance you're reading this on one. Most photographs are still exported as if those displays didn't exist.</p>
 
         <h2>What "true HDR" actually means</h2>
 
-        <p>The term needs rescuing, because it has meant three different things and two of them are not this.</p>
+        <p>The term has meant three different things, and only one of them is what this article is about.</p>
 
-        <p>It does not mean the tone-mapped look of 2012 — the gray skies, haloed edges and crunchy local contrast that gave "HDR" its bad name. That was an attempt to <em>cram</em> high dynamic range into a low dynamic range file, and it looked like it.</p>
+        <p>The first is the tone-mapped look of 2012, with the gray skies, haloed edges and crunchy local contrast that gave "HDR" its bad name. It was an attempt to <em>cram</em> high dynamic range into a low dynamic range file, and it looked like it.</p>
 
-        <p>It does not mean an exposure blend, where you merge brackets to recover a scene one frame could not hold.</p>
+        <p>The second is the exposure blend, where you merge brackets to recover a scene one frame couldn't hold.</p>
 
-        <p>True HDR is simpler and less dramatic: the scene's actual range, delivered to a display that can actually show it. No tricks, no local contrast games. A highlight that was four stops brighter than white in the world is four stops brighter than white on your screen. It looks <em>normal</em> — which is precisely the point. It looks like the scene did.</p>
+        <p>True HDR is simpler and less dramatic. It delivers the scene's actual range to a display that can show it, without local contrast tricks: a highlight that was four stops brighter than white in the world is four stops brighter than white on your screen. The result looks <em>normal</em>, the way the scene looked.</p>
 
         <h2>See it for yourself</h2>
 
         <div class="hdr-callout">
-            <span class="dr-hdr"><strong>Your display is reporting high dynamic range.</strong> The comparisons below should show a real difference — in each pair, the HDR version's highlights will extend visibly brighter than the page's white background. Look at the bright parts. Both halves are the same photograph, and everything below white — shadows, midtones, color — is meant to match; what changes is the highlights, not the overall brightness of the picture.</span>
-            <span class="dr-sdr"><strong>Your display or browser is reporting standard dynamic range.</strong> Each pair below will look nearly identical, and that is the point of this article rather than a contradiction of it: the information exists in the file, but this screen cannot show it to you. On an XDR MacBook Pro or a recent iPhone, in Safari or Chrome, the HDR half of each pair gains about four stops of highlight range. Firefox does not yet render HDR images on any display.</span>
+            <span class="dr-hdr"><strong>Your display is reporting high dynamic range.</strong> The comparisons below should show a real difference: in each pair, the HDR version's highlights extend visibly brighter than the page's white background. Both halves are the same photograph, and everything below white (shadows, midtones, color) is meant to match. Only the highlights change; the picture as a whole doesn't get brighter.</span>
+            <span class="dr-sdr"><strong>Your display or browser is reporting standard dynamic range.</strong> Each pair below will look nearly identical, which is what this article is about: the information is in the file, but this screen can't show it. On an XDR MacBook Pro or a recent iPhone, in Safari or Chrome, the HDR half of each pair gains about four stops of highlight range. Firefox doesn't render HDR images on any display yet.</span>
             <br><br>
-            Not sure what your browser is doing? <a href="hdr-browser-test.html">Test it here</a> — three images and a table that tells you what the result means.
+            Not sure what your browser is doing? <a href="hdr-browser-test.html">Test it here</a>: three images and a table that explains the result.
         </div>
 
         <div class="hdr-demo">
             <div class="hdr-demo-pair">
                 <div class="hdr-demo-figure">
                     <a href="images/store-signs-sdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/store-signs-sdr.jpg" width="3120" height="2080" alt="A shop window of lit lamps, a neon OUVERT sign and a screen, conventional SDR export — nothing reads as switched on.">
+                        <img src="images/store-signs-sdr.jpg" width="3120" height="2080" alt="A shop window of lit lamps, a neon OUVERT sign and a screen in a conventional SDR export, where nothing reads as switched on.">
                     </a>
-                    <p class="hdr-demo-caption"><strong>SDR.</strong> A window full of lit lamps, a neon <em>OUVERT</em> sign and a glowing screen — and not one of them reads as switched on. With nowhere above white to put a light source, a lamp that is genuinely emitting lands on the same value as the printed card beside it. Click for full size.</p>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> A window full of lit lamps, a neon <em>OUVERT</em> sign and a glowing screen, and none of them reads as switched on. With nowhere above white to put a light source, a lamp that is genuinely emitting lands on the same value as the printed card beside it. Click for full size.</p>
                 </div>
                 <div class="hdr-demo-figure">
                     <a href="images/store-signs-hdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/store-signs-hdr.jpg" width="3120" height="2080" alt="The same RAW file exported as a gain-map JPEG — the lamps, neon and screen rise above white and read as lit.">
+                        <img src="images/store-signs-hdr.jpg" width="3120" height="2080" alt="The same RAW file exported as a gain-map JPEG, with the lamps, neon and screen above white and reading as lit.">
                     </a>
                     <p class="hdr-demo-caption"><strong>HDR.</strong> Same RAW file, same processing, exported as a gain-map JPEG. The lamps and the neon rise above white where they belong, and the window sorts itself back into things that emit light and things that merely reflect it. Click for full size.</p>
                 </div>
@@ -202,37 +198,37 @@
             <div class="hdr-demo-pair">
                 <div class="hdr-demo-figure">
                     <a href="images/xmas-lights-sdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/xmas-lights-sdr.jpg" width="2376" height="1584" alt="A neon and string-light Christmas display at night, conventional SDR export — the neon tubes go white at the core and the string lights run together.">
+                        <img src="images/xmas-lights-sdr.jpg" width="2376" height="1584" alt="A neon and string-light Christmas display at night in a conventional SDR export, where the neon tubes go white at the core and the string lights run together.">
                     </a>
-                    <p class="hdr-demo-caption"><strong>SDR.</strong> Watch the neon — Santa, the snowman, the nutcracker. Where each tube is brightest it turns white, so the color drains out of precisely the part that is doing the glowing. The string lights on the small trees run together into one pale mass. Click for full size.</p>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> Look at the neon outlines of Santa, the snowman and the nutcracker. Where each tube is brightest it turns white, so the color drains out of the part that is doing the glowing. The string lights on the small trees run together into one pale mass. Click for full size.</p>
                 </div>
                 <div class="hdr-demo-figure">
                     <a href="images/xmas-lights-hdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/xmas-lights-hdr.jpg" width="2376" height="1584" alt="The same night scene as a gain-map JPEG — the neon holds its color through the core and individual lights separate.">
+                        <img src="images/xmas-lights-hdr.jpg" width="2376" height="1584" alt="The same night scene as a gain-map JPEG, where the neon holds its color through the core and individual lights separate.">
                     </a>
-                    <p class="hdr-demo-caption"><strong>HDR.</strong> The tubes hold their color the whole way through, and the string lights separate back into individual points — because they are allowed to sit above white rather than being pushed down onto it. Click for full size.</p>
+                    <p class="hdr-demo-caption"><strong>HDR.</strong> The tubes hold their color the whole way through, and the string lights separate back into individual points, because they can sit above white instead of being pushed down onto it. Click for full size.</p>
                 </div>
             </div>
             <p class="hdr-demo-credit">Sony A7R V, FE 50mm F1.2 GM. Photograph &copy; David Redfearn.</p>
         </div>
 
-        <p>There is a second thing worth noticing in that pair, and it overturns a common assumption. The soft white swelling around each light in the SDR version looks like <em>sensor blooming</em> — charge spilling out of a saturated photosite into its neighbors, the usual explanation for why night shots go mushy around the lights.</p>
+        <p>That pair also says something about blooming. The soft white swelling around each light in the SDR version looks like <em>sensor blooming</em>: charge spilling out of a saturated photosite into its neighbors, the usual explanation for why night shots go mushy around the lights.</p>
 
-        <p>The HDR version shows that is not what happened. The sensor recorded each light cleanly, with its falloff intact. Brightness drops away steeply around a neon tube or a filament, and in this frame the brightest points reach about ten times the level of white — so when everything above white is mapped onto white, a thin intense line becomes a fat pale one. Some genuine optical flare is in there too, and that survives in both versions. But the spreading is made at export, not at capture. The sensor was never the problem.</p>
+        <p>The HDR version shows that is not what happened here. The sensor recorded each light cleanly, with its falloff intact. Brightness drops away steeply around a neon tube or a filament, and in this frame the brightest points reach about ten times the level of white, so when everything above white is mapped onto white, a thin intense line becomes a fat pale one. Some genuine optical flare is in there too, and it survives in both versions. The spreading itself happens at export.</p>
 
-        <p>Neon at night is easy to dismiss as a special case. So here is the photograph everyone actually takes: daylight, clouds, a landscape. It runs into the same ceiling from the other direction — the lit face of a cloud, the snowfield beneath it, and the haze between them are all brighter than paper white, so an SDR export files them at the same value, and the range collapses exactly where the scene depends on it.</p>
+        <p>Neon at night is easy to dismiss as a special case, so the third pair is a daylight landscape with clouds. It runs into the same ceiling from the other direction. The lit face of a cloud, the snowfield beneath it and the haze between them are all brighter than paper white, so an SDR export files them at the same value, and the range collapses where the scene depends on it most.</p>
 
         <div class="hdr-demo">
             <div class="hdr-demo-pair">
                 <div class="hdr-demo-figure">
                     <a href="images/snow-peaks-sdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/snow-peaks-sdr.jpg" width="2592" height="1944" alt="A high mountain valley with snow-covered peaks under cloud, conventional SDR export — the sunlit cloud bank and the snowfields converge on the same white.">
+                        <img src="images/snow-peaks-sdr.jpg" width="2592" height="1944" alt="A high mountain valley with snow-covered peaks under cloud in a conventional SDR export, where the sunlit cloud bank and the snowfields converge on the same white.">
                     </a>
-                    <p class="hdr-demo-caption"><strong>SDR.</strong> A conventional export, carefully processed in DxO PhotoLab — and the ceiling still shows. The cloud bank sitting on the range and the snow beneath it converge on the same white, so the brightest third of the scene flattens into one value. Click for full size.</p>
+                    <p class="hdr-demo-caption"><strong>SDR.</strong> A conventional export, carefully processed in DxO PhotoLab, and the ceiling still shows. The cloud bank sitting on the range and the snow beneath it converge on the same white, so the brightest third of the scene flattens into one value. Click for full size.</p>
                 </div>
                 <div class="hdr-demo-figure">
                     <a href="images/snow-peaks-hdr.jpg" target="_blank" rel="noopener">
-                        <img src="images/snow-peaks-hdr.jpg" width="2592" height="1944" alt="The same valley as a gain-map JPEG — the sunlit cloud rises above white and the snowfields keep their texture.">
+                        <img src="images/snow-peaks-hdr.jpg" width="2592" height="1944" alt="The same valley as a gain-map JPEG, where the sunlit cloud rises above white and the snowfields keep their texture.">
                     </a>
                     <p class="hdr-demo-caption"><strong>HDR.</strong> The same RAW file exported from ApolloOne as a gain-map JPEG. The sunlit cloud rises above white and reads as luminous again, the snow keeps its texture instead of merging into the cloud, and the depth between haze, cloud and snowfield comes back. Click for full size.</p>
                 </div>
@@ -240,101 +236,99 @@
             <p class="hdr-demo-credit">OM System OM-1, M.Zuiko Digital ED 12-45mm F4 Pro. Photograph &copy; Shane Dias.</p>
         </div>
 
-        <p>Those frames came off a Fujifilm, a Sony, and an OM System body, and it makes no difference. The extra range is not a feature any manufacturer added — it is what the sensor recorded, sitting in the RAW file, waiting on an export format willing to carry it. Every camera in this class has been capturing it for years.</p>
+        <p>Those frames came off a Fujifilm, a Sony and an OM System body, and the brand makes no difference. The extra range is what the sensor recorded. It sits in the RAW file until an export format carries it, and every camera in this class has been capturing it for years.</p>
 
         <h2>"But you can't print it"</h2>
 
-        <p>This is the strongest objection and it deserves a straight answer: correct. You cannot print an HDR image. Ink on paper has a contrast ratio, and it is not going up.</p>
+        <p>This is the strongest objection, and it's correct. You can't print an HDR image: ink on paper has a fixed contrast ratio.</p>
 
-        <p>But look at where photographs are actually seen now. Sharing has moved to mobile, and mobile devices overwhelmingly have HDR displays. The photograph you post is far more likely to be viewed on an OLED phone held at arm's length than on any print. If you are optimizing for the medium your audience actually uses, HDR is not a niche — it is the common case, and SDR is the compromise.</p>
+        <p>Most photographs are seen on screens now, though. Sharing has moved to mobile, and most mobile devices have HDR displays, so the photograph you post is far more likely to be viewed on an OLED phone than on a print. For the medium most of your audience uses, HDR is the common case.</p>
 
-        <p>Print remains print. Nothing about shooting for HDR stops you making an SDR rendering for paper; that is a single export away. The reverse is not true. Save an SDR JPEG and those four stops are gone for good.</p>
+        <p>Shooting for HDR doesn't stop you making an SDR rendering for paper; that's one more export. Going the other way doesn't work: once you save an SDR JPEG, those four stops are gone for good.</p>
 
         <h2>Getting the bits to the viewer</h2>
 
-        <p>So how do those highlights reach someone else's screen? This is where the format question finally matters, and where the industry has partly gone the wrong way.</p>
+        <p>Getting those highlights onto someone else's screen depends on the file format, and here the industry has partly gone the wrong way.</p>
 
-        <p><strong>HEIF with an HLG transfer function</strong> — the route several manufacturers took — has two failure modes. Outside Apple's ecosystem the file is often simply unopenable. And on an SDR screen it does not degrade to something correct; it degrades to something <em>wrong</em>, washed out and flat, because the viewer has no idea how to interpret the transfer function. A format that looks broken to half your audience is not a sharing format.</p>
+        <p><strong>HEIF with an HLG transfer function</strong>, the route several manufacturers took, has two failure modes. Outside Apple's ecosystem the file often won't open at all. And on an SDR screen it looks <em>wrong</em>, washed out and flat, because the viewer doesn't know how to interpret the transfer function. That makes it a poor format for sharing.</p>
 
-        <p><strong>JPEG with a gain map</strong> (standardized as ISO 21496-1) solves exactly this. The file is an ordinary JPEG plus a small auxiliary image describing, per pixel, how much brighter the HDR rendering should be. An SDR viewer sees a completely normal photograph and never knows the gain map is there. An HDR viewer applies it and sees the full range. One file, correct everywhere, no forked workflow.</p>
+        <p><strong>JPEG with a gain map</strong> (standardized as ISO 21496-1) solves this. The file is an ordinary JPEG plus a small auxiliary image describing, per pixel, how much brighter the HDR rendering should be. An SDR viewer shows a normal photograph and ignores the gain map; an HDR viewer applies it and shows the full range. You export one file for both.</p>
 
-        <p>There is a wrinkle worth knowing before you rely on that. The gain map itself is standardized; the <em>signaling</em> that tells a viewer to go looking for one is not, yet. Apple writes its own marker and hangs the gain map's parameters off the auxiliary image. Google's Ultra HDR — which is what Chrome reads — expects a version tag and a container directory on the main image instead. Apple's software reads both conventions. Chrome, today, reads only Google's.</p>
+        <p>One catch: the gain map itself is standardized, but the <em>signaling</em> that tells a viewer to look for one isn't, yet. Apple writes its own marker and hangs the gain map's parameters off the auxiliary image. Google's Ultra HDR, which is what Chrome reads, expects a version tag and a container directory on the main image instead. Apple's software reads both conventions; Chrome currently reads only Google's.</p>
 
-        <p>So a gain-map JPEG written on a Mac can open as a flat SDR photograph in Chrome, on a display perfectly capable of showing the HDR version, with nothing on screen to suggest anything was withheld. The file is not broken and the standard is not at fault — the reader simply was not told where to look. A file can carry both conventions at once, and then every current viewer handles it correctly, but that has to be done on purpose. If you are choosing an exporter, it is worth asking whether it does.</p>
+        <p>So a gain-map JPEG written on a Mac can open as a flat SDR photograph in Chrome, on a display that could show the HDR version, with nothing on screen to say so. Chrome just wasn't told where to look. A file can carry both conventions at once, and then every current viewer handles it correctly, but the exporter has to write it that way. If you're choosing an exporter, ask whether it does.</p>
 
-        <p><strong>HEIC with a gain map</strong> — the file an iPhone writes by default — looks like the obvious refinement, and the instinct behind it is sound: the same SDR-plus-gain-map idea, in the container Apple already uses, at roughly half the size of the equivalent JPEG. The saving is real, and unlike HLG the HDR mechanism is the right one. Inside Apple's ecosystem it is an excellent format.</p>
+        <p><strong>HEIC with a gain map</strong>, the file an iPhone writes by default, looks like the obvious refinement: the same SDR-plus-gain-map idea in the container Apple already uses, at roughly half the size of the equivalent JPEG. The saving is real, and unlike HLG it uses the right HDR mechanism. Inside Apple's ecosystem it's an excellent format.</p>
 
-        <p>What it cannot do is travel. HEIC is HEVC video compression inside a picture file, and HEVC comes with patent licensing that browser makers outside Apple have declined to buy: Chrome and Firefox have never opened a HEIC and show no sign of starting — not flattened, not washed out, simply unopenable — and a Windows machine needs a paid codec add-on before its own Photos app will look at one. Safari renders it, gain map and all. Nothing else does. So the size advantage buys a file that most of the web treats as a download rather than a photograph. The failure is different in kind from HLG's — right mechanism, wrong reach — but for sharing the result is the same. Half the bytes are no bargain when half your audience gets none of them.</p>
+        <p>Outside it, HEIC has a reach problem. It is HEVC video compression inside a picture file, and HEVC comes with patent licensing that browser makers outside Apple have declined to pay for. Chrome and Firefox have never opened a HEIC and show no sign of starting, and a Windows machine needs a paid codec add-on before its own Photos app will open one. Safari renders it, gain map and all, and nothing else does, so most of the web treats a HEIC as a download rather than a photograph, whatever it saves in size. The cause is different from HLG's, but for sharing the result is the same.</p>
 
-        <p><strong>JPEG XL</strong> is the best long-term answer for <em>capture and archival</em> — small, full color depth, HDR throughout, lossy like JPEG but at far higher quality per byte. It is the format RAW should eventually give way to. It is not, today, a delivery format: Safari decodes it natively, but Chrome still hides it behind a flag and Firefox does the same, so most of your audience cannot see a JXL file at all.</p>
+        <p><strong>JPEG XL</strong> is the best long-term answer for <em>capture and archival</em>: small files, full color depth, HDR throughout, and lossy like JPEG but at far higher quality per byte. It's the format RAW should eventually give way to. For delivery it isn't ready yet. Safari decodes it natively, but Chrome and Firefox still hide it behind a flag, so most of your audience can't see a JXL file at all.</p>
 
-        <p>These are not competing choices. Gain-map JPEG solves sharing now. JPEG XL solves archival later.</p>
+        <p>Gain-map JPEG covers sharing today, and JPEG XL is the archival format to aim for later.</p>
 
         <h2>The apps haven't caught up with the browsers</h2>
 
-        <p>There is one more gap between you and your audience, and it is worth knowing exactly where it sits. The browsers have finished their half: since iOS 26, every browser on an iPhone renders gain-map HDR — they all share Apple's WebKit engine, so one engine change upgraded all of them at once — and desktop Chrome has done it since 2023. The apps photographs actually travel through are further behind.</p>
+        <p>The browsers have done their part. Since iOS 26 every browser on an iPhone renders gain-map HDR (they all share Apple's WebKit engine, so one engine change upgraded all of them at once), and desktop Chrome has done it since 2023. The apps that most photographs pass through are further behind.</p>
 
-        <p>The list of apps that will show your photograph in HDR today is short: Apple's Photos and Messages, Instagram and Threads — in feed posts, not Stories, and only when the upload keeps its original aspect ratio — Google Photos, and Lightroom. Facebook flattens photographs to SDR on upload, even though its HDR video passes. The chat apps mostly lose the gain map at the compression step: a default photo send in WhatsApp or Telegram re-encodes the image and the highlights go with it, though both deliver the file byte-for-byte intact if you send it as a document instead — whether the app at the other end then <em>displays</em> the HDR is a separate question. Signal re-encodes on every path, by design. And for a long tail of others nobody has published a test at all, which is itself a measure of how early it is. The doubt differs in kind, though: for X, TikTok or Reddit it is whether the upload pipeline lets the gain map survive; a mail attachment sent at actual size arrives byte-for-byte intact, and the only question is whether the mail app shows the HDR — worst case the range is still in the file, and saving it to Photos displays it. The cloud drives barely enter the question: they move bytes untouched, and the viewer at the far end decides.</p>
+        <p>The list of apps that show your photograph in HDR today is short: Apple's Photos and Messages, Instagram and Threads (in feed posts, not Stories, and only when the upload keeps its original aspect ratio), Google Photos and Lightroom. Facebook flattens photographs to SDR on upload, even though its HDR video gets through. The chat apps mostly lose the gain map when they compress: a default photo send in WhatsApp or Telegram re-encodes the image and the highlights go with it, although both deliver the file byte for byte if you send it as a document instead. Whether the app at the other end then <em>displays</em> the HDR is a separate question. Signal re-encodes on every path, by design. For X, TikTok, Reddit and a long tail of others nobody has published a test yet, and the open question there is whether the upload pipeline keeps the gain map. A mail attachment sent at actual size arrives intact, so the only question is whether the mail app shows the HDR; if it doesn't, the range is still in the file and saving it to Photos displays it. Cloud drives move the bytes untouched and leave it to the viewer at the far end.</p>
 
-        <p>The reason is structural rather than technical. iOS hands every app the SDR rendering by default; showing the HDR takes a deliberate request that each developer has to make. That is the whole story of why the web got there first — one engine change flipped every browser together, while the apps have to say yes one at a time.</p>
+        <p>The reason is how iOS works. It hands every app the SDR rendering by default, and showing the HDR takes a deliberate request that each developer has to make. That's why the web got there first: one engine change switched every browser at once, while each app has to opt in on its own.</p>
 
-        <p>None of this argues for waiting. A gain-map JPEG fails soft: wherever support is missing, your audience sees an ordinary, correct photograph — never a broken one — and the same file lights up as support arrives. The plumbing is moving too: libvips, the image library inside many websites' upload pipelines, learned to carry gain maps through a resize in late 2025. Each service still has to turn that on — the gain map rides the same switch most pipelines use to strip location data — but the excuse that the tooling could not do it is gone. "Uploads strip it" is a statement with a shelf life.</p>
+        <p>None of this is a reason to wait. Wherever support is missing, a gain-map JPEG shows as an ordinary, correct photograph, and the same file shows HDR once support arrives. The plumbing is moving too: libvips, the image library inside many websites' upload pipelines, learned to carry gain maps through a resize in late 2025. Each service still has to turn that on (the gain map rides the same switch most pipelines use to strip location data), but the tooling is no longer the obstacle.</p>
 
         <h2>The camera is the last SDR link in the chain</h2>
 
-        <p>Think about where the dynamic range actually goes on a shoot today. Your eye sees a scene with enormous range. The sensor captures most of it. Then you compose that scene through an <em>SDR</em> electronic viewfinder, check it on an <em>SDR</em> rear screen, and save it to a file format that discards the top four stops — before finally viewing it on a display that could have shown you all of it.</p>
+        <p>Follow the dynamic range through a shoot today. Your eye sees a scene with enormous range, and the sensor captures most of it. Then you compose through an <em>SDR</em> electronic viewfinder, check the shot on an <em>SDR</em> rear screen and save it to a file format that discards the top four stops, before viewing it on a display that could have shown you all of it.</p>
 
-        <p>Every link in that chain is capable except the ones inside the camera.</p>
-
-        <p>That is worth sitting with, because it reframes the problem. This is not a missing feature. It is the only remaining bottleneck in an otherwise HDR-ready pipeline: Apple ships XDR displays on every MacBook Pro, plenty of third-party monitors do HDR, the operating systems support it, phones already shoot it, and the viewing and editing software exists. The camera industry is the last holdout in a chain that everyone else has already upgraded.</p>
+        <p>Every other link in that chain already handles HDR. Apple ships XDR displays on every MacBook Pro, plenty of third-party monitors do HDR, the operating systems support it, phones already shoot it, and the viewing and editing software exists.</p>
 
         <h2>Why this is in the manufacturers' interest</h2>
 
-        <p>Here is the part camera makers should care about most, and it is commercial rather than technical.</p>
+        <p>For camera makers the strongest argument is commercial.</p>
 
-        <p>Mirrorless bodies and sensors have become extraordinary. Autofocus is uncanny, stabilisation is remarkable, resolution and burst rates long ago passed what most photographers need. Which raises an awkward question for anyone selling cameras: <strong>what is left to put on the box?</strong> The spec race that drove upgrades for a decade is largely finished. Existing owners look at a new body and struggle to justify it.</p>
+        <p>Mirrorless bodies and sensors have become extraordinary. Autofocus and stabilization are excellent, and resolution and burst rates passed what most photographers need some time ago. That leaves anyone selling cameras with an awkward question: <strong>what is left to put on the box?</strong> The spec race that drove upgrades for a decade is largely over, and existing owners struggle to justify a new body.</p>
 
-        <p>HDR is the answer sitting in plain sight. It is not an incremental half-stop of something; it is a visibly different photograph, on hardware customers already own. And it is a genuine product generation:</p>
+        <p>HDR could be that answer. It gives a visibly different photograph on hardware customers already own, and it would make a real product generation:</p>
 
         <ul>
             <li><strong>HDR electronic viewfinders</strong> — compose the scene with the range you are actually capturing, instead of a flattened preview of it.</li>
-            <li><strong>HDR rear LCDs</strong> — judge a shot in the field and see the real highlights, not a clipped approximation.</li>
+            <li><strong>HDR rear LCDs</strong> — judge a shot in the field and see the real highlights instead of a clipped approximation.</li>
             <li><strong>HDR file output</strong> — a file that carries the range home and displays correctly when it gets there.</li>
         </ul>
 
-        <p>That is a headline feature set, not a firmware footnote. It gives a manufacturer something to demonstrate on a shop floor that a customer can see in a single glance — which is exactly what the current generation of bodies lacks.</p>
+        <p>That is a headline feature set. It would give a manufacturer something to show on a shop floor that a customer can see at a glance, which the current generation of bodies doesn't have.</p>
 
         <h2>What that means concretely</h2>
 
-        <p><strong>Now: write JPEG + gain map in-camera.</strong> The usual objection is pipeline cost — can a camera really do this at burst rates? It already can. A gain map is a ratio between the SDR and HDR renderings, quantised to 8 bits and downsampled; it rides the JPEG encoder every camera already has, rather than requiring a new codec block. And the proof is in everyone's pocket: phones have been producing gain-map HDR stills at capture rate for years, on a fraction of the silicon a flagship camera carries. If a phone can do it in a burst, so can a camera with a dedicated image processor.</p>
+        <p><strong>Now: write JPEG + gain map in-camera.</strong> The usual objection is pipeline cost: can a camera do this at burst rates? It can. A gain map is a ratio between the SDR and HDR renderings, quantized to 8 bits and downsampled, and it uses the JPEG encoder every camera already has instead of a new codec block. Phones have produced gain-map HDR stills at capture rate for years, on a fraction of the silicon a flagship camera carries, so a camera with a dedicated image processor can do it too.</p>
 
-        <p><strong>Next: HDR EVFs and rear screens.</strong> This one is real hardware and real cost, and it is also the part that sells bodies. Shooting HDR through an SDR viewfinder is like mixing a record on headphones that cannot reproduce bass — you can do it, but you are working blind in exactly the region you are trying to control.</p>
+        <p><strong>Next: HDR EVFs and rear screens.</strong> This is real hardware at real cost, and it's also the part that sells bodies. Shooting HDR through an SDR viewfinder is like mixing a record on headphones that can't reproduce bass: you can do it, but you're working blind in the region you are trying to control.</p>
 
-        <p>Sony has come furthest here, and the A7R VI is worth studying precisely because it gets so much right. It is the first camera with an HDR-capable viewfinder — 10-bit HLG, DCI-P3, roughly three times brighter than its predecessor — and it captures HDR stills. That is the correct direction, and it makes the rest of the industry's position harder to defend.</p>
+        <p>Sony has come furthest here, and the A7R VI gets a lot right. It is the first camera with an HDR-capable viewfinder (10-bit HLG, DCI-P3, roughly three times brighter than its predecessor), and it captures HDR stills. That's the right direction, and it makes the rest of the industry's position harder to defend.</p>
 
-        <p>It also shows how easily you can build half a workflow. The viewfinder shows you high dynamic range, but the histogram beside it still measures SDR — so you can <em>see</em> the highlight range and have no way to <em>measure</em> it, which is the one thing a histogram exists to do. And the file it writes is HEIF with the HLG curve: the format that will not open reliably off an Apple device and degrades wrongly rather than gracefully. Sony solved the expensive part, the display, and then handed the result to the delivery format most likely to strand it.</p>
+        <p>It also stops halfway. The viewfinder shows high dynamic range, but the histogram beside it still measures SDR, so you can <em>see</em> the highlight range but can't <em>measure</em> it. And the file it writes is HEIF with the HLG curve, the format that won't open reliably off an Apple device and looks washed out on SDR screens.</p>
 
-        <p>Note what that first gap is not: a hardware limitation. The panel already renders high dynamic range; teaching the histogram to measure it is a firmware question. The most valuable HDR feature Sony could ship next may cost nothing to manufacture.</p>
+        <p>The histogram gap isn't a hardware limitation. The panel already renders high dynamic range, so teaching the histogram to measure it is a firmware change, and it may be the most useful HDR feature Sony could ship next.</p>
 
-        <p>That is not a criticism of a good camera so much as a description of the opportunity. The hardware is already arriving. What is missing is the rest of the chain around it — the metering that matches the viewfinder, and an output format that survives the trip to someone else's screen.</p>
+        <p>The A7R VI is a good camera, and its gaps show where the opportunity is: metering that matches the viewfinder, and an output format that survives the trip to someone else's screen.</p>
 
-        <p><strong>Later: JPEG XL as the archival format.</strong> Here the engineering objection is real and worth stating honestly — software JXL encoding is slow, and doing it at capture rate plausibly requires dedicated hardware. That is a genuine ask with a genuine cost, and it will take a product cycle or three. It is still the right destination: small files, full color depth, HDR throughout, in the role RAW occupies now.</p>
+        <p><strong>Later: JPEG XL as the archival format.</strong> Here the engineering objection is real. Software JXL encoding is slow, and doing it at capture rate probably needs dedicated hardware, so it will take a product cycle or three. It's still the right destination: small files, full color depth and HDR throughout, in the role RAW occupies now.</p>
 
-        <p>The near-term request is the modest one. The bits are already in the file. The encoder is already in the camera. The displays are already in our hands. What is missing is a menu item.</p>
+        <p>The near-term request is the modest one: the data is already in the file and the JPEG encoder is already in the camera, so gain-map JPEG output is mostly a firmware change.</p>
 
-        <p>It is 2026. Photography spent the better part of a decade with "HDR" meaning a garish, over-processed look, because that was the only way to hint at high dynamic range inside a low dynamic range file. That constraint is gone, the hardware is on desks and in pockets, and the real thing looks nothing like the parody. There is no good reason for the picture to still stop at SDR white.</p>
+        <p>For the better part of a decade, "HDR" in photography meant a garish, over-processed look, because that was the only way to hint at high dynamic range inside a low dynamic range file. That constraint is gone and the displays are on desks and in pockets, so photographs no longer need to stop at SDR white.</p>
 
         <h2>What you can do today</h2>
 
-        <p>You do not have to wait for any of this to see what your own files contain.</p>
+        <p>You don't have to wait for any of this to see what your own files contain.</p>
 
-        <p><a href="apolloone.html">ApolloOne 4.7.0</a> renders your RAW files in HDR on screen — the highlights as the sensor recorded them, not a flattened stand-in. Open a file you shot last year and look at how much of it you have never seen.</p>
+        <p><a href="apolloone.html">ApolloOne</a> renders your RAW files in HDR on screen, with the highlights as the sensor recorded them. Open a file you shot last year and look at the highlights.</p>
 
-        <p>And when you want to share what you find, it exports gain-map JPEG carrying <em>both</em> signaling conventions, Apple's and Google's Ultra HDR, so one file opens as HDR in Chrome and in Safari instead of only one of them — and as an ordinary correct photograph everywhere else. Full HDR to AVIF and JPEG XL in PQ as well, and HEIC if you want the ISO gain map in Apple's own container.</p>
+        <p>For sharing, it exports gain-map JPEG with <em>both</em> signaling conventions, Apple's and Google's Ultra HDR, so the same file opens as HDR in both Chrome and Safari and as an ordinary, correct photograph everywhere else. It also exports full HDR to AVIF and JPEG XL in PQ, and HEIC if you want the ISO gain map in Apple's own container.</p>
 
-        <p><a href="camerarawx.html">Camera RawX</a> brings HDR previews to Quick Look for RAW files macOS cannot open on its own. And <a href="apolloone-go.html">ApolloOne GO</a> puts the same HDR rendering on an iPad or iPhone, so you can judge the real range of a shot in the field — on the kind of display you will probably end up sharing it on.</p>
+        <p><a href="camerarawx.html">Camera RawX</a> brings HDR previews to Quick Look for RAW files macOS can't open on its own, and <a href="apolloone-go.html">ApolloOne GO</a> puts the same HDR rendering on an iPad or iPhone, so you can judge the real range of a shot in the field on the kind of display you'll probably share it on.</p>
 
-        <p>Every HDR image on this page was exported from ApolloOne 4.7.0 as a gain-map JPEG. That is the whole argument in one file: it looks right on your phone, it looks right on your laptop, and if your screen can show you those four stops, it just did.</p>
+        <p>Every HDR image on this page was exported from ApolloOne 4.7.0 as a gain-map JPEG, so you saw them in HDR if your screen supports it and as ordinary photographs if it doesn't.</p>
 
     </div>
 </section>
