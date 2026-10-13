@@ -1,79 +1,105 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HDR browser test</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDR Browser Test: Does Your Browser Show HDR Photos? | Anogeissus</title>
+    <meta name="description" content="See whether your browser and screen show HDR photos. The same photo as a gain-map JPEG, an HDR AVIF and an ordinary JPEG, plus what to change on a Mac or a Windows PC.">
+    <link rel="icon" type="image/png" href="/images/apolloone-icon.png">
+    <link rel="apple-touch-icon" href="/images/apolloone-icon.png">
 
-<style>
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 24px 18px 80px;
-        color: #1d1d1f;
-        background: #fff;
-        line-height: 1.6;
-    }
-    h1 { font-size: 26px; margin-bottom: 6px; }
-    .sub { color: #6e6e73; margin-top: 0; }
-    .cap { font-size: 14px; color: #6e6e73; }
-    .test { margin: 40px 0; padding-top: 24px; border-top: 1px solid #e5e5ea; }
-    .test h2 { font-size: 19px; margin: 0 0 4px; }
-    .tag {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .04em;
-        text-transform: uppercase;
-        padding: 3px 8px;
-        border-radius: 5px;
-        background: #f0f0f5;
-        color: #48484a;
-        margin-bottom: 10px;
-    }
-    img { display: block; width: 100%; height: auto; border-radius: 8px; margin: 12px 0 8px; }
-    .zoom { font-size: 13px; color: #6e6e73; }
-    code { background: #f0f0f5; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
-    .note {
-        border-left: 3px solid #0066cc;
-        background: rgba(0, 102, 204, .06);
-        padding: 12px 16px;
-        border-radius: 0 8px 8px 0;
-        margin: 20px 0;
-        font-size: 15px;
-    }
-    .jump {
-        display: inline-block;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 7px 12px;
-        margin: 2px 8px 0 0;
-        border-radius: 7px;
-        background: #0066cc;
-        color: #fff;
-        text-decoration: none;
-    }
-    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
-    th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid #e5e5ea; }
-    th { color: #6e6e73; font-weight: 600; }
-    /* The last section's own bottom margin governs the gap above the footer —
-       adjacent margins collapse to the larger — so it has to be dropped here
-       rather than only shrinking the footer's. Scoped to the last section so
-       the spacing between sections is untouched. */
-    .test:last-of-type { margin-bottom: 0; }
-    footer { margin-top: 20px; font-size: 13px; color: #6e6e73; }
+    <link rel="canonical" href="https://anogeissus.com/hdr-browser-test.html">
 
-    :root { color-scheme: light dark; }
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-        body { background: #000; color: #f5f5f7; }
-        .sub, .cap, .zoom, footer { color: #a1a1a6; }
-        .test { border-top-color: #38383c; }
-        .tag { background: #2c2c2e; color: #c7c7cc; }
-        code { background: #2c2c2e; }
-        .note { border-left-color: #2997ff; background: rgba(41, 151, 255, 0.12); }
-        th { color: #a1a1a6; }
-        th, td { border-bottom-color: #38383c; }
-    }
-</style>
+    <link rel="stylesheet" href="css/style.css?v=26">
+
+    <style>
+        /* Test-page styles. Scoped to .legal-content so the site's legal-page rules
+           (p 17px, links blue, h2 20px) don't override them. */
+        .legal-content { line-height: 1.6; }
+        .legal-content h1 { font-size: 26px; margin-bottom: 6px; }
+        .legal-content .sub { color: #6e6e73; margin-top: 0; }
+        .legal-content .cap { font-size: 14px; color: #6e6e73; }
+        .legal-content .test { margin: 40px 0; padding-top: 24px; border-top: 1px solid #e5e5ea; scroll-margin-top: 60px; }
+        .legal-content .test h2 { font-size: 19px; margin: 0 0 4px; }
+        .legal-content .test p { margin: 1em 0; }
+        .legal-content .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 5px;
+            background: #f0f0f5;
+            color: #48484a;
+            margin-bottom: 10px;
+        }
+        .legal-content img { display: block; width: 100%; height: auto; border-radius: 8px; margin: 12px 0 8px; }
+        .legal-content .zoom { font-size: 13px; color: #6e6e73; }
+        .legal-content code { background: #f0f0f5; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+        .legal-content .note {
+            border-left: 3px solid #0066cc;
+            background: rgba(0, 102, 204, .06);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+        .legal-content a.jump,
+        .legal-content a.jump:hover {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 7px 12px;
+            margin: 2px 8px 0 0;
+            border-radius: 7px;
+            background: #0066cc;
+            color: #fff;
+            text-decoration: none;
+        }
+        .legal-content table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+        .legal-content th, .legal-content td { text-align: left; padding: 7px 10px; border-bottom: 1px solid #e5e5ea; }
+        .legal-content th { color: #6e6e73; font-weight: 600; }
+        /* The last section's own bottom margin governs the gap above the credit line —
+           adjacent margins collapse to the larger — so it has to be dropped here
+           rather than only shrinking the credit line's. Scoped to the last section so
+           the spacing between sections is untouched. */
+        .legal-content .test:last-of-type { margin-bottom: 0; }
+        .legal-content .credit { margin-top: 20px; font-size: 13px; color: #6e6e73; }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .legal-content .sub, .legal-content .cap, .legal-content .zoom, .legal-content .credit { color: #a1a1a6; }
+            .legal-content .test { border-top-color: #38383c; }
+            .legal-content .tag { background: #2c2c2e; color: #c7c7cc; }
+            .legal-content code { background: #2c2c2e; }
+            .legal-content .note { border-left-color: #2997ff; background: rgba(41, 151, 255, 0.12); }
+            .legal-content th { color: #a1a1a6; }
+            .legal-content th, .legal-content td { border-bottom-color: #38383c; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="apolloone.html">ApolloOne</a>
+        <a href="apolloone-go.html">ApolloOne GO</a>
+        <a href="camerarawx.html">Camera RawX</a>
+        <a href="support.html">Support</a>
+        <a href="/blog.html">Blog</a>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<section class="section legal-page">
+    <div class="legal-content">
 
 <h1>HDR browser test</h1>
 <p class="sub">Does your browser display HDR photographs? Two HDR formats and an SDR control.</p>
@@ -213,6 +239,60 @@
     means, why HEIF/HLG was the wrong turn, and why cameras should be writing JPEG with a gain map.</p>
 </div>
 
-<footer>
+<p class="credit">
     All images exported from ApolloOne 4.7.0 from a single Fujifilm X-H2S raw file, same processing.
+</p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-columns">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <a href="apolloone.html">ApolloOne</a>
+            <a href="apolloone-go.html">ApolloOne GO</a>
+            <a href="camerarawx.html">Camera RawX</a>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="support.html">Support</a>
+            <a href="/blog.html">Blog</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="termsofuse.html">Terms of Use</a>
+        </div>
+    </div>
+    <p class="copyright">© 2026 Anogeissus. All rights reserved.</p>
 </footer>
+
+<script>
+(function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('nav-links');
+    var overlay = document.getElementById('nav-overlay');
+
+    function toggle() {
+        var isOpen = hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open', isOpen);
+        overlay.classList.toggle('visible', isOpen);
+    }
+
+    function close() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('visible');
+    }
+
+    hamburger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+    });
+})();
+</script>
+</body>
+</html>
