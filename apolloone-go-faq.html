@@ -60,7 +60,31 @@
           "name": "Can I connect my camera directly?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Connect the camera body to the USB-C port and ApolloOne GO browses the card inside it, using the same protocol the Photos app uses for import — so it works with cameras that never mount as a drive. Browse a thumbnail grid grouped by capture day, open full-screen embedded JPEG previews with AF point and face overlays, select the keepers, and import only those. Rejects never leave the camera. A memory card in a USB-C reader works the same way, and either source can be culled before a single file is copied."
+            "text": "Yes. Connect the camera body to the USB-C port and ApolloOne GO browses the card inside it, using the same protocol the Photos app uses for import — so it works with cameras that never mount as a drive. Browse a thumbnail grid grouped by capture day, open full-screen embedded JPEG previews with AF point and face overlays, select the keepers, and import only those. Rejects never leave the camera. A memory card in a USB-C reader works the same way, and either source can be culled before a single file is copied. Fujifilm cameras with X-Processor 5 can also connect over Wi-Fi, with no cable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I import from my Fujifilm camera over Wi-Fi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, since version 2.0, in beta. ApolloOne GO browses and copies straight from Fujifilm cameras with X-Processor 5, with no cable. Tested so far: X-H2S, X100VI, GFX100S II and X-T5. Before you start, update the camera to its latest firmware and pair your iPhone or iPad with the camera once in FUJIFILM XApp; GO uses the same pairing. Then turn the camera on, close XApp (the camera connects to one app at a time) and tap Fujifilm Wi-Fi in GO's sidebar. GO turns on the camera's Wi-Fi over Bluetooth; tap Join when iOS asks to join the camera's network. The viewer shows each RAW's built-in JPEG, and Import copies the originals of the shots you select."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My Fujifilm camera won't connect over Wi-Fi",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Update the camera to its latest firmware first: some cameras need it to work with FUJIFILM XApp, and ApolloOne GO uses the pairing made in XApp. Then check that the camera is on and paired with this iPhone or iPad in XApp, that XApp is closed, and that GO has Bluetooth and Local Network access. If the camera asks, press OK on it. If the connection still fails, the error message says why; tap Send Log to Support in it to email us the details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get the fastest Wi-Fi copies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Turn off AirDrop and Handoff while you copy (Settings > General > AirDrop > Receiving Off, and Settings > General > AirPlay & Continuity > Handoff). Hold the iPhone or iPad near the camera with your hands off its edges. If the camera's Wi-Fi is set to 2.4GHz, switch it to 5GHz in the camera's wireless settings: 2.4GHz is several times slower. Copies also speed up after the first minute."
           }
         },
         {
@@ -207,6 +231,9 @@
             <li><a href="#jpeg">Is ApolloOne GO a general image viewer for JPEG, HEIC, TIFF, PNG or GIF?</a></li>
             <li><a href="#raw-formats">Which RAW formats does ApolloOne GO support?</a></li>
             <li><a href="#camera-connection">Can I connect my camera directly?</a></li>
+            <li><a href="#fujifilm-wifi">Can I import from my Fujifilm camera over Wi-Fi?</a></li>
+            <li><a href="#fujifilm-wifi-connect">My Fujifilm camera won't connect over Wi-Fi</a></li>
+            <li><a href="#fujifilm-wifi-speed">How do I get the fastest Wi-Fi copies?</a></li>
             <li><a href="#need-a-mac">Do I need a Mac, or ApolloOne on the Mac?</a></li>
             <li><a href="#picks-to-mac">How do my Pick and Reject decisions reach my Mac?</a></li>
             <li><a href="#lightroom">I use Lightroom, not ApolloOne — can I still use GO?</a></li>
@@ -237,6 +264,30 @@
         <h2 id="camera-connection">Can I connect my camera directly?</h2>
         <p>Yes. Plug the camera body into the USB-C port and GO browses the card inside it, using the same protocol the Photos app uses for import — so it works even with cameras that never mount as a drive. You get a thumbnail grid grouped by capture day, full-screen embedded JPEG previews with pinch-zoom and AF point and face overlays, and then you select the keepers and <strong>import only those</strong>. The rejects never leave the camera.</p>
         <p>A memory card in a USB-C reader works the same way, and either source can be culled before a single file is copied. If your camera doesn't show up, <a href="#notdetected">a camera setting is usually the reason</a>.</p>
+        <p>Fujifilm cameras with X-Processor 5 can also connect <a href="#fujifilm-wifi">over Wi-Fi</a>, with no cable.</p>
+
+        <h2 id="fujifilm-wifi">Can I import from my Fujifilm camera over Wi-Fi?</h2>
+        <p><strong>Yes, since version 2.0, in beta.</strong> GO browses and copies straight from Fujifilm cameras with X-Processor 5, with no cable. Tested so far: <strong>X-H2S, X100VI, GFX100S II and X-T5</strong>.</p>
+        <p>Before you start, update the camera to its latest firmware, and pair your iPhone or iPad with the camera once in FUJIFILM XApp. GO uses the same pairing. Then turn the camera on, close XApp (the camera connects to one app at a time) and tap <strong>Fujifilm Wi-Fi</strong> in GO's sidebar. GO turns on the camera's Wi-Fi over Bluetooth; tap Join when iOS asks to join the camera's network.</p>
+        <p>The Contact Sheet opens with the newest shots first. The viewer shows each RAW's built-in JPEG, and Import copies the originals of the shots you select. On a camera with two cards, the 1 and 2 buttons switch between them.</p>
+
+        <h2 id="fujifilm-wifi-connect">My Fujifilm camera won't connect over Wi-Fi</h2>
+        <p>Update the camera to its latest firmware first: some cameras need it to work with FUJIFILM XApp, and GO uses the pairing made in XApp. Then check that:</p>
+        <ul>
+            <li>the camera is on and paired with this iPhone or iPad in XApp</li>
+            <li>XApp is closed</li>
+            <li>GO has Bluetooth and Local Network access</li>
+            <li>if the camera asks, you pressed OK on it</li>
+        </ul>
+        <p>If the connection still fails, the error message says why. Tap <strong>Send Log to Support</strong> in it to email us the details.</p>
+
+        <h2 id="fujifilm-wifi-speed">How do I get the fastest Wi-Fi copies?</h2>
+        <ul>
+            <li>Turn off AirDrop and Handoff while you copy: Settings &gt; General &gt; AirDrop &gt; Receiving Off, and Settings &gt; General &gt; AirPlay &amp; Continuity &gt; Handoff.</li>
+            <li>Hold the iPhone or iPad near the camera, with your hands off its edges.</li>
+            <li>If the camera's Wi-Fi is set to 2.4GHz, switch it to 5GHz in the camera's wireless settings: 2.4GHz is several times slower.</li>
+        </ul>
+        <p>Copies also speed up after the first minute.</p>
 
         <h2 id="need-a-mac">Do I need a Mac, or ApolloOne on the Mac?</h2>
         <p>Neither. ApolloOne GO is complete on its own: browse, view, cull and import with no Mac involved. If you do run ApolloOne on a Mac, your culling decisions travel there automatically — but that is a bonus, not a requirement.</p>
