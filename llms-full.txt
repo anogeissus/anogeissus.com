@@ -20,6 +20,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 - ML Processing: Apple's machine learning RAW decoder with noise reduction and an improved demosaic (macOS 27 or later, for supported cameras)
 - Hierarchical keywords: a keyword tree with synonyms and categories, written to the fields Lightroom and Photo Mechanic read
 - Customizable status bar, and AppleScript automation for reading and writing image metadata from scripts
+- LUTs and recipes (version 5.2): give photos and videos a look from a .cube LUT, including Fujifilm film simulations from Fujifilm's free LUTs in SDR and HDR, and save a LUT with Quick Edit adjustments as a recipe
 
 ### Key Features
 - Browse photos at up to 55 fps on M1 Ultra — 100MP RAW files load instantly
@@ -44,7 +45,7 @@ ApolloOne is a high-performance photo and video viewer for macOS designed for pr
 ### Editions
 - **Free**: Browse and view. Works indefinitely
 - **Standard**: Adds tabs and windows, List View, AF point and face display, Batch Rename, batch GPS/rotation/date changes, cropping, EXIF, Makernotes and XMP/IPTC editing, slideshow with Apple Music, and more
-- **Pro**: Everything in Standard, plus Split View with synchronized zoom, batch resize, convert and export, memory card import with Backup to, HDR Mode for RAW, SDR Proof, HDR export (JPEG XL, AVIF, gain-map JPEG and HEIC), metadata templates, RegEx metadata filters, customizable shortcut keys, and hiding unused menu items
+- **Pro**: Everything in Standard, plus LUTs and recipes, Split View with synchronized zoom, batch resize, convert and export, memory card import with Backup to, HDR Mode for RAW, SDR Proof, HDR export (JPEG XL, AVIF, gain-map JPEG and HEIC), metadata templates, RegEx metadata filters, customizable shortcut keys, and hiding unused menu items
 - **Max**: Everything in Standard and Pro, plus Liquid Glass Mode with its tab overview, ML Processing, Focus Score, Stacks, hierarchical keywords, Code Replacements, AI Keywords, AI Rating, the customizable status bar and AppleScript automation
 - Every installation starts with a 14-day Max Edition free trial; afterwards ApolloOne continues as the Free Edition. Subscriptions and one-time perpetual licenses are available, priced by the App Store in each customer's own currency
 
@@ -65,6 +66,7 @@ https://apps.apple.com/app/apolloone-photo-video-viewer/id1044484672?mt=12
 Details: https://anogeissus.com/apolloone.html
 FAQ: https://anogeissus.com/apolloone-faq.html
 Cameras supported by ML Processing: https://anogeissus.com/apolloone-ml-cameras.html
+Free LUTs for ApolloOne: https://anogeissus.com/apolloone-free-luts.html
 Scripts (Keyword with Claude AI): https://anogeissus.com/apolloone-scripts.html
 
 ---
